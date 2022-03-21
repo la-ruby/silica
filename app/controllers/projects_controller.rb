@@ -16,6 +16,8 @@ class ProjectsController < ApplicationController
     @sourcefilter = params[:sourcefilter]
     @req_date = params[:req_date]
     @offer_sent = params[:offer_sent]
+    @sort_by = params[:sort_by]
+    @sort_direction = params[:sort_direction]
     authorize @projects
   end
 
