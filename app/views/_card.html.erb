@@ -4,7 +4,7 @@
   has_header = local_assigns[:title].present? || local_assigns[:bubble_text].present? || p.content_for?(:heading_right)
 %>
 
-<div class="card bg-transparent shadow-sm border-light rounded-2x">
+<div class="card bg-white shadow-sm border-light rounded-2x">
   <div class="card-body <%= local_assigns[:card_body_style] %>">
 
     <% if has_header %>
