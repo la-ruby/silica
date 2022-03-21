@@ -101,7 +101,7 @@ $ python -m SimpleHTTPServer 5000
 Create an admin user
 
 ```
-echo 'User.create!(email: "testing.developer.1@example.com", password
+$ echo 'User.create!(email: "testing.developer.1@example.com", password
 : "password")' | ./bin/rails console
 ```
 
