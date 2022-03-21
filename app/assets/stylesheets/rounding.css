@@ -6,3 +6,11 @@
   border-radius: 1vw;
 }
 
+.rounded-1r-i {
+  border-radius: 1rem !important;
+}
+
+.rounded-half-r-i {
+  border-radius: 0.5rem !important;
+}
+

@@ -39,7 +39,7 @@
           <%= form_with url: "/kodaks", method: :delete do |form| %>
             <%= form.hidden_field :kodak, value: kodak.id %>
             <%= form.hidden_field :project, value: project.id %>
-            <button class="btn btn-outline-brandprimary mx-0 px-0" style="border-color: transparent"><i class="far fa-trash-alt"></i></button>
+            <button class="btn btn-outline-brandprimary mx-0 px-0 rounded-half-r-i" style="border-color: transparent"><i class="far fa-trash-alt"></i></button>
           <% end %>
         </div>
       </div>
