@@ -1,0 +1,72 @@
+<% project = Project.find(project_id)
+   repc = project.repc %>
+
+<div class="row">
+  <div class="col-4 ms-3 zpy-3">
+    <div class="row">
+
+      <div class="mb-2">
+        <label class="form-label mb-0" for="repc_company_offer_arv"><%= COMPANY %> Offer (ARV)</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">$</span>
+          <%= text_field_tag 'repc[company_offer_arv]', repc.company_offer_arv, class: 'form-control', form: form_id, readonly: repc.mature_ish?, data: { property_analysis_target: 'part_a', action: 'property-analysis#recalculate', controller: 'money' }, autocomplete: 'off' %>
+          <span class="input-group-text" id="basic-addon1">.00</span>
+        </div>
+        <span></span>
+      </div>
+
+      <div class="mb-2">
+        <label class="form-label mb-0 w-100" for="repc_service_fee">
+          <div class="row">
+	    <div class="col"><%= COMPANY %> Service Fee</div>
+            <div class="col-auto">
+              <div class="form-check form-switch">
+                <label class="form-check-label" for="flexSwitchCheckDefault">%</label>
+
+                <%= hidden_field_tag('repc[service_fee_is_percentage]', 'false', form: form_id) %>
+                <%= check_box_tag('repc[service_fee_is_percentage]', 'true', (repc.service_fee_is_percentage == 'true'), class: 'form-check-input', role: 'switch', form: form_id, data: { action: 'property-analysis#toggle', property_analysis_target: 'percentage'}) %>
+              </div>
+            </div>
+          </div>
+        </label>
+        <div class="input-group mb-3">
+          <%= text_field_tag 'repc[service_fee]', repc.service_fee, class: 'form-control', form: form_id, readonly: repc.mature_ish?, data: { property_analysis_target: 'part_b', action: 'property-analysis#recalculate' } %>
+          <span class="input-group-text fw-light <%= 'd-none' unless repc.service_fee_is_percentage == 'true' %>" data-property-analysis-target="label">$4444.00</span>
+        </div>
+        <span></span>
+      </div>
+
+      <div class="mb-2">
+        <label class="form-label mb-0 w-100" for="repc_repair_costs">
+          <%= COMPANY %> Repair Costs
+	</label>
+
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">$</span>
+          <%= text_field_tag 'repc[repair_costs]', repc.repair_costs, class: 'form-control', form: form_id, readonly: repc.mature_ish?, data: { property_analysis_target: 'part_c', action: 'property-analysis#recalculate', controller: 'money' }, autocomplete: 'off' %>
+          <span class="input-group-text" id="basic-addon1">.00</span>
+        </div>
+      </div>
+
+      <div class="mb-2">
+        <label class="form-label mb-0" for="repc_closing_costs">Closing Costs</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">$</span>
+          <%= text_field_tag 'repc[closing_costs]', repc.closing_costs, class: 'form-control', form: form_id, readonly: repc.mature_ish?, data: { property_analysis_target: 'part_d', action: 'property-analysis#recalculate', controller: 'money'  }, autocomplete: 'off' %>
+          <span class="input-group-text" id="basic-addon1">.00</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-1 ms-3 zpy-3">
+    &nbsp;
+  </div>
+
+  <div class="col-4 mx-3 py-3">
+    &nbsp;
+  </div>
+</div>
+

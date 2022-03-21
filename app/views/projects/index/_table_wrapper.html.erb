@@ -1,0 +1,19 @@
+<div id="projects-index-table-wrapper" style="min-height: 60vh">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <table class="table mt-4">
+          <%= render '/projects/index/thead' %>  
+          <tbody>
+          <% projects.each do |project| %>
+            <%= render('/projects/index/row', project: project) %>
+          <% end %>
+          </tbody>
+        </table>
+        <%= paginate projects, page: page, query: query, statefilter: statefilter, cityfilter: cityfilter, sourcefilter: sourcefilter, req_date: req_date, offer_sent: offer_sent %>
+      </div>
+    </div>
+  </div>
+
+</div>

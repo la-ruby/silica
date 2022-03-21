@@ -1,0 +1,18 @@
+<% if page.current? %>
+  <li class="page-item active">
+    <%= content_tag :a, page, data: { remote: remote }, rel: page.rel, class: 'page-link' %>
+  </li>
+<% else %>
+  <li class="page-item">
+    <%= form_with(url: "/filters", method: :post, class: 'd-inline-block') do |form| %>
+      <%= form.hidden_field :page, value: page %>
+      <%= form.hidden_field :query, value: page.instance_variable_get('@options')[:query] %>
+      <%= form.hidden_field :statefilter, value: page.instance_variable_get('@options')[:statefilter] %>
+      <%= form.hidden_field :cityfilter, value: page.instance_variable_get('@options')[:cityfilter] %>
+      <%= form.hidden_field :sourcefilter, value: page.instance_variable_get('@options')[:sourcefilter] %>
+      <%= form.hidden_field :req_date, value: page.instance_variable_get('@options')[:req_date] %>
+      <%= form.hidden_field :offer_sent, value: page.instance_variable_get('@options')[:offer_sent] %>
+      <%= form.submit page, class: 'page-link' %>
+    <% end %>
+  </li>
+<% end %>

@@ -1,0 +1,62 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= dontrequire debug
+ *= require actiontext
+ *= require brand
+ *= require sessions
+ *= require rounding
+ *= require transparency
+ *= require iconography
+ *= require calendar
+ *= require marketplace
+ *= require mbo
+ *= require crayon
+ *= require colors
+ *= require projects
+ *= require_self
+ */
+
+.border-bottom-dashed {
+  border-bottom: dashed 1px #0088cc;
+}
+
+/* to be removed after refactor of inline editing stuff */
+.min-sizes-for-child-textareas textarea {
+  width: 100% !important;
+  min-height: 200px;
+}
+
+.dropzone {
+  height: 90px;
+  min-height: initial !important;
+  max-height: 90px;
+  border: 0px dotted silver !important;
+}
+.dropzone .dz-message { margin: 0px  !important }
+
+.dropzone:hover {
+  background-color: white;
+}
+
+#apollo-nav .nav-link {
+  color: inherit;
+}
+
+trix-editor {
+  background-color: white;
+}
+
+/* we dont wont image attachments in the trix editor atm. */
+.trix-button-group.trix-button-group--file-tools {
+    display:none;
+}

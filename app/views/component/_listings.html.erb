@@ -1,0 +1,34 @@
+<div id="apollo-listings" class="container-fluid" data-controller="listings">
+  <%= form_with url: "/searches", class: 'd-inline-block main-form', data: { listings_target: 'form' }  do |form| %>
+    <%= form.hidden_field 'q', value: local_assigns[:q], data: { }  %>
+    <%= form.hidden_field 'beds', value: local_assigns[:beds], data: { } %>
+    <%= form.hidden_field 'baths', value: local_assigns[:baths], data: { } %>
+    <%= form.hidden_field 'sort', value: local_assigns[:sort], data: { } %>
+    <%= form.hidden_field 'page', value: local_assigns[:page] %>
+    <%= form.hidden_field 'map', value: local_assigns[:map]  %>
+  <% end %>
+
+  <%= render '/component/listings/filter', local_assigns %>
+  
+  <div class="row">
+    <div id="map-view" class="col d-none d-lg-block col-lg-7">
+      <% if local_assigns[:map] == "2" %>
+      <%= render '/component/listings/grid', local_assigns %>
+      <% else %>
+      <%= render '/component/listings/map', local_assigns %>
+      <% end %>
+    </div>
+    <div id="list-view" class="col col-lg-5" style="height: 90vh; overflow: scroll">
+      <% if local_assigns[:map] == "2" %>
+      <%= render '/component/listings/map', local_assigns %>
+      <% else %>
+      <%= render '/component/listings/grid', local_assigns %>
+      <% end %>
+      <div class="my-5">&nbsp;</div>
+      <%= render '/disclosures' %>
+      <div class="my-5">&nbsp;</div>
+    </div>
+  </div>
+
+  <%= render '/component/listings/overlay', local_assigns %>
+</div>

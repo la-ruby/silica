@@ -1,0 +1,90 @@
+<% project = Project.find(project_id)
+   repc = project.repc %>
+
+<div class="row" data-controller="cyclorama">
+
+  <div class="col-6 zmx-3 py-3 zpb-5">
+    <div class="mb-3">Offer Terms</div>
+
+    <div class="bs-component mb-3 ms-1">
+      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <%= radio_button_tag 'repc[offer_terms]', 'yes', (repc.offer_terms == 'yes'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
+        <label class="btn btn-outline-brandprimary" for="repc_offer_terms_yes">YES</label>
+        <%= radio_button_tag 'repc[offer_terms]', 'no', (repc.offer_terms == 'no'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
+        <label class="btn btn-outline-brandprimary" for="repc_offer_terms_no">NO</label>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card bg-transparent rounded mb-4 shadow-sm" style='border: 0px'>
+    <div class="card-body togglable-1636247473 <%= 'invisible' if repc.offer_terms != 'yes' %>">
+
+      <div class="mb-2">
+	<label class="form-label mb-0" for="property_detail_beds">Down Payment</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">$</span>
+          <%= text_field_tag 'repc[down_payment]', repc.down_payment, class: 'form-control', form: form_id, readonly: repc.mature_ish?, data: { controller: 'money' }, autocomplete: 'off' %>
+          <span class="input-group-text" id="basic-addon1">.00</span>
+        </div>
+      </div>
+
+      <div class="mb-2">
+	<label class="form-label mb-0" for="property_detail_beds">Term Length (Months)</label>
+        <%= text_field_tag 'repc[term_length]', repc.term_length, class: 'form-control', form: form_id, readonly: repc.mature_ish?, autocomplete: 'off' %>
+	<span></span>
+      </div>
+
+      <div class="mb-2">
+	<label class="form-label mb-0" for="property_detail_beds">Interest Rate</label>
+        <%= text_field_tag 'repc[interest_rate]', repc.interest_rate, class: 'form-control', form: form_id, readonly: repc.mature_ish?, autocomplete: 'off' %>
+	<span></span>
+      </div>
+
+      <div class="mb-2">
+	<label class="form-label mb-0" for="property_detail_beds">Monthly Payment</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">$</span>
+          <%= text_field_tag 'repc[monthly_payment]', repc.monthly_payment, class: 'form-control', form: form_id, readonly: repc.mature_ish?, data: { controller: 'money' }, autocomplete: 'off' %>
+          <span class="input-group-text" id="basic-addon1">.00</span>
+        </div>
+      </div>
+
+      <div class="mb-2">
+	<label class="form-label mb-0" for="property_detail_beds">Estimated Remaining Mortgage</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">$</span>
+          <%= text_field_tag 'repc[estimated_remaining_mortgage]', repc.estimated_remaining_mortgage, class: 'form-control', form: form_id, readonly: repc.mature_ish?, data: { controller: 'money' }, autocomplete: 'off' %>
+          <span class="input-group-text" id="basic-addon1">.00</span>
+        </div>
+      </div>
+
+      <div class="mb-2">
+	<label class="form-label mb-0" for="property_detail_beds">Balloon Payment</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">$</span>
+          <%= text_field_tag 'repc[balloon_payment]', repc.balloon_payment, class: 'form-control', form: form_id, readonly: repc.mature_ish?, data: { controller: 'money' }, autocomplete: 'off' %>
+          <span class="input-group-text" id="basic-addon1">.00</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mt-3 mb-2 form-group">
+    <label for="exampleTextarea" class="form-label mb-3">Real Estate Professional</label>
+
+    <div class="bs-component mb-3 ms-1">
+      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+	<%= radio_button_tag 'repc[real_estate_professional]', 'agent', (repc.real_estate_professional == 'agent'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
+        <label class="btn btn-outline-brandprimary" for="repc_real_estate_professional_agent">Agent</label>
+	<%= radio_button_tag 'repc[real_estate_professional]', 'broker', (repc.real_estate_professional == 'broker'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
+        <label class="btn btn-outline-brandprimary" for="repc_real_estate_professional_broker">Broker</label>
+	<%= radio_button_tag 'repc[real_estate_professional]', 'neither', (repc.real_estate_professional == 'neither'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
+        <label class="btn btn-outline-brandprimary" for="repc_real_estate_professional_neither">Neither</label>
+      </div>
+    </div>
+
+  </div>
+</div>
+

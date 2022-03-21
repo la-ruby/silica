@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <ul class="nav nav-tabs">
+        <% if UxPolicy.new(current_user, nil).overview? %>
+	<li class="nav-item fw-light">
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Overview' %> bg-transparent" href="<%= "/projects/#{project.id}/overview" %>">Overview</a>
+	</li>
+        <% end %>
+
+        <% if UxPolicy.new(current_user, nil).offer? %>
+	<li class="nav-item fw-light">
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Offer' %> bg-transparent" href="<%= "/projects/#{project.id}/offer" %>">Offer</a>
+	</li>
+        <% end %>
+
+        <% if UxPolicy.new(current_user, nil).inspection? %>
+	<li class="nav-item fw-light">
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Inspection' %> bg-transparent" href="<%= "/projects/#{project.id}/inspection" %>">Inspection</a>
+	</li>
+        <% end %>
+
+        <% if UxPolicy.new(current_user, nil).underwriting? %>
+	<li class="nav-item fw-light">
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Underwriting' %> bg-transparent" href="<%= "/projects/#{project.id}/underwriting_review_offer" %>">Underwriting</a>
+	</li>
+        <% end %>
+
+        <% if UxPolicy.new(current_user, nil).dispositions? %>
+	<li class="nav-item fw-light">
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Dispositions' %> bg-transparent" href="<%= "/projects/#{project.id}/dispositions_checklist" %>">Dispositions</a>
+	</li>
+        <% end %>
+
+        <% if UxPolicy.new(current_user, nil).marketplace? %>
+	<li class="nav-item fw-light">
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Marketplace' %> bg-transparent" href="<%= "/projects/#{project.id}/marketplace" %>">Marketplace</a>
+	</li>
+        <% end %>
+
+        <% if UxPolicy.new(current_user, nil).activity? %>
+	<li class="nav-item fw-light">
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Activity' %> bg-transparent" href="<%= "/projects/#{project.id}/activity" %>">Activity</a>
+	</li>
+        <% end %>
+
+        <% if UxPolicy.new(current_user, nil).files? %>        
+	<li class="nav-item fw-light">
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Files' %> bg-transparent" href="<%= "/projects/#{project.id}/files" %>">Files</a>
+	</li>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</div>

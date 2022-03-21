@@ -1,0 +1,27 @@
+<% id = "review-offer-underwriting-notes-for-sales"
+   form_id = "form-#{id}"
+   project = Project.find(project_id)
+%>
+
+<div id="<%= id %>">
+  <%= form_with url: url_for(project), method: :patch, class: 'd-inline-block main-form', id: form_id  do |form| %>
+  <% end %>
+
+  <%= render '/card', title: 'Underwriting Notes for Sales', bubble_text: 'Underwriting notes should include suggestions or tips for selling the offer and securing the property' do %>
+  
+    <div class="row">
+      <div class="col mx-3 py-3">
+        <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= project.underwriting_notes_for_sales %></span>
+        <input type="hidden" name="project[underwriting_notes_for_sales]" form="<%= form_id %>"  value="<%= project.underwriting_notes_for_sales %>" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-5 mx-3 py-3">
+        <div class="<%= demoted_text %>">Assignment Fee</div>
+        <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.assignment_fee %></span>
+        <input type="hidden" name="project[assignment_fee]" form="<%= form_id %>" value="<%= project.assignment_fee %>" />
+      </div>
+    </div>
+  
+  <% end %>
+</div>

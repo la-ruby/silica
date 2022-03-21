@@ -1,0 +1,17 @@
+<!-- Modal -->
+<div class="modal fade" id="gallery-dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title <%= Marketplace::BasicStyle.css %>" style="<%= Marketplace::BasicStyle.inline_css %>"><%= listing.project.combined_address_with_zip %></div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render '/listings/show/gallery/carousel', listing: listing %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-brandprimary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

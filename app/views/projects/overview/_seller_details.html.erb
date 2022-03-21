@@ -1,0 +1,44 @@
+<% id = "overview-seller-details"
+   form_id = "form-#{id}"
+   project = Project.find(project_id)
+%>
+
+<div class="col-12 col-lg-7 <%= normal_text %>" id="<%= id %>">
+  <%= form_with url: url_for(project), method: :patch, class: 'd-inline-block main-form', id: form_id  do |form| %>
+  <% end %>
+
+  <%= render '/card', title: 'Seller Details' do %>
+      <div class="row">
+        <div class="col-5 mx-3 py-3">
+          <div class="<%= demoted_text %>">Primary Seller</div>
+          <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.name %></span>
+          <input type="hidden" name="project[name]" form="<%= form_id %>" value="<%= project.name %>" />
+        </div>
+        <div class="col-5 mx-3 py-3">
+          <div class="<%= demoted_text %>">Secondary Seller</div>
+          <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.secondName %></span>
+          <input type="hidden" name="project[secondName]" form="<%= form_id %>" value="<%= project.secondName %>" />
+        </div>
+        <div class="col-5 mx-3 py-3">
+          <div class="<%= demoted_text %>">Email</div>
+          <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.email %></span>
+          <input type="hidden" name="project[email]" form="<%= form_id %>" value="<%= project.email %>" />
+        </div>
+        <div class="col-5 mx-3 py-3">
+          <div class="<%= demoted_text %>">Email</div>
+          <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.secondEmail %></span>
+          <input type="hidden" name="project[secondEmail]" form="<%= form_id %>" value="<%= project.secondEmail %>" />
+        </div>
+        <div class="col-5 mx-3 py-3">
+          <div class="<%= demoted_text %>">Phone</div>
+          <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.phone %></span>
+          <input type="hidden" name="project[phone]" form="<%= form_id %>" value="<%= project.phone %>" />
+        </div>
+        <div class="col-5 mx-3 py-3">
+          <div class="<%= demoted_text %>">Phone</div>
+          <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.secondPhone %></span>
+          <input type="hidden" name="project[secondPhone]" form="<%= form_id %>" value="<%= project.secondPhone %>" />
+        </div>
+      </div>
+  <% end %>
+</div>

@@ -1,0 +1,30 @@
+<% 
+  id = "property-disposition-checklist"
+  form_id = "form-#{id}"
+  property_disposition_checklist = PropertyDispositionChecklist.find(property_disposition_checklist_id)
+  project = property_disposition_checklist.project
+%>
+
+<div id="<%=id%>" data-controller="property-disposition-checklist" class="<%= normal_text %>">
+  <%= form_with(url: "/property_disposition_checklists/#{property_disposition_checklist.id}", method: :patch, class: 'd-inline-block main-form', data: { property_disposition_checklist_target: 'form' }, id: form_id) do |form| %>
+  <% end %>
+
+  <div class="container pt-3 pb-3">
+    <%= render '/card', title: 'Property Dispositions Checklist' do |p| %>
+
+      <% if defined?(:p) && p %>
+        <% p.content_for :heading_right do %>
+          <%= project.intake_form.what_type_of_property_is_this.presence || '-' %>
+        <% end %>
+      <% end %>
+
+      <%= render '/property_disposition_checklists/edit/segment_1', project_id: project.id, form_id: form_id %>
+      <% if project.intake_form.what_type_of_property_is_this != "Outside buyer" %>
+      <%= render '/property_disposition_checklists/edit/segment_2', project_id: project.id, form_id: form_id %>
+      <%= render '/property_disposition_checklists/edit/segment_3', project_id: project.id, form_id: form_id %>
+      <%= render '/property_disposition_checklists/edit/segment_4', project_id: project.id, form_id: form_id %>
+      <%= render '/property_disposition_checklists/edit/segment_5', project_id: project.id, form_id: form_id %>
+      <% end %>
+    <% end %>
+  </div><!-- /container -->
+</div>

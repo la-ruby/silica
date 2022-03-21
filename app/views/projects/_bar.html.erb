@@ -1,0 +1,41 @@
+<div class="container-xxl" data-controller="projects-bar">
+  <div class="row my-3">
+
+  <div class="col-auto text-center">
+    <div>
+      <%= form_with(url: "/filters", method: :post, class: 'd-inline-block', id: 'projects-bar-form', data: { controller: 'submits-form-delayed'}) do |form| %>
+        <%= form.hidden_field :page, value: params[:page] %>
+        <input type="text" class="form-control form-control-sm" placeholder="Search" name="query" data-action="submits-form-delayed#submit_form">
+        <%= form.hidden_field :statefilter, value: '' %>
+        <%= form.hidden_field :cityfilter, value: '' %>
+        <%= form.hidden_field :sourcefilter, value: '' %>
+        <%= form.hidden_field :req_date, value: '' %>
+        <%= form.hidden_field :offer_sent, value: '' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <%= render '/projects/bar/state_filter' %>
+      </div>
+      <div class="col-auto">
+        <%= render '/projects/bar/city_filter' %>
+      </div>
+      <div class="col-auto">
+        <%= render '/projects/bar/req_date_filter' %>
+      </div>
+      <div class="col-auto">
+        <%= render '/projects/bar/offer_sent_filter' %>
+      </div>
+      <div class="col-auto">
+        <%= render '/projects/bar/source_filter' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-auto text-center">
+    <a class="btn btn-outline-brandprimary btn-sm" data-turbo="true" href="/projects/new" role="button"><i class="fa fa-plus"></i> PROJECT</a>
+  </div>
+
+  </div>
+</div>

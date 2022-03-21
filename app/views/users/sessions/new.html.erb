@@ -1,0 +1,24 @@
+<div class="bootstrap-signin-example-wrapper text-center">
+<main class="form-signin">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+<img class="mb-4" src="<%= silica_bucket('/logo_square.png', brand: COMPANY_LC) %>" alt="" width="72" zheight="57">
+<div class="mb-3 <%= normal_text %>">Please sign in</div>
+
+    <div class="form-floating">
+      <input name="user[email]" type="email" class="form-control <%= normal_text! %>" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input name="user[password]" type="password" class="form-control <%= normal_text! %>" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label class="<%= normal_text %>">
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-brandprimary" type="submit">Sign in</button>
+  <% end %>
+</main>
+</div>

@@ -1,0 +1,9 @@
+<div class="container-xxl ms-0 ps-0">
+  <div class="ms-0">
+    <%= render '/listings/show/pill_tight', text: listing.beds, icon: 'fas fa-bed' %>
+    <%= render '/listings/show/pill_tight', text: listing.baths, icon: 'fas fa-bath' %>
+    <%= render '/listings/show/pill_tight', text: (listing.sqft.presence || '-'), icon: 'fas fa-ruler-combined' %>
+    <%= render '/listings/show/pill_tight', text: (listing.year.presence || '-'), icon: 'fas fa-calendar-alt' %>
+  </div>
+</div>
+

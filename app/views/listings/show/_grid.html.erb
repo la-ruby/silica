@@ -1,0 +1,50 @@
+<%
+  data = [
+    [ 'Property Type', 'fas fa-building', listing.property_type.presence || '-' ],
+    [ 'Lot Size', 'fas fa-tree', listing.lot_size.presence || '-' ],
+    [ 'Heating', 'fas fa-thermometer-full', listing.heating.presence || '-' ],
+    [ 'Hoa Fees', 'fas fa-coins', listing.hoa_fees.presence || '-' ],
+    [ 'Sqft', 'fas fa-ruler-combined', listing.sqft.presence || '-' ],
+    [ 'Cooling', 'fas fa-snowflake', listing.cooling.presence || '-' ],
+    [ 'Price Per Sqft', 'fas fa-ruler-combined', listing.price_sqft.presence || '-' ],
+    [ 'Bed', 'fas fa-bed', listing.beds.presence || '-' ],
+    [ 'Year', 'fas fa-calendar-alt', listing.year.presence || '-' ],
+    [ 'Owner Occupied', 'fas fa-home', listing.owner_occupied.presence || '-' ],
+    [ 'Bath', 'fas fa-bath', listing.baths.presence || '-' ],
+  ]
+%>
+
+<div class="container-xxl">
+  <div class="<%= Marketplace::StrongerStyle.css %>" style="<%= Marketplace::StrongerStyle.inline_css %>">
+    Property Details
+  </div>  
+</div>
+
+<div class="mb-1"><!-- spacer -->&nbsp;</div>
+
+<div class="container-xxl">
+  <div style="width: 600px">
+    <div class="row row-cols-3">
+      <% data.each do |item| %>
+      
+        <div class="col mb-3">
+
+          <div class="row align-items-center">
+	    <div class="col-auto">
+	      <i class="<%= item[1] %>" style="color: #BDD0FB"></i>
+	    </div>
+	    <div class="col">
+              <div class="<%= Marketplace::WeakStyle.css %>" style="<%= Marketplace::WeakStyle.inline_css %>">
+	        <%= item[0] %>
+              </div>
+              <div class="<%= Marketplace::BasicStyle.css %>" style="<%= Marketplace::BasicStyle.inline_css %>">
+	        <%= item[2] %>
+	      </div>
+            </div>
+          </div>
+	</div>
+      
+      <% end %>
+    </div>
+  </div>
+</div>

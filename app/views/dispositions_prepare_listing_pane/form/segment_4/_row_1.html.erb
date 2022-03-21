@@ -1,0 +1,31 @@
+<%
+  project = Project.find(project_id)
+%>
+
+<div class="row ms-2">
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <label class="form-label mb-0 " for="title">Beds</label>
+      <%= text_field_tag 'dispositions_prepare_listing_pane[beds]', project.listing.beds.presence || project.beds, class: 'form-control', form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      <span></span>
+    </div>
+  </div>
+
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <label class="form-label mb-0 " for="title">Property Type</label>
+      <%= text_field_tag 'dispositions_prepare_listing_pane[property_type]', project.listing.property_type.presence || project.property_type, class: 'form-control', form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <label class="form-label mb-0 " for="title">Price Per SqFt</label>
+      <%= text_field_tag 'dispositions_prepare_listing_pane[price_sqft]', project.listing.price_sqft.presence || project.price_sqft, class: 'form-control', form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      <span></span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<%
+  listings, listings_paginated = Listing.search(local_assigns.slice(:q, :beds, :baths, :sort, :page))
+  filters_active = (local_assigns.slice(:q, :beds, :baths, :sort, :page) != DEFAULT_LISTING_SEARCH_PARAMS.except(:map))
+  beds_filter_active = local_assigns[:beds] && local_assigns[:beds] != 'any'
+  baths_filter_active = local_assigns[:baths] && local_assigns[:baths] != 'any'
+%>
+
+
+<div id="apollo-listings-filter" class="row mb-2 align-items-center" data-controller="filter">
+  <div class="col d-none d-lg-block col-lg-7 fw-light <%= normal_text! %>">
+
+    <button class="btn fw-light <%= normal_text %>" type="button" id="dropdownMenuButton1" aria-expanded="false" style="cursor: default">
+      Showing <%= listings.count %> listings
+      <% if filters_active %>
+      <a href="/listings" data-turbo="false" class="ms-2 text-decoration-none">clear filters</a>
+      <% end %>
+    </button>
+
+  </div>
+  <div class="col col-lg-5">
+
+  <div class="row">
+    <div class="col-6">
+
+      <div class="input-group">
+        <input class="form-control rounded-mega muted text-muted fw-light bg-white-level-four" type="text" placeholder="Search Offers" aria-label=".form-control-lg example" data-action="input->listings#input" data-listings-target="input" value="<%= j local_assigns[:q] %>"/>
+        <% if filters_active %>
+        <a class="input-group-text bg-transparent" href="/listings"><%= feather_icon('x') %></a>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-2">
+
+      <div class="dropdown">
+        <button class="btn <%= beds_filter_active ? 'text-nowrap' : 'dropdown-toggle' %> fw-light <%= normal_text %>" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <% if beds_filter_active %>
+            <span class="">Beds (<%= local_assigns[:beds] %>+)</span>
+          <% else %>
+            Beds
+          <% end %>
+        </button>
+        <ul class="dropdown-menu <%= theme_background_level_1! %>" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item fw-light <%= normal_text %>" href="#" data-action="click->listings#bedAny">Any</a></li>
+          <li><a class="dropdown-item fw-light <%= normal_text %>" href="#" data-action="click->listings#bed1">1+</a></li>
+          <li><a class="dropdown-item fw-light <%= normal_text %>" href="#" data-action="click->listings#bed2">2+</a></li>
+          <li><a class="dropdown-item fw-light <%= normal_text %>" href="#" data-action="click->listings#bed3">3+</a></li>
+          <li><a class="dropdown-item fw-light <%= normal_text %>" href="#" data-action="click->listings#bed4">4+</a></li>
+          <li><a class="dropdown-item fw-light <%= normal_text %>" href="#" data-action="click->listings#bed5">5+</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="col-2">
+
+      <div class="dropdown">
+        <button class="btn <%= baths_filter_active ? 'text-nowrap' : 'dropdown-toggle' %> fw-light <%= normal_text %>" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <% if baths_filter_active %>
+            <span class="">Baths (<%= local_assigns[:baths] %>+)</span>
+          <% else %>
+            Baths
+          <% end %>
+        </button>
+        <ul class="dropdown-menu <%= theme_background_level_1! %>" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item <%= local_assigns[:baths] == "any" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-filter-target="highest" data-action="click->listings#bathAny">Any</a></li>
+          <li><a class="dropdown-item <%= local_assigns[:baths] == "1" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-filter-target="highest" data-action="click->listings#bath1">1+</a></li>
+          <li><a class="dropdown-item <%= local_assigns[:baths] == "2" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-filter-target="highest" data-action="click->listings#bath2">2+</a></li>
+          <li><a class="dropdown-item <%= local_assigns[:baths] == "3" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-filter-target="highest" data-action="click->listings#bath3">3+</a></li>
+          <li><a class="dropdown-item <%= local_assigns[:baths] == "4" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-filter-target="highest" data-action="click->listings#bath4">4+</a></li>
+          <li><a class="dropdown-item <%= local_assigns[:baths] == "5" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-filter-target="highest" data-action="click->listings#bath5">5+</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="col-2">
+
+      <div class="dropdown">
+        <button class="btn zbtn-secondary zdropdown-toggle fw-light <%= normal_text %>" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <% if local_assigns[:sort] == "1" %>
+            <i class="fa fa-sort-amount-down-alt"></i>
+	  <% elsif local_assigns[:sort] == "2" %>
+            <i class="fa fa-sort-amount-down"></i>
+	  <% else %>
+            <i class="fa fa-sort-amount-down-alt"></i>
+	  <% end %>
+        </button>
+        <ul class="dropdown-menu <%= theme_background_level_1! %>" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item <%= local_assigns[:sort] == "2" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-action="click->listings#highest">Sort by highest price</a></li>
+          <li><a class="dropdown-item <%= local_assigns[:sort] != "2" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-action="click->listings#lowest">Sort by lowest price</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</div>

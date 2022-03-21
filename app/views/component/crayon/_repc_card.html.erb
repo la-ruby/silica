@@ -1,0 +1,130 @@
+<%
+  repc = Repc.find(repc_id)
+%>
+
+<!-- for repc -->
+<div class="col-12 col-lg" style="height: 740px; overflow: hidden; max-width: 440px">
+  <!-- prominent card(s) of the screen -->
+  <div class="px-3 px-xxl-5 zpy-1 zpy-xxl-5 zpx-1 zpx-xxl-5 fw-light <%= normal_text! %> <%= theme_background_level_3 %> w-100" style="border-radius: 20px;">
+
+    <div class="d-none d-xl-inline-block"><br></div>
+
+    <!-- price -->
+    <div class="text-center blue-summer-sky fs-2 my-1 fw-normal">
+      <%= (number_to_currency(repc.company_offer_arv, precision: 0).presence || '-') rescue "-" %>
+    </div>	  
+    <!-- /price -->
+
+    <!-- address -->
+    <div class="text-center my-2 text-nowrap">
+      <%= repc.project.combined_address %>
+    </div>	  
+    <!-- /address -->
+
+    <!-- tabular info 1 -->
+    <div class="ztext-muted">
+      <hr class="my-1" style="height: 3px; background: silver; opacity: 1">
+
+      <div class="row">
+        <div class="col-7">
+	  <%= COMPANY %> Service Fee
+          <%= apollo_popover("(Holding, Operating, Management)") %>
+	</div>
+        <div class="col">
+          <% unless repc.service_fee_is_percentage == "true" %>$<% end %>
+	  <%= repc.service_fee %>
+          <% if repc.service_fee_is_percentage == "true" %>%<% end %>
+	</div>
+      </div>
+      
+      <hr class="my-1">
+
+      <div class="row">
+        <div class="col-7">
+	  <%= COMPANY %> Repair Costs
+          <%= apollo_popover("#{COMPANY} utilizes state of the art technology when determining repair costs. A number of factors contribute to the estimation, age being a main indicator. Upon completion of a site visit repair costs may be adjusted up or down.") %>
+	</div>
+        <div class="col">$<%= repc.repair_costs %></div>
+      </div>
+
+      <hr class="my-1">
+
+      <div class="row">
+        <div class="col-7">Closing Costs</div>
+        <div class="col">$<%= repc.closing_costs %></div>
+      </div>
+
+      <hr class="my-1">
+
+      <div class="row">
+        <div class="col-7 fw-bold text-muted">CONTRACT PRICE</div>
+        <div class="col blue-summer-sky fw-bold"><%= number_to_currency(repc.purchase_price).sub(/\.00\z/, '') rescue "-" %></div>
+      </div>
+    </div>
+    <!-- /tabular info 1 -->
+
+    <div class="mb-3"><!-- spacer --></div>
+
+    <!-- tabular info 2 -->
+    <div class="<%= 'invisible' unless repc.offer_terms == "yes" %> <%= theme_background_level_2! %>">
+      <div class="row">
+        <div class="col-7">Terms</div>
+      </div>
+
+      <div class="row">
+        <div class="col-7">Down Payment</div>
+        <div class="col">$<%= repc.down_payment %></div>
+      </div>
+
+      <hr class="my-1">
+
+      <div class="row">
+        <div class="col-7">Term Length</div>
+        <div class="col"><%= repc.term_length %></div>
+      </div>
+
+      <hr class="my-1">
+
+      <div class="row">
+        <div class="col-7">Interest Rate</div>
+        <div class="col"><%= repc.interest_rate %></div>
+      </div>
+
+      <hr class="my-1">
+
+      <div class="row">
+        <div class="col-7">Monthly Payment</div>
+        <div class="col blue-summer-sky">$<%= repc.monthly_payment %></div>
+      </div>
+
+      <hr class="my-1">
+
+      <div class="row">
+        <div class="col-7">Balloon Payment</div>
+        <div class="col">$<%= repc.balloon_payment %></div>
+      </div>
+
+      <hr class="my-1">
+
+      <div class="row">
+        <div class="col-12">Notes: <%= repc.notes.presence || '-' %></div>
+      </div>
+    </div>
+
+    <!-- /tabular info 2 -->
+
+    <div class="mb-1"><!-- spacer -->&nbsp;</div>
+
+    <%= render '/component/crayon/repc_card/two_calendars', repc_id: repc.id %>
+
+    <div class="mb-1"><!-- spacer -->&nbsp;</div>
+
+    <%= render '/component/crayon/prepared' %>
+
+    <div class="mb-1"><!-- spacer -->&nbsp;</div>
+  </div>
+  <!-- /prominent card(s) of the screen -->
+  <div class="d-block d-lg-none mb-5"><!-- divider for mobiles --></div>
+</div>
+<!-- /for repc -->
+

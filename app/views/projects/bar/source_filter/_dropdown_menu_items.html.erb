@@ -1,0 +1,10 @@
+<div id="a1632190783">
+  <% ["Inbound", "Outbound"].each do |source| %>
+  <div class="form-check form-control-sm">
+    <input class="form-check-input zset_1631823901 zsubset_a set1632190810" type="checkbox" value="<%= source %>" <%= 'checked' if (params[:sourcefilter] || "").split('__').include? source %>>
+    <label class="form-check-label <%= normal_text %>" for="defaultCheck1">
+      <%= source %>
+    </label>
+  </div>
+  <% end %>
+</div>

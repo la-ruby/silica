@@ -1,0 +1,78 @@
+<% listing = @listing %>
+
+<% content_for :extra_body_classes do %>bg-white <%= Marketplace::Base.css %><% end %>
+<% content_for :extra_body_inline_css do %><%= Marketplace::Base.inline_css %><% end %>
+
+<% content_for :extra_meta_tags do %>
+  <meta name="turbo-cache-control" content="no-cache">
+<% end %>
+
+<%= render '/listings/show/image', listing: listing %>
+
+<div class="my-1"><!-- spacer -->&nbsp;</div>
+
+<%= render '/listings/show/opportunity', listing: listing %>
+
+<div class="mb-1"><!-- spacer -->&nbsp;</div>
+
+<%= render '/listings/show/address', listing: listing %>
+<%= render '/listings/show/title', listing: listing %>
+
+<div class="my-3"><!-- spacer -->&nbsp;</div>
+
+<%= render '/listings/show/pills', listing: listing %>
+
+
+<div class="my-3"><!-- spacer -->&nbsp;</div>
+
+
+<%= render '/listings/show/about', listing: listing %>
+
+<div class="my-3"><!-- spacer -->&nbsp;</div>
+
+<%= render '/listings/show/walkthrough_', listing: listing %>
+
+<div class="my-3"><!-- spacer -->&nbsp;</div>
+
+<%= render '/listings/show/grid', listing: listing %>
+
+<div class="my-3"><!-- spacer -->&nbsp;</div>
+
+<%= render '/listings/show/thumbs', listing: listing %>
+
+<div class="my-3"><!-- spacer -->&nbsp;</div>
+
+<%= render '/listings/show/related', listing: listing %>
+
+<div class="my-3"><!-- spacer -->&nbsp;</div>
+
+
+
+<div class="d-block d-lg-none">
+  <%= render '/listings/show/cta2', listing: listing, toggle: true %>
+</div>
+
+<div class="my-3"><!-- spacer -->&nbsp;</div>
+<div class="my-3"><!-- spacer -->&nbsp;</div>
+<div class="my-3"><!-- spacer -->&nbsp;</div>
+
+<div class="mt-5"><!-- spacer --></div>
+
+<%= render '/listings/show/logo' %>
+
+<div class="mt-5"><!-- spacer --></div>
+<div class="mt-5"><!-- spacer --></div>
+
+<%= render '/listings/show/menu' %>
+
+<div class="mt-5"><!-- spacer --></div>
+<div class="mt-5"><!-- spacer --></div>
+
+<%= render '/listings/show/footer' %>
+
+<div class="mb-3"><!-- spacer --></div>
+
+<% if params[:gallery] =~ /\A\d+\z/ %>
+<div data-controller="opens-dialogg"></div>
+<%= render '/listings/show/gallery', listing: listing %>
+<% end %>

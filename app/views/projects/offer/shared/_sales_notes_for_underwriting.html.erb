@@ -1,0 +1,23 @@
+<% 
+   project = Project.find(project_id)
+   id = "sales-notes-for-underwriting"
+   form_id = "form-#{id}"
+%>
+
+<div id="<%= id %>" class="<%= normal_text %>">
+  <%= form_with url: url_for(project), method: :patch, class: 'd-inline-block main-form', id: form_id  do |form| %>
+  <% end %>
+  <%= render '/card', title: 'Sales Notes for Underwriting' do %>
+  
+  <div class="row">
+    <div class="col mx-3 py-3">
+      <% if static_mode == "false" || static_mode == false %>
+        <span class="<%= 'border-bottom-dashed min-sizes-for-child-textareas' %>" data-controller="<%= 'textarea-inline' %>" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= project.sales_notes_for_underwriting %></span>
+        <input type="hidden" name="project[sales_notes_for_underwriting]" form="<%= form_id %>"  value="<%= project.sales_notes_for_underwriting %>" />
+      <% else %>
+        <%= project.sales_notes_for_underwriting.presence || '-'%>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

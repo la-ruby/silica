@@ -1,0 +1,58 @@
+<% project = Project.find(project_id) %>
+
+<div class="container pt-3 pb-3">
+  <div class="row justify-content-center">
+    <div class="col-2 me-3 py-3">
+
+      <div class="card text-white" style="background-color: #11D07D">
+        <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 130px">
+	  <div>
+            <h5 class="card-title text-center display-6" style="font-size: 35px"><%= (DateTime.strptime(project.repc.settlement_date, "%Y-%m-
+%d").strftime("%b. %d") rescue nil) || "-"%></h5>
+            <div class="card-text text-center">Closing Date</div>
+	  </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-2 mx-3 py-3">
+
+      <div class="card text-white" style="background-color: #0A7D4B">
+        <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 130px">
+	  <div>
+            <div class="card-text text-center">Closing Paid By</div>
+            <h5 class="card-title text-center display-6" style="font-size: 35px"><%= (project.repc.closing_costs_paid_by.capitalize rescue nil) || '-' %></h5>
+            <div class="card-text text-center">Usually 1%</div>
+	  </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-2 mx-3 py-3">
+
+      <div class="card text-white" style="background-color: #1AAFD0">
+        <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 130px">
+	  <div>
+            <h5 class="card-title text-center display-6" style="font-size: 35px"><%= (project.repc.purchase_price.presence || '-') rescue '-' %></h5>
+            <div class="card-text text-center">Price ($)</div>
+	  </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-2 sx-3 py-3">
+
+      <div class="card text-white" style="background-color: #127A92">
+        <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 130px">
+	  <div>
+            <h5 class="card-title text-center display-6"><%= project.assignment_fee.presence || '-' %></h5>
+            <div class="card-text text-center">Assignment Fee</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

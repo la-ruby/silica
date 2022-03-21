@@ -1,0 +1,17 @@
+<%
+  listings = Listing.search({
+          q: local_assigns[:q],
+          beds: local_assigns[:beds],
+          baths: local_assigns[:baths],
+          sort: local_assigns[:sort],
+          page: local_assigns[:page],
+        })[0]
+%>
+
+<div class="row row-cols-2 zrow-cols-md-2 g-4">
+  <% listings.each do |listing| %>
+  <div class="col">
+    <%= render '/listings/shared/card', listing: listing, fluid: true %>
+  </div>
+  <% end %>
+</div>

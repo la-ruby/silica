@@ -1,0 +1,17 @@
+<div>
+  <%= form_with url: "/feedbacks" do |form| %>
+    <%= form.hidden_field 'token', value: @mbo_request.token %>
+    <%= render '/feedbacks/shared/box' do %>
+      <div class="my-1 text-muted"><%= mbo_request.project.name %></div>
+    
+      <div class="text-muted">How can we make this offer work for you?</div>  
+    
+      <div class="my-3"><textarea class="form-control" id="validationTextarea" name="rejected_feedback"  placeholder="" style="height: 7vw" <%= 'disabled' if !mbo_request.can_leave_feedback? %>><%= @mbo_request.second_seller_mode? ? mbo_request.record.second_seller_rejected_feedback : mbo_request.record.rejected_feedback %></textarea></div>
+    
+      <div class=""><button type="submit" name="what_was_clicked" value="send_feedback" class="btn btn-brandprimary" <%= 'disabled' if !mbo_request.can_leave_feedback? %>>Send Feedback</button></div>
+    
+    <% end %>  
+    
+    <div style="height: 10vw"><!-- spacer --></div>
+  <% end %>
+</div>

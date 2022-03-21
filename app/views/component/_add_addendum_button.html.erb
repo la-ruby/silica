@@ -1,0 +1,17 @@
+<% instance = generate_instance_id
+   form_id = "form-of-#{instance}"
+   project = Project.find(project_id)
+%>
+
+<div id="<%= instance %>">
+  <%= form_with url: "/addendum_versions", class: 'd-inline-block main-form', id: form_id  do |form| %>
+    <%= form.hidden_field 'project_id', value: project.id  %>
+  <% end %>
+
+  <button type="submit" class="btn btn-sm btn-brandprimary text-white" form="<%= form_id %>"
+    <%= 'disabled' unless project.add_addendum_button_available? %>
+  >
+    ADD ADDENDUM
+  </button>
+
+</div>

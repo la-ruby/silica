@@ -1,0 +1,43 @@
+<%
+  instance = generate_instance_id
+  form_id = "form-of-#{instance}"
+  repc = Repc.find(repc_id)
+%>
+
+<div class="" style="height: calc(100vh)">
+  <%= form_with url: "/#{repc.my_offer_portal_shows_addendum_card? ? 'addendum' : 'repc'}_verdicts", method: :post, class: 'd-inline-block', id: form_id  do |form| %>
+    <%= form.hidden_field 'repc_id', value: repc.id %>
+    <% if repc.my_offer_portal_shows_addendum_card? %>
+    <%= form.hidden_field 'addendum_version_id', value: repc.project.addendums.last.addendum_versions.last.id %>
+    <% end %>
+    <%= form.hidden_field 'second_seller_mode', value: second_seller_mode %>
+  <% end %>
+
+
+  <%= render '/component/crayon/progress', labels: [ 'Request', 'Offer', 'Site Visit', 'Closing' ], curr: 1, progress: 2 %>
+
+  <div class="container-xxl">
+    <div class="row align-items-center justify-content-center" style="height: 70vh">
+      <%= render('/component/crayon/addendum_card', repc_id: repc.id) %>
+      <%= render('/component/crayon/repc_card', repc_id: repc.id) %>
+
+      <%= render '/component/crayon/paras_card', project_id: repc.project.id %>
+
+      <div class="mb-1"><!-- spacer -->&nbsp;</div>
+      <div class="mb-1"><!-- spacer -->&nbsp;</div>
+      <div class="mb-1"><!-- spacer -->&nbsp;</div>
+      <div class="mb-1"><!-- spacer -->&nbsp;</div>
+      <div class="mb-1"><!-- spacer -->&nbsp;</div>
+    </div>
+
+
+  </div>
+ 
+  <% if repc.my_offer_portal_shows_addendum_card? %>
+  <%= render '/component/crayon/bottom_alternative', repc_id: repc.id, form_id: form_id, second_seller_mode: second_seller_mode, addendum_version_id: repc.project.addendums.last.addendum_versions.last.id %>
+  <% else %>
+  <%= render '/component/crayon/bottom', repc_id: repc.id, form_id: form_id, second_seller_mode: second_seller_mode %>
+  <% end %>
+</div>
+
+

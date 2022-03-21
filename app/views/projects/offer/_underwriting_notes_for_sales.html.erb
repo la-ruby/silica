@@ -1,0 +1,17 @@
+<% project = Project.find(project_id) %>
+
+<%= render '/card', title: 'Underwriting Notes for Sales', bubble_text: 'Underwriting notes should include suggestions or tips for selling the offer and securing the property' do %>
+
+  <div class="row <%= normal_text %>">
+    <div class="col mx-3 py-3">
+      <span><%= project.underwriting_notes_for_sales.presence || '-' %></span>
+    </div>
+  </div>
+  <div class="row <%= normal_text %>">
+    <div class="col-5 mx-3 py-3">
+      <div class="<%= demoted_text %>">Assignment Fee</div>
+      <span><%= project.assignment_fee.presence || '-' %></span>
+    </div>
+  </div>
+
+<% end %>

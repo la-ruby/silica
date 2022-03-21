@@ -1,0 +1,17 @@
+<% if UxPolicy.new(current_user, nil).marketplace? %>
+  <%= render '/shared/summary', project: @project %>
+
+  <%= render '/shared/tabs', project: @project, active: 'Marketplace' %>
+
+  <div class="container pt-3 pb-3">
+    <div class="row">
+      <div class="col text-center">
+        <div class="m-5 p-5 <%= normal_text %>">
+          coming soon (marketplace)
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

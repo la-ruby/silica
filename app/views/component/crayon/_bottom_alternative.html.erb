@@ -1,0 +1,36 @@
+<%
+  repc = Repc.find(repc_id)
+  addendum_version = AddendumVersion.find(addendum_version_id)
+  we_will_be_in_touch = params[:event] == 'signing_complete' || addendum_version.rejected_by?(second_seller_mode) || addendum_version.accepted_by?(second_seller_mode)
+%>
+
+<nav class="text-center w-100 shadow-lg py-3 sepr fixed-bottom py-2" style="background-color: rgba(255,255,255,0.8)"
+     data-controller="acceptance">
+  <div class="row justify-content-center align-items-center">
+    <div class="col">
+      <input class="form-check-input" type="checkbox" value="" id="check1647537625" data-action="acceptance#checkbox" <%= 'disabled' if request.fullpath=~/viewing_complete/ %> <%= 'disabled' if params[:event] == 'signing_complete' || addendum_version.rejected_by?(second_seller_mode) || addendum_version.accepted_by?(second_seller_mode) %>>
+      I understand and agree to <%= COMPANY %>'s Terms & Conditions and Privacy Policy
+    </div>
+  </div>
+  <div class="row justify-content-center align-items-center">
+    <div class="col-3">
+      <!-- spacer -->&nbsp;
+    </div>
+    <div class="col-auto pe-0">
+      <% if we_will_be_in_touch %>
+        <p>We will be in touch soon!</p>
+      <% else %>
+        <button id="apollo-1638608362" name="action_button" value="reject" type="submit" class="btn btn-sm btn-outline-brandprimary btn-apollo-primary bg-light fw-bold" form="<%= form_id %>" <%= 'disabled' if params[:event] == 'signing_complete' || addendum_version.rejected_by?(second_seller_mode) %>>
+          Reject
+        </button>
+        <button type="submit" class="btn btn-sm btn-brandprimary btn-apollo-primary fw-bold" name="action_button" value="sign_via_docusign" form="<%= form_id %>" data-acceptance-target="accept" disabled>
+          Accept Offer
+        </button>
+      <% end %>
+    </div>
+
+    <div class="col-3 text-start">
+      &nbsp;
+    </div>
+  </div>
+</nav>

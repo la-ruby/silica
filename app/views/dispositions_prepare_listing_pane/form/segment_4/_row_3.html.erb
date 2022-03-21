@@ -1,0 +1,38 @@
+<%
+  project = Project.find(project_id)
+%>
+
+<div class="row ms-2">
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <label class="form-label mb-0" for="title">Sq. Ft.</label>
+      <%= text_field_tag 'dispositions_prepare_listing_pane[sqft]', project.listing.sqft.presence || project.sqft, class: 'form-control', form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+
+      <label class="form-label mb-0" for="title">&nbsp;</label>
+      <div class="input-group mb-3">
+        <div class="input-group-text">
+          <input name="dispositions_prepare_listing_pane[owner_occupied]" type="hidden"  value="false" form="<%= form_id %>">
+          <input class="form-check-input mt-0" name="dispositions_prepare_listing_pane[owner_occupied]" type="checkbox" value="true" aria-label="Checkbox for following text input" form="<%= form_id %>" <%= 'checked' if (project.listing.owner_occupied == 'true' || project.owner_occupied == "true") %>>
+        </div>
+        <input type="text" class="form-control <%= normal_text %>" name="unused" value="Owner Occupied" aria-label="Text input with checkbox" style="background: transparent" disabled>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <label class="form-label mb-0" for="title">Cooling</label>
+      <%= text_field_tag 'dispositions_prepare_listing_pane[cooling]', project.listing.cooling.presence || project.cooling, class: 'form-control', form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      <span></span>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,32 @@
+<%
+  yield p = np
+  card_body_style = local_assigns[:card_body_style] || 'p-3'
+  has_header = local_assigns[:title].present? || local_assigns[:bubble_text].present? || p.content_for?(:heading_right)
+%>
+
+<div class="card bg-transparent shadow-sm border-light rounded-2x">
+  <div class="card-body <%= local_assigns[:card_body_style] %>">
+
+    <% if has_header %>
+      <div class="<%= promoted_text %>">
+      
+        <%= local_assigns[:title] %>
+      
+        <% if local_assigns[:bubble_text] %>
+          <%= apollo_popover(local_assigns[:bubble_text]) %>
+        <% end %>
+      
+        <div class="float-end">
+          <%= p.yield :heading_right %>
+        </div>
+      
+      </div>
+      
+      <hr>
+
+    <% end %>
+
+    <%= yield %>
+  </div>
+</div>
+

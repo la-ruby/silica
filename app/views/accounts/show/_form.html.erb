@@ -1,0 +1,33 @@
+<!-- like https://github.com/heartcombo/devise/blob/main/app/views/devise/registrations/edit.html.erb -->
+<%= form_with(url: "/accounts/#{user.id}", method: :patch) do |f| %>
+
+  <div class="row mb-3">
+    <div class="col-4">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    </div>
+    <div class="col-8">
+      <%= text_field_tag 'email', current_user.email, class: 'form-control', disabled: true %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-4">
+      <label for="inputEmail3">Password (leave blank<br>if you don't want to change it)</label>
+    </div>
+    <div class="col-8">
+      <%= f.password_field :password, class: 'form-control', autocomplete: "new-password" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-4">
+      <label for="inputEmail3">Password Confirmation</label>
+    </div>
+    <div class="col-8">
+      <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password" %>
+    </div>
+  </div>
+
+  <%= f.submit "save", class: 'btn btn-outline-brandprimary' %>
+<% end %>
+<!-- /like https://github.com/heartcombo/devise/blob/main/app/views/devise/registrations/edit.html.erb -->

@@ -1,0 +1,31 @@
+<div id="carouselExampleIndicators1647052038" class="carousel slide" zdata-bs-ride="carousel" data-bs-interval="false" data-bs-wrap="false">
+  <div class="carousel-indicators">
+    <% if listing.project.kodaks.where(marketplace: "1").size == 0 %>
+    <%= render '/listings/show/gallery/carousel/dummies_1' %>
+    <% end %>
+
+    <% listing.project.kodaks.where(marketplace: "1").each_with_index do |item, index| %>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if (index+1).to_s == params[:gallery].to_s %>" aria-current="true" aria-label="Image <%= index+1 %>"></button>
+    <% end %>
+  </div>
+  <div class="carousel-inner">
+    <% if listing.project.kodaks.where(marketplace: "1").size == 0 %>
+    <%= render '/listings/show/gallery/carousel/dummies_2' %>
+    <% end %>
+
+    <% listing.project.kodaks.where(marketplace: "1").each_with_index do |item, index| %>
+    <div class="carousel-item <%= 'active' if (index+1).to_s == params[:gallery] %>" style="background: silver;">
+      <div class="" style="
+			   zwidth: 600px; height: 70vh;;
+                           background-image: url(<%= url_for(item.pic.variant(:large)) %>); background-repeat: no-repeat; 
+			   background-size:cover;
+			   background-position:center center;
+			   ">
+	&nbsp;
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= render '/listings/show/gallery/carousel/next_prev' %>
+
+</div>

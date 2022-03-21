@@ -1,0 +1,26 @@
+<div class="row my-0 py-0">
+  <div class="col-3 text-center " >
+    <div class="d-none d-lg-block"><%= listing.beds.presence || '-' %></div>
+    <div class="d-block d-lg-none text-nowrap text-center" style="">
+      <%= listing.beds.presence || '-' %>
+    </div>
+  </div>
+  <div class="col-3 text-center ">
+    <div class="d-none d-lg-block"><%= listing.baths.presence || '-' %></div>
+    <div class="d-block d-lg-none text-nowrap" style="">
+      <%= listing.baths.presence || '-' %>
+    </div>
+  </div>
+  <div class="col-3 text-center ">
+    <div class="d-none d-lg-block"><%= listing.sqft.presence || '-' %></div>
+    <div class="d-block d-lg-none text-nowrap" style="letter-spacing: -2px">
+      <%= listing.sqft.presence || '-' %>
+    </div>
+  </div>
+  <div class="col-3 text-center ">
+    <div class="d-none d-lg-block"><%= listing.year.presence || '-' %></div>
+    <div class="d-block d-lg-none text-nowrap" style="letter-spacing: -2px">
+      <%= listing.year.presence || '-' %>
+    </div>
+  </div>
+</div>

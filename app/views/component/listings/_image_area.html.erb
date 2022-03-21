@@ -1,0 +1,17 @@
+<div class="position-relative">
+  <% if listing.project.marketplace_kodaks.count > 0 %>
+    <%= image_tag(listing.project.primary_or_first_kodak.variant(:small), class: 'img-fluid w-100', data: { 'acts-like-link-target': "actionable" }) %>
+
+  <% else %>
+    <img class="img-fluid w-100" src="<%= older_cdn_path("/images/property_images_002/placeholder.png") %>" data-acts-like-link-target="actionable" style="min-width: 180px; min-height: 130px;">
+  <% end %>
+
+  <!-- right side badges -->
+  <div class="position-absolute top-0 end-0">
+    <div class="me-3 mt-1 fg-white-level-one">
+      <div class="d-inline-block text-white px-1 zpy-1 fw-light" style="border-radius: 0.75rem; background-color: #110777; font-size: <%= LISTINGS_ZOOM_REDUCTION %>"><%= OPPORTUNITY_TYPES[listing.opportunity_type] %></div>
+    </div>
+  </div>
+  <!-- /right side badges -->
+
+</div>

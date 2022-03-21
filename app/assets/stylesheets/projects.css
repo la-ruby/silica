@@ -1,0 +1,9 @@
+
+/* https://www.colorzilla.com/gradient-editor/ */
+.apollo-fade-to-transparency {
+  background: -moz-linear-gradient(-45deg,  rgba(30,87,153,0.03) 0%, rgba(125,185,232,0) 100%);
+  background: -webkit-linear-gradient(-45deg,  rgba(30,87,153,0.03) 0%,rgba(125,185,232,0) 100%);
+  background: linear-gradient(135deg,  rgba(30,87,153,0.03) 0%,rgba(125,185,232,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#081e5799', endColorstr='#007db9e8',GradientType=1 );
+  
+}

@@ -1,0 +1,41 @@
+<% 
+   property_type = listing.property_type.presence || '-'
+   lot_size = listing.lot_size.presence || '-'
+   hoa_fees = listing.hoa_fees.presence || 'N/A'
+   sqft = listing.sqft.presence || '-'
+   price_per_sqft = listing.price_sqft.presence || '-'
+   bed = listing.beds.presence || '-'
+   owner_occupied = listing.owner_occupied.presence || '-'
+   bath = listing.baths.presence || '-'
+   heating = listing.heating.presence || '-'
+   cooling = listing.cooling.presence || '-'
+   year = listing.year.presence || '-'
+
+ %>
+
+<div class="px-3 fw-light">
+  Property Details
+</div>
+
+<div class="container <%= normal_text %>">
+
+  <div class="bd-example">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+      <%= render '/listings/show/property_details/container', a: '🏢', b: 'Property Type', c: property_type %>
+      <%= render '/listings/show/property_details/container', a: '🌲', b: 'Lot Size', c: lot_size %>
+      <%= render '/listings/show/property_details/container', a: '💵', b: 'HOA Fees', c: hoa_fees %>
+      <%= render '/listings/show/property_details/container', a: '📐', b: 'Sqft', c: sqft %>
+      <%= render '/listings/show/property_details/container', a: '$', b: 'Price Per Sqft', c: price_per_sqft %>
+      <%= render '/listings/show/property_details/container', a: '🛏', b: 'Bed', c: bed %>
+      <%= render '/listings/show/property_details/container', a: '🧔', b: 'Owner Occupied', c: owner_occupied %>
+
+      <%= render '/listings/show/property_details/container', a: '🛁', b: 'Bath', c: bath %>
+      <%= render '/listings/show/property_details/container', a: '🌡️', b: 'Heating', c: heating %>
+      <%= render '/listings/show/property_details/container', a: '❄', b: 'Cooling', c: cooling %>
+      <%= render '/listings/show/property_details/container', a: '📅', b: 'Year', c: year %>
+
+    </div>
+  </div>
+
+</div>

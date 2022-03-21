@@ -1,0 +1,28 @@
+<% project = Project.find(project_id) %>
+
+<%= render '/card', title: 'Dates' do %>
+
+  <div class="row <%= normal_text %>">
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Inspection Period Date</div>
+      <div><%= project.repc.inspection_period_deadline.presence || '-' %></div>
+    </div>
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Possession Date</div>
+      <div><%= project.repc.possession_date.presence || '-' %></div>
+    </div>
+  </div>
+
+  <div class="row <%= normal_text %>">
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Agreement Date</div>
+      <div><%= project.repc.agreement_date || '-' %></div>
+    </div>
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Settlement Date</div>
+      <div><%= project.repc.settlement_date || '-' %></div>
+    </div>
+  </div>
+
+<% end %>
+

@@ -1,0 +1,30 @@
+<%
+  project = Project.find(project)
+%>
+
+<!-- header -->
+<% if project.kodaks.present? %>
+<div class="row <%= theme_background_level_1! %>" >
+  <div class="col">
+    <div class="d-flex align-items-center">
+      &nbsp;
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="d-flex align-items-center justify-content-center px-1">
+      <%= apollo_popover('Primary?') %>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="d-flex align-items-center justify-content-center px-1">
+      <%= apollo_popover('Display in marketplace?') %>
+    </div>
+  </div>
+  <div class="col-1">
+    <div class="d-flex align-items-center justify-content-center px-1">
+      &nbsp;
+    </div>
+  </div>
+</div>
+<% end %>
+<!-- /header -->

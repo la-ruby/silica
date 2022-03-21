@@ -1,0 +1,100 @@
+<% project = Project.find(project_id) %>
+
+<%= render '/card', title: 'REPC Details' do |p| %> 
+
+  <% if defined?(:p) && p %>
+    <% p.content_for :heading_right do %>
+      <% if project.repc.signed_by_company_at && project.repc.sent_homeowner_at  %>
+        <div class="me-3">
+          <a href="<%= "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{project.repc.mop_token}" %>" target="_blank" class="btn btn-sm btn-outline-brandprimary" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Sellers My Offer Portal for testing" data-controller="apollo-tooltip">
+	    myofferportal
+          </a>
+          <% if project.dual? %>
+          <a href="<%= "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{project.repc.second_seller_mop_token}" %>" target="_blank" class="btn btn-sm btn-outline-brandprimary" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Second Sellers My Offer Portal for testing" data-controller="apollo-tooltip">
+	    myofferportal two
+          </a>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="me-3">
+          <a target="_blank" class="btn btn-sm btn-link pe-none" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Sellers My Offer Portal (available after REPC signed by <%= COMPANY %> and Offer Sent To Seller)" data-controller="apollo-tooltip">
+            myofferportal
+          </a>
+          <% if project.dual? %>
+          <a target="_blank" class="btn btn-sm btn-link pe-none" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Sellers My Offer Portal (available after REPC signed by <%= COMPANY %> and Offer Sent To Seller)" data-controller="apollo-tooltip">
+            myofferportal two
+          </a>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+
+  <div class="row <%= normal_text %>">
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Purchase Price</div>
+      <span><%= project.repc.purchase_price.presence || '-' %></span>
+    </div>
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Agreement Date</div>
+      <div><%= project.repc.agreement_date.presence || '-'  %></div>
+    </div>
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Closing Costs Paid By</div>
+      <div><%= (project.repc.closing_costs_paid_by.capitalize rescue nil) || '-'  %></div>
+    </div>
+  </div>
+
+  <div class="row <%= normal_text %>">
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Earnest Money</div>
+      <span><%= project.repc.earnest_money.presence || '-' %></span>
+    </div>
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Settlement Date</div>
+
+        <div><%= project.repc.settlement_date.presence || '-'  %></div>
+    </div>
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Real Estate Professional</div>
+      <%= (project.repc.real_estate_professional.capitalize rescue nil) || '-' %>
+    </div>
+  </div>
+
+  <hr>
+  REPC Term Details
+
+  <div class="row <%= normal_text %>">
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Down Payment</div>
+      <span><%= project.repc.down_payment.presence || '-' %></span>
+    </div>
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Interest Rate</div>
+      <span><%= project.repc.interest_rate.presence || '-' %></span>
+    </div>
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Est. Remaining Mortg.</div>
+      <span><%= project.repc.estimated_remaining_mortgage.presence || '-' %></span>
+    </div>
+  </div>
+
+  <div class="row <%= normal_text %>">
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Term Length</div>
+      <span><%= project.repc.term_length.presence || '-' %></span>
+    </div>
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Monthly Payment</div>
+      <span><%= project.repc.monthly_payment.presence || '-' %></span>
+    </div>
+    <div class="col mx-3 py-3">
+      <div class="<%= demoted_text %>">Balloon Payment</div>
+      <span><%= project.repc.balloon_payment.presence || '-' %></span>
+    </div>
+  </div>
+  
+
+<% end %>
+

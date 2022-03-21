@@ -1,0 +1,10 @@
+<div id="a1632177769">
+    <% Project.all.pluck(:city).reject(&:blank?).sort.uniq.take(10).each do |city| %>
+    <div class="form-check form-control-sm">
+      <input class="form-check-input zset_1631823901 zsubset_a set1632176404" type="checkbox" value="<%= city %>" <%= 'checked' if (params[:cityfilter] || "").split('__').include? city %>>
+      <label class="form-check-label <%= normal_text %>" for="defaultCheck1">
+        <%= city %>
+      </label>
+    </div>
+    <% end %>
+</div>

@@ -1,0 +1,5 @@
+<% project = Project.find(project_id) %>
+
+<% project.addendums.order(:addendum_number).each do |addendum| %>
+  <%= render '/component/addendum_version', addendum_version_id: addendum.addendum_versions.order(:version).last.id %>
+<% end %>

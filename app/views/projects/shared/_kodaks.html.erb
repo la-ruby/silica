@@ -1,0 +1,74 @@
+<%
+  project = Project.find(project)
+%>
+
+<%= turbo_stream_from "kodaks" %>
+<div id="kodaks" class="container" style="max-width: 500px">
+
+  <%= render('/projects/shared/kodaks/header', project: project.id) if project.kodaks.present? %>
+
+  <% project.kodaks.each_with_index do |kodak, index| %>
+    <div class="row text-muted <%= index.even? ? theme_background_level_2! : theme_background_level_1! %>">
+      <div class="col">
+        <div class="d-flex align-items-center">
+          <div class="position-relative" style="height: 90px; width: 120px; background-image: url('<%= url_for(kodak.pic.variant(:small)) %>'); background-size: cover; background-position:center center;">
+            <div class="position-absolute top-0 start-0 text-muted"><%= truncate(kodak.pic.filename.to_s, length: 10) %></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="d-flex align-items-center justify-content-center h-100">
+
+          <% form_id = SecureRandom.hex[0..6] %>
+          <%= form_with model: kodak, url: "/kodaks?id=#{kodak.id}", id: form_id do |form| %>
+            <%= form.check_box :primary, class: 'form-check-input', form: form_id, data: { controller: 'submits-form-immediately', action: 'change->submits-form-immediately#submit_form' } %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="d-flex align-items-center justify-content-center h-100">
+
+          <% form_id = SecureRandom.hex[0..6] %>
+          <%= form_with model: kodak, url: "/kodaks?id=#{kodak.id}", id: form_id do |form| %>
+            <%= form.check_box :marketplace, class: 'form-check-input', form: form_id, data: { controller: 'submits-form-immediately', action: 'change->submits-form-immediately#submit_form' } %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-1">
+        <div class="d-flex align-items-center justify-content-center h-100 link-brandprimary" role="button">
+          <%= form_with url: "/kodaks", method: :delete do |form| %>
+            <%= form.hidden_field :kodak, value: kodak.id %>
+            <%= form.hidden_field :project, value: project.id %>
+            <button class="btn btn-outline-brandprimary mx-0 px-0" style="border-color: transparent"><i class="far fa-trash-alt"></i></button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- dropzone -->
+  <div class="row <%= theme_background_level_2! %>">
+    <div class="col">
+      <div class="d-flex align-items-center">
+        <div id="dzone" data-controller="dzone" data-dzone-project-value="<%= project.id %>" style="width: 120px;"></div>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="d-flex align-items-center justify-content-center h-100">
+        &nbsp;
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="d-flex align-items-center justify-content-center h-100">
+        &nbsp;
+      </div>
+    </div>
+    <div class="col-1">
+      <div class="d-flex align-items-center justify-content-center h-100 link-brandprimary" role="button">
+        &nbsp;
+      </div>
+    </div>
+  </div>
+  <!-- /dropzone -->
+
+</div>

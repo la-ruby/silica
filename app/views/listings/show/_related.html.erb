@@ -1,0 +1,21 @@
+
+<div class="container-xxl">
+  <div class="<%= Marketplace::StrongerStyle.css %>" style="<%= Marketplace::StrongerStyle.inline_css %>">
+    Similar Properties
+  </div>  
+</div>
+
+<div class="mb-1"><!-- spacer -->&nbsp;</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col text-nowrap" style="overflow: scroll">
+
+        <% Listing.showables.order('created_at DESC').limit(10).each do |item| %>
+          <% next if item.id == listing.id %>
+          <%= render('/listings/shared/card', listing: item)  rescue "rescued" %>
+        <% end %>
+  </div>
+</div>
+
+

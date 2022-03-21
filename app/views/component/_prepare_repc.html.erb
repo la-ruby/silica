@@ -1,0 +1,30 @@
+<% instance = 'prepare-repc-panel'
+   form_id = "form-of-#{instance}"
+   project = Project.find(project_id)
+%>
+
+<div id="<%= instance %>" class="<%= normal_text %>" data-controller="property-analysis">
+  <%= form_with url: "/repcs/#{project.repc.id}", method: :patch, class: 'd-inline-block main-form', id: form_id, html: {autocomplete: 'off'}  do |form| %>
+  <% end %>
+  
+  <div class="container pt-3 pb-3">
+    <div class="row">
+      <div class="col">
+        <%= render '/card', title: "#{project.combined_address}" do %>
+        
+          <%= render '/component/prepare_repc/upper', project_id: project.id, form_id: form_id %>
+          <hr>
+          <%= render '/component/prepare_repc/prepared', project_id: project.id, form_id: form_id %>
+	  <hr>
+          <%= render '/component/prepare_repc/math', project_id: project.id, form_id: form_id %>
+	  <hr>
+          <%= render '/component/prepare_repc/mid', project_id: project.id, form_id: form_id %>
+          <%= render '/component/prepare_repc/lower', project_id: project.id, form_id: form_id %>
+  
+        <% end %>
+  
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,42 @@
+<% project = Project.find(project_id)
+   repc = project.repc
+   current_repc_version = repc.version
+   next_repc_version = (current_repc_version.to_i+1).to_s
+%>
+<div class="row">
+  <div class="col-10 mx-3 py-3 me-5">
+    <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+
+      <div class="btn-group me-2" role="group" aria-label="Third group">
+        <button type="submit"
+		class="btn btn-brandprimary text-white"
+		name="what_was_clicked"
+                value="save"
+                form="<%= form_id %>"
+                <%= 'disabled' if repc.mature_ish? %>
+		>SAVE</button>
+      </div>
+
+      <div class="btn-group me-2" role="group" aria-label="Third group">
+        <button type="submit"
+		class="btn btn-brandprimary text-white"
+		name="what_was_clicked"
+                value="sign_repc"
+                form="<%= form_id %>"
+                <%= 'disabled' if repc.signed_by_company_at %>
+		>Sign REPC v<%= project.repc.version %></button>
+      </div>
+
+      <div class="btn-group me-2" role="group">
+        <button type="submit"
+		class="btn btn-brandprimary text-white"
+		name="what_was_clicked"
+                value="make_new_repc"
+                form="<%= form_id %>"
+                <%= 'disabled' unless repc.mature_ish? %>
+		>Make REPC v<%= next_repc_version %></button>
+      </div>
+
+    </div>
+  </div>
+</div>

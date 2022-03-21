@@ -1,0 +1,18 @@
+<%
+  listings = Listing.search({
+          q: local_assigns[:q],
+          beds: local_assigns[:beds],
+          baths: local_assigns[:baths],
+          sort: local_assigns[:sort],
+          page: local_assigns[:page],
+        })[0]
+%>
+
+<div id="apollo-map" class="text-center sticky-lg-top" data-controller="map" style="background-color: pink; height: 100vh">
+  <% listings.each_with_index do |listing, index| %>
+    <% rand_pos = WALGREENS.sample(1)[0] %>
+    <div data-label="<%= pretty_format_money(listing.suggested_price) %>" data-label2="<a href='/listings/<%= listing.id %>'><%= listing.project.combined_address %></a>" data-lat="<%= listing.lat || rand_pos[:lat] %>" data-lng="<%= listing.lng || rand_pos[:lng] %>" data-map-target="marker"></div>
+  <% end %>
+  <div id="apollo-map-inner" style="height: 100%; width: 100%">
+  </div>
+</div>

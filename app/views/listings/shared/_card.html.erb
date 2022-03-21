@@ -1,0 +1,38 @@
+<% if local_assigns[:fluid] %>
+<div class="d-inline-block zborder w-100" zstyle="zheight: 80px; zwidth: 80px">
+<% else %>
+<div class="d-inline-block zborder me-4" style="zheight: 80px; zwidth: 80px; width: 275px">
+<% end %>
+
+
+<div class="card <%= theme_background_level_1! %> border-0 shadow-on-lg-up overflow-hidden <%= 'rounded-mega' unless local_assigns[:fluid] %>" data-controller="acts-like-link" data-acts-like-link-href-value="<%= listing_path(listing) %>" role='button'>
+  <%= render '/component/listings/image_area', listing: listing %>
+
+  <div class="card-body px-0 px-lg-3" data-acts-like-link-target="actionable">
+
+    <div class="card-title overflow-hidden text-nowrap <%= Marketplace::StrongestStyle.css %>" style="<%= Marketplace::StrongestStyle.inline_css %>; font-size: <%= LISTINGS_ZOOM_REDUCTION %> !important">
+      <%= pretty_format_money(listing.suggested_price) %>
+    </div>
+
+    <div class="card-title overflow-hidden text-nowrap <%= Marketplace::BasicStyle.css %>" style="<%= Marketplace::BasicStyle.inline_css %>; font-size: <%= LISTINGS_ZOOM_REDUCTION %>">
+      <%= listing.title.presence || 'No title' %>
+    </div>
+
+    <div class="card-title overflow-hidden text-nowrap <%= Marketplace::WeakStyle.css %>" style="<%= Marketplace::WeakStyle.inline_css %>; font-size: <%= LISTINGS_ZOOM_REDUCTION %>">
+      <i class="fas fa-map-marker-alt"></i> <%= listing.address %>
+    </div>
+  </div>
+
+  <div class="mx-2" style="height: 1px; background: #E4E4E4"></div>
+  <div class="card-footer mt-1 px-0 px-lg-3 bg-transparent border-0 overflow-hidden text-nowrap <%= normal_text %>" data-acts-like-link-target="actionable">
+
+    <%= render '/listings/show/pills_tight', listing: listing %>
+
+  </div>
+
+  <div class="mb-2"><!-- spacer --></div>
+
+</div>
+
+
+</div>

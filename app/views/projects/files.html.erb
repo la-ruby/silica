@@ -1,0 +1,16 @@
+<% if UxPolicy.new(current_user, nil).files? %>
+  <%= render '/shared/summary', project: @project %>
+
+  <%= render '/shared/tabs', project: @project, active: 'Files' %>
+
+  <div class="container pt-3 pb-3">
+    <div class="row">
+      <div class="col text-center">
+        <div class="m-5 p-5 <%= normal_text %>">
+          coming soon (files)
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+

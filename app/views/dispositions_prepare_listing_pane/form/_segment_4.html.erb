@@ -1,0 +1,18 @@
+<% project = Project.find(project_id) %>
+
+<div class="container">
+  <div class="row ms-2">
+    <div class="col p-2">
+      <p>Property Details</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <%= render '/dispositions_prepare_listing_pane/form/segment_4/row_1', project_id: project.id, form_id: form_id %>
+  <%= render '/dispositions_prepare_listing_pane/form/segment_4/row_2', project_id: project.id, form_id: form_id %>
+  <%= render '/dispositions_prepare_listing_pane/form/segment_4/row_3', project_id: project.id, form_id: form_id %>
+  <%= render '/dispositions_prepare_listing_pane/form/segment_4/row_4', project_id: project.id, form_id: form_id %>
+  <hr>
+</div>

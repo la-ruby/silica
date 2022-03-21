@@ -1,0 +1,40 @@
+<% project = Project.find(project_id)
+   intake_form = project.intake_form
+%>
+
+<hr>
+Tenants
+
+<div class="row">
+  <div class="col mx-3 py-3">
+
+    <div class="<%= demoted_text %>">Does the property have current tenants?</div>
+    <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= intake_form.does_the_property_have_current_tenants %></span>
+    <input type="hidden" name="underwriting_intake_form_pane[does_the_property_have_current_tenants]" form="<%= form_id %>"  value="<%= intake_form.does_the_property_have_current_tenants %>" />
+
+
+    <br>
+    <br>
+
+    <div class="<%= demoted_text %>">Do rent rates need to be adjusted?</div>
+    <span class="border-bottom-dashed" data-form="<%= form_id %>" data-selectdata='{"Yes":"Yes","No":"No","selected":"<%=intake_form.do_rent_rates_need_to_be_adjusted%>"}' data-controller="select-inline"><%=intake_form.do_rent_rates_need_to_be_adjusted%></span>
+    <input type="hidden" name="underwriting_intake_form_pane[do_rent_rates_need_to_be_adjusted]" form="<%= form_id %>" value="<%=intake_form.do_rent_rates_need_to_be_adjusted%>">
+
+  </div>
+
+  <div class="col mx-3 py-3">
+    <div class="<%= demoted_text %>">Are those tenants staying or do we need to get new tenants?</div>
+    <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= intake_form.are_those_tenants_staying %></span>
+    <input type="hidden" name="underwriting_intake_form_pane[are_those_tenants_staying]" form="<%= form_id %>"  value="<%= intake_form.are_those_tenants_staying %>" />
+    <br>
+    <br>
+
+    <div class="<%= demoted_text %>">If so what is the new rate?</div>
+    <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= intake_form.if_so_what_is_the_new_rate %></span>
+    <input type="hidden" name="underwriting_intake_form_pane[if_so_what_is_the_new_rate]" form="<%= form_id %>"  value="<%= intake_form.if_so_what_is_the_new_rate %>" />
+
+  </div>
+
+</div>
+
+<br>

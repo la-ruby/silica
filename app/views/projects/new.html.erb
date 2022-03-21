@@ -1,0 +1,99 @@
+<%= form_with(model: @project, class: '', id: 'id1641254485', data: { turbo: false}, html: { autocomplete: "off" }) do |form| %>
+  <%= form.hidden_field :status, value: "Open" %>
+  <%= form.hidden_field :direction, value: "Outbound" %>
+  <%= form.hidden_field :req_date, value: Time.now.iso8601 %>
+
+  <% has_errors = form.object.errors.count > 0 %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-9 mb-2">
+        <div class="" data-controller="geographic-address-completer">
+  
+          <div class="mb-1">
+            <label class="form-label mb-0" for="offer_a1631804549">Property add&zwnj;ress</label>
+            <%= text_field_tag :a1631804549, '', class: "form-control form-control-sm #{'d-none' if has_errors}", placeholder: 'Start typing for autocompletion..', autocomplete: 'a1634829607' %>
+            <span></span>
+          </div>
+  
+          <%= render '/projects/new/address_components', form: form %>
+
+        </div>
+  
+      </div>
+    </div>
+  
+  
+    <div class="row align-items-center zmt-1 zmb-2">
+      <div class="col-4">
+        <div class="zrow">
+  	<div class="zform-floating mb-1">
+            <label class="form-label mb-0">Seller Name</label>
+            <%= form.text_field :name, class: 'form-control form-control-sm', required: true %>
+  	</div>
+  	<div class="zform-floating mb-1 position-relative">
+            <label class="form-label mb-0">Phone</label>
+            <%= form.text_field :phone, class: "form-control form-control-sm #{apollo_error_indication(form.object, :phone)}", required: true %>
+            <div class="invalid-tooltip">
+              <%= form.object.errors[:phone].join(', ') %>
+            </div>
+  	</div>
+  	<div class="zform-floating position-relative">
+            <label class="form-label mb-0">Email</label>
+            <%= form.email_field :email, class: "form-control form-control-sm #{apollo_error_indication(form.object, :email)}", required: true %>
+            <div class="invalid-tooltip">
+              <%= form.object.errors[:email].join(', ') %>
+            </div>
+  	</div>
+        </div>
+      </div>
+      <div class="col-4 text-center">
+        <div class="zrow">
+          <div class="second-owner-things text-start">
+  	  <div class="zform-floating mb-1">
+              <label class="form-label mb-0">2nd owner name</label>
+              <%= form.text_field 'secondName', class: 'form-control form-control-sm' %>
+  	  </div>
+  	  <div class="zform-floating mb-1 position-relative">
+              <label class="form-label mb-0">2nd owner phone</label>
+              <%= form.text_field 'secondPhone', class: "form-control form-control-sm #{apollo_error_indication(form.object, :secondPhone)}" %>
+              <div class="invalid-tooltip">
+                <%= form.object.errors[:secondPhone].join(', ') %>
+              </div>
+  	  </div>
+  	  <div class="zform-floating zmb-1 position-relative">
+              <label class="form-label mb-0">2nd owner email</label>
+              <%= form.text_field 'secondEmail', class: "form-control form-control-sm  #{apollo_error_indication(form.object, :secondEmail)}" %>
+              <div class="invalid-tooltip">
+                <%= form.object.errors[:secondEmail].join(', ') %>
+              </div>
+  	  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col">
+        <!-- old -->
+        <div class="form-check">
+          <%= form.radio_button :expectedtimeline, 'ASAP', class: 'form-check-input'  %>
+          <%= form.label :expectedtimeline, value: 'ASAP' %>
+        </div>
+        <div class="form-check">
+          <%= form.radio_button :expectedtimeline, 'A few weeks', class: 'form-check-input'  %>
+          <%= form.label :expectedtimeline, value: 'A few weeks' %>
+        </div>
+        <div class="form-check">
+          <%= form.radio_button :expectedtimeline, 'Exploring options', class: 'form-check-input'  %>
+          <%= form.label :expectedtimeline, value: 'Exploring options' %>
+        </div>
+        <!-- /old -->
+      </div>
+    </div>
+  </div>
+  
+  <br>
+  <button id="new_offer_submit_1" type="submit" class="btn btn-brandprimary">Create New</button>
+
+
+<% end %>

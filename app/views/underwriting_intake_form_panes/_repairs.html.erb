@@ -1,0 +1,33 @@
+<% project = Project.find(project_id)
+   intake_form = project.intake_form
+%>
+
+
+<hr>
+Repairs
+
+<div class="row">
+  <div class="col mx-3 py-3">
+
+    <div class="<%= demoted_text %>">Is this property being listed as-is or do we need to manage small repairs?</div>
+    <span class="border-bottom-dashed" data-form="<%= form_id %>" data-selectdata='{"Selling As-Is":"Selling As-Is","Needs Repairs":"Needs Repairs","selected":"<%= intake_form.is_this_property_being_listed_as_is%>"}' data-controller="select-inline"><%= intake_form.is_this_property_being_listed_as_is %></span>
+    <input type="hidden" name="underwriting_intake_form_pane[is_this_property_being_listed_as_is]" form="<%= form_id %>" value="<%=intake_form.is_this_property_being_listed_as_is%>">
+
+    <br>
+    <br>
+
+    <div class="<%= demoted_text %>">What is the budget for required repairs?</div>
+    <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= intake_form.what_is_the_budget_for_required_repairs %></span>
+    <input type="hidden" name="underwriting_intake_form_pane[what_is_the_budget_for_required_repairs]" form="<%= form_id %>"  value="<%= intake_form.what_is_the_budget_for_required_repairs %>" />
+
+  </div>
+
+  <div class="col mx-3 py-3">
+    <div class="<%= demoted_text %>">If selected "needs repairs" what repairs need to be managed by <%= COMPANY %>?</div>
+    <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= intake_form.what_repairs_need_to_be_managed_by_company %></span>
+    <input type="hidden" name="underwriting_intake_form_pane[what_repairs_need_to_be_managed_by_company]" form="<%= form_id %>"  value="<%= intake_form.what_repairs_need_to_be_managed_by_company %>" />
+  </div>
+
+</div>
+
+<br>

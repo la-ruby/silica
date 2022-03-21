@@ -1,0 +1,38 @@
+<%
+  repc = Repc.find(repc_id)
+%>
+
+<% if repc.my_offer_portal_shows_addendum_card? %>
+<!-- for repc -->
+<div class="col-12 col-lg" style="height: 740px; overflow: hidden; max-width: 440px;">
+  <!-- prominent card(s) of the screen -->
+  <div class="px-3 px-xxl-5 zpy-1 zpy-xxl-5 zpx-1 zpx-xxl-5 fw-light <%= 'invisible' unless repc.my_offer_portal_shows_addendum_card? %> <%= normal_text! %> <%= theme_background_level_3 %> w-100" style="border-radius: 20px;">
+
+    <br>
+
+    <!-- Title -->
+    <div class="text-center blue-summer-sky fs-2 my-1 fw-normal">
+      New Addendum
+    </div>	  
+    <!-- /Title -->
+
+    <!-- terms -->
+    <div class="mt-4 mb-2">
+      Addendum Terms
+    </div>
+    <div class="mt-4 mb-2" style="height: 320px">
+      <%= (repc.project.addendums.last.addendum_versions.last.terms.presence rescue nil) || '-' %>
+    </div>
+    <!-- /terms -->
+
+    <div class="mb-3"><!-- spacer --></div>
+    <%= render '/component/crayon/addendum_card/two_calendars', repc_id: repc.id %>
+
+    <br>
+
+  </div>
+  <!-- /prominent card(s) of the screen -->
+  <div class="d-block d-lg-none mb-5"><!-- divider --></div>
+</div>
+<!-- /for repc -->
+<% end %>

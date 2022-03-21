@@ -1,0 +1,38 @@
+<div class="container-xxl">
+  <div class="<%= Marketplace::StrongerStyle.css %>" style="<%= Marketplace::StrongerStyle.inline_css %>">
+    Gallery
+  </div>  
+</div>
+
+<div class="mb-1"><!-- spacer -->&nbsp;</div>
+
+<div class="container-xxl">
+
+  <!-- https://getbootstrap.com/docs/5.1/layout/grid/#row-columns -->
+  <div class="row row-cols-auto">
+
+    <% if listing.project.kodaks.where(marketplace: "1").size == 0 %>
+    <a class="d-block col border" href="/listings/<%= listing.id %>?gallery=1" role="button">
+      <div style="width: 200px; height: 200px;
+		  background-size: cover; background-image: url(<%= silica_bucket('/mocks/placeholder.png') %>);
+		  background-position: center center; background-repeat: no-repeat">
+      </div>
+      
+    </a>
+    <% end %>
+
+
+    <% listing.project.kodaks.where(marketplace: "1").each_with_index do |item, index| %>
+    <div class="col">
+      <a href="/listings/<%= listing.id %>?gallery=<%=index+1%>" class="d-block" style="width: 200px; height: 200px;;
+		  background-size: cover; background-image: url(<%= url_for(item.pic.variant(:small)) %>);
+		  background-position: center center; background-repeat: no-repeat;">
+      </a>
+      
+    </div>
+    <% end %>
+  </div>
+
+</div>
+
+

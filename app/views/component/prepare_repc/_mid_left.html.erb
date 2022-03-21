@@ -1,0 +1,80 @@
+<% project = Project.find(project_id)
+   repc = project.repc %>
+
+<div class="row">
+
+  <div class="mb-2">
+    <label class="form-label mb-0" for="property_detail_beds">Purchase Price</label>
+    <div class="input-group">
+      <span class="input-group-text" id="basic-addon1">$</span>
+      <%= text_field_tag 'repc[unused_1643251283]', repc.purchase_price, class: 'form-control', form: form_id, readonly: true, disabled: true, data: { property_analysis_target: 'sum' }  %>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label mb-0" for="property_detail_beds">Earnest Money</label>
+    <div class="input-group">
+      <span class="input-group-text" id="basic-addon1">$</span>
+      <%= text_field_tag 'repc[earnest_money]', repc.earnest_money, class: 'form-control', form: form_id, readonly: repc.mature_ish?, data: { controller: 'money' }, autocomplete: 'off' %>
+      <span class="input-group-text" id="basic-addon1">.00</span>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label mb-0" for="property_detail_beds">Agreement Date</label>
+    <%= date_field_tag 'repc[agreement_date]', repc.agreement_date, class: 'form-control', form: form_id, readonly: repc.mature_ish? %>
+    <span></span>
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label mb-0" for="property_detail_beds">Settlement Date</label>
+    <%= date_field_tag 'repc[settlement_date]', repc.settlement_date, class: 'form-control', form: form_id, readonly: repc.mature_ish? %>
+    <span></span>
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label mb-0" for="property_detail_beds">Inspection Period Deadline</label>
+    <%= date_field_tag 'repc[inspection_period_deadline]', repc.inspection_period_deadline, class: 'form-control', form: form_id, readonly: repc.mature_ish? %>
+    <span></span>
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label mb-0" for="property_detail_beds">Possession Date</label>
+    <%= date_field_tag 'repc[possession_date]', repc.possession_date, class: 'form-control', form: form_id, readonly: repc.mature_ish? %>
+    <span></span>
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label mb-0" for="property_detail_legal_description">Legal Description</label>
+    <%= text_field_tag 'repc[legal_description]', repc.legal_description, class: 'form-control', form: form_id, readonly: repc.mature_ish? %>
+    <span></span>
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label mb-0" for="property_detail_title_company">Title Company</label>
+    <%= text_field_tag 'repc[title_company]', repc.title_company, class: 'form-control', form: form_id, readonly: repc.mature_ish? %>
+    <span></span>
+  </div>
+
+  <div class="mb-2 form-group">
+    <label for="exampleTextarea" class="form-label">Notes</label>
+    <%= text_area_tag 'repc[notes]', repc.notes, row: 3, class: "form-control", form: form_id, readonly: repc.mature_ish? %>
+    <span></span>
+  </div>
+
+  <div class="mt-3 mb-2 form-group">
+    <label for="exampleTextarea" class="form-label mb-3">Closing Costs Paid By</label>
+
+    <div class="bs-component mb-3 ms-1">
+      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+	<%= radio_button_tag 'repc[closing_costs_paid_by]', 'buyer', (repc.closing_costs_paid_by == 'buyer'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
+        <label class="btn btn-outline-brandprimary" for="repc_closing_costs_paid_by_buyer">Buyer</label>
+	<%= radio_button_tag 'repc[closing_costs_paid_by]', 'seller', (repc.closing_costs_paid_by == 'seller'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
+        <label class="btn btn-outline-brandprimary" for="repc_closing_costs_paid_by_seller">Seller</label>
+	<%= radio_button_tag 'repc[closing_costs_paid_by]', 'both', (repc.closing_costs_paid_by == 'both'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
+        <label class="btn btn-outline-brandprimary" for="repc_closing_costs_paid_by_both">Both</label>
+      </div>
+    </div>
+
+  </div>
+</div>

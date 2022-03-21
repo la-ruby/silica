@@ -1,0 +1,24 @@
+<% has_errors = form.object.errors.count > 0 %>
+
+
+<div id="segmented-address" class="row <%= has_errors ? '' : 'd-none' %> mb-2">
+  <div class="col-auto">
+    <%= form.text_field :street, class: 'form-control form-control-sm', readonly: true %>
+  </div>
+  <div class="col-2">
+    <!-- https://adamsilver.io/blog/stopping-chrome-from-ignoring-autocomplete-off/ -->
+    <%= form.text_field :street2, class: 'form-control form-control-sm', placeholder: 'e.g. apartment no. ', autocomplete: 'off' %>
+  </div>
+  <div class="col">
+    <%= form.text_field :city, class: 'form-control form-control-sm', readonly: true %>
+  </div>
+  <div class="col">
+    <%= form.text_field :state, class: 'form-control form-control-sm', readonly: true %>
+  </div>
+  <div class="col">
+    <%= form.text_field :zip, class: 'form-control form-control-sm', data: { 'geographic-address-completer-target': 'zip' }, readonly: true %>
+  </div>
+  <div class="col">
+    <button type="button" id="clear-address-button" class="btn btn-link btn-sm"><i class="fa fa-x"></i></button>
+  </div>
+</div>

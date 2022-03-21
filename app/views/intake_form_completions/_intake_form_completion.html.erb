@@ -1,0 +1,24 @@
+<%
+  project = Project.find(project_id)
+  form_id = 'form-intake-form-completion'
+%>
+
+<div id="intake-form-completion" class="row">
+  <div class="col mx-3 py-3">
+    <div class="btn-toolbar justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group" role="group" aria-label="Third group">
+          <% if project.intake_form.completed == 'true' %>
+            <%= form_with(url: '/intake_form_completions', id: form_id, method: :delete) do |form| %>
+              <%= form.hidden_field 'project_id', value: project.id  %>
+                <button type="submit" class="btn btn-brandprimary text-white" form="<%=form_id%>">Mark Incomplete</button>
+            <% end %>
+          <% else %>
+            <%= form_with(url: '/intake_form_completions', id: form_id) do |form| %>
+              <%= form.hidden_field 'project_id', value: project.id  %>
+	        <button type="submit" class="btn btn-brandprimary text-white" form="<%=form_id%>">Mark Complete</button>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

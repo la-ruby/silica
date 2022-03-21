@@ -1,0 +1,11 @@
+<% project = Project.find(project_id) %>
+
+<div class="row my-3">
+  <div class="col-8 offset-3 d-flex justify-content-end">
+    <%= render '/component/send_repc_to_seller_button', project_id: project.id, repc_id: project.repc.id %>
+    &nbsp;&nbsp;
+    <%= render '/component/add_addendum_button', project_id: project.id %>
+    &nbsp;&nbsp;
+    <%= render '/projects/status', project_id: project.id %>
+  </div>
+</div>

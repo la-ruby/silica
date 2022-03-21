@@ -1,0 +1,13 @@
+<% if UxPolicy.new(current_user, nil).dispositions? %>
+
+  <%= render '/shared/summary', project: @project %>
+
+  <%= render '/shared/tabs', project: @project, active: 'Dispositions' %>
+
+  <div class="mt-3"><!-- spacer --></div>
+
+  <%= render '/shared/dispositions_inner_tabs', project: @project, active: 'Checklist' %>
+
+  <%= render '/property_disposition_checklists/edit', property_disposition_checklist_id: @project.property_disposition_checklist.id %>
+
+<% end %>

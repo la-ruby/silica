@@ -1,0 +1,5 @@
+<% content_for :extra_body_classes do %>overflow-hidden bg-white <%= Marketplace::Base.css %><% end %>
+<% content_for :extra_body_inline_css do %><%= Marketplace::Base.inline_css %><% end %>
+
+
+<%= render '/component/listings', DEFAULT_LISTING_SEARCH_PARAMS %>

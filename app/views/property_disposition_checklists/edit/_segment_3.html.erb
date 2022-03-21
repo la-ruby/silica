@@ -1,0 +1,31 @@
+<% project = Project.find(project_id) %>
+
+<div class="container">
+  <div class="row ms-2">
+    <div class="col-12 p-2">
+
+      <div class="mb-1">Property Management Setup <button id="example" type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Complete below items based on information in property intake form" data-controller="apollo-tooltip"><%= feather_icon('info') %></button></div>
+
+      <%= render '/property_disposition_checklists/edit/check', label: 'Send notice of new ownership to tenants with information regarding:', name: 'property_disposition_checklist[send_notice_of]', checked: (project.property_disposition_checklist.send_notice_of == 'true'), form: form_id %>
+
+      <%= render '/property_disposition_checklists/edit/check', label: 'How and when rent is collected', name: 'property_disposition_checklist[how_and_when]', checked: (project.property_disposition_checklist.how_and_when == 'true'), form: form_id, indented: true %>
+
+      <%= render '/property_disposition_checklists/edit/check', label: 'Who tenants can contact if there is a grievance, complaints, repairs needed etc.', name: 'property_disposition_checklist[who_tenants_can_contact]', checked: (project.property_disposition_checklist.who_tenants_can_contact == 'true'), form: form_id, indented: true %>
+
+      <%= render '/property_disposition_checklists/edit/check', label: 'Date updates sent to tenants', name: 'property_disposition_checklist[date_updates_sent]', name2: 'property_disposition_checklist[date_updates_sent_dateinput]', checked: (project.property_disposition_checklist.date_updates_sent == 'true'), form: form_id, associated_dateinput: true, associated_dateinput_value: project.property_disposition_checklist.date_updates_sent_dateinput, indented: true %>
+
+      <%= render '/property_disposition_checklists/edit/check', label: 'Send out new tenant rental agrements (if required)', name: 'property_disposition_checklist[send_out_new]', name2: 'property_disposition_checklist[send_out_new_dateinput]', checked: (project.property_disposition_checklist.send_out_new == 'true'), form: form_id, associated_dateinput: true, associated_dateinput_value: project.property_disposition_checklist.send_out_new_dateinput %>
+
+      <%= render '/property_disposition_checklists/edit/check', label: 'Send out a notice to vacate (if required)', name: 'property_disposition_checklist[send_out_a_notice_to_vacate]', name2: 'property_disposition_checklist[send_out_a_notice_to_vacate_dateinput]', checked: (project.property_disposition_checklist.send_out_a_notice_to_vacate == 'true'), form: form_id, associated_dateinput: true, associated_dateinput_value: project.property_disposition_checklist.send_out_a_notice_to_vacate_dateinput %>
+
+      <%= render '/property_disposition_checklists/edit/check', label: 'Coordinate to have property cleaned if required', name: 'property_disposition_checklist[coordinate_to_have]', checked: (project.property_disposition_checklist.coordinate_to_have == 'true'), form: form_id %>
+
+      <%= render '/property_disposition_checklists/edit/check', label: 'Coordinate with Property Project Manager to ensure items listed on Inspection list to be fixed are being taken care of. (if HOA contact HOA if not coordinate items that need to be repaired)', name: 'property_disposition_checklist[coordinate_with_property]', checked: (project.property_disposition_checklist.coordinate_with_property == 'true'), form: form_id %>
+
+      <%= render '/property_disposition_checklists/edit/check', label: 'Fill vacant rentals units (if required) – involves marketing rental and screening possible tenants or working with property management company', name: 'property_disposition_checklist[coordinate_with_property]', checked: (project.property_disposition_checklist.coordinate_with_property == 'true'), form: form_id %>
+
+    </div>
+
+  </div>  
+
+</div>

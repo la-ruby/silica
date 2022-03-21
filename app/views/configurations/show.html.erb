@@ -1,0 +1,122 @@
+<main class="container my-5">
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Area::Marketplace
+	</button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+	<div class="accordion-body">
+	  <div class="container">
+
+	    <div class="row">
+	      <div class="col-4 zborder p-1">
+                Marketplace::Base<br>
+                <span class="fst-italic">Unless overridden, children inhert the Base</span>
+	      </div>
+	      <div class="col-8 zborder p-1">
+                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                  <%= select_tag "marketplace_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  Background: <input name="marketplace_background_color" class="d-inline-block" value="<%= j Setting.marketplace_background_color %>" form="configurations-form" data-controller="submits-form-immediately" data-action="submits-form-immediately#submit_form">
+                <% end %>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-4 zborder p-1">
+                Marketplace::BasicStyle<br>
+                <span class="fst-italic">Most common. Used by The property-description paragraph, lower-menu-items etc.</span>
+	      </div>
+	      <div class="col-8 zborder p-1">
+                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                  <%= select_tag "marketplace_basic_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_basic_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_basic_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_basic_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_basic_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_basic_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  Color: <input name="marketplace_basic_style_color" class="d-inline-block" value="<%= j Setting.marketplace_basic_style_color %>" form="configurations-form" data-controller="submits-form-immediately" data-action="submits-form-immediately#submit_form">
+                <% end %>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-4 zborder p-1">
+                Marketplace::WeakStyle<br>
+                <span class="fst-italic">Used infrequently, Section subtitles use this</span>
+	      </div>
+	      <div class="col-8 zborder p-1">
+                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                  <%= select_tag "marketplace_weak_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_weak_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_weak_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_weak_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_weak_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"] ], Setting.marketplace_weak_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  Color: <input name="marketplace_weak_style_color" class="d-inline-block" value="<%= j Setting.marketplace_weak_style_color %>" form="configurations-form" data-controller="submits-form-immediately" data-action="submits-form-immediately#submit_form">
+                <% end %>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-4 zborder p-1">
+                Marketplace::WeakerStyle<br>
+                <span class="fst-italic">The bottom-disclaimer uses this style</span>
+	      </div>
+	      <div class="col-8 zborder p-1">
+                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                  <%= select_tag "marketplace_weaker_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_weaker_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_weaker_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_weaker_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_weaker_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_weaker_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  Color: <input name="marketplace_weaker_style_color" class="d-inline-block" value="<%= j Setting.marketplace_weaker_style_color %>" form="configurations-form" data-controller="submits-form-immediately" data-action="submits-form-immediately#submit_form">
+                <% end %>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-4 zborder p-1">
+                Marketplace::StrongStyle<br>
+                <span classs="fst-italic">uses by: Upper menu, footer-menu-titles, buyers name</span>
+	      </div>
+	      <div class="col-8 zborder p-1">
+                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                  <%= select_tag "marketplace_strong_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_strong_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_strong_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_strong_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_strong_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_strong_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  Color: <input name="marketplace_strong_style_color" class="d-inline-block" value="<%= j Setting.marketplace_strong_style_color %>" form="configurations-form" data-controller="submits-form-immediately" data-action="submits-form-immediately#submit_form">
+                <% end %>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-4 zborder p-1">
+                Marketplace::StrongerStyle<br>
+                <span classs="fst-italic">Section titles often use this style</span>
+	      </div>
+	      <div class="col-8 zborder p-1">
+                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                  <%= select_tag "marketplace_stronger_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_stronger_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_stronger_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_stronger_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_stronger_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_stronger_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  Color: <input name="marketplace_stronger_style_color" class="d-inline-block" value="<%= j Setting.marketplace_stronger_style_color %>" form="configurations-form" data-controller="submits-form-immediately" data-action="submits-form-immediately#submit_form">
+                <% end %>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="col-4 zborder p-1">
+                Marketplace::StrongestStyle<br>
+                <span classs="fst-italic">The most eye catching peice of text in the page</span>
+	      </div>
+	      <div class="col-8 zborder p-1">
+                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                  <%= select_tag "marketplace_strongest_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_strongest_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_strongest_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_strongest_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  <%= select_tag "marketplace_strongest_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_strongest_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
+                  Color: <input name="marketplace_strongest_style_color" class="d-inline-block" value="<%= j Setting.marketplace_strongest_style_color %>" form="configurations-form" data-controller="submits-form-immediately" data-action="submits-form-immediately#submit_form">
+                <% end %>
+	      </div>
+	    </div>
+
+          </div>
+	</div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,38 @@
+<% if UxPolicy.new(current_user, nil).overview? %>
+
+  <%= render '/shared/summary', project: @project %>
+
+  <%= render '/shared/tabs', project: @project, active: 'Offer' %>
+
+  <%= render '/projects/offer/quad', project_id: @project.id %>
+
+  <div class="container pt-3 pb-3">
+    <div class="row">
+      <div class="col-12 col-lg-7">
+        <%= render '/projects/offer/repc_details', project_id: @project.id %>
+        <br>
+        <br>
+        <%= render '/projects/offer/shared/sales_notes_for_underwriting', project_id: @project.id, static_mode: false %>
+        <br>
+        <br>
+  
+        <%= render '/projects/offer/underwriting_notes_for_sales', project_id: @project.id %>
+        <br>
+        <br>
+        <%= render '/shared/addendums_v2', project_id: @project.id, editable: false %>
+  
+      </div>
+  
+      <div class="col col-lg-5">
+        <%= render '/projects/offer/dates', project_id: @project.id %>
+        <br>
+        <br>
+        <%= render '/projects/offer/repc_feedback', project_id: @project.id %>
+        <br>
+        <br>
+      </div>
+  
+    </div>
+  </div>
+
+<% end %>

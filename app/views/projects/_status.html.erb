@@ -1,0 +1,23 @@
+<% project = Project.find(project_id) %>
+
+<%= form_with(url: '/statuses', method: :patch, class: 'd-inline-block') do |form| %>
+  <%= form.hidden_field :project_id, value: project.id %>
+  <button class="btn btn-sm btn-brandprimary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">status: <span class="badge bg-<%= status_color(project.status) %>"><%= project.status %></span></button>
+  <ul class="dropdown-menu">
+    <li>
+      <%= form.button(type: 'submit', value: 'statusOpen', class: 'border-o dropdown-item') do %>
+	<span class="badge bg-primary" role="button">Open</span>
+      <% end %>      
+    </li>
+    <li>
+      <%= form.button(type: 'submit', value: 'statusCompletedClosedLost', class: 'border-o dropdown-item') do %>
+	<span class="badge bg-danger" role="button">Completed Closed/Lost</span>
+      <% end %>      
+    </li>
+    <li>
+      <%= form.button(type: 'submit', value: 'statusCompletedWonn', class: 'border-o dropdown-item') do %>
+	<span class="badge bg-success" role="button">Completed Won</span>
+      <% end %>      
+    </li>
+  </ul>
+<% end %>

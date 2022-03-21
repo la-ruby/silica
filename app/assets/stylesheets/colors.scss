@@ -1,0 +1,35 @@
+/*
+ *= require colors/fg
+ *= require colors/fg-i
+ *= require colors/bg
+ *= require colors/bg-i
+ *= require colors/fs
+ *= require colors/fs-i
+*/
+
+
+/* https://www.w3schools.com/colors/colors_shades.asp */
+
+.bg-white-level-one { background: white; }
+.bg-white-level-two { background: #F8F8F8; }
+.bg-white-level-three { background: #F5F5F5; }
+.bg-white-level-four { background: #F0F0F0; }
+.bg-white-level-gainsboro { background: #DCDCDC; }
+
+.bg-white-level-one-i { background: white !important; }
+.bg-white-level-two-i { background: #F8F8F8 !important; }
+.bg-white-level-three-i { background: #F5F5F5 !important; }
+.bg-white-level-four-i { background: #F0F0F0 !important; }
+.bg-white-level-gainsboro-i { background: #DCDCDC !important; }
+
+.fg-white-level-one { color: white; }
+.fg-white-level-two { color: #F8F8F8; }
+.fg-white-level-three { color: #F5F5F5; }
+.fg-white-level-four { color: #F0F0F0; }
+.fg-white-level-gainsboro { color: #DCDCDC; }
+
+.fg-white-level-one-i { color: white !important; }
+.fg-white-level-two-i { color: #F8F8F8 !important; }
+.fg-white-level-three-i { color: #F5F5F5 !important; }
+.fg-white-level-four-i { color: #F0F0F0 !important; }
+.fg-white-level-gainsboro-i { color: #DCDCDC !important; }

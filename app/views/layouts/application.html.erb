@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <%= yield :extra_meta_tags %>
+    <title><%= @area&.title || @title || "#{COMPANY_LC}. #{Rails.env unless Rails.env.production?}" %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= render '/favicons' %>
+    <%= stylesheet_link_tag "application" %>
+    <%= render '/stylesheets' %>
+    <%= javascript_importmap_tags %>
+    <%= render '/javascripts' %>
+  </head>
+
+  <body id="testing1646111336" class="apollo position-relative zbg-white-level-four apollo-bg-white-4 <%= yield :extra_body_classes %> <%= background_with_image %> <%= prevent_scrolling_maybe %> <%= apollo_font %>" style="<%= yield :extra_body_inline_css %>">
+    <%= render('/nav', items: infer_menu_items((@area ? @area.menu_mode : @menu_mode)), logo_link: infer_logo_link((@area ? @area.menu_mode : @menu_mode)), allow_session_buttons: allow_session_buttons((@area ? @area.menu_mode : @menu_mode)), logo: infer_logo((@area ? @area.menu_mode : @menu_mode)), small_logo: infer_small_logo((@area ? @area.menu_mode : @menu_mode)), should_show_offcanvas: infer_should_show_offcanvas((@area ? @area.menu_mode : @menu_mode))) unless (@area&.nav == false || @nav == false) %>
+    <%= render '/flashes' %>
+    <div class="mt-4">&nbsp;<!-- space for nav --></div>
+    <div class="mt-3">&nbsp;<!-- space for nav --></div>
+    <%= yield %>
+    <%= render '/footer' unless (@footer == false || @area&.footer? == false) %>
+    <%= render '/instance' %>
+    <%= render '/redirect', url: nil %>
+    <%= render '/reload', example: nil  %>
+    <%= render '/scroll', element_id: nil %>
+  </body>
+</html>
+

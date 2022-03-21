@@ -1,0 +1,121 @@
+<%
+  addendum_version = AddendumVersion.find(addendum_version_id)
+  instance = "addendum-#{addendum_version.addendum.id}-addendum-version-#{addendum_version.id}-panel"
+  form_id = "form-of-#{instance}"
+%>
+
+
+<div id="<%= instance %>" class="<%= normal_text %>">
+  <%= form_with url: "/addendum_versions/#{addendum_version.id}", method: :patch, class: 'd-inline-block main-form', id: form_id  do |form| %>
+  <% end %>
+
+  <%= render '/card', title: "Addendum #{"%02d" % (addendum_version.addendum.addendum_number)} Details" do |p| %>
+
+    <% if defined?(:p) && p %>
+      <% p.content_for :heading_right do %>
+        <span class='badge fw-light <%= theme_background_level_3 %> text-muted'><%= addendum_version.derived_status %></span>
+      <% end %>
+    <% end %>
+
+    <div class="row">
+      <div class="col mx-3 py-3">
+        <div class="<%= demoted_text %>">Addendum Expiration</div>
+
+
+        <% if editable && addendum_version.is_editable? %>
+        <input type="datetime-local" id="id1642022677" form="<%= form_id %>" data-controller="submits-form-immediately"
+               name="addendum_version[expiration]" value="<%= apollo_date5(addendum_version.expiration)%>" data-action="change->submits-form-immediately#submit_form">
+        <% else %>
+        <span><%= (DateTime.iso8601(addendum_version.expiration).strftime("%B %d") rescue nil).presence || '-' %></span>
+        <% end %>
+
+      </div>
+
+      <div class="col mx-3 py-3">
+        <div class="<%= demoted_text %>">New Deadline</div>
+
+        <% if editable && addendum_version.is_editable? %>
+        <input type="datetime-local" id="id1642022677" form="<%= form_id %>" data-controller="submits-form-immediately"
+               name="addendum_version[deadline]" value="<%= apollo_date5(addendum_version.deadline)%>" data-action="change->submits-form-immediately#submit_form">
+        <% else %>
+        <span><%= (DateTime.iso8601(addendum_version.deadline).strftime("%B %d") rescue nil).presence || '-' %></span>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col mx-3 py-3">
+        <div class="<%= demoted_text %>">Addendum Terms</div>
+
+        <% if editable && addendum_version.is_editable? %>
+          <span class="<%= 'border-bottom-dashed min-sizes-for-child-textareas' %>" data-controller="<%= 'textarea-inline' %>" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= addendum_version.terms %></span>
+          <input type="hidden" name="addendum_version[terms]" form="<%= form_id %>"  value="<%= addendum_version.terms  %>" />
+        <% else %>
+          <%= addendum_version.terms.presence || '-'%>
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col mx-3 py-3">
+        <div class="<%= demoted_text %>">Related REPC</div>
+          repc v<%= Repc.find(addendum_version.related_repc_id).version %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3 mx-3 py-3">
+        <div class="<%= demoted_text %>">
+
+          <a href="/addendums/<%=addendum_version.addendum.id%>">
+          <span class="fa-stack zfa-2x">
+            <i class="fas fa-comment fa-stack-1x"></i>
+            <i class="far fa-square fa-stack-2x"></i>
+          </span></a>
+	  Draft <%= addendum_version.version %>
+	</div>
+      </div>
+
+      <% if editable %>
+      <div class="col-auto mx-3 py-3">
+        <div class="<%= demoted_text %>">
+          <button name="what_was_clicked" value="discard_addendum_version" type="submit" class="btn btn-sm btn-brandprimary text-white" form="<%= form_id %>"
+          <%= 'disabled' unless addendum_version.related_repc.mature? %>
+          <%= 'disabled' if addendum_version.is_accepted_or_rejected? %>
+          >
+            Discard
+          </button>          
+	</div>
+      </div>
+
+      <div class="col-auto mx-3 py-3">
+        <div class="<%= demoted_text %>">
+          <button name="what_was_clicked" value="sign_addendum_version" type="submit" class="btn btn-sm btn-brandprimary text-white" form="<%= form_id %>"
+          <%= 'disabled' if ["Accepted", "Rejected"].include?(addendum_version.derived_status) %>
+          <%= 'disabled' if addendum_version.signed_by_company_at.present? %>
+          <%= 'disabled' unless addendum_version.related_repc.mature? %>
+          >
+            Sign
+          </button>          
+	</div>
+      </div>
+
+      <div class="col-auto mx-3 py-3">
+        <div class="<%= demoted_text %>">
+          <button name="what_was_clicked" value="send_addendum_version_to_seller" type="submit" class="btn btn-sm btn-brandprimary text-white" form="<%= form_id %>"
+          <%= 'disabled' if ["Accepted", "Rejected"].include?(addendum_version.derived_status) %>
+          <%= 'disabled' if !addendum_version.signed_by_company_at.present? %>
+          <%= 'disabled' unless addendum_version.related_repc.mature? %>
+          >
+            Send To Seller
+          </button>          
+	</div>
+      </div>
+      <% end %>
+
+    </div>
+  
+  <% end %>
+
+</div>

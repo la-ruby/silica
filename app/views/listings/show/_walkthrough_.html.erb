@@ -1,0 +1,16 @@
+<div class="container-xxl">
+  <div class="<%= Marketplace::StrongerStyle.css %>" style="<%= Marketplace::StrongerStyle.inline_css %>">
+    Walkthrough
+  </div>  
+</div>
+
+<div class="mb-1"><!-- spacer -->&nbsp;</div>
+
+<div class="container-xxl">
+  <div class="<%= Marketplace::WeakStyle.css %>" style="<%= Marketplace::WeakStyle.inline_css %>">Date & Time</div>
+  <div class="<%= Marketplace::BasicStyle.css %>" style="<%= Marketplace::BasicStyle.inline_css %>">
+    <%= Date.strptime(listing.walkthrough_date, "%Y-%m-%d").strftime("%B %d, %Y") rescue "-" %>
+  </div>
+</div>
+
+

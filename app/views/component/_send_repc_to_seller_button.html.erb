@@ -1,0 +1,21 @@
+<% instance = generate_instance_id
+   form_id = "form-of-#{instance}"
+   project = Project.find(project_id)
+   repc = Repc.find(repc_id)
+%>
+
+<div>
+  <%= form_with url: "/repc_deliveries", method: :post, class: 'd-inline-block main-form', id: form_id  do |form| %>
+    <%= form.hidden_field 'repc_delivery[project_id]', value: project.id  %>
+    <%= form.hidden_field 'repc_delivery[repc_id]', value: repc.id %>
+  <% end %>
+
+  <button type="submit" class="btn btn-sm btn-brandprimary text-white" name="submission[what_was_clicked]" value="save" form="<%= form_id %>"
+          <%= 'disabled' if !repc.signed_by_company_at.present? %>
+          <%= 'disabled' if repc.id != project.repc.id %>
+          <%= 'disabled' if repc.rejected? %>
+          <%= 'disabled' if repc.accepted? %>
+	  >
+    SEND REPC v<%= repc.version %> TO SELLER
+  </button>
+</div>

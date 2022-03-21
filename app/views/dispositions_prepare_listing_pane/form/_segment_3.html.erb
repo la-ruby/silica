@@ -1,0 +1,21 @@
+<% project = Project.find(project_id) %>
+
+<div class="container">
+
+  <div class="container">
+    <div class="row">
+      <div class="col mt-3">
+        <div>Property Images</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width: 500px">
+    <%= render '/projects/shared/kodaks', project: project.id %>
+  </div>
+</div>
+
+<div class="container">
+  <hr />
+</div>
+

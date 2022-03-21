@@ -1,0 +1,14 @@
+<% project = Project.find(project_id)
+   intake_form = project.intake_form
+%>
+
+<hr>
+Other Notes
+
+<div class="row">
+  <div class="col mx-3 py-3">
+    <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= intake_form.other_notes %></span>
+    <input type="hidden" name="underwriting_intake_form_pane[other_notes]" form="<%= form_id %>" value="<%= intake_form.other_notes %>" />
+  </div>
+</div>
+

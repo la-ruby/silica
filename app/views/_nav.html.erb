@@ -1,0 +1,16 @@
+<nav id="apollo-nav" class="navbar navbar-light navbar-expand-lg fixed-top <%= (@area&.menu_mode == "mop" || @menu_mode == "mop") ? "bg-light" : theme_background_level_1! %>">
+  <div class="container-xxl">
+
+    <%= render '/nav/brand', menu_mode: (@area ? @area.menu_mode : @menu_mode), logo_link: logo_link, logo: logo, small_logo: small_logo %>
+    <%= render('/nav/wizard') if Rails.env.development? || APOLLO_INTERNAL_PRODUCTION %>
+
+    <%= render '/nav/toggler' %>
+
+    <% if should_show_offcanvas %>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <%= render '/nav/offcanvas_header' %>
+      <%= render '/nav/offcanvas_body', items: items, allow_session_buttons: allow_session_buttons %>
+    </div>
+   <% end %>
+  </div>
+</nav>

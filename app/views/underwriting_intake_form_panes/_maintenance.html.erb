@@ -1,0 +1,33 @@
+<% project = Project.find(project_id)
+   intake_form = project.intake_form
+%>
+
+<hr>
+Maintenance
+
+<div class="row">
+  <div class="col mx-3 py-3">
+
+    <div class="<%= demoted_text %>">Does the Property need to be cleaned</div>
+    <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= intake_form.does_the_property_need_to_be_cleaned %></span>
+    <input type="hidden" name="underwriting_intake_form_pane[does_the_property_need_to_be_cleaned]" form="<%= form_id %>"  value="<%= intake_form.does_the_property_need_to_be_cleaned %>" />
+  </div>
+
+  <div class="col mx-3 py-3">
+    <div class="<%= demoted_text %>">Is the property in an HOA or do we need to manage maintenance?</div>
+    <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= intake_form.is_the_property_in_an_hoa %></span>
+    <input type="hidden" name="underwriting_intake_form_pane[is_the_property_in_an_hoa]" form="<%= form_id %>"  value="<%= intake_form.is_the_property_in_an_hoa %>" />
+
+    <br>
+    <br>
+
+    <div class="<%= demoted_text %>">If there is an HOA who is the contact?</div>
+    <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= intake_form.if_there_is_an_hoa_who_is_the_contact %></span>
+    <input type="hidden" name="underwriting_intake_form_pane[if_there_is_an_hoa_who_is_the_contact]" form="<%= form_id %>" value="<%= intake_form.if_there_is_an_hoa_who_is_the_contact %>" />
+
+
+  </div>
+
+</div>
+
+<br>

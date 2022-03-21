@@ -1,0 +1,58 @@
+.apollo-calendar-inner {
+  width: 150px;
+  height: 150px;
+  background: #FFF;
+  position: relative;
+}
+
+.apollo-calendar-inner:before, .apollo-calendar-inner:after {
+  content: "";
+  height: 30px;
+  width: 11.25px;
+  background: white;
+  position: absolute;
+  top: -15px;
+  border-radius: 2px;
+  border: 0.5px dotted whitesmoke;
+}
+
+.apollo-calendar-inner:before {
+  left: 30px;
+}
+.apollo-calendar-inner:after {
+  right: 30px;
+}
+
+.apollo-calendar-inner span {
+  display: block;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+}
+
+.apollo-calendar span.month {
+  background: whitesmoke;
+  height: 37.5px;
+  color: white;
+  background: black;
+}
+
+.apollo-calendar span.date {
+  height: 105px;
+  font-size: 4vw;
+  positon: relative;
+  color: black;
+}
+
+.apollo-calendar span.date:after {
+  content: "";
+  height: 7.5px;
+  width: 150px;
+  background: whitesmoke;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 0.5;
+}

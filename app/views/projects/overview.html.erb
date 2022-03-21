@@ -1,0 +1,37 @@
+<% if UxPolicy.new(current_user, nil).overview? %>
+
+  <%= render '/shared/summary', project: @project %>
+
+  <%= render '/shared/tabs', project: @project, active: 'Overview' %>
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="bg-transparent apollo-1632849163">
+  
+  	<div class="container my-3">
+  	  <div class="row">
+              <%= render '/projects/overview/property_details', project_id: @project.id %>
+              <%= render '/projects/overview/seller_details', project_id: @project.id %>
+  
+  	  </div>
+  	</div>
+  
+  	<div class="container my-3">
+  	  <div class="row">
+              <div class="col-12 col-lg-5">
+                <%= render '/card', title: 'Property Images' do %>
+                  <%= render '/projects/shared/kodaks', project: @project.id %>
+                <% end %>
+              </div>
+              <%= render '/projects/overview/calendar' %>
+  	  </div>
+  
+  	</div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

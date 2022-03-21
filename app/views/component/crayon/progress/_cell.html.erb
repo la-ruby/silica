@@ -1,0 +1,49 @@
+<div style="position: relative; font-size: initial; display: inline-block; zwidth: 110px; height: 80px; outline: 0px dotted red; margin: 0; padding: 0" class="shorter-70px-mobiles">
+
+  <!-- layer 1 label -->
+  <div class="zfs-4 fw-light shorter-70px-mobiles" style="z-index: 103; outline: 0px solid yellow; position: absolute; zwidth: 110px; top: 65%; left: 0%;">
+    <%= label %>
+  </div>
+  <!-- /layer 1 label -->
+
+
+  <!-- layer 2 circle -->
+  <% if index == curr %>
+  <div style="z-index: 102; outline: 0px solid yellow; position: absolute; zwidth: 110px; top: 15%; left: 0%; ztransform: translate(-50%, -50%);" class="shorter-70px-mobiles">
+    <%= image_tag 'backend/circle-white-o-tick.png', style: "width: 40px" %>
+  </div>
+  <% else %>
+  <div style="z-index: 102; outline: 0px solid yellow; position: absolute; zwidth: 110px; top: 15%; left: 0%; ztransform: translate(-50%, -50%);" class="shorter-70px-mobiles">
+    <%= image_tag 'backend/circle-white-o.png', style: "width: 40px" %>
+  </div>
+  <% end %>
+  <!-- /layer 2 -->
+
+
+
+  <!-- layer 3 number -->
+  <% if index != curr %>
+  <div style="zfont-weight: bold; z-index: 104; outline: 0px solid yellow; position: absolute; zwidth: 110px; top: 25%; left: 0%; ztransform: translate(-50%, -50%);" class="shorter-70px-mobiles">
+    <%= index+1 %>
+  </div>  
+  <% end %>
+  <!-- /layer 3 number -->
+
+  <!-- layer 4 left line -->
+  <% if index != 0 && index < progress%>
+  <div style="z-index: 101; min-height: 2px; background: gray; outline: 0px solid yellow; position: absolute; width: 40px; top: 40%; left: 0%; ztransform: translate(-50%, -50%);">
+  </div>
+  <% end %>
+  <!-- /layer 4 left line -->
+
+
+  <% if index < progress && index+1 != progress %>
+  <!-- layer 5 right line -->
+  <div style="min-height: 2px; background: gray; outline: 0px solid yellow; position: absolute; width: 40px; top: 40%; right: 0%; ztransform: translate(-50%, -50%);">
+  </div>
+  <% end %>
+  <!-- /layer5 right line -->
+
+
+</div>
+

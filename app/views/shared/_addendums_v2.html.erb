@@ -1,0 +1,7 @@
+<% project = Project.find(project_id) %>
+
+<% project.addendums.each do |addendum| %>
+  <%= render '/component/addendum_version', addendum_version_id: addendum.most_recent_addendum_version.id, editable: editable  %>
+
+  <br><br>
+<% end %>

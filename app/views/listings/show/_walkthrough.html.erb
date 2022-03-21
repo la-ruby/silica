@@ -1,0 +1,35 @@
+<div class="ms-lg-5 px-3 mb-3 fw-light">
+  Walkthrough
+</div>
+
+<div class="rounded-giga mx-5 p-5 fw-light text-center <%= normal_text %> <%= theme_background_level_2! %>" style="opacity: 0.7">
+
+  <%
+    # way too many rescue here
+    walkthrough_date = listing.walkthrough_date.presence || nil
+    walkthrough_time = walkthrough_time rescue nil
+    parsed_walkthrough_date = Date.strptime(walkthrough_date, "%Y-%m-%d").to_time rescue nil
+  %>
+  <div class="row align-items-center my-3">
+    <div class="col-12 col-lg-6 justify-content-center d-flex">
+      <%= render '/listings/show/two_calendars/calendar', top: '', bottom: '',
+	  upper: ((parsed_walkthrough_date.strftime('%b').presence || '') rescue ''),
+	  lower: ((parsed_walkthrough_date.strftime("%d").presence || 'TBA') rescue 'TBA') %>
+    </div>
+    <div class="col-12 col-lg-6 text-center">
+      <% if parsed_walkthrough_date.present? %>
+      <%
+        cal = AddToCalendar::URLs.new(
+          start_datetime: parsed_walkthrough_date,
+          title: "Walkthrough", 
+          timezone: 'America/Denver')
+      %>
+
+      <a href="<%= cal.ical_url %>" type="button" class="my-4 btn btn-brandprimary fg-white-level-four zbtn-lg rounded-mega zfs-3 fw-light shadow">Add To Calendar</a>
+      <% else %>
+        -
+      <% end %>
+    </div>
+  </div>
+
+</div>

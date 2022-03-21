@@ -1,0 +1,20 @@
+<%
+  url = listing.project.primary_or_first_kodak ? url_for(listing.project.primary_or_first_kodak.variant(:large)) : silica_bucket('/mocks/placeholder.png')
+%>
+
+<div class=" position-relative" style="height: 515px; background-color: gray;
+		     background-image: url(<%= url %>); background-repeat: no-repeat;
+		     background-size:cover;
+		     background-position:center center;">
+  &nbsp;
+
+  <div class="d-none d-lg-block">
+    <%= render '/listings/show/button', listing: listing %>
+  </div>
+
+  <div class="d-none d-lg-block">
+    <%= render '/listings/show/cta', listing: listing %>
+  </div>
+
+
+</div>

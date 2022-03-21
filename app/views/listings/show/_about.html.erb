@@ -1,0 +1,15 @@
+<div class="container-xxl">
+  <div class="<%= Marketplace::StrongerStyle.css %>" style="<%= Marketplace::StrongerStyle.inline_css %>">
+    About This Property
+  </div>  
+</div>
+
+<div class="mb-1"><!-- spacer -->&nbsp;</div>
+
+<div class="container-xxl">
+  <div class="<%= Marketplace::BasicStyle.css %>" style="<%= Marketplace::BasicStyle.inline_css %>; width: 600px">
+    <%= listing.description %>
+    <%= 'No description' unless listing.description.present? %>
+  </div>  
+</div>
+

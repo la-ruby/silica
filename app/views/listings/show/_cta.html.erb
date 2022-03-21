@@ -1,0 +1,49 @@
+
+<%= form_with(url: "/inquiries", method: :post, id: 'inquiry-form') do |form| %>
+  <%= form.hidden_field 'inquiry[ip]', value: request.remote_ip %>
+  <%= form.hidden_field 'inquiry[url]', value: "#{APOLLO_MARKETPLACE_FULL_DOMAIN}/listings/#{listing.id}" %>
+<% end %>
+<div class="position-absolute bg-white zps-4 zpe-4 py-5 shadow"
+     style="top: 460px;
+	    left: 50% !important;
+            width: 360px;
+	    border-radius: 1.25rem;
+	    padding: 2.25rem 2.25rem;">
+  
+    <div class="<%= Marketplace::WeakStyle.css %>" style="<%= Marketplace::WeakStyle.inline_css %>">
+      Suggested
+    </div>
+    <div class="<%= Marketplace::StrongestStyle.css %>" style="<%= Marketplace::StrongestStyle.inline_css %>; letter-spacing: 2px">
+      <%= number_to_currency(listing.suggested_price || 0, precision: 0) %>
+    </div>
+    
+    <div class="mb-1"><!-- spacer -->&nbsp;</div>
+
+    <% [ ['Full Name', 'name', 'text'], ['Email', 'email', 'email'], ['Phone','phone', 'text'] ].each do |item| %>
+      <div class="<%= Marketplace::WeakStyle.css %>" style="<%= Marketplace::WeakStyle.inline_css %>">
+        <%= item[0] %>
+      </div>
+      <input form="inquiry-form" name="inquiry[<%= item[1] %>]" class="form-control" type="<%= item[2]%>">
+      <div class="" style="height: 4px"><!-- spacer -->&nbsp;</div>
+    <% end %>
+
+    <div class="" style="height: 4px"><!-- spacer -->&nbsp;</div>
+
+
+    <div class="" style="height: 4px"><!-- spacer -->&nbsp;</div>
+    <button form="inquiry-form" type="submit" class="fw-bold btn btn-danger w-100" style="background: #D32027; border-radius: 0.5rem">
+      Request Info
+    </button>
+    <div class="" style="height: 4px"><!-- spacer -->&nbsp;</div>
+
+    <div class="" style="height: 4px"><!-- spacer -->&nbsp;</div>
+    <a href="https://borrowers.groundfloor.us/<%= COMPANY_LC %>" target="_blank" role="button" class="btn btn-primary fw-bold w-100" style="background: #110777; border-radius: 0.5rem">
+      Get Funding
+    </a>
+    <div class="" style="height: 4px"><!-- spacer -->&nbsp;</div>
+
+    <hr style="background-color: #DCDEE6; height: 2px">
+
+    <%= render '/listings/show/buyer', listing: listing %>
+
+</div>

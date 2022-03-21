@@ -1,0 +1,22 @@
+<div class="<%= 'ms-5' if local_assigns[:indented] %>">
+
+   <div class="form-check">
+     <%= check_box nil, name, { class: 'form-check-input', checked: checked, form: form, data: {action: "change->property-disposition-checklist#submit"} }, 'true', 'false' %>
+     <label class="form-check-label">
+       <%= label %>
+     </label>
+   </div>
+   
+   <% if local_assigns[:associated_textarea_caption] %>
+     <div class="ms-4"><%= local_assigns[:associated_textarea_caption] %></div>
+   <% end %>
+
+   <% if local_assigns[:associated_textarea] %>
+     <div class="ms-4"><textarea class="form-control" zcols="30" rows="5" style="width: 400px" form="<%= form %>" name="<%= "#{name2}" %>" data-action="change->property-disposition-checklist#submit"><%= local_assigns[:associated_textarea_content] %></textarea></div>
+   <% end %>
+
+   <% if local_assigns[:associated_dateinput] %>
+     <div class="ms-4"><%= date_field(nil, name2, { form: form, value: local_assigns[:associated_dateinput_value], data: {action: "change->property-disposition-checklist#submit"} }) %></div>
+   <% end %>
+
+</div>

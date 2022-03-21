@@ -1,0 +1,128 @@
+<% project = Project.find(project_id)
+   %>
+
+<div class="container">
+  <div class="row ms-2">
+    <div class="col p-2">
+      <p>Term Details</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- row 1 -->
+  <div class="row ms-2">
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">Down Payment</label>
+        <%= text_field_tag 'dispositions_prepare_listing_pane[down_payment]', project.listing.down_payment, class: 'form-control', form: form_id, disabled: !project.dispositions_prepare_listing_term_details_editable?, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">Monthly Payment</label>
+        <%= text_field_tag 'dispositions_prepare_listing_pane[monthly_payment]', project.listing.monthly_payment, class: 'form-control', form: form_id, disabled: !project.dispositions_prepare_listing_term_details_editable?, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">DOWN PAYMENT</label>
+        <%= text_field_tag 'down_payment_2', nil, class: 'form-control bg-transparent', form: form_id, readonly: true, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">MONTHLY PAYMENT</label>
+        <%= text_field_tag 'monthly_payment_2', nil, class: 'form-control bg-transparent', form: form_id, readonly: true, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+  </div>
+  <!-- /row 1 -->
+
+
+  <!-- row 2 -->
+  <div class="row ms-2">
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">Term Length (Months)</label>
+        <%= text_field_tag 'dispositions_prepare_listing_pane[term_length]', project.listing.term_length, class: 'form-control', form: form_id, disabled: !project.dispositions_prepare_listing_term_details_editable?, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">Estimated Remaining Mortgage</label>
+        <%= text_field_tag 'dispositions_prepare_listing_pane[estimated_remaining_mortgage]', project.listing.estimated_remaining_mortgage, class: 'form-control', form: form_id, disabled: !project.dispositions_prepare_listing_term_details_editable?, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">TERM LENGTH (MONTHS)</label>
+        <%= text_field_tag 'term_length_2', nil, class: 'form-control bg-transparent', form: form_id, readonly: true, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">ESTIMATED REMAINING MORTGAGE</label>
+        <%= text_field_tag 'estimated_remaining_mortgage_2', nil, class: 'form-control bg-transparent', form: form_id, readonly: true, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+  </div>
+  <!-- /row 2 -->
+
+
+
+  <!-- row 3 -->
+  <div class="row ms-2">
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">Interest Rate</label>
+        <%= text_field_tag 'dispositions_prepare_listing_pane[interest_rate]', project.listing.interest_rate, class: 'form-control', form: form_id, disabled: !project.dispositions_prepare_listing_term_details_editable?, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">Balloon Payment</label>
+        <%= text_field_tag 'dispositions_prepare_listing_pane[balloon_payment]', project.listing.balloon_payment, class: 'form-control', form: form_id, disabled: !project.dispositions_prepare_listing_term_details_editable?, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">INTEREST RATE</label>
+        <%= text_field_tag 'interest_rate_2', nil, class: 'form-control bg-transparent', form: form_id, readonly: true, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <label class="form-label mb-0" for="title">BALLOON PAYMENT</label>
+        <%= text_field_tag 'balloon_payment_2', nil, class: 'form-control bg-transparent', form: form_id, readonly: true, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+    </div>
+
+  </div>
+  <!-- /row 3 -->
+
+</div>
