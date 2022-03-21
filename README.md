@@ -1,84 +1,121 @@
 
-# created-rails-app
-
-![](https://img.shields.io/github/stars/la-ruby/created-rails-app.svg) ![](https://img.shields.io/github/forks/la-ruby/created-rails-app.svg) ![](https://img.shields.io/github/issues/la-ruby/created-rails-app.svg)
+![](https://img.shields.io/github/stars/la-ruby/silica.svg) ![](https://img.shields.io/github/forks/la-ruby/silica.svg) ![](https://img.shields.io/github/issues/la-ruby/silica.svg)
 
 
-### First Time Setup
+
+### First time setup
 
 ```
- 
-$ cd ~/
- 
-$ git clone git@github.com:la-ruby/created-rails-app.git
-Cloning into 'created-rails-app'...
-remote: Enumerating objects: 3377, done.
-remote: Counting objects: 100% (342/342), done.
-remote: Compressing objects: 100% (212/212), done.
-remote: Total 3377 (delta 194), reused 258 (delta 123), pack-reused 3035
-Receiving objects: 100% (3377/3377), 3.59 MiB | 1.76 MiB/s, done.
-Resolving deltas: 100% (1767/1767), done.
+$ git clone https://github.com/la-ruby/silica.git
+Cloning into 'silica'...
+remote: Enumerating objects: 631, done.
+remote: Counting objects: 100% (631/631), done.
+remote: Compressing objects: 100% (533/533), done.
+remote: Total 631 (delta 69), reused 631 (delta 69), pack-reused 0
+Receiving objects: 100% (631/631), 1.37 MiB | 2.10 MiB/s, done.
+Resolving deltas: 100% (69/69), done.
+```
 
-$ cd created-rails-app/
 
+
+
+Prerequisites:
+
+```
+$ brew install postgresql
+$ brew install redis
+$ brew install rbenv
+$ rbenv install 3.x.x
+```
+
+
+```
+$ cd silica
 $ ./bin/setup
 == Installing dependencies ==
-The Gemfile's dependencies are satisfied
+https://github.com/rails/rails.git (at 7-0-stable@6a0f6c4) is not yet checked out. Run `bundle install` first.
+Fetching https://github.com/rails/rails.git
+Fetching gem metadata from https://rubygems.org/..........
+Fetching https://github.com/hotwired/turbo-rails.git
+Fetching https://github.com/heartcombo/devise
+Fetching https://github.com/varvet/pundit
+Fetching https://github.com/bullet-train-co/nice_partials
+Fetching https://github.com/kaminari/kaminari
+Fetching https://github.com/thoughtbot/factory_bot_rails
+Fetching https://github.com/faker-ruby/faker
+Fetching https://github.com/y-yagi/minitest-test_profile
+Fetching https://github.com/bblimke/webmock
+Fetching https://github.com/vcr/vcr
+Fetching https://github.com/Rykian/clockwork
+Fetching https://github.com/huacnlee/rails-settings-cached
+...
+Installing sassc-rails 2.1.2
+Bundle complete! 36 Gemfile dependencies, 124 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
 
 == Preparing database ==
-Created database 'wood_development'
-Created database 'wood_test'
+Created database 'apollo_development'
+Created database 'apollo_test'
 
 == Removing old logs and tempfiles ==
 
 == Restarting application server ==
+$ 
+```
 
-$ ./bin/rails test
-Running 7 tests in a single process (parallelization threshold is 50)
-Run options: --seed 34377
 
-# Running:
-
-.......
-
-Finished in 0.905505s, 7.7305 runs/s, 9.9392 assertions/s.
-7 runs, 9 assertions, 0 failures, 0 errors, 0 skips
-
-$ ./bin/rails server
+```
+$ ./bin/rails s
 => Booting Puma
-=> Rails 7.0.2.2 application starting in development 
+=> Rails 7.0.0 application starting in development 
 => Run `bin/rails server --help` for more startup options
 Puma starting in single mode...
-* Puma version: 5.6.2 (ruby 3.0.3-p157) ("Birdie's Version")
+* Puma version: 5.5.2 (ruby 3.0.3-p157) ("Zawgyi")
 *  Min threads: 5
 *  Max threads: 5
 *  Environment: development
-*          PID: 93154
+*          PID: 66771
 * Listening on http://127.0.0.1:3000
 * Listening on http://[::1]:3000
 Use Ctrl-C to stop
+```
 
 
 
+
+Add a /etc/hosts entry
+
+```
+127.0.0.1       backend.example.com
+```
+
+
+(optional) Get a copy of development bucket from a senior developer, place it at ~/silica-bucket/
+
+```
+$ cd ~/silica-bucket
+$ python -m SimpleHTTPServer 5000
+```
+
+
+Create an admin user
+
+```
+echo 'User.create!(email: "testing.developer.1@example.com", password
+: "password")' | ./bin/rails console
+```
+
+
+```
+$ open http://backend.example.com:3000/projects
 
 ```
 
 
-### Edit master key
+___
 
-```
-$ EDITOR=vim rails credentials:edit
-Adding config/master.key to store the encryption key: example3afed74ffffff6ad3d6ffffffe
 
-Save this in a password manager your team can access.
-
-If you lose the key, no one, including you, can access anything encrypted with it.
-
-      create  config/master.key
-...
-$
-```
-
+## Maintenance
 
 ### Upgrading rails
 
