@@ -38,5 +38,16 @@ module ApplicationHelper
     server = (Rails.env.production? ? 'https://silica-bucket.s3.amazonaws.com' : 'http://localhost:5000')
     "#{server}/#{brand}/#{rails_env}#{file_or_path}"
   end
+
+  def status_icon(status)
+    if status == 'Completed Won'
+      '<i class="far fa-check-circle text-warning"></i>'.html_safe
+    elsif status == 'Completed Closed/Lost'
+      '<i class="far fa-times-circle"></i>'.html_safe
+    else
+      '<i class="far fa-circle"></i>'.html_safe
+    end
+     
+  end
 end
 
