@@ -2,6 +2,7 @@ module Search
   # simplified version of what used to be advanced_search
   def search(query: nil,
                   sourcefilter: nil,
+                  statusfilter: nil,
                   statefilter: nil,
                   cityfilter: nil,
                   req_date: nil,
@@ -23,6 +24,10 @@ module Search
     if sourcefilter.present?
       sources = sourcefilter.split('__')
       rel = rel.where(direction: sources)
+    end
+    if statusfilter.present?
+      statuses = statusfilter.split('__')
+      rel = rel.where(status: statuses)
     end
     if statefilter.present?
       states = statefilter.split('__')

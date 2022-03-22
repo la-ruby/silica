@@ -11,6 +11,7 @@
         <%= form.hidden_field :sourcefilter, value: '' %>
         <%= form.hidden_field :req_date, value: '' %>
         <%= form.hidden_field :offer_sent, value: '' %>
+        <%= form.hidden_field :statusfilter, value: '' %>
         <%= form.hidden_field :sort_by, value: '' %>
         <%= form.hidden_field :sort_direction, value: '' %>
       <% end %>
@@ -32,6 +33,9 @@
       </div>
       <div class="col-auto">
         <%= render '/projects/bar/source_filter' %>
+      </div>
+      <div class="col-auto">
+        <%= render '/projects/bar/status_filter' %>
       </div>
     </div>
   </div>

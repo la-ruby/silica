@@ -1,0 +1,10 @@
+<div id="a1632190783">
+  <% ["Open", "Completed Closed/Lost", "Completed Won"].each do |status| %>
+  <div class="form-check form-control-sm">
+    <input class="form-check-input set1647920102" type="checkbox" value="<%= status %>" <%= 'checked' if (params[:statusfilter] || "").split('__').include? status %>>
+    <label class="form-check-label <%= normal_text %>" for="defaultCheck1">
+      <%= status %>
+    </label>
+  </div>
+  <% end %>
+</div>

@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
     @statefilter = params[:statefilter]
     @cityfilter = params[:cityfilter]
     @sourcefilter = params[:sourcefilter]
+    @statusfilter = params[:statusfilter]
     @req_date = params[:req_date]
     @offer_sent = params[:offer_sent]
     @sort_by = params[:sort_by]
