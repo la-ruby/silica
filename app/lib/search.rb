@@ -73,6 +73,8 @@ module Search
     rel = rel.order('addendum_sent DESC') if sort_by == 'addendum_sent' && sort_direction == 'desc'
     rel = rel.order('direction') if sort_by == 'source' && sort_direction == 'asc'
     rel = rel.order('direction DESC') if sort_by == 'source' && sort_direction == 'desc'
+    rel = rel.order('lower(status) ASC') if sort_by == 'status' && sort_direction == 'asc'
+    rel = rel.order('lower(status) DESC') if sort_by == 'status' && sort_direction == 'desc'
 
     if !sort_by.present?
       rel = rel.order(

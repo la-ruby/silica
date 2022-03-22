@@ -50,4 +50,7 @@
   <td class="text-center <%= normal_text %>">
     <span class="d-inline-block text-truncate" style="max-width: 2vw"><%= project.direction %></span>
   </td>
+  <td class="text-center <%= normal_text %>">
+    <%= status_icon(project.status) %>
+  </td>
 </tr>

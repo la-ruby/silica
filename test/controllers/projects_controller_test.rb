@@ -6,7 +6,10 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "get index as admin" do
-    project = create(:project)
+    project = create(:project, status: 'Open')
+    project = create(:project, status: 'Completed Won')
+    project = create(:project, status: 'Completed Closed/Lost')
+
     get "/projects"
     assert_equal "200", response.code
   end
