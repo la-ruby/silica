@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html do
         if create_project
-          redirect_to projects_path
+          redirect_to "/projects/#{@project.id}/overview"
         else
           render :new, status: :unprocessable_entity
         end
