@@ -5,12 +5,14 @@
 
 <nav class="text-center w-100 shadow-lg py-3 sepr fixed-bottom py-2" style="background-color: rgba(255,255,255,0.8)"
      data-controller="acceptance">
+  <% unless we_will_be_in_touch %>
   <div class="row justify-content-center align-items-center">
     <div class="col">
       <input class="form-check-input" type="checkbox" value="" id="check1647537625" data-action="acceptance#checkbox" <%= 'disabled' if we_will_be_in_touch %>>
       I understand and agree to <%= COMPANY %>'s Terms & Conditions and Privacy Policy
     </div>
   </div>
+  <% end %>
   <div class="row justify-content-center align-items-center">
     <div class="col-3">
       <!-- spacer -->&nbsp;
