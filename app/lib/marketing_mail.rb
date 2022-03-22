@@ -64,8 +64,8 @@ class MarketingMail
         plain_content: plain_content, # TODO: swap with real content
         html_content: html_content,  # TODO: swap with real content
         subject: blurb,
-        sender_id: SENGRID_SENDER_ID,
-        suppression_group_id: SENDGRID_SUPPRESSION_GROUP_ID }
+        sender_id: SENGRID_SENDER_ID.to_i,
+        suppression_group_id: SENDGRID_SUPPRESSION_GROUP_ID.to_i }
     }
     response = sg.client.marketing.singlesends.post(request_body: data)
     Rails.logger.info response.status_code
