@@ -27,7 +27,7 @@ class MarketingMail
     plain_content.gsub! '{{year}}', (project.listing.year.to_s rescue '')
     plain_content.gsub! '{{bed}}', (project.listing.beds.to_s rescue '')
     plain_content.gsub! '{{bath}}', (project.listing.baths.to_s rescue '')
-    plain_content.gsub! '{{misc}}', project.listing.legacy_description.to_s
+    plain_content.gsub! '{{misc}}', project.listing.description.to_s
     plain_content.gsub! '{{street}}', project.listing.project.street.to_s
     plain_content.gsub! '{{city}}', project.listing.project.city.to_s
     plain_content.gsub! '{{state}}', project.listing.project.state.to_s
@@ -45,7 +45,7 @@ class MarketingMail
     html_content.gsub! '{{year}}', (project.listing.year.to_s rescue '')
     html_content.gsub! '{{bed}}', (project.listing.beds.to_s rescue '')
     html_content.gsub! '{{bath}}', (project.listing.baths.to_s rescue '')
-    html_content.gsub! '{{misc}}', project.listing.legacy_description.to_s
+    html_content.gsub! '{{misc}}', project.listing.description.to_s
     html_content.gsub! '{{street}}', project.listing.project.street.to_s
     html_content.gsub! '{{city}}', project.listing.project.city.to_s
     html_content.gsub! '{{state}}', project.listing.project.state.to_s
