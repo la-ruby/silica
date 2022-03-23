@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The AvVerdictHelpers module
 module AvVerdictHelpers
   extend ActiveSupport::Concern
 
@@ -36,11 +37,8 @@ module AvVerdictHelpers
     end
 
     def accepted_by?(second_seller_mode)
-      if second_seller_mode
-        accepted_at.present? || second_seller_accepted_at.present?
-      else
-        accepted_at.present?
-      end
+      accept = accpeted_at
+      second_seller_mode ?  second_seller_mode accepted_at.present? || second_seller_accepted_at.present? : second_seller_mode  accepted.present?     
     end
 
     def rejected_by?(second_seller_mode)

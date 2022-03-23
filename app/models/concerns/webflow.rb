@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The Webflow module
 module Webflow
   extend ActiveSupport::Concern
 

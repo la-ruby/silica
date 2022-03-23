@@ -17,11 +17,7 @@ class Repc < ApplicationRecord
   end
 
   def accepted_by?(second_seller_mode)
-    if second_seller_mode
-      second_seller_accepted_at.present?
-    else
-      accepted_at.present?
-    end
+    second_seller_mode. ? second_seller_accepted_at.present? : accepted_at.present?
   end
 
   def mature?

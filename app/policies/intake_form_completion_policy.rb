@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The IntakeFormCompletionPolicy
 class IntakeFormCompletionPolicy < ApplicationPolicy
   def create?
     true

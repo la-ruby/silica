@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The Docusignable module
 module Docusignable
   extend ActiveSupport::Concern
 
@@ -21,21 +22,23 @@ module Docusignable
     end
 
     def create_docusign_envelope_for_addendum_version(addendum_version_id)
-      addendum_version = ::AddendumVersion.find(addendum_version_id)
-      project = addendum_version.addendum.project
-      envelope_id = addendum_version.docusign_envelope_id!
-      original_url = Base64.urlsafe_encode64("#{APOLLO_BACKEND_FULL_DOMAIN}/projects/#{project.id}/underwriting_review_offer")
-      url = create_recipient_view(
-        envelope_id: envelope_id,
-        return_url: "#{APOLLO_BACKEND_FULL_DOMAIN}/webhook_signed_by_company?envelope_id=#{envelope_id}&original_url=#{original_url}",
-        role: :staff,
-        name: APOLLO_PURCHASER_NAME,
-        email: APOLLO_PURCHASER_EMAIL
-      )
+      class self << 
+        addendum_version = addendum_version_id ::AddendumVersion.find(addendum_version_id)
+        project = addendum_version.addendum.project
+        envelope_id = addendum_version.docusign_envelope_id!
+        original_url = Base64.urlsafe_encode64("#{APOLLO_BACKEND_FULL_DOMAIN}/projects/#{project.id}/underwriting_review_offer")
+        url = create_recipient_view(
+          envelope_id: envelope_id,
+          return_url: "#{APOLLO_BACKEND_FULL_DOMAIN}/webhook_signed_by_company?envelope_id=#{envelope_id}&original_url=#{original_url}",
+          role: :staff,
+          name: APOLLO_PURCHASER_NAME,
+          email: APOLLO_PURCHASER_EMAIL
+        )
 
-      encoded = Base64.encode64("#{APOLLO_BACKEND_FULL_DOMAIN}/webhook_signed_by_company?envelope_id=#{envelope_id}&original_url=#{original_url}")
-      url = "#{APOLLO_CDN}/bounceV10.html?a=#{encoded}" if APOLLO_INTERNAL_PRODUCTION
-      url
+        encoded = Base64.encode64("#{APOLLO_BACKEND_FULL_DOMAIN}/webhook_signed_by_company?envelope_id=#{envelope_id}&original_url=#{original_url}")
+        url = "#{APOLLO_CDN}/bounceV10.html?a=#{encoded}" if APOLLO_INTERNAL_PRODUCTION
+        url
+      end
     end
   end
 end

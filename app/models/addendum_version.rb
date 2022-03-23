@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The AddendumVersion class
 class AddendumVersion < ApplicationRecord
   include PrettyDate
   include AvTestHelpers

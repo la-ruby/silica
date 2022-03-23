@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The Area module
 module Area
   class Mbo
     def nav

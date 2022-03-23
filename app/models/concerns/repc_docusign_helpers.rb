@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The RepcDocusignHelpers module
 module RepcDocusignHelpers
   extend ActiveSupport::Concern
 
@@ -12,6 +13,7 @@ module RepcDocusignHelpers
 
     # rubocop: disable Metrics/AbcSize
     def make_envelope
+      seller = project
       DocuSign::EnvelopeRequest.new.perform(
         second_seller_mode: project.dual?,
         template_id: repc_template_id,
@@ -22,12 +24,12 @@ module RepcDocusignHelpers
         real_estate_professional: real_estate_professional,
         closing_costs_paid_by: closing_costs_paid_by,
         purchase_price: purchase_price_pretty,
-        seller_name: project.name,
-        seller_email: project.email,
-        seller_phone: project.phone,
-        second_name: project.secondName,
-        second_email: project.secondEmail,
-        second_phone: project.secondPhone,
+        seller_name: seller.name,
+        seller_email: seller.email,
+        seller_phone: seller.phone,
+        second_name: seller.secondName,
+        second_email: seller.secondEmail,
+        second_phone: seller.secondPhone,
         address: project.combined_address_with_zip,
         earnest_money: earnest_money,
         agreement_date: apollo_date2(agreement_date),

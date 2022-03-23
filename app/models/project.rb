@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# :reek:MissingSafeMethod { exclude: [ dual_for_testing! ] }
+# The Project class show projects infos
 class Project < ApplicationRecord
   include DocuSign::Mixin
   include PrettyDate
@@ -66,11 +68,11 @@ class Project < ApplicationRecord
     return if repc.offer_terms != 'yes'
 
     str = ''
-    str += "Down Payment: $#{repc.down_payment}\n" if repc.down_payment.present?
-    str += "Term Length: #{repc.term_length} mos\n" if repc.term_length.present?
-    str += "Interest Rate: #{repc.interest_rate}%\n" if repc.interest_rate.present?
-    str += "Monthly Payment: $#{repc.monthly_payment}\n" if repc.monthly_payment.present?
-    str += "Balloon Payment: $#{repc.balloon_payment}\n" if repc.balloon_payment.present?
+    str += "Down Payment: $#{repc.down_payment}\n" 
+    str += "Term Length: #{repc.term_length} mos\n" 
+    str += "Interest Rate: #{repc.interest_rate}%\n" 
+    str += "Monthly Payment: $#{repc.monthly_payment}\n" 
+    str += "Balloon Payment: $#{repc.balloon_payment}\n" 
     str
   end
   # rubocop: enable Metrics/AbcSize
@@ -94,7 +96,8 @@ class Project < ApplicationRecord
   def dual?
     secondName.present? && secondEmail.present?
   end
-
+  
+  
   def dual_for_testing!
     update!(secondName: 'Testing', secondEmail: 'testing@example.net', secondPhone: '(111) 123-4567')
   end

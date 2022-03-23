@@ -7,6 +7,8 @@ detectors:
     exclude:
     - DeviseCreateUsers#change
     - CreateExamples#change
+  LongParameterList:
+    max_params: 10
   InstanceVariableAssumption:
     exclude:
     - ExamplesController
@@ -41,6 +43,7 @@ detectors:
     - ExamplesController#destroy
     - ExamplesController#update
     - DeviseCreateUsers#change
+    max_statements: 8
   UncommunicativeVariableName:
     exclude:
     - DeviseCreateUsers#change

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The BuildInitialRecords module
 module BuildInitialRecords
   extend ActiveSupport::Concern
 
@@ -23,10 +24,11 @@ module BuildInitialRecords
     before_create :build_default_repc
 
     def build_default_repc
+      securerandom = SecureRandom
       repcs << Repc.new(
         version: '1',
         mop_token: SecureRandom.hex,
-        mop_token_secondary: SecureRandom.hex
+        mop_token_secondary: securerandom.hex
       )
       true
     end
