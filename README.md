@@ -83,10 +83,12 @@ Use Ctrl-C to stop
 
 
 
-Add a /etc/hosts entry
+Add a /etc/hosts entries
 
 ```
-127.0.0.1       backend.example.com
+127.0.0.1       backend.silica.com
+127.0.0.1       portal.mysilicaoffer.com
+127.0.0.1       app.silicamarket.io
 ```
 
 
@@ -107,7 +109,7 @@ $ echo 'User.create!(email: "testing.developer.1@example.com", password
 
 
 ```
-$ open http://backend.example.com:3000/projects
+$ open http://backend.silica.com:3000/projects
 
 ```
 
