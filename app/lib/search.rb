@@ -1,21 +1,22 @@
+# frozen_string_literal: true
+
 module Search
   # simplified version of what used to be advanced_search
+  # rubocop: disable Metrics/AbcSize
   def search(query: nil,
-                  sourcefilter: nil,
-                  statusfilter: nil,
-                  statefilter: nil,
-                  cityfilter: nil,
-                  req_date: nil,
-                  offer_sent: nil,
-                  sort_by: nil, sort_direction: nil, page: 1, per: 25)
+             sourcefilter: nil,
+             statusfilter: nil,
+             statefilter: nil,
+             cityfilter: nil,
+             req_date: nil,
+             offer_sent: nil,
+             sort_by: nil, sort_direction: nil, page: 1, per: 25)
     rel = Project
 
     #
     # searching
     #
-    if query.present?
-      rel = rel.where("searchable ILIKE '%#{query}%'")
-    end
+    rel = rel.where("searchable ILIKE '%#{query}%'") if query.present?
     # /searching
 
     #
@@ -81,7 +82,7 @@ module Search
     rel = rel.order('lower(status) ASC') if sort_by == 'status' && sort_direction == 'asc'
     rel = rel.order('lower(status) DESC') if sort_by == 'status' && sort_direction == 'desc'
 
-    if !sort_by.present?
+    unless sort_by.present?
       rel = rel.order(
         Arel.sql("(case status when 'Open' then 1 else 2 end)"),
         Arel.sql('created_at DESC')
@@ -92,4 +93,5 @@ module Search
     # pagination
     rel.page(page).per(per)
   end
+  # rubocop: enable Metrics/AbcSize
 end

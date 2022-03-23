@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Class User
 class User < ApplicationRecord
   has_many :bids
   has_many :listings, through: :bids
@@ -12,7 +13,7 @@ class User < ApplicationRecord
 
   # nickname shown in top nav
   def nick
-    email.split('@').first.gsub(/\W/,'_').titleize
+    email.split('@').first.gsub(/\W/, '_').titleize
   end
 
   # some restrictions apply to these users

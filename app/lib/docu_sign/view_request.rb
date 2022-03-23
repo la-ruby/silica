@@ -1,23 +1,27 @@
+# frozen_string_literal: true
+
 module DocuSign
   # Docusign Recipient View Request
   class ViewRequest
+    # rubocop: disable Metrics/AbcSize
     def perform(envelope_id:, return_url:, name:, email:, role:)
       return 'not-used' if APOLLO_INTERNAL_PRODUCTION
 
-      if role == :staff
+      case role
+      when :staff
         client_user_id = '1000'
-      elsif role == :seller
+      when :seller
         client_user_id = '1001'
-      elsif role == :second_seller
+      when :second_seller
         client_user_id = '1002'
       end
 
       body = {
-          'returnUrl' => return_url,
-          'authenticationMethod' => 'none',
-          'userName' => name,
-          'email' => email,
-          'clientUserId' => client_user_id
+        'returnUrl' => return_url,
+        'authenticationMethod' => 'none',
+        'userName' => name,
+        'email' => email,
+        'clientUserId' => client_user_id
       }
       uri = URI("https://na3.docusign.net/restapi/v2.1/accounts/#{DOCU_SIGN_ACCOUNT_ID}/envelopes/#{envelope_id}/views/recipient")
       Net::HTTP.start('na3.docusign.net', 443, use_ssl: true) do |http|
@@ -26,8 +30,9 @@ module DocuSign
         req['Authorization'] = "Bearer #{DocuSign::TokenRequest.new.perform}"
         req.body = body.to_json
         response = http.request(req)
-        JSON.parse(response.body).dig('url')
+        JSON.parse(response.body)['url']
       end
     end
+    # rubocop: enable Metrics/AbcSize
   end
 end

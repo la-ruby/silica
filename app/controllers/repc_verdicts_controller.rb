@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+
 class RepcVerdictsController < ApplicationController
   include DocuSign::Mixin
 
   # POST /examples or /examples.json
+  # rubocop: disable Metrics/AbcSize
   def create
     @repc = Repc.find params[:repc_id]
     @second_seller_mode = (params[:second_seller_mode] == 'true')
     @url = ''
     process_rejection if params[:action_button] == 'reject'
     process_acceptance if params[:action_button] == 'sign_via_docusign'
-    
+
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
@@ -17,6 +20,7 @@ class RepcVerdictsController < ApplicationController
       end
     end
   end
+  # rubocop: enable Metrics/AbcSize
 
   private
 
@@ -32,6 +36,7 @@ class RepcVerdictsController < ApplicationController
     end
   end
 
+  # rubocop: disable Metrics/AbcSize
   def process_acceptance
     if @second_seller_mode
       @url = create_recipient_view(
@@ -55,4 +60,5 @@ class RepcVerdictsController < ApplicationController
       @url = "https://#{APOLLO_CDN}/bounceV10.html?a=#{encoded}" if APOLLO_INTERNAL_PRODUCTION
     end
   end
+  # rubocop: enable Metrics/AbcSize
 end

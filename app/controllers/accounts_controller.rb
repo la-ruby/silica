@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AccountsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_account, only: %i[ show edit update destroy ]
+  before_action :set_account, only: %i[show edit update destroy]
   before_action :set_ivars
 
   # GET /accounts/1 or /accounts/1.json
@@ -11,7 +13,7 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1 or /accounts/1.json
   def update
     authorize @account, policy_class: AccountPolicy
-    @message = "Saved"
+    @message = 'Saved'
     @account.update(password: params[:password]) if savable?
 
     respond_to do |format|
@@ -25,22 +27,23 @@ class AccountsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_account
-      @account = User.find(params[:id])
-    end
 
-    def valid?
-      params[:password] == params[:password_confirmation]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_account
+    @account = User.find(params[:id])
+  end
 
-    def savable?
-      result = params[:password].present? && valid?
-      @message = "Error" unless result
-      result
-    end
+  def valid?
+    params[:password] == params[:password_confirmation]
+  end
 
-    def set_ivars
-      @area = Area::Backend.new
-    end
+  def savable?
+    result = params[:password].present? && valid?
+    @message = 'Error' unless result
+    result
+  end
+
+  def set_ivars
+    @area = Area::Backend.new
+  end
 end

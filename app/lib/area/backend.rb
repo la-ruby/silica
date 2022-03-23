@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Area
   class Backend
     def nav
@@ -25,4 +27,3 @@ module Area
     end
   end
 end
- 

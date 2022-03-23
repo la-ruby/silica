@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# class AcountPolicy
 class AccountPolicy < ApplicationPolicy
   def show?
     user.id == record.id

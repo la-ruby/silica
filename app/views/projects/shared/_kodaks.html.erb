@@ -8,7 +8,7 @@
   <%= render('/projects/shared/kodaks/header', project: project.id) if project.kodaks.present? %>
 
   <% project.kodaks.each_with_index do |kodak, index| %>
-    <div class="row text-muted <%= index.even? ? theme_background_level_2! : theme_background_level_1! %>">
+    <div class="row text-muted <%= index.even? ? theme_background_level_two! : theme_background_level_1! %>">
       <div class="col">
         <div class="d-flex align-items-center">
           <div class="position-relative" style="height: 90px; width: 120px; background-image: url('<%= url_for(kodak.pic.variant(:small)) %>'); background-size: cover; background-position:center center;">
@@ -47,7 +47,7 @@
   <% end %>
 
   <!-- dropzone -->
-  <div class="row <%= theme_background_level_2! %>">
+  <div class="row <%= theme_background_level_two! %>">
     <div class="col">
       <div class="d-flex align-items-center">
         <div id="dzone" data-controller="dzone" data-dzone-project-value="<%= project.id %>" style="width: 120px;"></div>

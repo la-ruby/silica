@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ThemeHelper
   def normal_text
     'apollo-fg-black-6 apollo-fs-16'
@@ -19,11 +21,11 @@ module ThemeHelper
     'apollo-bg-white-4-i'
   end
 
-  def theme_background_level_2!
+  def theme_background_level_two!
     'apollo-bg-white-3-i'
   end
 
-  def theme_background_level_3
+  def theme_background_level_three
     'apollo-bg-white-2'
   end
 end

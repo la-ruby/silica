@@ -1,25 +1,27 @@
 # frozen_string_literal: true
 
 class OfferRejectedMail
+  # rubocop: disable Metrics/AbcSize
   def perform(to:)
     raise 'Cannot send email without a to email address' unless to.present?
 
     Rails.logger.info 'Sending email'
-    to = [ { "email": to } ]    
-    to = [ { "email": APOLLO_ADMIN_LOGIN } ] if APOLLO_INTERNAL_PRODUCTION
+    to = [{ email: to }]
+    to = [{ email: APOLLO_ADMIN_LOGIN }] if APOLLO_INTERNAL_PRODUCTION
     data = {
-      "personalizations": [
+      personalizations: [
         {
-          "to": to,
-          "bcc": [ { "email": APOLLO_ADMIN_LOGIN } ],
-          "dynamic_template_data": {
-            representative: { name: APOLLO_PURCHASER_NAME, email: APOLLO_PURCHASER_EMAIL, phone: APOLLO_PURCHASER_PHONE },
+          to: to,
+          bcc: [{ email: APOLLO_ADMIN_LOGIN }],
+          dynamic_template_data: {
+            representative: { name: APOLLO_PURCHASER_NAME, email: APOLLO_PURCHASER_EMAIL,
+                              phone: APOLLO_PURCHASER_PHONE }
           }
         }
       ],
-      "from": { "email": "#{COMPANY} <#{SILICA_SUPPORT}>" },
-      "template_id": SENDGRID_TEMPLATE_OFFER_REJECTED,
-      "mail_settings": { "sandbox_mode": { "enable": !Rails.env.production? } }
+      from: { email: "#{COMPANY} <#{SILICA_SUPPORT}>" },
+      template_id: SENDGRID_TEMPLATE_OFFER_REJECTED,
+      mail_settings: { sandbox_mode: { enable: !Rails.env.production? } }
     }
     sg = SendGrid::API.new(api_key: SENDGRID_API_KEY)
     begin
@@ -28,4 +30,5 @@ class OfferRejectedMail
       response.headers['x-message-id'][0]
     end
   end
+  # rubocop: enable Metrics/AbcSize
 end

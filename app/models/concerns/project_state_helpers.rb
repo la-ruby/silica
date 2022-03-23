@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ProjectStateHelpers
   extend ActiveSupport::Concern
 
@@ -5,18 +7,16 @@ module ProjectStateHelpers
     def utah?
       state =~ /Utah/i || state =~ /\AUT/
     end
-    
+
     def north_carolina?
-      state =~ /North Carolina/i || state =~/\ANC/
+      state =~ /North Carolina/i || state =~ /\ANC/
     end
-    
+
     def detected_state
       if utah?
         'Utah'
       elsif north_carolina?
         'NC'
-      else
-        nil
       end
     end
   end

@@ -1,15 +1,16 @@
+# frozen_string_literal: true
+
 module RepcDocusignHelpers
   extend ActiveSupport::Concern
 
   included do
     # creates envelpoe if it doesnt exist
     def docusign_envelope_id!
-      unless docusign_envelope_id
-        update(docusign_envelope_id: make_envelope)
-      end
+      update(docusign_envelope_id: make_envelope) unless docusign_envelope_id
       docusign_envelope_id
     end
-    
+
+    # rubocop: disable Metrics/AbcSize
     def make_envelope
       DocuSign::EnvelopeRequest.new.perform(
         second_seller_mode: project.dual?,
@@ -39,6 +40,7 @@ module RepcDocusignHelpers
         title_company: (title_company.presence || '-')
       )
     end
+    # rubocop: enable Metrics/AbcSize
 
     def repc_template_id
       project.secondName.present? ? DOCU_SIGN_REPC_TEMPLATE_DUAL : DOCU_SIGN_REPC_TEMPLATE

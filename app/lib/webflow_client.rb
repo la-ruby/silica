@@ -5,6 +5,7 @@ class WebflowClient
   # :reek:ControlParameter
   # :reek:DuplicateMethodCall
   # :reek:TooManyStatements
+  # rubocop: disable Metrics/AbcSize
   def self.upload(url, method, body)
     uri = URI(url)
     Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
@@ -19,4 +20,5 @@ class WebflowClient
       JSON.parse(response.body)['_id']
     end
   end
+  # rubocop: enable Metrics/AbcSize
 end

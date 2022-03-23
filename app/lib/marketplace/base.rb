@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Marketplace
   class Base
     def self.inline_css

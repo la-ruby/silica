@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_project, except: %i[new create index]
-
+  # rubocop: disable Metrics/AbcSize
   def index
     @projects = Project.search(page: params[:page])
     @page = params[:page]
@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
     @sort_direction = params[:sort_direction]
     authorize @projects
   end
+  # rubocop: enable Metrics/AbcSize
 
   # GET /projects/new
   def new

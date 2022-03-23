@@ -8,10 +8,8 @@ module PrettyDate
     return result unless obj.present?
     return result unless obj.is_a?(String)
 
-    result = Date.strptime(obj, '%Y-%m-%d')
-               .strftime('%m-%d-%Y, %H:%M %p')
-
-    result
+    Date.strptime(obj, '%Y-%m-%d')
+        .strftime('%m-%d-%Y, %H:%M %p')
   rescue Date::Error
     obj
   end
@@ -22,10 +20,8 @@ module PrettyDate
     return result unless obj.present?
     return result unless obj.is_a?(String)
 
-    result = Date.strptime(obj, '%Y-%m-%d')
-               .strftime('%m-%d-%Y')
-
-    result
+    Date.strptime(obj, '%Y-%m-%d')
+        .strftime('%m-%d-%Y')
   rescue Date::Error
     obj
   end
@@ -36,10 +32,8 @@ module PrettyDate
     return result unless obj.present?
     return result unless obj.is_a?(String)
 
-    result = DateTime.strptime(obj, '%H:%M')
-               .strftime('%l:%M %p')
-
-    result
+    DateTime.strptime(obj, '%H:%M')
+            .strftime('%l:%M %p')
   rescue Date::Error
     obj
   end
@@ -50,19 +44,23 @@ module PrettyDate
     return result unless obj.present?
     return result unless obj.is_a?(String)
 
-    result = Date.strptime(obj, '%Y-%m-%d')
-               .strftime('%B %d, %Y')
-
-    result
+    Date.strptime(obj, '%Y-%m-%d')
+        .strftime('%B %d, %Y')
   rescue Date::Error
     obj
   end
 
   def apollo_date5(obj)
-    DateTime.iso8601(obj).strftime('%Y-%m-%dT%R') rescue ''
+    DateTime.iso8601(obj).strftime('%Y-%m-%dT%R')
+  rescue StandardError
+    ''
   end
 
   def apollo_date6(obj)
-    ((DateTime.iso8601(obj).strftime('%H:%M') rescue nil) || '-')
+    (begin
+      DateTime.iso8601(obj).strftime('%H:%M')
+    rescue StandardError
+      nil
+    end || '-')
   end
 end

@@ -1,6 +1,24 @@
 # inherit_from: .rubocop_todo.yml
 
+Documentation:
+  Enabled: false
+Layout/LineLength:
+  Max: 1000
+Metrics/ClassLength:
+  Max: 130
+Metrics/MethodLength:
+  Max: 200
+Metrics/CyclomaticComplexity:
+  Max: 60
+Metrics/BlockLength:
+  Max: 80
+Metrics/PerceivedComplexity:
+  Max: 200
+Metrics/ParameterLists:
+  Max: 20
+
 AllCops:
+  SuggestExtensions: false  
   Exclude:
     - 'test/**/*'
     - 'config/**/*'
@@ -17,3 +35,4 @@ AllCops:
     - 'app/views/examples/**/*'
     - 'app/models/example*'
   NewCops: enable
+ 
