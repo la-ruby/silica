@@ -1,0 +1,28 @@
+<div id="contacts-index-table" class="table-responsive">
+  <table class="table table-borderless">
+    <tbody>
+
+      <tr>
+        <td colspan="6" class="text-center"><i class="fas fa-exclamation-triangle"></i> <%= Faker::Lorem.sentence(word_count: 9) %> <%= Faker::Lorem.sentence(word_count: 2).chop %> <a href="https://example.com"><%= Faker::Lorem.words(number: 1).join %></a>.</td>
+      </tr>
+
+
+     <% $recent_contacts.reverse.each do |contact| %>
+        <%= render '/contacts/index/table/row', { values: contact } %>
+     <% end %>
+
+      <% 25.times do %>
+        <%= render '/contacts/index/table/row', { values: [
+              Faker::Name::first_name,
+              Faker::Name::last_name,
+              Faker::PhoneNumber.cell_phone,
+              Faker::Internet.email,
+              ['UT', 'NC'].sample(rand(1..2)).join(', '),
+	      '05/11'
+            ]  
+  	  } %>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>

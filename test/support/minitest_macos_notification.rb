@@ -8,8 +8,8 @@ require "minitest/reporters"
 Minitest::Reporters.use!(
   [
     Minitest::Reporters::DefaultReporter.new,
-    Minitest::Reporters::MacosNotificationReporter.new(
-      title: "minitest_macos_notification.rb")
+    # Minitest::Reporters::MacosNotificationReporter.new(
+    #   title: "minitest_macos_notification.rb")
   ],
   ENV,
   Minitest.backtrace_filter

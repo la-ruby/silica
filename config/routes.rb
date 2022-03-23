@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :repc_verdicts, only: [:create]
   resources :addendum_verdicts, only: [:create]
   resources :accounts
+  resources :contacts, only: [:index, :create]
 
   resources :themes, only: [:edit, :update]
   resources :projects, only: [:index, :new, :create] do

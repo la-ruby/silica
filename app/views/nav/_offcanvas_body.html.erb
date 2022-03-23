@@ -1,3 +1,8 @@
+<%
+  # TODO: Consider using pundit policies to determine the hiding of items
+  # intead of the nested conditional situation going on here
+%>
+
 <div class="offcanvas-body">
   <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
     <% items.each do |item| %>
@@ -43,19 +48,24 @@
         <%= current_user.nick %>
       </button>
       <ul class="dropdown-menu dropdown-menu-lg-end <%= theme_background_level_1! %>">
-        <% if current_user %>
         <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="/accounts/<%= current_user.id %>">Account</a></li>
-          <% if current_user.staff? %>
+        <% if current_user.staff? %>
           <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="/configurations">Edit Configurtion</a></li>
-          <% end %>
+        <% end %>
+        <% if policy(:sendgrid_marketing_list).index? %>
+        <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="/sendgrid_marketing_lists">Contacts <span class="badge rounded-pill bg-danger">new</span></a></li>
+        <% end %>
         <li class=""><a class="btn dropdown-item <%= normal_text! %> pe-none" href="https://example.net/">Notifications</a></li>
         <li>
           <%= button_to('Logout', destroy_user_session_path, method: :delete, class: "btn dropdown-item #{normal_text!}", style: '') %>
         </li>
-        <% end %>
-
       </ul>
     </div>
   </div>
   <% end %>
 </div>
+
+<%
+  # TODO: Consider using pundit policies to determine the hiding of items
+  # intead of the nested conditional situation going on here
+%>

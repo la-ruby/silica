@@ -1,0 +1,35 @@
+<div class="mb-1"><!-- spacer -->&nbsp;</div>
+<div class="mb-1"><!-- spacer -->&nbsp;</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="bg-transparent apollo-1632849163">
+	<div class="container my-3">
+	  <div class="row">
+
+            <div class="col">
+              <%= render '/card', title: 'Contacts' do |p| %>
+
+                <% if defined?(:p) && p %>
+                  <% p.content_for :heading_right do %>
+                    <%= render '/contacts/index/bar' %>
+
+
+                  <% end %>
+                <% end %>
+
+	        <%= render '/contacts/index/table' %>
+
+              <% end %>
+            </div>
+
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
