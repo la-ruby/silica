@@ -63,6 +63,26 @@ Created database 'apollo_test'
 $ 
 ```
 
+Run the tests
+
+
+```
+$ COVERAGE=1 PARALLEL_WORKERS=1 ./bin/rails test
+
+# Running tests with run options --seed 12345:
+
+...........................................................................................................................................
+
+Finished tests in 9.352455s, 14.8624 tests/s, 14.9693 assertions/s.
+
+
+139 tests, 140 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for tests to /Users/administrator/silica/coverage. 1535 / 1535 LOC (100.0%) covered.
+$
+```
+
+
+Start a development instance
 
 ```
 $ ./bin/rails s
