@@ -7,11 +7,11 @@
       <% if project.repc.signed_by_company_at && project.repc.sent_homeowner_at  %>
         <div class="me-3">
           <a href="<%= "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{project.repc.mop_token}" %>" target="_blank" class="btn btn-sm btn-outline-brandprimary rounded-half-r-i" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Sellers My Offer Portal for testing" data-controller="apollo-tooltip">
-	    myofferportal
+	    View Offer Portal
           </a>
           <% if project.dual? %>
           <a href="<%= "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{project.repc.second_seller_mop_token}" %>" target="_blank" class="btn btn-sm btn-outline-brandprimary rounded-half-r-i" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Second Sellers My Offer Portal for testing" data-controller="apollo-tooltip">
-	    myofferportal two
+	    View Offer Portal (2)
           </a>
           <% end %>
         </div>
