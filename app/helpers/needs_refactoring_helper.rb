@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # it might be easier to get rid of these helpers
 # than to refactor them
 module NeedsRefactoringHelper

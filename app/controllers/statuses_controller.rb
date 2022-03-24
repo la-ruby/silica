@@ -14,7 +14,7 @@ class StatusesController < ApplicationController
       project.update(status: 'Completed Closed/Lost')
     when 'statusOpen'
       project.update(status: 'Open')
-    end    
+    end
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [

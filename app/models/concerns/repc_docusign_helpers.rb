@@ -1,15 +1,15 @@
+# frozen_string_literal: true
+
 module RepcDocusignHelpers
   extend ActiveSupport::Concern
 
   included do
     # creates envelpoe if it doesnt exist
     def docusign_envelope_id!
-      unless docusign_envelope_id
-        update(docusign_envelope_id: make_envelope)
-      end
+      update(docusign_envelope_id: make_envelope) unless docusign_envelope_id
       docusign_envelope_id
     end
-    
+
     def make_envelope
       DocuSign::EnvelopeRequest.new.perform(
         second_seller_mode: project.dual?,

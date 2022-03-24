@@ -40,13 +40,13 @@ module ApplicationHelper
   end
 
   def status_icon(status)
-    if status == 'Completed Won'
+    case status
+    when 'Completed Won'
       '<i class="far fa-check-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Won" data-controller="apollo-tooltip"></i>'.html_safe
-    elsif status == 'Completed Closed/Lost'
+    when 'Completed Closed/Lost'
       '<i class="far fa-times-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Closed/Lost" data-controller="apollo-tooltip"></i>'.html_safe
     else
       '<i class="far fa-circle fa-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Open" data-controller="apollo-tooltip"></i>'.html_safe
     end
   end
 end
-

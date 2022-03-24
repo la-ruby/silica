@@ -29,22 +29,43 @@ class Project < ApplicationRecord
           "#{phone} " \
           "#{email} " \
           "#{expectedtimeline} " \
-          "#{req_date.strftime('%m/%d') rescue ''} " \
-          "#{Time.iso8601(repc.sent_homeowner_at).strftime('%m/%d') rescue ''} " \
-          "#{offer_viewed.strftime('%m/%d') rescue ''} " \
-          "#{accepted_at.strftime('%m/%d') rescue ''} " \
-          "#{addendum_sent.strftime('%m/%d') rescue ''} " \
+          "#{begin
+            req_date.strftime('%m/%d')
+          rescue StandardError
+            ''
+          end} " \
+          "#{begin
+            Time.iso8601(repc.sent_homeowner_at).strftime('%m/%d')
+          rescue StandardError
+            ''
+          end} " \
+          "#{begin
+            offer_viewed.strftime('%m/%d')
+          rescue StandardError
+            ''
+          end} " \
+          "#{begin
+            accepted_at.strftime('%m/%d')
+          rescue StandardError
+            ''
+          end} " \
+          "#{begin
+            addendum_sent.strftime('%m/%d')
+          rescue StandardError
+            ''
+          end} " \
           "#{source}"
-    self.update_columns(
+    update_columns(
       searchable: str,
-      street_searchable: "#{street} #{street2} #{city} #{state}")
+      street_searchable: "#{street} #{street2} #{city} #{state}"
+    )
   end
 
   def terms
     return if repc.offer_terms != 'yes'
 
     str = ''
-    str += "Down Payment: $#{repc.down_payment}\n" if repc.down_payment.present?    
+    str += "Down Payment: $#{repc.down_payment}\n" if repc.down_payment.present?
     str += "Term Length: #{repc.term_length} mos\n" if repc.term_length.present?
     str += "Interest Rate: #{repc.interest_rate}%\n" if repc.interest_rate.present?
     str += "Monthly Payment: $#{repc.monthly_payment}\n" if repc.monthly_payment.present?
@@ -60,6 +81,7 @@ class Project < ApplicationRecord
     result = true
 
     return false unless repc.mature?
+
     result
   end
 
@@ -76,10 +98,10 @@ class Project < ApplicationRecord
   end
 
   def marketplace_kodaks
-    kodaks.where(marketplace: "1")
+    kodaks.where(marketplace: '1')
   end
 
   def primary_or_first_kodak
-    kodaks.where(primary: "1", marketplace: "1").first&.pic || kodaks.where(marketplace: "1").first&.pic
+    kodaks.where(primary: '1', marketplace: '1').first&.pic || kodaks.where(marketplace: '1').first&.pic
   end
 end

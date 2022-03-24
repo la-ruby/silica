@@ -11,21 +11,23 @@ class Listing < ApplicationRecord
   def self.search(options = {})
     relation = Listing.showables
 
-    if (Integer(options[:baths]) rescue nil)
-      relation = relation.where("baths >= #{options[:baths]}")
+    relation = relation.where("baths >= #{options[:baths]}") if begin
+      Integer(options[:baths])
+    rescue StandardError
+      nil
     end
 
-    if (Integer(options[:beds]) rescue nil)
-      relation = relation.where("beds >= #{options[:beds]}")
+    relation = relation.where("beds >= #{options[:beds]}") if begin
+      Integer(options[:beds])
+    rescue StandardError
+      nil
     end
 
-    if options[:q].present?
-      relation = relation.where("address ILIKE '%#{options[:q]}%'")
-    end
+    relation = relation.where("address ILIKE '%#{options[:q]}%'") if options[:q].present?
 
     relation = relation.order('price ASC')  if options[:sort] == '1'
     relation = relation.order('price DESC') if options[:sort] == '2'
 
-    [ relation, relation.page(options[:page]).per(10) ]
+    [relation, relation.page(options[:page]).per(10)]
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddendumVerdictsController < ApplicationController
   include DocuSign::Mixin
 
@@ -9,7 +11,7 @@ class AddendumVerdictsController < ApplicationController
     @url = ''
     process_rejection if params[:action_button] == 'reject'
     process_acceptance if params[:action_button] == 'sign_via_docusign'
-    
+
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Webflow
   extend ActiveSupport::Concern
 
@@ -22,7 +24,7 @@ module Webflow
             'post-display-price-2' => 'true',
             'property-location' => WEBFLOW_LOCATION_CODE,
             'property-agent' => APOLLO_PURCHASER_NAME,
-    
+
             # forced to send these:
             # "problems":["Field '_archived': Field is required"...
             # ...
@@ -35,7 +37,7 @@ module Webflow
         }
       )
     end
-    
+
     def send_update_to_webflow
       Rails.logger.info "Sending update for project #{id} to webflow"
       WebflowClient.upload(
@@ -56,7 +58,5 @@ module Webflow
         }
       )
     end
-
   end
-  
 end

@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   # nickname shown in top nav
   def nick
-    email.split('@').first.gsub(/\W/,'_').titleize
+    email.split('@').first.gsub(/\W/, '_').titleize
   end
 
   # some restrictions apply to these users
