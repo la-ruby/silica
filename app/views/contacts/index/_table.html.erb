@@ -3,26 +3,26 @@
     <tbody>
 
       <tr>
-        <td colspan="6" class="text-center">
-          <% unless @fresh %>
-	  <i class="fas fa-exclamation-triangle"></i> This is a cached data set. Click <a href="https://example.com">here</a> to refresh.
+        <td colspan="9" class="text-center">
+          <% if !@empty && !fresh %>
+	  <i class="fas fa-exclamation-triangle"></i> This view can sometimes be out of date. You can click <a href="/contacts/refresh">here</a> to refresh.
+          <% end %>
+
+          <% if @empty %>
+	  Click <a href="/contacts/refresh">here</a> to fetch from sendgrid.com.
           <% end %>
 	</td>
       </tr>
 
-     <% $recent_contacts ||= [] %>
-     <% $recent_contacts.reverse.each do |contact| %>
-        <%= render '/contacts/index/table/row', { values: contact } %>
-     <% end %>
-
-      <% 25.times do %>
+      <% Contact.order('sendgrid_created_at DESC').limit(25).each do |contact| %>
         <%= render '/contacts/index/table/row', { values: [
-              Faker::Name::first_name,
-              Faker::Name::last_name,
-              Faker::PhoneNumber.cell_phone,
-              Faker::Internet.email,
-              ['UT', 'NC'].sample(rand(1..2)).join(', '),
-	      '05/11'
+              contact.first_name.presence || '-',
+              contact.last_name.presence || '-',
+              contact.phone_mobile.presence || '-phone-',
+              contact.phone_work.presence || '-work-phone-',
+              contact.email.presence || '-',
+              (investing_locations_pretty(contact.investing_location)).presence || '-',
+	      contact.sendgrid_created_at_searchable
             ]  
   	  } %>
       <% end %>

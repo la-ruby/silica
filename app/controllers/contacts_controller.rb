@@ -11,31 +11,59 @@ class ContactsController < ApplicationController
 
   def create
     authorize nil, policy_class: ContactPolicy
-    $recent_contacts ||= []
-    $recent_contacts << [
-      contact_params[:first_name].presence ||  Faker::Name::first_name,
-      contact_params[:last_name].presence || Faker::Name::last_name,
-      contact_params[:phone].presence || Faker::PhoneNumber.cell_phone,
-      contact_params[:email].presence || Faker::Internet.email,
-      ['UT', 'NC'].sample(rand(1..2)).join(', '),
-      '05/11'
-    ]
+
+    # to be moved elsewhere
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY2'])
+    data = {
+      list_ids: [ SENDGRID_MARKETING_LIST_ID ],
+      contacts: [
+        email: contact_params[:email],
+        first_name: contact_params[:first_name],
+        last_name: contact_params[:last_name],
+        custom_fields: {
+          e4_T: contact_params[:phone],
+          w11_T: formatted_investing_location
+        }
+      ]
+    }
+    response = sg.client.marketing.contacts.put(request_body: data)
+    tid = response.parsed_body.dig(:job_id)
+    Rails.logger.info "Added #{tid}"
+
+    30.times do |index|
+      Rails.logger.info "Iteration #{index+1}"
+      sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY2'])
+      response = sg.client.marketing.contacts.get
+      break if response.parsed_body[:result]
+        .select{|x| x[:email] == contact_params[:email] && x[:list_ids].include?(SENDGRID_MARKETING_LIST_ID) }.present?
+      sleep 1 unless Rails.env.test?
+    end
+
+    CacheContactsJob.perform_now
+    QuickCacheContactsJob.perform_now
 
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Saved' }),
+          turbo_stream.replace('flashes', partial: '/flashes', locals: { message: "Added #{response.parsed_body.dig(:job_id)}" }),
           turbo_stream.replace('sendgrid-marketing-lists-index-bar', partial: '/contacts/index/bar', locals: {  }),
-          turbo_stream.replace('contacts-index-table', partial: '/contacts/index/table', locals: {  }),
+          turbo_stream.replace('contacts-index-table', partial: '/contacts/index/table', locals: { fresh: true }),
         ]
       end
     end
   end
 
+  def refresh
+    CacheContactsJob.perform_now
+    QuickCacheContactsJob.perform_now
+    redirect_to "/contacts"
+  end
+
+
   private
     # Only allow a list of trusted parameters through.
     def contact_params
-      params.require(:contact).permit(:first_name, :last_name, :phone, :email)
+      params.require(:contact).permit(:first_name, :last_name, :phone, :email, :ut, :nc)
     end
 
     def set_area
@@ -46,5 +74,15 @@ class ContactsController < ApplicationController
       Rails.cache.write("contact_count_at_sendgrid", -1) unless Rails.cache.read("contact_count_at_sendgrid")
       @fresh = true
       @fresh = false if Contact.count != Rails.cache.read("contact_count_at_sendgrid")
+      @empty = true if Contact.count == 0
+    end
+
+    def formatted_investing_location
+      arr = []
+      arr << 'UT' if contact_params[:ut] == "1"
+      arr << 'NC' if contact_params[:nc] == "1"
+      str = arr.join('-')
+      str = "-#{str}-" if str.present?
+      str
     end
 end

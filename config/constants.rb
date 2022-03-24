@@ -55,6 +55,7 @@ DOCU_SIGN_BASE_PATH = 'https://na3.docusign.net/restapi'
   'SENDGRID_TEMPLATE_OFFER_REJECTED' => 'd-testing',
   'SENGRID_SENDER_ID' => 12345,
   'SENDGRID_SUPPRESSION_GROUP_ID' => 12345,
+  'SENDGRID_MARKETING_LIST_ID' => 'testing',
   'DOCU_SIGN_INTEGRATOR_KEY' => 'testing',
   'DOCU_SIGN_USER_ID' => 'testing',
   'DOCU_SIGN_ACCOUNT_ID' => 'testing',

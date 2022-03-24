@@ -86,6 +86,13 @@ ActiveRecord::Schema.define(version: 2022_03_24_024836) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
+    t.string "last_name"
+    t.string "phone_mobile"
+    t.string "phone_work"
+    t.string "email"
+    t.string "investing_location"
+    t.string "sendgrid_created_at"
+    t.string "sendgrid_created_at_searchable"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

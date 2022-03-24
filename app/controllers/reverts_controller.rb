@@ -6,7 +6,7 @@ class RevertsController < ApplicationController
   def create
     echo = (APOLLO_INTERNAL_PRODUCTION ? ' ' : 'echo ')
     Rails.logger.info `#{echo}curl 'https://#{APOLLO_BACKEND_DOM}/webhook_revert'`
-    sleep 5
+    sleep 5 unless Rails.env.test?
     flash[:notice] = 'Requested re-sync. This can take up to a minute depending on the number of projects and images'
     respond_to do |format|
       format.turbo_stream { redirect_to request.env['HTTP_REFERER'].presence || '/' }

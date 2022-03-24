@@ -1,4 +1,46 @@
 module WebmockTestHelpers
+  def stub_sendgrid_export
+    stub_request(:post, 'https://api.sendgrid.com/v3/marketing/contacts/exports')
+      .to_return(status: 202,
+                 body: {id: 'testing'}.to_json,
+                 headers: {})
+  end
+
+  def stub_sendgrid_export_step2
+    stub_request(:get, 'https://api.sendgrid.com/v3/marketing/contacts/exports/testing')
+      .to_return(status: 200,
+                 body: {status: 'ready', urls: ['http://example.com/testing'] }.to_json,
+                 headers: {})
+  end
+
+  def stub_sendgrid_export_step3
+    stub_request(:get, 'http://example.com/testing')
+      .to_return(status: 200,
+                 body: '{"address_line_1":"123 Main Street","city":"Layton","contact_id":"testing-hex","created_at":"2021-04-26T23:16:58Z","custom_fields":{"company":"Testing","investing_location":"-UT-","legacy_lists":"testing","permission_type":"Implied","phone_work":"123-123-1234","source":"Added by you"},"email":"testing.1648134462@example.com","first_name":"John","last_name":"Doe","postal_code":"90210","state_province_region":"UT","updated_at":"2022-02-05T06:58:20Z"}',
+                 headers: {})
+  end
+
+  def stub_sendgrid_marketing_lists
+    stub_request(:get, 'https://api.sendgrid.com/v3/marketing/lists')
+      .to_return(status: 200, body: {
+                   result: [
+                     { id: SENDGRID_MARKETING_LIST_ID } ]
+                 }.to_json, headers: {})
+  end
+
+  def stub_sendgrid_marketing_contacts
+    stub_request(:get, 'https://api.sendgrid.com/v3/marketing/contacts')
+      .to_return(status: 200, body: {result: [
+                                       list_ids: [ SENDGRID_MARKETING_LIST_ID ],
+                                       created_at: "2022-02-05T06:58:20Z"
+                                     ]}.to_json, headers: {})
+  end
+
+  def stub_sendgrid_contacts_put
+    stub_request(:put, 'https://api.sendgrid.com/v3/marketing/contacts')
+      .to_return(status: 200, body: {}.to_json, headers: {})
+  end
+
   def stub_docusign_token_request
     stub_request(
       :post,
