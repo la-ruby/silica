@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SendgridMarketingListPolicy < ApplicationPolicy
+class ContactPolicy < ApplicationPolicy
   def index?
     user && !user.limited?
   end

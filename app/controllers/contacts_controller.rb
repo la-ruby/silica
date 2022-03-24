@@ -4,12 +4,13 @@ class ContactsController < ApplicationController
   # GET /examples or /examples.json
 
   def index
-    authorize nil, policy_class: SendgridMarketingListPolicy
+    authorize nil, policy_class: ContactPolicy
+    set_index_ivars
     # @examples = Example.all
   end
 
   def create
-    authorize nil, policy_class: SendgridMarketingListPolicy
+    authorize nil, policy_class: ContactPolicy
     $recent_contacts ||= []
     $recent_contacts << [
       contact_params[:first_name].presence ||  Faker::Name::first_name,
@@ -39,5 +40,11 @@ class ContactsController < ApplicationController
 
     def set_area
       @area = Area::Backend.new
+    end
+
+    def set_index_ivars
+      Rails.cache.write("contact_count_at_sendgrid", -1) unless Rails.cache.read("contact_count_at_sendgrid")
+      @fresh = true
+      @fresh = false if Contact.count != Rails.cache.read("contact_count_at_sendgrid")
     end
 end

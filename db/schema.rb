@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_19_202727) do
+ActiveRecord::Schema.define(version: 2022_03_24_024836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,12 @@ ActiveRecord::Schema.define(version: 2022_03_19_202727) do
     t.index ["project_id"], name: "index_addendums_on_project_id"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "first_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "examples", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -153,7 +159,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_202727) do
     t.string "walkthrough_schedule_email_send_now"
     t.string "marketing_email"
     t.string "marketing_email_send_now"
-    t.string "property_type", default: "opportunity_investment"
+    t.string "property_type"
     t.string "price_sqft"
     t.string "hoa_fees"
     t.string "heating"

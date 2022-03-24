@@ -7,9 +7,10 @@ class Experiment
     Rails.logger.info "testing"     
 
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
-    params = JSON.parse('{
-      "page_size": 100
-    }')
+    # params = JSON.parse('{
+    #   "page_size": 100
+    # }')
+    params = {}
     
     response = sg.client.marketing.lists.get(query_params: params)
     Rails.logger.info response.status_code
