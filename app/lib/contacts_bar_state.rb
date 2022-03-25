@@ -1,7 +1,9 @@
 class ContactsBarState
-  attr_accessor :example
+  attr_accessor :page, :sort, :direction
 
   def initialize(options = {})
-    @example = options.fetch(:example, nil)
+    @page = options.fetch(:page, 1)
+    @sort = options.fetch(:sort, 'sendgrid_created_at')
+    @direction = options.fetch(:direction, 'desc')
   end
 end

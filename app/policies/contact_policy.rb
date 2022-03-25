@@ -8,4 +8,8 @@ class ContactPolicy < ApplicationPolicy
   def create?
     user && !user.limited?
   end
+
+  def refresh?
+    user && !user.limited?
+  end
 end

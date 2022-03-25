@@ -1,13 +1,20 @@
 class ContactsTableState
-  attr_accessor :empty, :fresh, :records, :query, :page, :sort, :direction
+  attr_accessor :records, :query, :page, :sort, :direction
 
   def initialize(options = {})
-    @empty = options.fetch(:empty, nil)
-    @fresh = options.fetch(:fresh, nil)
-    @records = Contact.order('sendgrid_created_at DESC').limit(25)
+    @records = options.fetch(:records, nil)
     @query = options.fetch(:query, nil)
-    @page = options.fetch(:page, nil)
-    @sort = options.fetch(:sort, nil)
-    @direction = options.fetch(:direction, nil)
+    @page = options.fetch(:page, 1)
+    @sort = options.fetch(:sort, 'sendgrid_created_at')
+    @direction = options.fetch(:direction, 'desc')
+  end
+
+  def empty?
+    Contact.count == 0
+  end
+
+  def fresh?
+    return false if Contact.count != Rails.cache.read("contact_count_at_sendgrid")
+    true
   end
 end

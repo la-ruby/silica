@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_area
 
   # GET /examples or /examples.json
@@ -47,13 +48,14 @@ class ContactsController < ApplicationController
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes', locals: { message: "Added #{response.parsed_body.dig(:job_id)}" }),
           turbo_stream.replace('contacts-index-bar', partial: '/contacts/index/bar', locals: { contacts_bar_state: ContactsBarState.new }),
-          turbo_stream.replace('contacts-index-table', partial: '/contacts/index/table', locals: { contacts_table_state: ContactsTableState.new }),
+          turbo_stream.replace('contacts-index-table', partial: '/contacts/index/table', locals: { contacts_table_state: ContactsTableState.new(records: default_ransack) }),
         ]
       end
     end
   end
 
   def refresh
+    authorize nil, policy_class: ContactPolicy
     CacheContactsJob.perform_now
     QuickCacheContactsJob.perform_now
     redirect_to "/contacts"
@@ -71,11 +73,16 @@ class ContactsController < ApplicationController
     end
 
     def set_index_ivars
+
       Rails.cache.write("contact_count_at_sendgrid", -1) unless Rails.cache.read("contact_count_at_sendgrid")
-      fresh = true
-      fresh = false if Contact.count != Rails.cache.read("contact_count_at_sendgrid")
-      @contacts_table_state = ContactsTableState.new(empty: Contact.count == 0, fresh: fresh, query: 'Adam', page: 2, sort: "First name", direction: 'desc')
+      @contacts_table_state = ContactsTableState.new(records: default_ransack)
       @contacts_bar_state = ContactsBarState.new
+    end
+
+    def default_ransack
+      ransack = Contact.ransack
+      ransack.sorts = "sendgrid_created_at desc"
+      ransack
     end
 
     def formatted_investing_location
