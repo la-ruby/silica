@@ -3,7 +3,7 @@ module MenuHelper
     if menu_mode == 'backend'
       [
 	{ label: 'My Dashboard', feather_icon: 'layout', link: 'https://example.com', allowed: false },
-	{ label: 'Project Table' + Time.now.to_i.to_s[0..3], feather_icon: 'clipboard', link: '/projects', allowed: true },
+	{ label: 'Project Table', feather_icon: 'clipboard', link: '/projects', allowed: true },
 	{ label: 'Calendar', feather_icon: 'calendar', link: 'https://example.com', allowed: false },
 	{ label: 'Deals', feather_icon: 'home', link: 'https://example.com', allowed: false },
       ]
