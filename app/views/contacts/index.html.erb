@@ -13,11 +13,11 @@
 
                 <% if defined?(:p) && p %>
                   <% p.content_for :heading_right do %>
-                    <%= render '/contacts/index/bar' %>
+                    <%= render '/contacts/index/bar', contacts_bar_state: @contacts_bar_state %>
                   <% end %>
                 <% end %>
 
-	        <%= render '/contacts/index/table', fresh: @fresh %>
+	        <%= render '/contacts/index/table', contacts_table_state: @contacts_table_state %>
 
               <% end %>
             </div>

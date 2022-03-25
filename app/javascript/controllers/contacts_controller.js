@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ 'plus', 'search', 'searchBtn', 'form', 'pagination', 'save' ]
+  static targets = [ 'plus', 'search', 'searchBtn', 'entry', 'pagination', 'save', 'sort' ]
 
   plus() {
     this.showStuff()
@@ -11,11 +11,11 @@ export default class extends Controller {
 
   save() {
     $(this.saveTarget).addClass('disabled')
-    $('#sendgrid-marketing-lists-index-bar-form')[0].dispatchEvent(new CustomEvent('submit', {bubbles: true}))
+    $('#contacts-entry-form')[0].dispatchEvent(new CustomEvent('submit', {bubbles: true}))
   }
 
   showStuff() {
-    $(this.formTarget).addClass('show')
+    $(this.entryTarget).addClass('show')
   }
 
   hideStuff() {
@@ -23,6 +23,14 @@ export default class extends Controller {
     $(this.searchTarget).removeClass('show')
     $(this.searchBtnTarget).removeClass('show')
     $(this.paginationTarget).removeClass('show')
+    $(this.sortTarget).removeClass('show')
   }
 
+  search() {
+    $('#contact_searches_form')[0].dispatchEvent(new CustomEvent('submit', {bubbles: true}))
+  }
+  
+  submit() {
+    alert('submitting')
+  }
 }

@@ -46,8 +46,8 @@ class ContactsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes', locals: { message: "Added #{response.parsed_body.dig(:job_id)}" }),
-          turbo_stream.replace('sendgrid-marketing-lists-index-bar', partial: '/contacts/index/bar', locals: {  }),
-          turbo_stream.replace('contacts-index-table', partial: '/contacts/index/table', locals: { fresh: true }),
+          turbo_stream.replace('contacts-index-bar', partial: '/contacts/index/bar', locals: { contacts_bar_state: ContactsBarState.new }),
+          turbo_stream.replace('contacts-index-table', partial: '/contacts/index/table', locals: { contacts_table_state: ContactsTableState.new }),
         ]
       end
     end
@@ -72,9 +72,10 @@ class ContactsController < ApplicationController
 
     def set_index_ivars
       Rails.cache.write("contact_count_at_sendgrid", -1) unless Rails.cache.read("contact_count_at_sendgrid")
-      @fresh = true
-      @fresh = false if Contact.count != Rails.cache.read("contact_count_at_sendgrid")
-      @empty = true if Contact.count == 0
+      fresh = true
+      fresh = false if Contact.count != Rails.cache.read("contact_count_at_sendgrid")
+      @contacts_table_state = ContactsTableState.new(empty: Contact.count == 0, fresh: fresh, query: 'Adam', page: 2, sort: "First name", direction: 'desc')
+      @contacts_bar_state = ContactsBarState.new
     end
 
     def formatted_investing_location

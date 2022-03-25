@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get 'refresh'
     end
   end
+  resource :contact_searches, only: [:create]
 
   resources :themes, only: [:edit, :update]
   resources :projects, only: [:index, :new, :create] do
