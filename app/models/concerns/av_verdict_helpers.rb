@@ -1,64 +1,41 @@
+# frozen_string_literal: true
+
 module AvVerdictHelpers
   extend ActiveSupport::Concern
 
   included do
-
     def set_status_to_accepted_maybe
       if addendum.project.dual?
-        if accepted_at.present? && second_seller_accepted_at.present?
-          update(status: 'Accepted')
-        end
-      else
-        update(status: 'Accepted') if accepted_at.present?
+        update(status: 'Accepted') if accepted_at.present? && second_seller_accepted_at.present?
+      elsif accepted_at.present?
+        update(status: 'Accepted')
       end
       if addendum.project.dual?
-        if rejected_at.present? && second_seller_rejected_at.present?
-          update(status: 'Rejected')
-        end
-      else
-        update(status: 'Rejected') if rejected_at.present?
+        update(status: 'Rejected') if rejected_at.present? && second_seller_rejected_at.present?
+      elsif rejected_at.present?
+        update(status: 'Rejected')
       end
     end
 
     def accepted?
       if addendum.project.dual?
-        if accepted_at.present? && second_seller_accepted_at.present?
-          return true
-        else
-          return false
-        end
+        accepted_at.present? && second_seller_accepted_at.present?
       else
-        if accepted_at.present?
-          return true
-        else
-          return false
-        end
+        accepted_at.present?
       end
     end
 
     def rejected?
       if addendum.project.dual?
-        if rejected_at.present? && second_seller_rejected_at.present?
-          return true
-        else
-          return false
-        end
+        rejected_at.present? && second_seller_rejected_at.present?
       else
-        if rejected_at.present?
-          return true
-        else
-          return false
-        end
+        rejected_at.present?
       end
     end
 
     def accepted_by?(second_seller_mode)
       if second_seller_mode
-        if accepted_at.present? || second_seller_accepted_at.present?
-          true
-        else
-          false
-        end
+        accepted_at.present? || second_seller_accepted_at.present?
       else
         accepted_at.present?
       end
@@ -66,11 +43,7 @@ module AvVerdictHelpers
 
     def rejected_by?(second_seller_mode)
       if second_seller_mode
-        if rejected_at.present? || second_seller_rejected_at.present?
-          true
-        else
-          false
-        end
+        rejected_at.present? || second_seller_rejected_at.present?
       else
         rejected_at.present?
       end

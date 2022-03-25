@@ -10,7 +10,8 @@ module DocuSign
         return_url: return_url,
         name: name,
         email: email,
-        role: role)
+        role: role
+      )
     end
   end
 end

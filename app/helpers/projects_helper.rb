@@ -9,9 +9,10 @@ module ProjectsHelper
   end
 
   def formatted_owner_occupied(project)
-    if project.owner_occupied == 'true'
+    case project.owner_occupied
+    when 'true'
       'Yes'
-    elsif project.owner_occupied == 'false'
+    when 'false'
       'No'
     else
       '-'

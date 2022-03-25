@@ -8,7 +8,7 @@ class AddendumVersion < ApplicationRecord
 
   belongs_to :addendum
 
-  validates :status, inclusion: { in: [ 'Ready', 'Sent', 'Accepted', 'Rejected', 'Draft', 'Signed', 'Sent' ] }
+  validates :status, inclusion: { in: %w[Ready Sent Accepted Rejected Draft Signed Sent] }
 
   def is_editable?
     !signed_by_company_at.present? && !sent_to_seller_at.present?

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Area
   # aka listings
   class Marketplace
@@ -26,4 +28,3 @@ module Area
     end
   end
 end
-

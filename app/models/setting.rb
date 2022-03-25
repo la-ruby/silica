@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 # RailsSettings Model
 class Setting < RailsSettings::Base
-  cache_prefix { "v1" }
+  cache_prefix { 'v1' }
 
   field :marketplace_weaker_style_size, type: :string
   field :marketplace_weaker_style_weight, type: :string
@@ -35,5 +37,4 @@ class Setting < RailsSettings::Base
   field :marketplace_strongest_style_weight, type: :string
   field :marketplace_strongest_style_face, type: :string
   field :marketplace_strongest_style_color, type: :string
-
 end

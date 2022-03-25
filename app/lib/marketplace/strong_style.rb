@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Marketplace
   class StrongStyle
     def self.inline_css
@@ -10,7 +12,7 @@ module Marketplace
       [
         Setting.marketplace_strong_style_size,
         Setting.marketplace_strong_style_weight,
-        Setting.marketplace_strong_style_face,
+        Setting.marketplace_strong_style_face
       ].compact.join(' ')
     end
   end

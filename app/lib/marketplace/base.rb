@@ -1,8 +1,12 @@
+# frozen_string_literal: true
+
 module Marketplace
   class Base
     def self.inline_css
       arr = []
-      arr.push("background-color: #{Setting.marketplace_background_color} !important") if Setting.marketplace_background_color.present?
+      if Setting.marketplace_background_color.present?
+        arr.push("background-color: #{Setting.marketplace_background_color} !important")
+      end
       arr.join('; ')
     end
 

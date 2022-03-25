@@ -18,11 +18,7 @@ class Repc < ApplicationRecord
 
   def accepted_by?(second_seller_mode)
     if second_seller_mode
-      if second_seller_accepted_at.present?
-        true
-      else
-        false
-      end
+      second_seller_accepted_at.present?
     else
       accepted_at.present?
     end
@@ -33,7 +29,7 @@ class Repc < ApplicationRecord
   end
 
   def mature_ish?
-    sent_homeowner_at.present? || signed_by_company_at.present? || (mutable != "1")
+    sent_homeowner_at.present? || signed_by_company_at.present? || (mutable != '1')
   end
 
   def mature_for_testing!
@@ -42,21 +38,36 @@ class Repc < ApplicationRecord
   end
 
   def purchase_price
-    offer_arv_ = (company_offer_arv.to_f rescue 0.0)
-    service_fee_ = (service_fee.to_f rescue 0.0)
-    service_fee__ = (service_fee_is_percentage == 'true' ? (offer_arv_ /100 * service_fee_) : service_fee_)
-    repair_costs_ = (repair_costs.to_f rescue 0.0)
-    closing_costs_ = (closing_costs.to_f rescue 0.0)
+    offer_arv_ = begin
+      company_offer_arv.to_f
+    rescue StandardError
+      0.0
+    end
+    service_fee_ = begin
+      service_fee.to_f
+    rescue StandardError
+      0.0
+    end
+    service_fee__ = (service_fee_is_percentage == 'true' ? (offer_arv_ / 100 * service_fee_) : service_fee_)
+    repair_costs_ = begin
+      repair_costs.to_f
+    rescue StandardError
+      0.0
+    end
+    closing_costs_ = begin
+      closing_costs.to_f
+    rescue StandardError
+      0.0
+    end
     sum = offer_arv_ - service_fee__ - repair_costs_ - closing_costs_
-    sprintf("%.2f", sum)
+    format('%.2f', sum)
   end
 
   def my_offer_portal_shows_addendum_card?
-    result = project.addendums.present? &&
+    project.addendums.present? &&
       project.addendums.last.addendum_versions.present? &&
       project.addendums.last.addendum_versions.last.signed_by_company_at.present? &&
       project.addendums.last.addendum_versions.last.sent_to_seller_at.present?
-    result
   end
 
   def purchase_price_pretty
