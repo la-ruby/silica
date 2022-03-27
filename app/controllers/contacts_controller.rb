@@ -50,8 +50,10 @@ class ContactsController < ApplicationController
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes',
                                           locals: { message: "Added #{response.parsed_body[:job_id]}" }),
-          turbo_stream.replace('sendgrid-marketing-lists-index-bar', partial: '/contacts/index/bar', locals: {}),
-          turbo_stream.replace('contacts-index-table', partial: '/contacts/index/table', locals: { fresh: true })
+          turbo_stream.replace('contacts-index-bar', partial: '/contacts/index/bar',
+                                                     locals: { contacts_bar_state: ContactsBarState.new }),
+          turbo_stream.replace('contacts-index-table', partial: '/contacts/index/table',
+                                                       locals: { contacts_table_state: ContactsTableState.new(records: default_ransack) })
         ]
       end
     end
