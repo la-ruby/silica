@@ -1,21 +1,19 @@
 # frozen_string_literal: true
 
+# Accounts Controller
 class AccountsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_account, only: %i[show edit update destroy]
   before_action :set_ivars
+  before_action :authorize_account
 
   # GET /accounts/1 or /accounts/1.json
-  def show
-    authorize @account, policy_class: AccountPolicy
-  end
+  def show; end
 
   # PATCH/PUT /accounts/1 or /accounts/1.json
   def update
-    authorize @account, policy_class: AccountPolicy
     @message = 'Saved'
     @account.update(password: params[:password]) if savable?
-
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
@@ -27,6 +25,10 @@ class AccountsController < ApplicationController
   end
 
   private
+
+  def authorize_account
+    authorize @account, policy_class: AccountPolicy
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_account

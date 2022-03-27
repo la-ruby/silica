@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Addendum Verdicts Controller
 class AddendumVerdictsController < ApplicationController
   include DocuSign::Mixin
 
@@ -8,20 +9,26 @@ class AddendumVerdictsController < ApplicationController
     @addendum_version = AddendumVersion.find params[:addendum_version_id]
     @repc = Repc.find(@addendum_version.related_repc_id)
     @second_seller_mode = (params[:second_seller_mode] == 'true')
-    @url = ''
-    process_rejection if params[:action_button] == 'reject'
-    process_acceptance if params[:action_button] == 'sign_via_docusign'
-
+    @url = addendum_url(params[:action_button])
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: [
-          turbo_stream.replace('apollo-redirect', partial: '/redirect', locals: { url: @url })
-        ]
+        render turbo_stream: [turbo_stream.replace('apollo-redirect', partial: '/redirect', locals: { url: @url })]
       end
     end
   end
 
   private
+
+  def addendum_url(action_button)
+    case action_button
+    when 'reject'
+      process_rejection
+    when 'sign_via_docusign'
+      process_acceptance
+    else
+      ''
+    end
+  end
 
   def process_rejection
     if @second_seller_mode
@@ -42,9 +49,7 @@ class AddendumVerdictsController < ApplicationController
       @url = create_recipient_view(
         envelope_id: @addendum_version.docusign_envelope_id,
         return_url: "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{@repc.second_seller_mop_token}",
-        role: :second_seller,
-        name: @repc.project.secondName,
-        email: @repc.project.secondEmail
+        role: :second_seller, name: @repc.project.secondName, email: @repc.project.secondEmail
       )
       encoded = "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{@repc.second_seller_mop_token}"
       @url = "#{APOLLO_CDN}/bounceV10.html?a=#{encoded}" if APOLLO_INTERNAL_PRODUCTION
@@ -52,12 +57,10 @@ class AddendumVerdictsController < ApplicationController
       @url = create_recipient_view(
         envelope_id: @addendum_version.docusign_envelope_id,
         return_url: "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{@repc.mop_token}",
-        role: :seller,
-        name: @repc.project.name,
-        email: @repc.project.email
+        role: :seller, name: @repc.project.name, email: @repc.project.email
       )
       encoded = "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{@repc.mop_token}"
-      redirect = "#{APOLLO_CDN}/bounceV10.html?a=#{encoded}" if APOLLO_INTERNAL_PRODUCTION
+      "#{APOLLO_CDN}/bounceV10.html?a=#{encoded}" if APOLLO_INTERNAL_PRODUCTION
     end
   end
 end

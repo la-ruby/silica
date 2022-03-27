@@ -74,20 +74,19 @@ class ContactsController < ApplicationController
     params.require(:contact).permit(:first_name, :last_name, :phone, :email, :ut, :nc)
   end
 
-
   def set_area
     @area = Area::Backend.new
   end
 
   def set_index_ivars
-    Rails.cache.write("contact_count_at_sendgrid", -1) unless Rails.cache.read("contact_count_at_sendgrid")
+    Rails.cache.write('contact_count_at_sendgrid', -1) unless Rails.cache.read('contact_count_at_sendgrid')
     @contacts_table_state = ContactsTableState.new(records: default_ransack)
     @contacts_bar_state = ContactsBarState.new
   end
 
   def default_ransack
     ransack = Contact.ransack
-    ransack.sorts = "sendgrid_created_at desc"
+    ransack.sorts = 'sendgrid_created_at desc'
     ransack
   end
 

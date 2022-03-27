@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Addendum Versions Controller
 class AddendumVersionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_addendum_version, only: %i[update]
@@ -23,7 +24,6 @@ class AddendumVersionsController < ApplicationController
     authorize nil, policy_class: AddendumVersionPolicy
     project = Project.find(params[:project_id])
     Addendum.add_an_addendum(project)
-
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
