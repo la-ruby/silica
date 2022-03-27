@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Pretty Money
 module PrettyMoney
   def pretty_format_money(obj)
     ActiveSupport::NumberHelper.number_to_currency(

@@ -3,6 +3,7 @@
 require 'docusign_esign'
 
 module DocuSign
+  # Api Client
   class ApiClient
     attr_reader :api_client
 

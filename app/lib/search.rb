@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Search for project
 module Search
   # simplified version of what used to be advanced_search
   def search(query: nil,

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Area
+  # Area Backend
   class Backend
     def nav
       '/nav/nav'

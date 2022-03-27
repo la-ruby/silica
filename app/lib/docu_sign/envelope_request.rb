@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module DocuSign
+  # Envelope Request
   class EnvelopeRequest
     def perform(options = {})
       return "mock#{SecureRandom.hex[0..6]}" if APOLLO_INTERNAL_PRODUCTION

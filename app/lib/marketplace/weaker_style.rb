@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Marketplace
+  # Marketplace WeakerStyle
   class WeakerStyle
     def self.inline_css
       arr = []

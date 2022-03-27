@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module DocuSign
+  # Envelope Request Body
   class EnvelopeRequestBody
     def initialize(options = {})
       @options = options

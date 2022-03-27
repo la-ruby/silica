@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Mbo Request
 class MboRequest
   attr_reader :token
 

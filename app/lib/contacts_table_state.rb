@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Contacts Table State
 class ContactsTableState
   attr_accessor :records, :query, :page, :sort, :direction
 
@@ -10,11 +13,12 @@ class ContactsTableState
   end
 
   def empty?
-    Contact.count == 0
+    Contact.count.zero?
   end
 
   def fresh?
-    return false if Contact.count != Rails.cache.read("contact_count_at_sendgrid")
+    return false if Contact.count != Rails.cache.read('contact_count_at_sendgrid')
+
     true
   end
 end

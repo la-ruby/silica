@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Area
+  # Area Mbo
   class Mbo
     def nav
       '/nav/nav'

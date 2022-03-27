@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Marketplace
+  # Marketplace Base
   class Base
     def self.inline_css
       arr = []

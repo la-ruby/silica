@@ -3,6 +3,7 @@
 require 'open3'
 
 module DocuSign
+  # DocuSign Mixin
   module Mixin
     def create_recipient_view(envelope_id:, return_url:, role:, name:, email:)
       DocuSign::ViewRequest.new.perform(

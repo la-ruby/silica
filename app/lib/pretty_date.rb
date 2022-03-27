@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Pretty Date
 module PrettyDate
   # Converts iso/iso8601 style date strings to
   # various formats

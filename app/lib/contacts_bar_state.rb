@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Contacts Bar State
 class ContactsBarState
   attr_accessor :page, :sort, :direction
 

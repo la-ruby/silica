@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Inquiry
 class Inquiry
   attr_accessor :name, :email, :phone, :url, :ip
 
