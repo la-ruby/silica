@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ContactsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_area
 
   # GET /examples or /examples.json
@@ -60,6 +61,7 @@ class ContactsController < ApplicationController
   end
 
   def refresh
+    authorize nil, policy_class: ContactPolicy
     CacheContactsJob.perform_now
     QuickCacheContactsJob.perform_now
     redirect_to '/contacts'
@@ -72,15 +74,21 @@ class ContactsController < ApplicationController
     params.require(:contact).permit(:first_name, :last_name, :phone, :email, :ut, :nc)
   end
 
+
   def set_area
     @area = Area::Backend.new
   end
 
   def set_index_ivars
-    Rails.cache.write('contact_count_at_sendgrid', -1) unless Rails.cache.read('contact_count_at_sendgrid')
-    @fresh = true
-    @fresh = false if Contact.count != Rails.cache.read('contact_count_at_sendgrid')
-    @empty = true if Contact.count.zero?
+    Rails.cache.write("contact_count_at_sendgrid", -1) unless Rails.cache.read("contact_count_at_sendgrid")
+    @contacts_table_state = ContactsTableState.new(records: default_ransack)
+    @contacts_bar_state = ContactsBarState.new
+  end
+
+  def default_ransack
+    ransack = Contact.ransack
+    ransack.sorts = "sendgrid_created_at desc"
+    ransack
   end
 
   def formatted_investing_location

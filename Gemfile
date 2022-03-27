@@ -92,3 +92,5 @@ gem "redis"
 gem "rails-settings-cached", :git => "https://github.com/huacnlee/rails-settings-cached", :branch => "main"
 gem "minitest-autotest"
 gem "minitest-macos-notification"
+
+gem "ransack", "~> 2.6", :github => "activerecord-hackery/ransack"

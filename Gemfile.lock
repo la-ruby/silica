@@ -8,6 +8,15 @@ GIT
       tzinfo
 
 GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: 3a0e52008a9e976fd9a4e5ab21b864091e93e177
+  specs:
+    ransack (2.6.0)
+      activerecord (>= 6.0.4)
+      activesupport (>= 6.0.4)
+      i18n
+
+GIT
   remote: https://github.com/bblimke/webmock
   revision: 33d8810c2828fc17010e15cc3f21ad2c726a966f
   branch: master
@@ -422,6 +431,7 @@ DEPENDENCIES
   pundit (~> 2.2)!
   rails!
   rails-settings-cached!
+  ransack (~> 2.6)!
   redis
   rollbar (>= 3.3)
   sassc-rails
