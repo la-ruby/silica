@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Project State module
 module ProjectStateHelpers
   extend ActiveSupport::Concern
 

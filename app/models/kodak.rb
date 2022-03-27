@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Kodak Model
 class Kodak < ApplicationRecord
   belongs_to :project
 

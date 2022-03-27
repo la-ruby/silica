@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Project Model
 class Project < ApplicationRecord
   include DocuSign::Mixin
   include PrettyDate

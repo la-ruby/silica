@@ -1,20 +1,15 @@
 # frozen_string_literal: true
 
+# Av Verdict module
 module AvVerdictHelpers
   extend ActiveSupport::Concern
 
   included do
     def set_status_to_accepted_maybe
-      if addendum.project.dual?
-        update(status: 'Accepted') if accepted_at.present? && second_seller_accepted_at.present?
-      elsif accepted_at.present?
-        update(status: 'Accepted')
-      end
-      if addendum.project.dual?
-        update(status: 'Rejected') if rejected_at.present? && second_seller_rejected_at.present?
-      elsif rejected_at.present?
-        update(status: 'Rejected')
-      end
+      return unless addendum.project.dual?
+
+      update(status: 'Accepted') if accepted_at.present?
+      update(status: 'Rejected') if rejected_at.present?
     end
 
     def accepted?
@@ -49,7 +44,7 @@ module AvVerdictHelpers
       end
     end
 
-    def is_accepted_or_rejected?
+    def accepted_or_rejected?
       derived_status == 'Accepted' || derived_status == 'Rejected'
     end
   end

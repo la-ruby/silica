@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Docusign module
 module Docusignable
   extend ActiveSupport::Concern
 
@@ -8,15 +9,10 @@ module Docusignable
       repc = Repc.find(repc_id)
       envelope_id = repc.docusign_envelope_id!
       original_url = Base64.urlsafe_encode64("#{APOLLO_BACKEND_FULL_DOMAIN}/projects/#{id}/underwriting_prepare_repc")
-      url = create_recipient_view(
-        envelope_id: envelope_id,
-        return_url: "#{APOLLO_BACKEND_FULL_DOMAIN}/webhook_signed_by_company?envelope_id=#{envelope_id}&original_url=#{original_url}",
-        role: :staff,
-        name: APOLLO_PURCHASER_NAME,
-        email: APOLLO_PURCHASER_EMAIL
-      )
-      encoded = Base64.encode64("#{APOLLO_BACKEND_FULL_DOMAIN}/webhook_signed_by_company?envelope_id=#{envelope_id}&original_url=#{original_url}")
-      url = "#{APOLLO_CDN}/bounceV10.html?a=#{encoded}" if APOLLO_INTERNAL_PRODUCTION
+      return_url = "#{APOLLO_BACKEND_FULL_DOMAIN}/webhook_signed_by_company?envelope_id"\
+                   "=#{envelope_id}&original_url=#{original_url}"
+      url = setup_url(envelope_id, return_url, :staff, APOLLO_PURCHASER_NAME, APOLLO_PURCHASER_EMAIL)
+      url = "#{APOLLO_CDN}/bounceV10.html?a=#{Base64.encode64(return_url)}" if APOLLO_INTERNAL_PRODUCTION
       url
     end
 
@@ -25,17 +21,23 @@ module Docusignable
       project = addendum_version.addendum.project
       envelope_id = addendum_version.docusign_envelope_id!
       original_url = Base64.urlsafe_encode64("#{APOLLO_BACKEND_FULL_DOMAIN}/projects/#{project.id}/underwriting_review_offer")
-      url = create_recipient_view(
-        envelope_id: envelope_id,
-        return_url: "#{APOLLO_BACKEND_FULL_DOMAIN}/webhook_signed_by_company?envelope_id=#{envelope_id}&original_url=#{original_url}",
-        role: :staff,
-        name: APOLLO_PURCHASER_NAME,
-        email: APOLLO_PURCHASER_EMAIL
-      )
-
-      encoded = Base64.encode64("#{APOLLO_BACKEND_FULL_DOMAIN}/webhook_signed_by_company?envelope_id=#{envelope_id}&original_url=#{original_url}")
-      url = "#{APOLLO_CDN}/bounceV10.html?a=#{encoded}" if APOLLO_INTERNAL_PRODUCTION
+      return_url = "#{APOLLO_BACKEND_FULL_DOMAIN}/webhook_signed_by_company?envelope_id"\
+                   "=#{envelope_id}&original_url=#{original_url}"
+      url = setup_url(envelope_id, return_url, :staff, APOLLO_PURCHASER_NAME, APOLLO_PURCHASER_EMAIL)
+      url = "#{APOLLO_CDN}/bounceV10.html?a=#{Base64.encode64(return_url)}" if APOLLO_INTERNAL_PRODUCTION
       url
     end
+  end
+
+  private
+
+  def setup_url(envelope_id, url, role, name, email)
+    create_recipient_view(
+      envelope_id: envelope_id,
+      return_url: url,
+      role: role,
+      name: name,
+      email: email
+    )
   end
 end

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Repc Docusign module
 module RepcDocusignHelpers
   extend ActiveSupport::Concern
 

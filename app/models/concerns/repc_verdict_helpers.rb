@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Repc Verdict module
 module RepcVerdictHelpers
   extend ActiveSupport::Concern
 

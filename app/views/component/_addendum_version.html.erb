@@ -22,7 +22,7 @@
         <div class="<%= demoted_text %>">Addendum Expiration</div>
 
 
-        <% if editable && addendum_version.is_editable? %>
+        <% if editable && addendum_version.editable? %>
         <input type="datetime-local" id="id1642022677" form="<%= form_id %>" data-controller="submits-form-immediately"
                name="addendum_version[expiration]" value="<%= apollo_date5(addendum_version.expiration)%>" data-action="change->submits-form-immediately#submit_form">
         <% else %>
@@ -34,7 +34,7 @@
       <div class="col mx-3 py-3">
         <div class="<%= demoted_text %>">New Deadline</div>
 
-        <% if editable && addendum_version.is_editable? %>
+        <% if editable && addendum_version.editable? %>
         <input type="datetime-local" id="id1642022677" form="<%= form_id %>" data-controller="submits-form-immediately"
                name="addendum_version[deadline]" value="<%= apollo_date5(addendum_version.deadline)%>" data-action="change->submits-form-immediately#submit_form">
         <% else %>
@@ -47,7 +47,7 @@
       <div class="col mx-3 py-3">
         <div class="<%= demoted_text %>">Addendum Terms</div>
 
-        <% if editable && addendum_version.is_editable? %>
+        <% if editable && addendum_version.editable? %>
           <span class="<%= 'border-bottom-dashed min-sizes-for-child-textareas' %>" data-controller="<%= 'textarea-inline' %>" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= addendum_version.terms %></span>
           <input type="hidden" name="addendum_version[terms]" form="<%= form_id %>"  value="<%= addendum_version.terms  %>" />
         <% else %>
@@ -82,7 +82,7 @@
         <div class="<%= demoted_text %>">
           <button name="what_was_clicked" value="discard_addendum_version" type="submit" class="btn btn-sm btn-brandprimary text-white rounded-half-r-i" form="<%= form_id %>"
           <%= 'disabled' unless addendum_version.related_repc.mature? %>
-          <%= 'disabled' if addendum_version.is_accepted_or_rejected? %>
+          <%= 'disabled' if addendum_version.accepted_or_rejected? %>
           >
             Discard
           </button>          

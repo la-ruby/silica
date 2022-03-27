@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Repc Model
 class Repc < ApplicationRecord
   include PrettyDate
   include RepcVerdictHelpers
@@ -38,28 +39,10 @@ class Repc < ApplicationRecord
   end
 
   def purchase_price
-    offer_arv_ = begin
-      company_offer_arv.to_f
-    rescue StandardError
-      0.0
-    end
-    service_fee_ = begin
-      service_fee.to_f
-    rescue StandardError
-      0.0
-    end
+    offer_arv_ = field_to_f(company_offer_arv)
+    service_fee_ = field_to_f(service_fee)
     service_fee__ = (service_fee_is_percentage == 'true' ? (offer_arv_ / 100 * service_fee_) : service_fee_)
-    repair_costs_ = begin
-      repair_costs.to_f
-    rescue StandardError
-      0.0
-    end
-    closing_costs_ = begin
-      closing_costs.to_f
-    rescue StandardError
-      0.0
-    end
-    sum = offer_arv_ - service_fee__ - repair_costs_ - closing_costs_
+    sum = offer_arv_ - service_fee__ - field_to_f(repair_costs) - field_to_f(closing_costs)
     format('%.2f', sum)
   end
 
@@ -74,5 +57,13 @@ class Repc < ApplicationRecord
     return '0' unless purchase_price.present?
 
     ActiveSupport::NumberHelper.number_to_delimited(purchase_price)
+  end
+
+  private
+
+  def field_to_f(field)
+    field.to_f
+  rescue StandardError
+    0.0
   end
 end

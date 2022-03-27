@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Addendum Version Model
 class AddendumVersion < ApplicationRecord
   include PrettyDate
   include AvTestHelpers
@@ -10,7 +11,7 @@ class AddendumVersion < ApplicationRecord
 
   validates :status, inclusion: { in: %w[Ready Sent Accepted Rejected Draft Signed Sent] }
 
-  def is_editable?
+  def editable?
     !signed_by_company_at.present? && !sent_to_seller_at.present?
   end
 

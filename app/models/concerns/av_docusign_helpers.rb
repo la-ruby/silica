@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Av Docusign module
 module AvDocusignHelpers
   extend ActiveSupport::Concern
 

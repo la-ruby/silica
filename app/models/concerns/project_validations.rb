@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Project Validations module
 module ProjectValidations
   extend ActiveSupport::Concern
 
@@ -11,15 +12,15 @@ module ProjectValidations
     validate :second_phone_has_at_least_ten_digits
 
     def phone_has_at_least_ten_digits
-      if phone.present? && ((phone.scan(/\d/).size < 10) || (phone.scan(/\d/).size > 11))
-        errors.add(:phone, 'invalid (need 10 or 11 digits)')
-      end
+      return unless phone.present? && ((phone.scan(/\d/).size < 10) || (phone.scan(/\d/).size > 11))
+
+      errors.add(:phone, 'invalid (need 10 or 11 digits)')
     end
 
     def second_phone_has_at_least_ten_digits
-      if secondPhone.present? && ((secondPhone.scan(/\d/).size < 10) || (secondPhone.scan(/\d/).size > 11))
-        errors.add(:secondPhone, 'invalid (need 10 or 11 digits)')
-      end
+      return unless secondPhone.present? && ((secondPhone.scan(/\d/).size < 10) || (secondPhone.scan(/\d/).size > 11))
+
+      errors.add(:secondPhone, 'invalid (need 10 or 11 digits)')
     end
   end
 end
