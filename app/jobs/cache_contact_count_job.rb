@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Cache Contact Count Job
 class CacheContactCountJob < ApplicationJob
   queue_as :default
 

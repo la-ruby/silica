@@ -2,6 +2,7 @@
 
 require 'open-uri'
 
+# Cache Contacts Job
 class CacheContactsJob < ApplicationJob
   queue_as :default
 
@@ -10,7 +11,6 @@ class CacheContactsJob < ApplicationJob
     response = sg.client.marketing.contacts.exports.post(request_body: { list_ids: [SENDGRID_MARKETING_LIST_ID],
                                                                          file_type: 'json' })
     id = response.parsed_body[:id]
-    reponse = nil
     40.times do
       response = sg.client.marketing.contacts.exports._(id).get
       Rails.logger.info 'sleep 1'

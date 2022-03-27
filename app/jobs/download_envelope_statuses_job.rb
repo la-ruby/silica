@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Download Envelope Statuses Job
 class DownloadEnvelopeStatusesJob < ApplicationJob
   queue_as :default
 
