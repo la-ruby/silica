@@ -166,4 +166,14 @@ Copy over `bootstrap.css` and `bootstrap.bundle.js` after running `npm run dist`
 
 
 
+___
+
+
+## Coding guidelines
+
+* PR title should start with "WIP" prefix and remove prefix when code is ready for review
+
+
+
+
 
