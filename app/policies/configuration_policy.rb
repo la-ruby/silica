@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Configuration Policy
 class ConfigurationPolicy < ApplicationPolicy
   def show?
     user&.staff?

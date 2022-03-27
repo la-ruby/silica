@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Ux Policy
 class UxPolicy < ApplicationPolicy
   # these are tabs in main navigation
   def overview? = true

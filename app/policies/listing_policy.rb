@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Listing Policy
 class ListingPolicy < ApplicationPolicy
   def index?
     true

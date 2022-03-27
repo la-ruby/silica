@@ -17,6 +17,4 @@ AllCops:
     - 'app/views/examples/**/*'
     - 'app/models/example*'
   NewCops: enable
-Style/Documentation:
-  Enabled: false
 
