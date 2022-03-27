@@ -1,25 +1,13 @@
 # frozen_string_literal: true
 
+# Menu Helper
 module MenuHelper
   def infer_menu_items(menu_mode)
     case menu_mode
     when 'backend'
-      [
-        { label: 'My Dashboard', feather_icon: 'layout', link: 'https://example.com', allowed: false },
-        { label: 'Project Table', feather_icon: 'clipboard', link: '/projects', allowed: true },
-        { label: 'Calendar', feather_icon: 'calendar', link: 'https://example.com', allowed: false },
-        { label: 'Deals', feather_icon: 'home', link: 'https://example.com', allowed: false }
-      ]
+      backend
     when 'marketplace'
-      [
-        { label: 'About Us', feather_icon: nil, link: "https://www.#{APOLLO_MARKETPLACE_NAKED_DOM}/company-pages/about",
-          allowed: true },
-        { label: 'Locations', feather_icon: nil, link: "https://www.#{APOLLO_MARKETPLACE_NAKED_DOM}/locations",
-          allowed: true },
-        { label: 'Resources', feather_icon: nil,
-          link: "https://www.#{APOLLO_MARKETPLACE_NAKED_DOM}/blog-pages/resource-center", allowed: true },
-        { label: 'FAQ', feather_icon: nil, link: "https://www.#{APOLLO_MARKETPLACE_NAKED_DOM}/faqs", allowed: true }
-      ]
+      marketplace
     else # if menu_mode == 'mop'
       []
     end
@@ -31,5 +19,28 @@ module MenuHelper
 
   def allow_session_buttons(menu_mode)
     menu_mode != 'mop'
+  end
+
+  private
+
+  def backend
+    [
+      { label: 'My Dashboard', feather_icon: 'layout', link: 'https://example.com', allowed: false },
+      { label: 'Project Table', feather_icon: 'clipboard', link: '/projects', allowed: true },
+      { label: 'Calendar', feather_icon: 'calendar', link: 'https://example.com', allowed: false },
+      { label: 'Deals', feather_icon: 'home', link: 'https://example.com', allowed: false }
+    ]
+  end
+
+  def marketplace
+    [
+      { label: 'About Us', feather_icon: nil, link: "https://www.#{APOLLO_MARKETPLACE_NAKED_DOM}/company-pages/about",
+        allowed: true },
+      { label: 'Locations', feather_icon: nil, link: "https://www.#{APOLLO_MARKETPLACE_NAKED_DOM}/locations",
+        allowed: true },
+      { label: 'Resources', feather_icon: nil,
+        link: "https://www.#{APOLLO_MARKETPLACE_NAKED_DOM}/blog-pages/resource-center", allowed: true },
+      { label: 'FAQ', feather_icon: nil, link: "https://www.#{APOLLO_MARKETPLACE_NAKED_DOM}/faqs", allowed: true }
+    ]
   end
 end

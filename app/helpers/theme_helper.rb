@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Theme Helper
 module ThemeHelper
   def normal_text
     'apollo-fg-black-6 apollo-fs-16'

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Projects Helper
 module ProjectsHelper
   # The iamge shown in summary partial of backend
   def summary_image_for_backend(project)

@@ -7,10 +7,11 @@ module ContactsHelper
   end
 
   def direction_pretty(obj)
-    if obj == "desc"
-      "descending"
-    elsif obj == "asc"
-      "ascending"
+    case obj
+    when 'desc'
+      'descending'
+    when 'asc'
+      'ascending'
     end
   end
 end
