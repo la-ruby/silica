@@ -171,9 +171,7 @@ ___
 
 ## Coding guidelines
 
-* PR title should start with "WIP" prefix and remove prefix when code is ready for review
-
-
-
+* Start PR with "WIP" in the title (and remove it when ready for review)
+* Name your branch `your-nickname/task-id-task-title-kebab-cased
 
 
