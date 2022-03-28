@@ -172,6 +172,6 @@ ___
 ## Coding guidelines
 
 * Start PR with "WIP" in the title (and remove it when ready for review)
-* Name your branch `your-nickname/task-id-task-title-kebab-cased
+* Name your branch `your-nickname/task-id-task-title-kebab-cased`
 
 
