@@ -33,8 +33,9 @@
     <span class="d-inline-block text-truncate" style="max-width: 3vw"><%= project.created_at.strftime('%m/%d') rescue "" %></span>
   </td>
 
-  <td class="text-center">
-    <span class="d-inline-block text-truncate <%= normal_text %>" style="max-width: 3vw"><%= Time.iso8601(project.repc.sent_homeowner_at).strftime('%m/%d') rescue "-" %></span>
+  <% var1648452658 = Time.iso8601(project.repc.sent_homeowner_at).strftime('%m/%d') rescue "-" %>
+  <td class="text-center" style="<%= 'background: red' if var1648452658 == "-" %>">
+    <span class="d-inline-block text-truncate <%= normal_text %>" style="max-width: 3vw"><%= var1648452658  %></span>
   </td>
 
   <td class="text-center <%= normal_text %>">
