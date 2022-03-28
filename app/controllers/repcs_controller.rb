@@ -24,21 +24,6 @@ class RepcsController < ApplicationController
     end
   end
 
-  # # POST /repcs or /repcs.json
-  # def create
-  #   @repc = Repc.new(repc_params)
-
-  #   respond_to do |format|
-  #     if @repc.save
-  #       format.html { redirect_to repc_url(@repc), notice: "Repc was successfully created." }
-  #       format.json { render :show, status: :created, location: @repc }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @repc.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_repc
