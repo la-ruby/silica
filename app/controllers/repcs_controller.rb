@@ -92,13 +92,7 @@ class RepcsController < ApplicationController
         mop_token: SecureRandom.hex,
         docusign_envelope_id: nil,
         signed_by_company_at: nil,
-        sent_homeowner_at: nil,
-        closing_costs: nil,
-        repair_costs: nil,
-        service_fee: nil,
-        company_offer_arv: nil,
-        legal_description: nil,
-        title_company: nil
+        sent_homeowner_at: nil
       )
       [
         turbo_stream.replace('prepare-repc-panel', partial: '/component/prepare_repc', locals: { project_id: @repc.project_id})
