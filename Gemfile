@@ -94,3 +94,4 @@ gem "minitest-autotest"
 gem "minitest-macos-notification"
 
 gem "ransack", "~> 2.6", :github => "activerecord-hackery/ransack"
+gem 'apparition', github: 'twalpole/apparition'

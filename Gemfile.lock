@@ -185,6 +185,14 @@ GIT
       railties (>= 5.0.0)
 
 GIT
+  remote: https://github.com/twalpole/apparition.git
+  revision: ca86be4d54af835d531dbcd2b86e7b2c77f85f34
+  specs:
+    apparition (0.6.0)
+      capybara (~> 3.13, < 4)
+      websocket-driver (>= 0.6.5)
+
+GIT
   remote: https://github.com/varvet/pundit
   revision: d569083cdabdf10e935dcb79f982516bcf6e46e0
   branch: main
@@ -410,6 +418,7 @@ PLATFORMS
 
 DEPENDENCIES
   add_to_calendar
+  apparition!
   aws-sdk-s3
   capybara
   clockwork (~> 3.0)!
