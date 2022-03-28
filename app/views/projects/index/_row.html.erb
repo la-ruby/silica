@@ -48,7 +48,7 @@
     <span class="d-inline-block text-truncate" style="max-width: 3vw"><%= project.addendum_sent.strftime('%m/%d') rescue "-"%></span>
   </td>
   <td class="text-center <%= normal_text %>">
-    <span class="d-inline-block text-truncate" style="max-width: 2vw"><%= project.direction %></span>
+    <span class="d-inline-block text-truncate" style="max-width: 2vw"><img src="<%= image_path direction_pretty(project.direction) %>" style="width:1rem"></span>
   </td>
   <td class="text-center <%= normal_text %>">
     <%= status_icon(project.status) %>

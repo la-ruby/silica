@@ -17,4 +17,8 @@ module ProjectsHelper
       '-'
     end
   end
+
+  def direction_pretty(direction)
+    direction == "Inbound" ? "backend/inbound.svg" : "backend/outbound.svg"
+  end
 end
