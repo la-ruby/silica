@@ -12,9 +12,4 @@ class ContactsTableState
   def empty?
     Contact.count == 0
   end
-
-  def fresh?
-    return false if Contact.count != Rails.cache.read("contact_count_at_sendgrid")
-    true
-  end
 end

@@ -41,7 +41,6 @@ class ContactsController < ApplicationController
     end
 
     CacheContactsJob.set(wait: 45.seconds).perform_later
-    QuickCacheContactsJob.set(wait: 45.seconds).perform_later
 
     respond_to do |format|
       format.turbo_stream do
@@ -57,7 +56,6 @@ class ContactsController < ApplicationController
   def refresh
     authorize nil, policy_class: ContactPolicy
     CacheContactsJob.perform_now
-    QuickCacheContactsJob.perform_now
     redirect_to "/contacts"
   end
 
@@ -73,8 +71,6 @@ class ContactsController < ApplicationController
     end
 
     def set_index_ivars
-
-      Rails.cache.write("contact_count_at_sendgrid", -1) unless Rails.cache.read("contact_count_at_sendgrid")
       @contacts_table_state = ContactsTableState.new(records: default_ransack)
       @contacts_bar_state = ContactsBarState.new
     end

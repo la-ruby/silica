@@ -7,6 +7,8 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
+    create(:contact)
+
     get contacts_url
     assert_response :success
   end

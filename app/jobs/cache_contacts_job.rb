@@ -17,8 +17,6 @@ class CacheContactsJob < ApplicationJob
       break if response.parsed_body[:status] == "ready"
     end
 
-    Rails.cache.write("contact_count_at_sendgrid", response.parsed_body[:contact_count])
-
     url = response.parsed_body.dig(:urls, 0)
     ActiveRecord::Base.connection.execute("TRUNCATE contacts")
 
