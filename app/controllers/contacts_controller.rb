@@ -31,7 +31,7 @@ class ContactsController < ApplicationController
     tid = response.parsed_body.dig(:job_id)
     Rails.logger.info "Added #{tid}"
 
-    30.times do |index|
+    15.times do |index|
       Rails.logger.info "Iteration #{index+1}"
       sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY2'])
       response = sg.client.marketing.contacts.get
@@ -40,8 +40,8 @@ class ContactsController < ApplicationController
       sleep 1 unless Rails.env.test?
     end
 
-    CacheContactsJob.perform_now
-    QuickCacheContactsJob.perform_now
+    CacheContactsJob.perform_later
+    QuickCacheContactsJob.perform_later
 
     respond_to do |format|
       format.turbo_stream do
