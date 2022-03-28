@@ -43,9 +43,7 @@
 
       <tr>
 	<td colspan="9" class="text-center">
-	  <% if !contacts_table_state.empty? && !contacts_table_state.fresh? %>
 	  <i class="fas fa-exclamation-triangle"></i> This view can sometimes be out of date. You can click <a href="/contacts/refresh">here</a> to refresh.
-	  <% end %>
 
 	  <% if contacts_table_state.empty? %>
 	  Click <a href="/contacts/refresh">here</a> to fetch from sendgrid.com.

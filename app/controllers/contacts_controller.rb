@@ -31,7 +31,7 @@ class ContactsController < ApplicationController
     tid = response.parsed_body.dig(:job_id)
     Rails.logger.info "Added #{tid}"
 
-    15.times do |index|
+    5.times do |index|
       Rails.logger.info "Iteration #{index+1}"
       sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY2'])
       response = sg.client.marketing.contacts.get
@@ -40,13 +40,13 @@ class ContactsController < ApplicationController
       sleep 1 unless Rails.env.test?
     end
 
-    CacheContactsJob.perform_later
-    QuickCacheContactsJob.perform_later
+    CacheContactsJob.set(wait: 45.seconds).perform_later
+    QuickCacheContactsJob.set(wait: 45.seconds).perform_later
 
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.replace('flashes', partial: '/flashes', locals: { message: "Added #{response.parsed_body.dig(:job_id)}" }),
+          turbo_stream.replace('flashes', partial: '/flashes', locals: { message: "Added #{response.parsed_body.dig(:job_id)}. It can take up to a minute for the new contact to show up in this table. You can also try <a href='/contacts/refresh'>refresh</a>ing." }),
           turbo_stream.replace('contacts-index-bar', partial: '/contacts/index/bar', locals: { contacts_bar_state: ContactsBarState.new }),
           turbo_stream.replace('contacts-index-table', partial: '/contacts/index/table', locals: { contacts_table_state: ContactsTableState.new(records: default_ransack) }),
         ]
