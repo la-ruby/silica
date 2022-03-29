@@ -13,10 +13,4 @@ class ApplicationController < ActionController::Base
   def apollo_root_request?
     request.fullpath == '/'
   end
-
-  # def user_not_authorized
-  #   render turbo_stream: [
-  #     turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'You must be logged in to do this' })
-  #   ]
-  # end
 end

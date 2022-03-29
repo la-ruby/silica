@@ -48,5 +48,21 @@ module ApplicationHelper
       '<i class="far fa-circle fa-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Open" data-controller="apollo-tooltip"></i>'.html_safe
     end
   end
+
+  def spacer(count=1)
+    content_tag(:div, "&nbsp;".html_safe, class: 'mb-1') * count
+  end
+
+  def container
+    content_tag(:div, class: 'container') do
+      content_tag(:div, class: 'row') do
+        content_tag(:div, class: 'col') do
+          if block_given?
+            yield
+          end
+        end
+      end
+    end
+  end
 end
 
