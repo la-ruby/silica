@@ -1,57 +1,57 @@
-<tr class="fw-light table-info">
-  <td>
+<tr class="fw-light">
+  <td class="bg-white">
     <%= link_to "/projects/#{project.id}/overview", class: "text-decoration-none #{normal_text}" do %>
       <span class="d-inline-block text-truncate" style="max-width: 11vw"><%= project.name %></span>
     <% end %>
   </td>
 
-  <td title="<%= "#{project.combined_address}" %>">
+  <td class="bg-white" title="<%= "#{project.combined_address}" %>">
     <%= link_to "/projects/#{project.id}/overview", class: "text-decoration-none #{normal_text}" do %>
       <span class="d-inline-block text-truncate" style="max-width: 12vw"><%= "#{project.combined_address}" %></span>
     <% end %>
   </td>
 
-  <td>
+  <td class="bg-white">
     <%= link_to "/projects/#{project.id}/overview", class: "text-decoration-none #{normal_text}" do %>
       <span class="d-inline-block text-truncate" style="max-width: 9vw"><%= project.pretty_phone %></span>
     <% end %>
   </td>
 
-  <td>
+  <td class="bg-white">
     <%= link_to "/projects/#{project.id}/overview", class: "text-decoration-none #{normal_text}" do %>
       <span class="d-inline-block text-truncate" style="max-width: 8vw"><%= project.email %></span>
     <% end %>
   </td>
 
-  <td class="text-center">
+  <td class="bg-white text-center">
     <%= link_to "/projects/#{project.id}/overview", class: "text-decoration-none #{normal_text}" do %>
       <span class="d-inline-block text-truncate" style="max-width: 7vw"><%= project.expectedtimeline %></span>
     <% end %>
   </td>
 
-  <td class="text-center <%= normal_text %>">
+  <td class="bg-white text-center <%= normal_text %>">
     <span class="d-inline-block text-truncate" style="max-width: 3vw"><%= project.created_at.strftime('%m/%d') rescue "" %></span>
   </td>
 
   <% var1648452658 = Time.iso8601(project.repc.sent_homeowner_at).strftime('%m/%d') rescue "-" %>
-  <td class="text-center" style="<%= 'background: red' if var1648452658 == "-" %>">
+  <td class="text-center <%= var1648452658 == "-" ? 'bg-warning' : 'bg-white' %>">
     <span class="d-inline-block text-truncate <%= normal_text %>" style="max-width: 3vw"><%= var1648452658  %></span>
   </td>
 
-  <td class="text-center <%= normal_text %>">
+  <td class="bg-white text-center <%= normal_text %>">
     <span class="d-inline-block text-truncate" style="max-width: 3vw"><%= project.offer_viewed.strftime('%m/%d') rescue '-' %></span>
   </td>
 
-  <td class="text-center <%= normal_text %>">
+  <td class="bg-white text-center <%= normal_text %>">
     <span class="d-inline-block text-truncate" style="max-width: 3vw"><%= DateTime.parse(project.accepted_at).strftime('%m/%d') rescue "-" %></span>
   </td>
-  <td class="text-center <%= normal_text %>">
+  <td class="bg-white text-center <%= normal_text %>">
     <span class="d-inline-block text-truncate" style="max-width: 3vw"><%= project.addendum_sent.strftime('%m/%d') rescue "-"%></span>
   </td>
-  <td class="text-center <%= normal_text %>">
+  <td class="bg-white text-center <%= normal_text %>">
     <span class="d-inline-block text-truncate" style="max-width: 2vw"><img src="<%= image_path direction_icon(project.direction) %>" style="width:1rem"></span>
   </td>
-  <td class="text-center <%= normal_text %>">
+  <td class="bg-white text-center <%= normal_text %>">
     <%= status_icon(project.status) %>
   </td>
 </tr>
