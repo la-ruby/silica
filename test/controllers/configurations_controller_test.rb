@@ -6,13 +6,13 @@ class AgreesControllerTest < ActionDispatch::IntegrationTest
     sign_in create(:user, :staff)
   end
 
-  test "patch /configurations" do
-    patch "/configurations", params: {}, headers: { accept: Mime[:turbo_stream].to_s }
+  test "patch /configuration" do
+    patch configuration_path, params: {}, headers: { accept: Mime[:turbo_stream].to_s }
     assert_equal "200", response.code
   end
 
-  test "get /configurations" do
-    get "/configurations"
+  test "get /configuration/edit" do
+    get edit_configuration_path
     assert_equal "200", response.code
   end
 end

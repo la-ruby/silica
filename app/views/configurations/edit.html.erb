@@ -16,7 +16,7 @@
                 <span class="fst-italic">Unless overridden, children inhert the Base</span>
 	      </div>
 	      <div class="col-8 zborder p-1">
-                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                <%= form_with(url: configuration_path, method: :patch, id: 'configurations-form') do |form| %>
                   <%= select_tag "marketplace_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   Background: <input name="marketplace_background_color" class="d-inline-block" value="<%= j Setting.marketplace_background_color %>" form="configurations-form" data-controller="submits-form-immediately" data-action="submits-form-immediately#submit_form">
@@ -30,7 +30,7 @@
                 <span class="fst-italic">Most common. Used by The property-description paragraph, lower-menu-items etc.</span>
 	      </div>
 	      <div class="col-8 zborder p-1">
-                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                <%= form_with(url: configuration_path, method: :patch, id: 'configurations-form') do |form| %>
                   <%= select_tag "marketplace_basic_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_basic_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_basic_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_basic_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_basic_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_basic_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
@@ -45,7 +45,7 @@
                 <span class="fst-italic">Used infrequently, Section subtitles use this</span>
 	      </div>
 	      <div class="col-8 zborder p-1">
-                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                <%= form_with(url: configuration_path, method: :patch, id: 'configurations-form') do |form| %>
                   <%= select_tag "marketplace_weak_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_weak_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_weak_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_weak_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_weak_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"] ], Setting.marketplace_weak_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
@@ -60,7 +60,7 @@
                 <span class="fst-italic">The bottom-disclaimer uses this style</span>
 	      </div>
 	      <div class="col-8 zborder p-1">
-                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                <%= form_with(url: configuration_path, method: :patch, id: 'configurations-form') do |form| %>
                   <%= select_tag "marketplace_weaker_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_weaker_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_weaker_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_weaker_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_weaker_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_weaker_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
@@ -75,7 +75,7 @@
                 <span classs="fst-italic">uses by: Upper menu, footer-menu-titles, buyers name</span>
 	      </div>
 	      <div class="col-8 zborder p-1">
-                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                <%= form_with(url: configuration_path, method: :patch, id: 'configurations-form') do |form| %>
                   <%= select_tag "marketplace_strong_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_strong_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_strong_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_strong_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_strong_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_strong_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
@@ -90,7 +90,7 @@
                 <span classs="fst-italic">Section titles often use this style</span>
 	      </div>
 	      <div class="col-8 zborder p-1">
-                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                <%= form_with(url: configuration_path, method: :patch, id: 'configurations-form') do |form| %>
                   <%= select_tag "marketplace_stronger_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_stronger_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_stronger_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_stronger_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_stronger_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_stronger_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
@@ -105,7 +105,7 @@
                 <span classs="fst-italic">The most eye catching peice of text in the page</span>
 	      </div>
 	      <div class="col-8 zborder p-1">
-                <%= form_with(url: '/configurations', method: :patch, id: 'configurations-form') do |form| %>
+                <%= form_with(url: configuration_path, method: :patch, id: 'configurations-form') do |form| %>
                   <%= select_tag "marketplace_strongest_style_size", options_for_select([ "fs-1", "fs-2", "fs-3", "fs-4", "fs-5", "fs-6" ], Setting.marketplace_strongest_style_size), include_blank: 'Font size:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_strongest_style_weight", options_for_select([ "fw-normal", "fw-light", "fw-bold" ], Setting.marketplace_strongest_style_weight), include_blank: 'Font weight:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>
                   <%= select_tag "marketplace_strongest_style_face", options_for_select([ ["bootstrap-font"], ["brand-font"], ["brand-font-2"] ], Setting.marketplace_strongest_style_face), include_blank: 'Font face:', form: 'configurations-form', data: { controller: 'submits-form-immediately', action: 'submits-form-immediately#submit_form' } %>

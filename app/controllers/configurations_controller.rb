@@ -3,9 +3,9 @@
 # Allows chaging colors
 class ConfigurationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_ivars
+  before_action :set_area
 
-  def show
+  def edit
     authorize nil, policy_class: ConfigurationPolicy
   end
 
@@ -39,7 +39,7 @@ class ConfigurationsController < ApplicationController
 
   private
 
-  def set_ivars
+  def set_area
     @area = Area::Backend.new
   end
 end

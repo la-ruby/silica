@@ -50,7 +50,7 @@
       <ul class="dropdown-menu dropdown-menu-lg-end <%= theme_background_level_1! %>">
         <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="/accounts/<%= current_user.id %>">Account</a></li>
         <% if current_user.staff? %>
-          <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="/configurations">Edit Configurtion</a></li>
+          <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="<%= edit_configuration_path %>">Edit Configurtion</a></li>
         <% end %>
         <% if policy(:contact).index? %>
         <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="/contacts">Contacts <span class="badge rounded-pill bg-danger">new</span></a></li>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :configuration, only: [:edit, :update]
+
   resources :examples
   resource :reverts, only: [:create]
   resource :agrees, only: [:create]
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
   resources :property_disposition_checklists, only: [:update]
   resource :filters, only: [:create]
   resource :statuses, only: [:update]
-  resource :configurations, only: [:show, :update]
+
   resource :inquiries, only: [:create]
   resource :gallery, only: [:create]
   resources :addendum_versions, only: [:create, :update]
