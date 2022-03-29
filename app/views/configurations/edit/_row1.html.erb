@@ -2,8 +2,8 @@
   <% form_id = random_id %>
   <%= form_with(url: configuration_path, method: :patch, id: form_id) do |form| %>
     <td>
-      Marketplace::Base<br>
-      <span class="fst-italic">Unless overridden, children inhert the Base</span>
+      Marketplace::Base
+      <%= question_tooltip('Unless overridden, children inhert the Base') %>
     </td>
     <td>
       <%= configuration_face_tag(:marketplace_face, Setting.marketplace_face, form_id) %>

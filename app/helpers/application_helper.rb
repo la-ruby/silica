@@ -68,5 +68,9 @@ module ApplicationHelper
   def random_id
     "id-#{SecureRandom.hex[0..6]}"
   end
+
+  def question_tooltip(message)
+    "<i class=\"far fa-question-circle fa-xs\" data-bs-toggle=\"tooltip\" data-bs-placement=\"top\" title=\"#{j message}\" data-controller=\"apollo-tooltip\"></i>".html_safe
+  end
 end
 

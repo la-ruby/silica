@@ -2,8 +2,8 @@
   <% form_id = random_id %>
   <%= form_with(url: configuration_path, method: :patch, id: form_id) do |form| %>
     <td>
-      Marketplace::WeakStyle<br>
-      <span class="fst-italic">Used infrequently, Section subtitles use this</span>
+      Marketplace::WeakStyle
+      <%= question_tooltip('Used infrequently, Section subtitles use this') %>
     </td>
     <td>
       <%= configuration_size_tag(:marketplace_weak_style_size, Setting.marketplace_weak_style_size, form_id) %>

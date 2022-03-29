@@ -2,8 +2,8 @@
   <% form_id = random_id %>
   <%= form_with(url: configuration_path, method: :patch, id: form_id) do |form| %>
     <td>
-      Marketplace::BasicStyle<br>
-      <span class="fst-italic">Most common. Used by The property-description paragraph, lower-menu-items etc.</span>
+      Marketplace::BasicStyle
+      <%= question_tooltip('Most common. Used by The property-description paragraph, lower-menu-items etc.') %>
     </td>
     <td>
       <%= configuration_size_tag(:marketplace_basic_style_size, Setting.marketplace_basic_style_size, form_id) %>

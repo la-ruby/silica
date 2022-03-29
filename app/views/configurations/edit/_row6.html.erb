@@ -2,8 +2,8 @@
   <% form_id = random_id %>
   <%= form_with(url: configuration_path, method: :patch, id: form_id) do |form| %>
     <td>
-      Marketplace::StrongerStyle<br>
-      <span classs="fst-italic">Section titles often use this style</span>
+      Marketplace::StrongerStyle
+      <%= question_tooltip('Section titles often use this style') %>
     </td>
     <td>
       <%= configuration_size_tag(:marketplace_stronger_style_size, Setting.marketplace_stronger_style_size, form_id) %>

@@ -2,8 +2,8 @@
   <% form_id = random_id %>
   <%= form_with(url: configuration_path, method: :patch, id: form_id) do |form| %>
     <td>
-      Marketplace::StrongestStyle<br>
-      <span classs="fst-italic">The most eye catching peice of text in the page</span>
+      Marketplace::StrongestStyle
+      <%= question_tooltip('The most eye catching peice of text in the page') %>
     </td>
     <td>
       <%= configuration_size_tag(:marketplace_strongest_style_size, Setting.marketplace_strongest_style_size, form_id) %>

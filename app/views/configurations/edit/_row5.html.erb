@@ -2,8 +2,8 @@
   <% form_id = random_id %>
   <%= form_with(url: configuration_path, method: :patch, id: form_id) do |form| %>
     <td>
-      Marketplace::StrongStyle<br>
-      <span classs="fst-italic">uses by: Upper menu, footer-menu-titles, buyers name</span>
+      Marketplace::StrongStyle
+      <%= question_tooltip('used by: Upper menu, footer-menu-titles, buyers name') %>
     </td>
     <td>
       <%= configuration_size_tag(:marketplace_strong_style_size, Setting.marketplace_strong_style_size, form_id) %>

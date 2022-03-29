@@ -11,4 +11,8 @@ class UxPolicy < ApplicationPolicy
   def activity?;     !user&.limited? end
   def files?;        !user&.limited? end
   # /these are tabs in main navigation
+
+  def resync?
+    user&.staff? && APOLLO_INTERNAL_PRODUCTION
+  end
 end
