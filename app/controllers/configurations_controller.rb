@@ -11,7 +11,9 @@ class ConfigurationsController < ApplicationController
 
   def update
     authorize nil, policy_class: ConfigurationPolicy
-    Setting::STYLES.each { |item| Setting.send(:"#{item}=", params[item]) }
+    Setting::STYLES.each do |item|
+      Setting.send(:"#{item}=", params[item]) if params.has_key?(item)
+    end
 
     respond_to do |format|
       format.turbo_stream do

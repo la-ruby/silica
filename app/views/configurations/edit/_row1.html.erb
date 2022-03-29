@@ -1,0 +1,21 @@
+<tr>
+  <% form_id = random_id %>
+  <%= form_with(url: configuration_path, method: :patch, id: form_id) do |form| %>
+    <td>
+      Marketplace::Base<br>
+      <span class="fst-italic">Unless overridden, children inhert the Base</span>
+    </td>
+    <td>
+      <%= configuration_face_tag(:marketplace_face, Setting.marketplace_face, form_id) %>
+    </td>
+    <td>
+      <%= configuration_weight_tag(:marketplace_weight, Setting.marketplace_weight, form_id) %>
+    </td>
+    <td>
+      <%= configuration_color_tag(:marketplace_background_color, 'Bg', Setting.marketplace_background_color, form_id)  %>
+    </td>    
+    <td>
+      &nbsp;
+    </td>
+  <% end %>
+</tr>

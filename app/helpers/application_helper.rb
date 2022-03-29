@@ -64,5 +64,9 @@ module ApplicationHelper
       end
     end
   end
+
+  def random_id
+    "id-#{SecureRandom.hex[0..6]}"
+  end
 end
 
