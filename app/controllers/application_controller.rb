@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def apollo_root_request?
     request.fullpath == '/'
   end
+
+  def set_area_backend
+    @area = Area::Backend.new    
+  end
 end
