@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   # after_action :silica_trace
   # def silica_trace
-  #   puts "TRACING #{@area} #{controller_name unless @area}"
+  #   puts "TRACING #{@zrea} #{controller_name unless @zrea}"
   # end
 
   # /devise/wiki/How-To:-Change-the-redirect-path-after-destroying-a-session-i.e.-signing-out
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     request.fullpath == '/'
   end
 
-  def set_area_backend
-    @area = Area::Backend.new    
+  def set_zrea_backend
+    @zrea = Zrea::Backend.new    
   end
 end

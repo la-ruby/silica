@@ -2,7 +2,7 @@
 
 class FeedbacksController < ApplicationController
   before_action :set_record, only: %i[show new create]
-  before_action :set_area
+  before_action :set_zrea
 
   # GET /examples/1 or /examples/1.json
   def show; end
@@ -35,7 +35,7 @@ class FeedbacksController < ApplicationController
     params[:rejected_feedback]
   end
 
-  def set_area
-    @area = Area::Mbo.new
+  def set_zrea
+    @zrea = Zrea::Mbo.new
   end
 end

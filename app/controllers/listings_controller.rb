@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ListingsController < ApplicationController
-  before_action :set_area
+  before_action :set_zrea
   before_action :set_listing, only: [:show]
 
   def index
@@ -20,7 +20,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find params[:id]
   end
 
-  def set_area
-    @area = Area::Marketplace.new
+  def set_zrea
+    @zrea = Zrea::Marketplace.new
   end
 end

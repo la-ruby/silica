@@ -3,7 +3,7 @@
 # Allows changing colors
 class ConfigurationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_area_backend
+  before_action :set_zrea_backend
 
   def edit
     authorize nil, policy_class: ConfigurationPolicy

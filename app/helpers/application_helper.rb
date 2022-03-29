@@ -18,15 +18,15 @@ module ApplicationHelper
   end
 
   def background_with_image
-    'mbo-background' if @area&.menu_mode == 'mop' || @menu_mode == 'mop'
+    'mbo-background' if @zrea&.menu_mode == 'mop' || @menu_mode == 'mop'
   end
 
   def prevent_scrolling_maybe
-    '' if @area&.menu_mode == 'mop' || @menu_mode == 'mop'
+    '' if @zrea&.menu_mode == 'mop' || @menu_mode == 'mop'
   end
 
   def apollo_font
-    @poppins == true || @area&.poppins? ? 'brand-font' : ''
+    @poppins == true || @zrea&.poppins? ? 'brand-font' : ''
   end
 
   # Goals:

@@ -1,28 +1,27 @@
-module Area
-  class Backend
+module Zrea
+  class Mbo
     def nav
       '/nav/nav'
     end
 
     def title
-      "#{COMPANY_LC}. - Backend"
+      "#{COMPANY_LC}. - My Offer Portal"
     end
 
     def menu_mode
-      'backend'
+      'mop'
     end
 
     def poppins?
-      false
-    end
-
-    def footer?
       true
     end
 
+    def footer?
+      false
+    end
+
     def root
-      '/projects'
+      '/empty.html'
     end
   end
 end
- 

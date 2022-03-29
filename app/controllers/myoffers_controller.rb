@@ -3,7 +3,7 @@
 # aka My Offer Portal
 class MyoffersController < ApplicationController
   before_action :set_ivars
-  before_action :set_area
+  before_action :set_zrea
 
   def crayon
     mark_as_accepted if params[:event] == 'signing_complete'
@@ -38,7 +38,7 @@ class MyoffersController < ApplicationController
     set_mbo_request
   end
 
-  def set_area
-    @area = Area::Mbo.new
+  def set_zrea
+    @zrea = Zrea::Mbo.new
   end
 end

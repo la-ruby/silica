@@ -1,4 +1,4 @@
-module Area
+module Zrea
   # aka listings
   class Marketplace
     def root

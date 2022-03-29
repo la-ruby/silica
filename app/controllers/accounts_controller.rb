@@ -41,6 +41,6 @@ class AccountsController < ApplicationController
     end
 
     def set_ivars
-      @area = Area::Backend.new
+      @zrea = Zrea::Backend.new
     end
 end

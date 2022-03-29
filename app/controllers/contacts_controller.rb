@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_area
+  before_action :set_zrea
 
   # GET /examples or /examples.json
 
@@ -66,8 +66,8 @@ class ContactsController < ApplicationController
       params.require(:contact).permit(:first_name, :last_name, :phone, :email, :ut, :nc)
     end
 
-    def set_area
-      @area = Area::Backend.new
+    def set_zrea
+      @zrea = Zrea::Backend.new
     end
 
     def set_index_ivars

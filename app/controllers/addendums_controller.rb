@@ -4,7 +4,7 @@
 class AddendumsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_addendum
-  before_action :set_area
+  before_action :set_zrea
 
   def show
     authorize @addendum
@@ -17,7 +17,7 @@ class AddendumsController < ApplicationController
     @addendum = Addendum.find(params[:id])
   end
 
-  def set_area
-    @area = Area::Backend.new
+  def set_zrea
+    @zrea = Zrea::Backend.new
   end
 end

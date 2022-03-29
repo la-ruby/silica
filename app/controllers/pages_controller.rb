@@ -7,18 +7,18 @@ class PagesController < ApplicationController
   def landing
     raise unless apollo_root_request? # this shouldn't happen
 
-    redirect_to @area.root
+    redirect_to @zrea.root
   end
 
   private
 
   def set_ivars
-    @area = if request.host.ends_with?(APOLLO_BACKEND_DOM)
-              Area::Backend.new
+    @zrea = if request.host.ends_with?(APOLLO_BACKEND_DOM)
+              Zrea::Backend.new
             elsif request.host.ends_with?(APOLLO_MARKETPLACE_DOM)
-              Area::Marketplace.new
+              Zrea::Marketplace.new
             elsif request.host.ends_with?(APOLLO_MBO_DOM)
-              Area::Mbo.new
+              Zrea::Mbo.new
             end
   end
 end
