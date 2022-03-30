@@ -1,6 +1,5 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_zrea
   before_action :set_area_backend
   after_action :verify_authorized
 
@@ -66,10 +65,6 @@ class ContactsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def contact_params
       params.require(:contact).permit(:first_name, :last_name, :phone, :email, :ut, :nc)
-    end
-
-    def set_zrea
-      @zrea = Zrea::Backend.new
     end
 
     def set_index_ivars

@@ -1,5 +1,9 @@
 module Area
   class Backend < Area::Base
+    def self.root
+      '/projects'
+    end
+
     def style(name)
       case name
       when :basic
@@ -26,6 +30,10 @@ module Area
 	{ label: 'Calendar', feather_icon: 'calendar', link: 'https://example.com', allowed: false },
 	{ label: 'Deals', feather_icon: 'home', link: 'https://example.com', allowed: false },
       ]
+    end
+
+    def deprecated_font
+      "tailwind-font"
     end
   end
 end

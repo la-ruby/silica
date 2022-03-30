@@ -14,7 +14,7 @@
     <%= render '/javascripts' %>
   </head>
 
-  <body id="testing1646111336" class="apollo position-relative zbg-white-level-four apollo-bg-white-4 <%= yield :extra_body_classes %> <%= background_with_image %> <%= prevent_scrolling_maybe %> <%= apollo_font %>" style="<%= yield :extra_body_inline_css %>">
+  <body id="testing1646111336" class="apollo position-relative zbg-white-level-four apollo-bg-white-4 <%= yield :extra_body_classes %> <%= background_with_image %> <%= current_area.deprecated_font %>" style="<%= yield :extra_body_inline_css %>">
     <%= render('/nav') if current_area.nav? %>
     <%= render '/flashes' %>
     <div class="mt-4">&nbsp;<!-- space for nav --></div>

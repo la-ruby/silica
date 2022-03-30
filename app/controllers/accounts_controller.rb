@@ -1,7 +1,6 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_account, only: %i[ show edit update destroy ]
-  before_action :set_ivars
   before_action :set_area_backend
   after_action :verify_authorized
 
@@ -40,9 +39,5 @@ class AccountsController < ApplicationController
       result = params[:password].present? && valid?
       @message = "Error" unless result
       result
-    end
-
-    def set_ivars
-      @zrea = Zrea::Backend.new
     end
 end

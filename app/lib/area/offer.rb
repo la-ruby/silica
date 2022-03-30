@@ -1,5 +1,9 @@
 module Area
   class Offer < Area::Base
+    def self.root
+      '/empty.html'
+    end
+
     def title
       "#{COMPANY_LC}. - My Offer Portal"
     end

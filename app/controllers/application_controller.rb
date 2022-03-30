@@ -16,12 +16,8 @@ class ApplicationController < ActionController::Base
     '/users/sign_in'
   end
 
-  def apollo_root_request?
+  def silica_root_request?
     request.fullpath == '/'
-  end
-
-  def set_zrea_backend
-    @zrea = Zrea::Backend.new    
   end
 
   def set_area_backend

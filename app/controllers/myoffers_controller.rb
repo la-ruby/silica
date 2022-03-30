@@ -3,7 +3,6 @@
 # aka My Offer Portal
 class MyoffersController < ApplicationController
   before_action :set_ivars
-  before_action :set_zrea
   before_action :set_area_offer
   after_action :verify_authorized
 
@@ -39,9 +38,5 @@ class MyoffersController < ApplicationController
 
   def set_ivars
     set_mbo_request
-  end
-
-  def set_zrea
-    @zrea = Zrea::Mbo.new
   end
 end

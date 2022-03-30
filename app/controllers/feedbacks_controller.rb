@@ -2,7 +2,6 @@
 
 class FeedbacksController < ApplicationController
   before_action :set_record, only: %i[show new create]
-  before_action :set_zrea
   before_action :set_area_offer
   after_action :verify_authorized
 
@@ -39,9 +38,5 @@ class FeedbacksController < ApplicationController
 
   def rejected_feedback
     params[:rejected_feedback]
-  end
-
-  def set_zrea
-    @zrea = Zrea::Mbo.new
   end
 end

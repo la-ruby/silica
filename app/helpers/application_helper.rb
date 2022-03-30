@@ -18,15 +18,7 @@ module ApplicationHelper
   end
 
   def background_with_image
-    'mbo-background' if @zrea&.menu_mode == 'mop' || @menu_mode == 'mop'
-  end
-
-  def prevent_scrolling_maybe
-    '' if @zrea&.menu_mode == 'mop' || @menu_mode == 'mop'
-  end
-
-  def apollo_font
-    @poppins == true || @zrea&.poppins? ? 'brand-font' : ''
+    'mbo-background' if current_area.is_a?(Area::Offer)
   end
 
   # Goals:

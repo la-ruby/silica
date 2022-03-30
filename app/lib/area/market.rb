@@ -1,5 +1,9 @@
 module Area
   class Market < Area::Base
+    def self.root
+      '/listings'
+    end
+
     def title
       "#{COMPANY_LC}. - Marketplace"
     end
@@ -24,6 +28,12 @@ module Area
 	{ label: 'FAQ', feather_icon: nil, link: "https://www.#{APOLLO_MARKETPLACE_NAKED_DOM}/faqs", allowed: true },
       ]
     end
+
+    def deprecated_font
+      "brand-font-2"
+    end
+
+
   end
 end
  

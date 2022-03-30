@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ListingsController < ApplicationController
-  before_action :set_zrea
   before_action :set_listing, only: [:show]
   before_action :set_area_market
   after_action :verify_authorized
@@ -20,9 +19,5 @@ class ListingsController < ApplicationController
 
   def set_listing
     @listing = Listing.find params[:id]
-  end
-
-  def set_zrea
-    @zrea = Zrea::Marketplace.new
   end
 end

@@ -32,5 +32,9 @@ module Area
     def title
       "#{COMPANY_LC}"
     end
+
+    def deprecated_font
+      "brand-font"
+    end
   end
 end
