@@ -15,6 +15,10 @@ module Area
     def logo
       '/mbo/logo.png'
     end
+
+    def nav_bg
+      'apollo-bg-white-4'
+    end
   end
 end
  

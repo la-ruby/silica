@@ -33,7 +33,9 @@ module Area
       "brand-font-2"
     end
 
-
+    def nav_bg
+      'bg_f9'
+    end
   end
 end
  

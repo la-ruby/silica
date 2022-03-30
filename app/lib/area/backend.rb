@@ -35,6 +35,10 @@ module Area
     def deprecated_font
       "tailwind-font"
     end
+
+    def nav_bg
+      'apollo-bg-white-4'
+    end
   end
 end
  

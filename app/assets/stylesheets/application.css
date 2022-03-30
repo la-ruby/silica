@@ -60,3 +60,7 @@ trix-editor {
 .trix-button-group.trix-button-group--file-tools {
     display:none;
 }
+
+.bg_f9 {
+  background-color: #f9f9f9;
+}
