@@ -5,7 +5,7 @@ module ProjectsHelper
   def summary_image_for_backend(project)
     project.kodaks.where(primary: '1').first&.pic&.variant(:small) ||
       project.kodaks.first&.pic&.variant(:small) ||
-      silica_bucket('/mocks/house.png')
+      silica_neutral_bucket('/mocks/house.png')
   end
 
   def formatted_owner_occupied(project)
