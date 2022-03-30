@@ -6,6 +6,14 @@ module Area
         BackendBasicStyle
       end
     end
+
+    def footer?
+      true
+    end
+
+    def nav?
+      true
+    end
   end
 end
  
