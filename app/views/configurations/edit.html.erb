@@ -1,17 +1,20 @@
 <%= spacer(3) %>
 
-<div class="container"><div class="row"><div class="col">
+<%= basic_container do %>
   <div class="accordion" id="confgurations-edit-accordion">
     <div class="accordion-item">
       <h2 class="accordion-header">
-	<button class="accordion-button text-black bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-          Marketplace
+	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+	  <span class="<%= current_area.style(:basic).classes %>">
+	    Marketplace
+	  </span>
+	  
 	</button>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#confgurations-edit-accordion">
 	<div class="accordion-body">
 	  <div class="container">
-            <table class="table">
+            <table class="table <%= current_area.style(:basic).classes %>">
               <%= render '/configurations/edit/row1' %>
               <%= render '/configurations/edit/row2' %>
               <%= render '/configurations/edit/row3' %>
@@ -25,4 +28,4 @@
       </div>
     </div>
   </div>
-</div></div></div>
+<% end %>

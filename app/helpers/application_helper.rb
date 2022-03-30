@@ -60,14 +60,8 @@ module ApplicationHelper
     content_tag(:div, "<!-- horizontal spacer -->".html_safe, class: 'd-inline-block me-1') * count
   end
 
-  def plain_link_classes
-    "text-decoration-none text-black"
-  end
-
   def basic_container(style: :basic)
-    content_tag(:div,
-                class: "container #{current_area.style(style).classes}",
-                style: current_area.style(style).inline) do
+    content_tag(:div, class: "container #{current_area.style(style).classes}") do
       content_tag(:div, class: 'row') do
         content_tag(:div, class: 'col') do
           if block_given?

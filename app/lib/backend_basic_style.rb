@@ -1,11 +1,7 @@
 class BackendBasicStyle
   class << self
     def classes
-      "fw-light"
-    end
-
-    def inline
-      nil
+      "fw-light backend_basic_style_color"
     end
   end
 end

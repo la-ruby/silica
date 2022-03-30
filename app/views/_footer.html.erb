@@ -2,15 +2,15 @@
 
 <%= basic_container do %>
   <div class="text-center">
-    <a href="<%= silica_bucket('/privacy.pdf') %>" class="<%= plain_link_classes %>">
+    <a href="<%= silica_bucket('/privacy.pdf') %>" class="text-decoration-none">
       Privacy
     </a>
     <%= horizontal_spacer %>
-    <a href="<%= silica_bucket('/terms.pdf') %>" class="<%= plain_link_classes %>">
+    <a href="<%= silica_bucket('/terms.pdf') %>" class="text-decoration-none">
       Terms
     </a>
     <%= horizontal_spacer %>
-    <a href="mailto:<%= SILICA_SUPPORT %>" class="<%= plain_link_classes %>">
+    <a href="mailto:<%= SILICA_SUPPORT %>" class="text-decoration-none">
       Contact Us
     </a>
   </div>

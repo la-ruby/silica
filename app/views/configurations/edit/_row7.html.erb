@@ -1,20 +1,20 @@
 <tr>
   <% form_id = random_id %>
   <%= form_with(url: configuration_path, method: :patch, id: form_id) do |form| %>
-    <td>
+    <td class="align-middle">
       Marketplace::StrongestStyle
       <%= question_tooltip('The most eye catching peice of text in the page') %>
     </td>
-    <td>
+    <td class="align-middle">
       <%= configuration_size_tag(:marketplace_strongest_style_size, Setting.marketplace_strongest_style_size, form_id) %>
     </td>
-    <td>
+    <td class="align-middle">
       <%= configuration_weight_tag(:marketplace_strongest_style_weight, Setting.marketplace_strongest_style_weight, form_id) %>
     </td>
-    <td>
+    <td class="align-middle">
       <%= configuration_face_tag(:marketplace_strongest_style_face, Setting.marketplace_strongest_style_face, form_id) %>
     </td>
-    <td>
+    <td class="align-middle">
       <%= configuration_color_tag(:marketplace_strongest_style_color, 'Color', Setting.marketplace_strongest_style_color, form_id)  %>
     </td>
   <% end %>
