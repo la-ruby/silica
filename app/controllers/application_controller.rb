@@ -4,11 +4,6 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
-  # after_action :silica_trace
-  # def silica_trace
-  #   puts "TRACING #{@zrea} #{controller_name unless @zrea}"
-  # end
-
   # /devise/wiki/How-To:-Change-the-redirect-path-after-destroying-a-session-i.e.-signing-out
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(_)

@@ -3,6 +3,7 @@
 class ListingsController < ApplicationController
   before_action :set_zrea
   before_action :set_listing, only: [:show]
+  after_action :verify_authorized
 
   def index
     authorize Listing

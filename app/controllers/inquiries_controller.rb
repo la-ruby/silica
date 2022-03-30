@@ -1,8 +1,11 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: %i[ show edit update destroy ]
+  after_action :verify_authorized
 
   # POST /inquiries or /inquiries.json
   def create
+    authorize nil, policy_class: InquiryPolicy
+
     @inquiry = Inquiry.new(inquiry_params)
     message = (@inquiry.valid? ? "Thank you! We'll be in touch." : 'Please fill out the form')
     NotificationsMailer.inquiry(@inquiry).deliver_now

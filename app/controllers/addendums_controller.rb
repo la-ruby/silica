@@ -5,6 +5,7 @@ class AddendumsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_addendum
   before_action :set_zrea
+  after_action :verify_authorized
 
   def show
     authorize @addendum

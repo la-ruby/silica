@@ -1,26 +1,32 @@
 class ExamplesController < ApplicationController
   before_action :set_example, only: %i[ show edit update destroy ]
+  after_action :verify_authorized
 
   # GET /examples or /examples.json
   def index
+    authorize nil, policy_class: ExamplePolicy
     @examples = Example.all
   end
 
   # GET /examples/1 or /examples/1.json
   def show
+    authorize @example
   end
 
   # GET /examples/new
   def new
+    authorize nil, policy_class: ExamplePolicy
     @example = Example.new
   end
 
   # GET /examples/1/edit
   def edit
+    authorize @example
   end
 
   # POST /examples or /examples.json
   def create
+    authorize nil, policy_class: ExamplePolicy
     @example = Example.new(example_params)
 
     respond_to do |format|
@@ -36,6 +42,7 @@ class ExamplesController < ApplicationController
 
   # PATCH/PUT /examples/1 or /examples/1.json
   def update
+    authorize @example
     respond_to do |format|
       if @example.update(example_params)
         format.html { redirect_to example_url(@example), notice: "Example was successfully updated." }
@@ -49,6 +56,7 @@ class ExamplesController < ApplicationController
 
   # DELETE /examples/1 or /examples/1.json
   def destroy
+    authorize @example
     @example.destroy
 
     respond_to do |format|

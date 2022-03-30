@@ -3,9 +3,12 @@
 class FeedbacksController < ApplicationController
   before_action :set_record, only: %i[show new create]
   before_action :set_zrea
+  after_action :verify_authorized
 
   # GET /examples/1 or /examples/1.json
-  def show; end
+  def show
+    authorize nil, policy_class: FeedbackPolicy
+  end
 
   # GET /examples/new
   def new
@@ -14,6 +17,8 @@ class FeedbacksController < ApplicationController
 
   # POST /examples or /examples.json
   def create
+    authorize nil, policy_class: FeedbackPolicy
+
     @mbo_request.second_seller_mode? ? @record.update(second_seller_rejected_feedback: rejected_feedback) : @record.update(rejected_feedback: rejected_feedback)
     respond_to do |format|
       format.turbo_stream do

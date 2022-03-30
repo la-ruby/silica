@@ -4,8 +4,11 @@
 # might not fit the strict definition
 class WebhooksController < ApplicationController
   protect_from_forgery except: :webhook
+  after_action :verify_authorized
 
   def webhook
+    authorize nil, policy_class: WebhookPolicy
+
     par = params.to_unsafe_hash.slice('street', 'city', 'state', 'zip', 'name', 'phone', 'email', 'expectedTimeline')
     expected_timeline = par.delete('expectedTimeline')
     record = Project.new(
@@ -17,6 +20,8 @@ class WebhooksController < ApplicationController
   end
 
   def webhook_signed_by_company
+    authorize nil, policy_class: WebhookPolicy
+
     return unless params[:event] == 'signing_complete'
 
     record = Repc.find_by_docusign_envelope_id envelope_id
@@ -26,6 +31,8 @@ class WebhooksController < ApplicationController
   end
 
   def webhook_revert
+    authorize nil, policy_class: WebhookPolicy
+
     aws_creds = "AWS_REGION='us-east-1' AWS_ACCESS_KEY_ID='#{AWS_ACCESS_KEY_ID}' AWS_SECRET_ACCESS_KEY='#{AWS_SECRET_ACCESS_KEY}'"
     `heroku pg:copy silica-#{APOLLO_HEROKU_APP}::DATABASE_URL DATABASE_URL -a silica-internal-#{APOLLO_HEROKU_APP} --confirm silica-internal-#{APOLLO_HEROKU_APP}` if Rails.env.production? && !APOLLO_INTERNAL_PRODUCTION
     muter = (Rails.env.production? ? "" : " echo ")
@@ -34,6 +41,8 @@ class WebhooksController < ApplicationController
   end
 
   def webhook_sendgrid_event
+    authorize nil, policy_class: WebhookPolicy
+
     data = JSON.parse(request.body.read)
     Rails.logger.info "<< webhook_sendgrid_event #{data}"
     refresh_offer_viewed(data)

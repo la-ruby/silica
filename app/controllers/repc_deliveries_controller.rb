@@ -1,5 +1,6 @@
 class RepcDeliveriesController < ApplicationController
   before_action :authenticate_user!
+  after_action :verify_authorized
 
   # POST /examples or /examples.json
   def create

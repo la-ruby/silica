@@ -4,8 +4,10 @@
 class MyoffersController < ApplicationController
   before_action :set_ivars
   before_action :set_zrea
+  after_action :verify_authorized
 
   def crayon
+    authorize nil, policy_class: MyOfferPolicy
     mark_as_accepted if params[:event] == 'signing_complete'
     render template: '/component/_crayon',
            layout: 'application',

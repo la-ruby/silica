@@ -3,9 +3,12 @@
 class KodaksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_kodak, only: %i[update]
+  after_action :verify_authorized
   protect_from_forgery except: :create
 
   def create
+    authorize nil, policy_class: KodakPolicy
+
     project = Project.find(params[:project])
     kodak = project.kodaks.create
     kodak.pic.attach params[:file]
@@ -18,6 +21,8 @@ class KodaksController < ApplicationController
   end
 
   def update
+    authorize nil, policy_class: KodakPolicy
+
     @kodak.update(kodak_params)
     respond_to do |format|
       format.turbo_stream
@@ -27,6 +32,8 @@ class KodaksController < ApplicationController
   end
 
   def destroy
+    authorize nil, policy_class: KodakPolicy
+
     project = Project.find(params[:project])
     project.kodaks.find(params[:kodak])&.destroy
 

@@ -1,8 +1,12 @@
 class AddendumVerdictsController < ApplicationController
   include DocuSign::Mixin
 
+  after_action :verify_authorized
+
   # POST /examples or /examples.json
   def create
+    authorize nil, policy_class: AddendumVerdictPolicy
+
     @addendum_version = AddendumVersion.find params[:addendum_version_id]
     @repc = Repc.find(@addendum_version.related_repc_id)
     @second_seller_mode = (params[:second_seller_mode] == 'true')

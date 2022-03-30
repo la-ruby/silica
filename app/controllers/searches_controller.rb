@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  # before_action :authenticate_user!
+  after_action :verify_authorized
 
   # POST /searches or /searches.json
   def create

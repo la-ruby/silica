@@ -2,6 +2,7 @@ class AccountsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_account, only: %i[ show edit update destroy ]
   before_action :set_ivars
+  after_action :verify_authorized
 
   # GET /accounts/1 or /accounts/1.json
   def show

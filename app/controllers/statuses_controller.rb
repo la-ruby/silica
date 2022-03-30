@@ -3,6 +3,7 @@
 # Allows charing project status from /projects/n/underwriting_review_offer pages
 class StatusesController < ApplicationController
   before_action :authenticate_user!
+  after_action :verify_authorized
 
   def update
     authorize nil, policy_class: StatusPolicy

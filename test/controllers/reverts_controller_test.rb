@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ReversControllerTest < ActionDispatch::IntegrationTest
+class RevertsControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in create(:user)
   end

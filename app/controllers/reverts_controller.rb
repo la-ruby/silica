@@ -2,8 +2,13 @@
 
 # A revert is a re-sync of database
 class RevertsController < ApplicationController
+  before_action :authenticate_user!
+  after_action :verify_authorized
+
   # POST
   def create
+    authorize nil, policy_class: RevertPolicy
+
     echo = (APOLLO_INTERNAL_PRODUCTION ? ' ' : 'echo ')
     Rails.logger.info `#{echo}curl 'https://#{APOLLO_BACKEND_DOM}/webhook_revert'`
     sleep 5 unless Rails.env.test?

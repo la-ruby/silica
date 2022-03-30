@@ -1,6 +1,7 @@
 class AddendumVersionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_addendum_version, only: %i[update]
+  after_action :verify_authorized
 
   def update
     authorize @addendum_version

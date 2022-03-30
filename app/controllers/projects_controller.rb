@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_project, except: %i[new create index]
+  after_action :verify_authorized
 
   def index
     @projects = Project.search(page: params[:page])
@@ -24,11 +25,15 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
+    authorize nil, policy_class: ProjectPolicy
+
     @project = Project.new
   end
 
   # POST /projects
   def create
+    authorize nil, policy_class: ProjectPolicy
+
     respond_to do |format|
       format.html do
         if create_project
@@ -41,6 +46,8 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    authorize nil, policy_class: ProjectPolicy
+
     @project.update(project_params)
     respond_to do |format|
       format.turbo_stream do
@@ -50,6 +57,54 @@ class ProjectsController < ApplicationController
         ]
       end
     end
+  end
+
+  def overview
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def offer
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def inspection
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def dispositions_checklist
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def dispositions_prepare_listing
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def underwriting_review_offer
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def underwriting_prepare_repc
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def underwriting_property_analysis
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def underwriting_intake_form
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def marketplace
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def files
+    authorize nil, policy_class: ProjectPolicy
+  end
+
+  def activity
+    authorize nil, policy_class: ProjectPolicy
   end
 
   private

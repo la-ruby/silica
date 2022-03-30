@@ -1,8 +1,11 @@
 class RepcVerdictsController < ApplicationController
   include DocuSign::Mixin
+  after_action :verify_authorized
 
   # POST /examples or /examples.json
   def create
+    authorize nil, policy_class: RepcVerdictPolicy
+
     @repc = Repc.find params[:repc_id]
     @second_seller_mode = (params[:second_seller_mode] == 'true')
     @url = ''
