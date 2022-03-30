@@ -84,7 +84,8 @@ DOCU_SIGN_BASE_PATH = 'https://na3.docusign.net/restapi'
   'AWS_ACCESS_KEY_ID' => 'testing',
   'AWS_SECRET_ACCESS_KEY' => 'testing',
   'ROLLBAR_ACCESS_TOKEN' => 'testing',
-  'APOLLO_HEROKU_APP' => 'testing'
+  'APOLLO_HEROKU_APP' => 'testing',
+  'BUCKET_HOST' => 'http://localhost:5000'
 }.each do |k,v|
   Object.const_set(
     k,

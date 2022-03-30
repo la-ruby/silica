@@ -35,8 +35,7 @@ module ApplicationHelper
   # Namespacing of assets using the COMPANY constant
   # Static browsing of source code shows the company name acme
   def silica_bucket(file_or_path, rails_env: 'neutral', brand: 'neutral')
-    server = (Rails.env.production? ? 'https://silica-bucket.s3.amazonaws.com' : 'http://localhost:5000')
-    "#{server}/#{brand}/#{rails_env}#{file_or_path}"
+    "#{BUCKET_HOST}/#{brand}/#{rails_env}#{file_or_path}"
   end
 
   def status_icon(status)
