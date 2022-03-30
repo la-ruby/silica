@@ -1,11 +1,17 @@
-<!--begin::Footer-->
-<div class="text-center mt-5 mb-1">
-  <!--begin::Links-->
-  <div zclass="d-flex align-items-center fs-6">
-    <a href="<%= silica_bucket('/privacy.pdf', brand: COMPANY_LC) %>" class="fw-light text-decoration-none px-2 <%= normal_text %>">Privacy</a>
-    <a href="<%= silica_bucket('/terms.pdf', brand: COMPANY_LC) %>" class="fw-light text-decoration-none px-2 <%= normal_text %>">Terms</a>
-    <a href="mailto:<%= SILICA_SUPPORT %>" class="fw-light text-decoration-none px-2 <%= normal_text %>">Contact Us</a>
+<%= spacer(2) %>
+
+<%= basic_container do %>
+  <div class="text-center">
+    <a href="<%= silica_bucket('/privacy.pdf') %>" class="<%= plain_link_classes %>">
+      Privacy
+    </a>
+    <%= horizontal_spacer %>
+    <a href="<%= silica_bucket('/terms.pdf') %>" class="<%= plain_link_classes %>">
+      Terms
+    </a>
+    <%= horizontal_spacer %>
+    <a href="mailto:<%= SILICA_SUPPORT %>" class="<%= plain_link_classes %>">
+      Contact Us
+    </a>
   </div>
-  <!--end::Links-->
-</div>
-<!--end::Footer-->
+<% end %>

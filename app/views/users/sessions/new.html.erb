@@ -1,7 +1,7 @@
 <div class="bootstrap-signin-example-wrapper text-center">
 <main class="form-signin">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
-<img class="mb-4" src="<%= silica_bucket('/logo_square.png', brand: COMPANY_LC) %>" alt="" width="72" zheight="57">
+<img class="mb-4" src="<%= silica_bucket('/logo_square.png') %>" alt="" width="72" zheight="57">
 <div class="mb-3 <%= normal_text %>">Please sign in</div>
 
     <div class="form-floating">

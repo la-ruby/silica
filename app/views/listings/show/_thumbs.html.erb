@@ -14,7 +14,7 @@
     <% if listing.project.kodaks.where(marketplace: "1").size == 0 %>
     <a class="d-block col border" href="/listings/<%= listing.id %>?gallery=1" role="button">
       <div style="width: 200px; height: 200px;
-		  background-size: cover; background-image: url(<%= silica_bucket('/mocks/placeholder.png') %>);
+		  background-size: cover; background-image: url(<%= silica_neutral_bucket('/mocks/placeholder.png') %>);
 		  background-position: center center; background-repeat: no-repeat">
       </div>
       

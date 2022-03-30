@@ -34,8 +34,12 @@ module ApplicationHelper
   # Ability to specify rails env specific assets
   # Namespacing of assets using the COMPANY constant
   # Static browsing of source code shows the company name acme
-  def silica_bucket(file_or_path, rails_env: 'neutral', brand: 'neutral')
-    "#{BUCKET_HOST}/#{brand}/#{rails_env}#{file_or_path}"
+  def silica_bucket(file_or_path, rails_env: 'neutral')
+    "#{BUCKET_HOST}/#{COMPANY_LC}/#{rails_env}#{file_or_path}"
+  end
+
+  def silica_neutral_bucket(file_or_path, rails_env: 'neutral')
+    "#{BUCKET_HOST}/neutral/#{rails_env}#{file_or_path}"
   end
 
   def status_icon(status)
@@ -52,8 +56,18 @@ module ApplicationHelper
     content_tag(:div, "&nbsp;".html_safe, class: 'mb-1') * count
   end
 
-  def container
-    content_tag(:div, class: 'container') do
+  def horizontal_spacer(count=1)
+    content_tag(:div, "<!-- horizontal spacer -->".html_safe, class: 'd-inline-block me-1') * count
+  end
+
+  def plain_link_classes
+    "text-decoration-none text-black"
+  end
+
+  def basic_container(style: :basic)
+    content_tag(:div,
+                class: "container #{current_area.style(style).classes}",
+                style: current_area.style(style).inline) do
       content_tag(:div, class: 'row') do
         content_tag(:div, class: 'col') do
           if block_given?
@@ -73,7 +87,7 @@ module ApplicationHelper
   end
 
   def current_area
-    raise 'AreaNotSpecified' unless @area
+    raise 'Area Not Specified' unless @area
     @area
   end
 end

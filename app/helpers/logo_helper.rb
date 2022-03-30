@@ -16,20 +16,20 @@ module LogoHelper
   def infer_logo(menu_mode)
     case menu_mode
     when 'marketplace'
-      silica_bucket('/logos/marketplace.png', brand: COMPANY_LC)
+      silica_bucket('/logos/marketplace.png')
     when 'mop'
-      silica_bucket('/mbo/logo.png', brand: COMPANY_LC)
+      silica_bucket('/mbo/logo.png')
     else
-      silica_bucket('/logo.png', brand: COMPANY_LC)
+      silica_bucket('/logo.png')
     end
   end
 
   def infer_small_logo(menu_mode)
     case menu_mode
     when 'marketplace'
-      silica_bucket('/logos/marketplace.png', brand: COMPANY_LC)
+      silica_bucket('/logos/marketplace.png')
     else
-      silica_bucket('/logo.png', brand: COMPANY_LC)
+      silica_bucket('/logo.png')
     end
   end
 end
