@@ -1,7 +1,7 @@
 <nav id="apollo-nav" class="navbar navbar-light navbar-expand-lg fixed-top <%= (@zrea&.menu_mode == "mop" || @menu_mode == "mop") ? "bg-light" : theme_background_level_1! %>">
   <div class="container-xxl">
 
-    <%= render '/nav/brand', menu_mode: (@zrea ? @zrea.menu_mode : @menu_mode), logo_link: logo_link, logo: logo, small_logo: small_logo %>
+    <%= render '/nav/brand', menu_mode: (@zrea ? @zrea.menu_mode : @menu_mode) %>
 
     <%= render '/nav/toggler' %>
 

@@ -1,10 +1,10 @@
-<a href="<%= logo_link %>" class="navbar-brand">
+<a href="<%= current_area.logo_link %>" class="navbar-brand">
   <% if @zrea.is_a?(Zrea::Marketplace) %>
-  <img class="d-none d-lg-block my-0 my-xxl-3" style="height: 66px" src="<%= logo %>">
+  <img class="d-none d-lg-block my-0 my-xxl-3" style="height: 66px" src="<%= silica_bucket(current_area.logo) %>">
   <% else %>
-  <img class="d-none d-lg-block" style="height: 40px" src="<%= logo %>">
+  <img class="d-none d-lg-block" style="height: 40px" src="<%= silica_bucket(current_area.logo) %>">
   <% end %>
 
-  <img class="d-block d-lg-none" style="height: 40px" src="<%= small_logo %>">
+  <img class="d-block d-lg-none" style="height: 40px" src="<%= silica_bucket(current_area.small_logo) %>">
 </a>
 
