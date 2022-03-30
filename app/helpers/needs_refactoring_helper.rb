@@ -40,8 +40,9 @@ module NeedsRefactoringHelper
 
   # TODO: partialize?
   def feather_icon(icon, options = {})
-    style = "style='height: #{options[:height]}'" if options[:height]
-    "<svg class='feather-icon' #{style}>" \
+    style = "stroke-width: #{options[:stroke_width] || 2};"
+    style += "height: #{options[:height]}" if options[:height]
+    "<svg class='feather-icon' style=\"#{style}\">" \
     "<use xlink:href='/feather-sprite.svg##{icon}' />" \
     '</svg>'.html_safe
   end

@@ -4,6 +4,13 @@ module Area
       '/empty.html'
     end
 
+    def style(name)
+      case name
+      when :basic
+        OfferBasicStyle
+      end
+    end
+
     def title
       "#{COMPANY_LC}. - My Offer Portal"
     end

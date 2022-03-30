@@ -2,7 +2,7 @@
     <% Project.all.pluck(:state).reject(&:blank?).sort.uniq.each do |state| %>
     <div class="form-check form-control-sm">
       <input class="form-check-input zset_1631823901 zsubset_a set1632185306" type="checkbox" value="<%= state %>" <%= 'checked' if (params[:statefilter] || "").split('__').include? state %>>
-      <label class="form-check-label <%= normal_text %>" for="defaultCheck1">
+      <label class="form-check-label" for="defaultCheck1">
         <%= state %>
       </label>
     </div>

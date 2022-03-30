@@ -83,6 +83,7 @@ module ApplicationHelper
           uri = URI.parse(CHART_SERVICE_HOST)
           req = Net::HTTP.new(uri.hostname, uri.port)
 	  req.use_ssl = true
+           req.read_timeout = 300000
           xml_data = %{<avmx>
   <request type="complexityprofiler" transferinfo="true" compTransferInfo="true" dataSource="mls" pdfReport="true" subjectDataSource="mlsdq" compsType="distancenozip" chartsEmbedded="true" refi="true" mlssupplementalinfo="true" marketconditions="true" avmforecast="true">
     <requestheader>
@@ -96,10 +97,10 @@ module ApplicationHelper
     </requestheader>
     <property>
       <address>
-        <fulladdress>1675 via corona</fulladdress>
-        <city></city>
-        <state></state>
-        <zip>92037</zip>
+        <fulladdress>5202 Downey Ave</fulladdress>
+        <city>Lakewood</city>
+        <state>CA</state>
+        <zip>90712</zip>
       </address>
     </property>
     <searchcriteria maxdistance="2">

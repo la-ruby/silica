@@ -1,4 +1,4 @@
-<div class="container-xxl" data-controller="projects-bar">
+<div class="container-xxl <%= current_area.style(:basic).classes %>" data-controller="projects-bar">
   <div class="row my-3">
 
   <div class="col-auto text-center">
@@ -18,7 +18,7 @@
     </div>
   </div>
   <div class="col">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center fw-light">
       <div class="col-auto">
         <%= render '/projects/bar/state_filter' %>
       </div>
@@ -40,7 +40,10 @@
     </div>
   </div>
   <div class="col-auto text-center">
-    <a class="btn btn-outline-brandprimary btn-sm rounded-half-r-i" data-turbo="true" href="/projects/new" role="button"><i class="fa fa-plus"></i> PROJECT</a>
+    <a class="btn btn-outline-brandprimary btn-sm rounded-half-r-i fw-light" data-turbo="true" href="/projects/new" role="button">
+      <i class="bi bi-plus"></i>
+      PROJECT
+    </a>
   </div>
 
   </div>

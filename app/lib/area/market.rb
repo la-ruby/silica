@@ -4,6 +4,13 @@ module Area
       '/listings'
     end
 
+    def style(name)
+      case name
+      when :basic
+        MarketBasicStyle
+      end
+    end
+
     def title
       "#{COMPANY_LC}. - Marketplace"
     end
@@ -35,6 +42,10 @@ module Area
 
     def nav_bg
       'bg_f9'
+    end
+
+    def nav_item_style
+      "fs-5"
     end
   end
 end

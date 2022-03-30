@@ -26,7 +26,7 @@ module Area
     def menu_items
       [
 	{ label: 'My Dashboard', feather_icon: 'layout', link: 'https://example.com', allowed: false },
-	{ label: 'Project Table', feather_icon: 'clipboard', link: '/projects', allowed: true },
+	{ label: 'Project Table', feather_icon: 'clipboard', link: '/projects', allowed: true, bolder: true },
 	{ label: 'Calendar', feather_icon: 'calendar', link: 'https://example.com', allowed: false },
 	{ label: 'Deals', feather_icon: 'home', link: 'https://example.com', allowed: false },
       ]
@@ -38,6 +38,10 @@ module Area
 
     def nav_bg
       'apollo-bg-white-4'
+    end
+
+    def nav_item_style
+      'fw-light'
     end
   end
 end
