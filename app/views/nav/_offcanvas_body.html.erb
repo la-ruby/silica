@@ -5,7 +5,7 @@
 
 <div class="offcanvas-body">
   <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-    <% items.each do |item| %>
+    <% current_area.menu_items.each do |item| %>
     <li class="nav-item mx-3">
       <a class="nav-link <%= 'pe-none' unless item[:allowed] == true %> <%= Marketplace::StrongStyle.css %>" style="<%= Marketplace::StrongStyle.inline_css %>" aria-current="page" href="<%= item[:link] %>">
         <%= feather_icon(item[:feather_icon]) if item[:feather_icon] %>
@@ -22,7 +22,7 @@
   </ul>
 
 
-  <% if !current_user && allow_session_buttons %>
+  <% if !current_user && current_area.devisable? %>
   <div class="col-auto">
     <div class="btn-group">
       <a class="btn <%= Marketplace::StrongStyle.css %>" style="font-weight: inherit; <%= Marketplace::StrongStyle.inline_css %>" href="/users/sign_in" role="button">
@@ -41,7 +41,7 @@
    </div>
    <% end %>
 
-  <% if current_user && allow_session_buttons %>
+  <% if current_user && current_area.devisable? %>
   <div class="col-auto">
     <div class="btn-group">
       <button type="button" class="btn dropdown-toggle ps-0 ps-lg-2 <%= Marketplace::StrongStyle.css %>" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" style="<%= Marketplace::StrongStyle.css %>">

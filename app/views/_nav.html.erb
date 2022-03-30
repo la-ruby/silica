@@ -5,11 +5,9 @@
 
     <%= render '/nav/toggler' %>
 
-    <% if should_show_offcanvas %>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <%= render '/nav/offcanvas_header' %>
-      <%= render '/nav/offcanvas_body', items: items, allow_session_buttons: allow_session_buttons %>
+      <%= render '/nav/offcanvas_body' %>
     </div>
-   <% end %>
   </div>
 </nav>

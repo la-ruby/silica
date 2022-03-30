@@ -15,12 +15,7 @@
   </head>
 
   <body id="testing1646111336" class="apollo position-relative zbg-white-level-four apollo-bg-white-4 <%= yield :extra_body_classes %> <%= background_with_image %> <%= prevent_scrolling_maybe %> <%= apollo_font %>" style="<%= yield :extra_body_inline_css %>">
-    <%= render(
-	  '/nav',
-	  items: infer_menu_items((@zrea ? @zrea.menu_mode : @menu_mode)),
-	  allow_session_buttons: allow_session_buttons((@zrea ? @zrea.menu_mode : @menu_mode)),
-	  should_show_offcanvas: infer_should_show_offcanvas((@zrea ? @zrea.menu_mode : @menu_mode))
-	) if current_area.nav? %>
+    <%= render('/nav') if current_area.nav? %>
     <%= render '/flashes' %>
     <div class="mt-4">&nbsp;<!-- space for nav --></div>
     <div class="mt-3">&nbsp;<!-- space for nav --></div>

@@ -19,5 +19,14 @@ module Area
     def logo
       '/logo.png'
     end
+
+    # devisable areas show a login link
+    def devisable?
+      false
+    end
+
+    def menu_items
+      []
+    end
   end
 end
