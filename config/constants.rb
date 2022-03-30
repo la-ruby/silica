@@ -85,7 +85,7 @@ DOCU_SIGN_BASE_PATH = 'https://na3.docusign.net/restapi'
   'AWS_SECRET_ACCESS_KEY' => 'testing',
   'ROLLBAR_ACCESS_TOKEN' => 'testing',
   'APOLLO_HEROKU_APP' => 'testing',
-  'BUCKET_HOST' => 'http://localhost:5000'
+  'BUCKET_HOST' => 'https://silica-bucket.s3.amazonaws.com'
 }.each do |k,v|
   Object.const_set(
     k,
