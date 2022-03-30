@@ -1,12 +1,5 @@
 module Area
-  class Generic
-    def footer?
-      false
-    end
-
-    def nav?
-      true
-    end
+  class Generic < Area::Base
   end
 end
  

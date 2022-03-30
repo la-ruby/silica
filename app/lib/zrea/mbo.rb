@@ -1,9 +1,5 @@
 module Zrea
   class Mbo
-    def nav
-      '/nav/nav'
-    end
-
     def title
       "#{COMPANY_LC}. - My Offer Portal"
     end
@@ -14,10 +10,6 @@ module Zrea
 
     def poppins?
       true
-    end
-
-    def footer?
-      false
     end
 
     def root

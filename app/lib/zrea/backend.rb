@@ -1,9 +1,5 @@
 module Zrea
   class Backend
-    def nav
-      '/nav/nav'
-    end
-
     def title
       "#{COMPANY_LC}. - Backend"
     end
@@ -14,10 +10,6 @@ module Zrea
 
     def poppins?
       false
-    end
-
-    def footer?
-      true
     end
 
     def root

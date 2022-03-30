@@ -1,5 +1,5 @@
 module Area
-  class Backend
+  class Backend < Area::Base
     def style(name)
       case name
       when :basic
@@ -8,10 +8,6 @@ module Area
     end
 
     def footer?
-      true
-    end
-
-    def nav?
       true
     end
   end

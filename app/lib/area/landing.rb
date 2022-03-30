@@ -1,10 +1,6 @@
 module Area
   # Devise login page for example
-  class Landing
-    def footer?
-      false
-    end
-
+  class Landing < Area::Base
     def nav?
       false
     end

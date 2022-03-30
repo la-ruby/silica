@@ -16,14 +16,6 @@ module Zrea
     def poppins?
       false
     end
-
-    def nav
-      '/nav/nav'
-    end
-
-    def footer?
-      false
-    end
   end
 end
 

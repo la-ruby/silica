@@ -1,12 +1,5 @@
 module Area
-  class Market
-    def footer?
-      false
-    end
-
-    def nav?
-      true
-    end
+  class Market < Area::Base
   end
 end
  
