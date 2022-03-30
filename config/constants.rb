@@ -85,7 +85,10 @@ DOCU_SIGN_BASE_PATH = 'https://na3.docusign.net/restapi'
   'AWS_SECRET_ACCESS_KEY' => 'testing',
   'ROLLBAR_ACCESS_TOKEN' => 'testing',
   'APOLLO_HEROKU_APP' => 'testing',
-  'BUCKET_HOST' => 'https://silica-bucket.s3.amazonaws.com'
+  'BUCKET_HOST' => 'https://silica-bucket.s3.amazonaws.com',
+  'CHART_SERVICE_HOST' => 'https://example.com/testing_path',
+  'CHART_SERVICE_USERNAME' => 'testing',
+  'CHART_SERVICE_PASSWORD' => 'testing'
 }.each do |k,v|
   Object.const_set(
     k,
@@ -104,4 +107,3 @@ SILICA_SUPPORT = "friends@#{APOLLO_NAKED_DOMAIN}"
 LIMITED_USERS = [ LIMITED_USER1, LIMITED_USER2 ]
 APOLLO_UTAH_MAILING_LIST = (APOLLO_INTERNAL_PRODUCTION ? APOLLO_UTAH_DUMMY_MAILING_LIST : APOLLO_UTAH_LIVE_MAILING_LIST)
 APOLLO_NC_MAILING_LIST = (APOLLO_INTERNAL_PRODUCTION ? APOLLO_NC_DUMMY_MAILING_LIST : APOLLO_NC_LIVE_MAILING_LIST)
-

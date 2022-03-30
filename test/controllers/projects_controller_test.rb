@@ -76,12 +76,6 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "200", response.code
   end
 
-  test "get /projects/n/underwriting_property_analysis" do
-    project = create(:project)
-    get "/projects/#{project.id}/underwriting_property_analysis"
-    assert_equal "200", response.code
-  end
-
   test "get inspection" do
     project = create(:project)
     get "/projects/#{project.id}/inspection"
@@ -251,6 +245,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "get underwriting_property_analysis" do
+    stub_request(:post, 'https://example.com/testing_path')
     project = create(:project)
     get "/projects/#{project.id}/underwriting_property_analysis"
     assert_equal "200", response.code
