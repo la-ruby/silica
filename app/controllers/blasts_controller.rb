@@ -3,6 +3,7 @@
 # Marketing "blasts" / send to mailing list
 class BlastsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_area_backend
   after_action :verify_authorized
 
   # POST /examples or /examples.json

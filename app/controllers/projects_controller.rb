@@ -2,6 +2,7 @@
 
 # Project is the "mother" of most models
 class ProjectsController < ApplicationController
+  before_action :set_area_backend
   before_action :set_nav
 
   before_action :authenticate_user!

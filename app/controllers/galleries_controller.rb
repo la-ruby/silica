@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class GalleriesController < ApplicationController
+  before_action :set_area_market
   after_action :verify_authorized
 
   # POST

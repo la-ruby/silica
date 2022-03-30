@@ -4,6 +4,7 @@
 class ConfigurationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_zrea_backend
+  before_action :set_area_backend
   after_action :verify_authorized
 
   def edit

@@ -4,6 +4,7 @@
 class MyoffersController < ApplicationController
   before_action :set_ivars
   before_action :set_zrea
+  before_action :set_area_offer
   after_action :verify_authorized
 
   def crayon

@@ -15,4 +15,28 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     post '/feedbacks', params: {"token"=>@project.addendums.last.addendum_versions.last.mop_token, "rejected_feedback"=>"aaa"}, headers: { "HTTP_REFERER": "/testing", accept: Mime[:turbo_stream].to_s }
     assert_equal "302", response.code
   end
+
+  test 'get /offer/:mop_token/feedback' do
+    project = create(:project)
+    get "/offer/#{project.repc.mop_token}/feedback"
+    assert_equal "200", response.code
+  end
+
+  test 'get /offer/:mop_token/feedback for second seller' do
+    project = create(:project)
+    get "/offer/#{project.repc.second_seller_mop_token}/feedback"
+    assert_equal "200", response.code
+  end
+
+  test 'get /offer-addendum/:mop_token/feedback' do
+    project = create(:project, :has_av)
+    get "/offer-addendum/#{project.addendums.last.addendum_versions.last.mop_token}/feedback"
+    assert_equal "200", response.code
+  end
+
+  test 'get /offer-addendum/:mop_token/feedback as second seller' do
+    project = create(:project, :has_av)
+    get "/offer-addendum/#{project.addendums.last.addendum_versions.last.second_seller_mop_token}/feedback"
+    assert_equal "200", response.code
+  end
 end

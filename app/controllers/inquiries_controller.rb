@@ -1,5 +1,6 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: %i[ show edit update destroy ]
+  before_action :set_area_market
   after_action :verify_authorized
 
   # POST /inquiries or /inquiries.json

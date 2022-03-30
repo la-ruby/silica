@@ -3,6 +3,7 @@
 class FeedbacksController < ApplicationController
   before_action :set_record, only: %i[show new create]
   before_action :set_zrea
+  before_action :set_area_offer
   after_action :verify_authorized
 
   # GET /examples/1 or /examples/1.json

@@ -1,6 +1,7 @@
 class ContactSearchesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_contact_search, only: %i[ show edit update destroy ]
+  before_action :set_area_backend
   after_action :verify_authorized
 
   # POST /examples or /examples.json

@@ -1,5 +1,6 @@
 class RepcVerdictsController < ApplicationController
   include DocuSign::Mixin
+  before_action :set_area_offer
   after_action :verify_authorized
 
   # POST /examples or /examples.json

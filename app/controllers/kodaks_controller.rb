@@ -3,6 +3,7 @@
 class KodaksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_kodak, only: %i[update]
+  before_action :set_area_backend
   after_action :verify_authorized
   protect_from_forgery except: :create
 

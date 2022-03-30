@@ -3,6 +3,7 @@
 class ListingsController < ApplicationController
   before_action :set_zrea
   before_action :set_listing, only: [:show]
+  before_action :set_area_market
   after_action :verify_authorized
 
   def index

@@ -4,6 +4,7 @@
 # might not fit the strict definition
 class WebhooksController < ApplicationController
   protect_from_forgery except: :webhook
+  before_action :set_area_backend
   after_action :verify_authorized
 
   def webhook

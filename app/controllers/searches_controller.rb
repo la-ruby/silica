@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  before_action :set_area_market
   after_action :verify_authorized
 
   # POST /searches or /searches.json

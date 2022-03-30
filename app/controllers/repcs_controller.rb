@@ -1,5 +1,6 @@
 class RepcsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_area_backend
   after_action :verify_authorized
 
   MONETARY_PARAMS = [ 'balloon_payment', 'estimated_remaining_mortgage', 'monthly_payment', 'down_payment', 'earnest_money', 'closing_costs', 'repair_costs', 'service_fee', 'company_offer_arv' ]

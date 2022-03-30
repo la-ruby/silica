@@ -1,5 +1,6 @@
 class ExamplesController < ApplicationController
   before_action :set_example, only: %i[ show edit update destroy ]
+  before_action :set_area_backend # to silence warning
   after_action :verify_authorized
 
   # GET /examples or /examples.json

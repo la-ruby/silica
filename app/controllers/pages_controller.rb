@@ -3,6 +3,7 @@
 # E.g /terms /privacy pages
 class PagesController < ApplicationController
   before_action :set_ivars
+  before_action :set_area_generic
   after_action :verify_authorized
 
   def landing

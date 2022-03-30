@@ -3,6 +3,7 @@
 class PropertyDispositionChecklistsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_property_disposition_checklist, only: %i[edit update]
+  before_action :set_area_backend
   after_action :verify_authorized
 
   # PATCH/PUT /property_disposition_checklists/1 or /property_disposition_checklists/1.json

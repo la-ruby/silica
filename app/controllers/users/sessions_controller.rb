@@ -3,6 +3,7 @@
 # not rubocopping  generated files
 # rubocop:disable Style/ClassAndModuleChildren
 class Users::SessionsController < Devise::SessionsController
+  before_action :set_area_landing
   before_action :hide_footer
 
   # before_action :configure_sign_in_params, only: [:create]
