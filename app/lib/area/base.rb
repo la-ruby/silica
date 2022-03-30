@@ -28,5 +28,9 @@ module Area
     def menu_items
       []
     end
+
+    def title
+      "#{COMPANY_LC}"
+    end
   end
 end

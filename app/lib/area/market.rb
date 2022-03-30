@@ -1,5 +1,9 @@
 module Area
   class Market < Area::Base
+    def title
+      "#{COMPANY_LC}. - Marketplace"
+    end
+
     def logo_link
       '/listings'
     end

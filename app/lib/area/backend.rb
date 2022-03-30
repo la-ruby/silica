@@ -7,6 +7,10 @@ module Area
       end
     end
 
+    def title
+      "#{COMPANY_LC}. - Backend"
+    end
+
     def footer?
       true
     end

@@ -1,8 +1,3 @@
-<%
-  # TODO: Consider using pundit policies to determine the hiding of items
-  # intead of the nested conditional situation going on here
-%>
-
 <div class="offcanvas-body">
   <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
     <% current_area.menu_items.each do |item| %>
@@ -21,57 +16,53 @@
     </li>
   </ul>
 
-
-  <% if !current_user && current_area.devisable? %>
   <div class="col-auto">
-    <div class="btn-group">
-      <a class="btn <%= Marketplace::StrongStyle.css %>" style="font-weight: inherit; <%= Marketplace::StrongStyle.inline_css %>" href="/users/sign_in" role="button">
-        <span class="d-inline d-lg-none">
-          Log in
-	</span>
-        <span class="d-none d-lg-inline">
-          <i class="fas fa-sign-in-alt"></i>
-	</span>
-	
-      </a>
+    <% if !current_user && current_area.devisable? %>
+      <div class="btn-group">
+        <a class="btn <%= Marketplace::StrongStyle.css %>" style="font-weight: inherit; <%= Marketplace::StrongStyle.inline_css %>" href="/users/sign_in" role="button">
+          <span class="d-inline d-lg-none">
+            Log in
+      	</span>
+          <span class="d-none d-lg-inline">
+            <i class="fas fa-sign-in-alt"></i>
+      	</span>
+        </a>
+      </div>
+    <% end %>
+    <% if current_area.is_a?(Area::Market) %>
     <div class="btn-group d-none d-lg-block">
       <a class="btn btn-danger rounded-3 <%= Marketplace::StrongStyle.css %> ms-5 px-3 py-2" style="<%= Marketplace::StrongStyle.inline_css %>" href="/listings" role="button">
         View Properties
       </a>
-   </div>
-   <% end %>
+    </div>
+    <% end %>
+  </div>
 
   <% if current_user && current_area.devisable? %>
-  <div class="col-auto">
-    <div class="btn-group">
-      <button type="button" class="btn dropdown-toggle ps-0 ps-lg-2 <%= Marketplace::StrongStyle.css %>" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" style="<%= Marketplace::StrongStyle.css %>">
-        <%= current_user.nick %>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-lg-end <%= theme_background_level_1! %>">
-        <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="/accounts/<%= current_user.id %>">Account</a></li>
-        <% if current_user.staff? %>
-          <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="<%= edit_configuration_path %>">Edit Configurtion</a></li>
-        <% end %>
-        <% if policy(:contact).index? %>
-        <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="/contacts">Contacts <span class="badge rounded-pill bg-danger">new</span></a></li>
-        <% end %>
-
-        <% if UxPolicy.new(current_user, nil).resync? %>
-        <li class=""><%= button_to "Re-sync with Production DB", reverts_path, class: 'dropdown-item btn' %></li>
-        <% end %>
-
-
-        <li class=""><a class="btn dropdown-item <%= normal_text! %> pe-none" href="https://example.net/">Notifications</a></li>
-        <li>
-          <%= button_to('Logout', destroy_user_session_path, method: :delete, class: "btn dropdown-item #{normal_text!}", style: '') %>
-        </li>
-      </ul>
+    <div class="col-auto">
+      <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle ps-0 ps-lg-2 <%= Marketplace::StrongStyle.css %>" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" style="<%= Marketplace::StrongStyle.css %>">
+          <%= current_user.nick %>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-lg-end <%= theme_background_level_1! %>">
+          <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="/accounts/<%= current_user.id %>">Account</a></li>
+          <% if current_user.staff? %>
+            <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="<%= edit_configuration_path %>">Edit Configurtion</a></li>
+          <% end %>
+          <% if policy(:contact).index? %>
+          <li class=""><a class="btn dropdown-item <%= normal_text! %>" href="/contacts">Contacts <span class="badge rounded-pill bg-danger">new</span></a></li>
+          <% end %>
+    
+          <% if UxPolicy.new(current_user, nil).resync? %>
+          <li class=""><%= button_to "Re-sync with Production DB", reverts_path, class: 'dropdown-item btn' %></li>
+          <% end %>
+    
+          <li class=""><a class="btn dropdown-item <%= normal_text! %> pe-none" href="https://example.net/">Notifications</a></li>
+          <li>
+            <%= button_to('Logout', destroy_user_session_path, method: :delete, class: "btn dropdown-item #{normal_text!}", style: '') %>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>
-
-<%
-  # TODO: Consider using pundit policies to determine the hiding of items
-  # intead of the nested conditional situation going on here
-%>

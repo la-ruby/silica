@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <%= yield :extra_meta_tags %>
-    <title><%= @zrea&.title || @title || "#{COMPANY_LC}. #{Rails.env unless Rails.env.production?}" %></title>
+    <title><%= current_area.title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= render '/favicons' %>

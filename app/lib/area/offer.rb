@@ -1,5 +1,9 @@
 module Area
   class Offer < Area::Base
+    def title
+      "#{COMPANY_LC}. - My Offer Portal"
+    end
+
     def logo_link
       '#'
     end
