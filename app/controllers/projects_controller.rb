@@ -113,7 +113,7 @@ class ProjectsController < ApplicationController
     AnalysisJob.perform_later(@project)
     4.times do # TODO: remove me
       Rails.logger.info "Sleep 1"
-      sleep 1
+      sleep 1 unless Rails.env.test?
     end
 
     respond_to do |format|
