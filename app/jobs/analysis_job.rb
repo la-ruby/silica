@@ -18,8 +18,11 @@ class AnalysisJob < ApplicationJob
       {
         'Content-Type' => 'application/xml',
         "Accept" => "application/xml" })
-    Rails.logger.info "<< res.body[0..76]}"
-    url = Hash.from_xml(res.body).dig('avmx','response', 'reportdata', 'pdf', 'pdfLink')
+    Rails.logger.info "<< #{res.body[0..1010]}"
+    hsh = Hash.from_xml(res.body)
+    Rails.logger.info hsh.dig('avmx','response', 'responseheader','error','message')
+    raise 'Unexpected Response 1648739500' if hsh.dig('avmx','response', 'responseheader','error','message')
+    url = hsh.dig('avmx','response', 'reportdata', 'pdf', 'pdfLink')
     # /download
     project.update(analysis_url: url)
     project.update(analysis_at: Time.now.iso8601)
