@@ -176,6 +176,12 @@ GIT
       zeitwerk (~> 2.5)
 
 GIT
+  remote: https://github.com/ruby/rexml.git
+  revision: d442ccf27935b92679264099b751e200cf12b0de
+  specs:
+    rexml (3.2.6)
+
+GIT
   remote: https://github.com/thoughtbot/factory_bot_rails
   revision: b149856be340f919a49bab8d4389050dce422cbc
   branch: main
@@ -349,7 +355,6 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rexml (3.2.5)
     rollbar (3.3.0)
     ruby-progressbar (1.11.0)
     ruby-vips (2.1.4)
@@ -442,6 +447,7 @@ DEPENDENCIES
   rails-settings-cached!
   ransack (~> 2.6)!
   redis
+  rexml!
   rollbar (>= 3.3)
   sassc-rails
   selenium-webdriver
