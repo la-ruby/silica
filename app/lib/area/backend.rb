@@ -41,7 +41,7 @@ module Area
     end
 
     def nav_item_style
-      'fw-light'
+      style(:basic).classes
     end
   end
 end

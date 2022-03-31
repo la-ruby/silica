@@ -2,7 +2,7 @@
   <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
     <% current_area.menu_items.each do |item| %>
     <li class="nav-item mx-3">
-      <a class="nav-link <%= 'pe-none' unless item[:allowed] == true %> <%= current_area.nav_item_style %> <%= 'fw-normal' if item[:bolder] %>" style="<%= Marketplace::StrongStyle.inline_css %>; display: inline-flex; align-items: center;" aria-current="page" href="<%= item[:link] %>">
+      <a class="nav-link <%= 'pe-none' unless item[:allowed] == true %> <%= current_area.nav_item_style %> <%= 'fw-bolder' if item[:bolder] %>" style="display: inline-flex; align-items: center;" aria-current="page" href="<%= item[:link] %>">
 
         
         <%= feather_icon(item[:feather_icon], stroke_width: (item[:label] == 'Project Table' ? 1.5 : 1) ) if item[:feather_icon] %>
