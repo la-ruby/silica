@@ -110,12 +110,16 @@ class ProjectsController < ApplicationController
 
   def download_property_analysis
     authorize nil, policy_class: ProjectPolicy
-    AnalysisJob.perform_now
+    AnalysisJob.perform_later(@project)
+    4.times do # TODO: remove me
+      Rails.logger.info "Sleep 1"
+      sleep 1
+    end
 
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Downloaded Property Analysis 🎉' })
+          turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Requested Report. Check back (refresh this page) after ~2 minutes to see the report', permaflash: true })
         ]
       end
     end

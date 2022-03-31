@@ -2,7 +2,8 @@
      class="position-fixed w-100 text-center
            <%= 'd-none' unless local_assigns[:message].present? || flash.present? %>"
      style="z-index: 1050; top: 0px"
-     data-controller="fade-out">
+     data-controller=" <%= 'fade-out' unless local_assigns[:permaflash] %>"
+     >
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <div class="contents">
       <% if local_assigns[:message].present? %><%= message %><% end %>
