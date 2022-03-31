@@ -18,12 +18,20 @@
 	    </div>
 	    <div class="col-auto text-end">
 	      <div>Last Run</div>
-	      <div><%= Time.now.iso8601 %></div>
+	      <div><%= @project.analysis_at || '-' %></div>
 	    </div>
 	    <div class="col-auto">
               <%= button_to "Request Info", download_property_analysis_project_path(@project), class: 'btn btn-brandprimary fw-light' %>
 	    </div>
 	  </div>
+
+          <%= spacer(1) %>
+
+          <div>
+	    <iframe src="<%= @project.analysis_url %>" width="100%" style="border: none; height: 80vh"> </iframe>
+	  </div>
+	  
+
         </div>
       </div>
     </div>

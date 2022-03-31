@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_24_024836) do
+ActiveRecord::Schema.define(version: 2022_03_31_121742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -234,6 +234,8 @@ ActiveRecord::Schema.define(version: 2022_03_24_024836) do
     t.string "street2"
     t.string "accepted_at"
     t.string "sendgrid_message_id"
+    t.string "analysis_url", default: "https://silica-bucket.s3.amazonaws.com/neutral/neutral/empty.pdf"
+    t.string "analysis_at"
   end
 
   create_table "property_disposition_checklists", force: :cascade do |t|
