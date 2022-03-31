@@ -44,7 +44,7 @@
   <% if current_user && current_area.devisable? %>
     <div class="col-auto">
       <div class="btn-group">
-        <button type="button" class="btn zdropdown-toggle ps-0 ps-lg-2 <%= current_area.nav_item_style %> " data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+        <button type="button" class="btn zdropdown-toggle ps-0 ps-lg-2 nav-link <%= current_area.nav_item_style %> " data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
           <%= current_user.nick %> <i class="bi bi-chevron-down"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-lg-end <%= theme_background_level_1! %>">

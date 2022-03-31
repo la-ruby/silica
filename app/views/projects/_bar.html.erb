@@ -5,7 +5,7 @@
     <div>
       <%= form_with(url: "/filters", method: :post, class: 'd-inline-block', id: 'projects-bar-form', data: { controller: 'submits-form-delayed sort-projects'}) do |form| %>
         <%= form.hidden_field :page, value: params[:page] %>
-        <input type="text" class="form-control form-control-sm" placeholder="Search" name="query" data-action="submits-form-delayed#submit_form">
+        <input type="text" class="form-control" placeholder="Search" name="query" data-action="submits-form-delayed#submit_form">
         <%= form.hidden_field :statefilter, value: '' %>
         <%= form.hidden_field :cityfilter, value: '' %>
         <%= form.hidden_field :sourcefilter, value: '' %>
@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="col-auto text-center">
-    <a class="btn btn-outline-brandprimary btn-sm rounded-half-r-i fw-light" data-turbo="true" href="/projects/new" role="button">
+    <a class="btn btn-outline-brandprimary rounded-half-r-i fw-light" data-turbo="true" href="/projects/new" role="button">
       <i class="bi bi-plus"></i>
       PROJECT
     </a>
