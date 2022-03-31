@@ -64,4 +64,8 @@ class ProjectPolicy < ApplicationPolicy
   def activity?
     true
   end
+
+  def download_property_analysis?
+    true
+  end
 end

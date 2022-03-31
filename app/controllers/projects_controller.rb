@@ -108,6 +108,20 @@ class ProjectsController < ApplicationController
     authorize nil, policy_class: ProjectPolicy
   end
 
+  def download_property_analysis
+    authorize nil, policy_class: ProjectPolicy
+    AnalysisJob.perform_now
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Downloaded Property Analysis 🎉' })
+        ]
+      end
+    end
+
+  end
+
   private
 
   def create_project

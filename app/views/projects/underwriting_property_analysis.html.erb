@@ -10,10 +10,20 @@
   <div class="container pt-3 pb-3">
     <div class="row">
       <div class="col text-center">
-        <div class="m-5 p-5 <%= normal_text %>">
+        <div class="p-5 <%= normal_text %> fw-light">
 
-          <%= experiment %>
-
+          <div class="row align-items-center">
+	    <div class="col">
+	      <!-- not used atm. -->
+	    </div>
+	    <div class="col-auto text-end">
+	      <div>Last Run</div>
+	      <div><%= Time.now.iso8601 %></div>
+	    </div>
+	    <div class="col-auto">
+              <%= button_to "Request Info", download_property_analysis_project_path(@project), class: 'btn btn-brandprimary fw-light' %>
+	    </div>
+	  </div>
         </div>
       </div>
     </div>

@@ -76,45 +76,5 @@ module ApplicationHelper
     raise 'Area Not Specified' unless @area
     @area
   end
-
-  def experiment
-    Rails.cache.fetch("v1/experimemt", expires_in: 5.minutes) do
-          # TODO: Refactor / optimize / cache
-          uri = URI.parse(CHART_SERVICE_HOST)
-          req = Net::HTTP.new(uri.hostname, uri.port)
-	  req.use_ssl = true
-           req.read_timeout = 300000
-          xml_data = %{<avmx>
-  <request type="complexityprofiler" transferinfo="true" compTransferInfo="true" dataSource="mls" pdfReport="true" subjectDataSource="mlsdq" compsType="distancenozip" chartsEmbedded="true" refi="true" mlssupplementalinfo="true" marketconditions="true" avmforecast="true">
-    <requestheader>
-      <timestamp>0001-01-01T00:00:00</timestamp>
-      <metainfo name="transactionid" value="" />
-      <metainfo name="parent_sqn" value="0" />
-      <account>
-        <userid>#{CHART_SERVICE_USERNAME}</userid>
-        <password>#{CHART_SERVICE_PASSWORD}</password>
-      </account>
-    </requestheader>
-    <property>
-      <address>
-        <fulladdress>5202 Downey Ave</fulladdress>
-        <city>Lakewood</city>
-        <state>CA</state>
-        <zip>90712</zip>
-      </address>
-    </property>
-    <searchcriteria maxdistance="2">
-      <complookuprange>
-      <low>0</low>
-      <high>12</high>
-      </complookuprange>
-      <areafocus />
-    </searchcriteria>
-  </request>
-</avmx>}
-          res = req.post(uri.path, xml_data, {'Content-Type' => 'application/xml', "Accept" => "application/xml" })
-          res.body
-    end
-  end
 end
 

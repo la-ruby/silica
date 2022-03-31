@@ -45,6 +45,8 @@ Rails.application.routes.draw do
       get 'marketplace'
       get 'files'
       get 'activity'
+
+      post 'download_property_analysis'
     end
   end
   get '/projects', to: 'projects#index'
