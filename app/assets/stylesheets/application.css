@@ -68,3 +68,7 @@ trix-editor {
 .page-item.active .page-link {
   
 }
+
+.silica-weight-reset {
+  font-weight: inherit !important;
+}

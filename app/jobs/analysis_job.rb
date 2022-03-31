@@ -21,7 +21,7 @@ class AnalysisJob < ApplicationJob
     Rails.logger.info "<< #{res.body[0..1010]}"
     hsh = Hash.from_xml(res.body)
     Rails.logger.info hsh.dig('avmx','response', 'responseheader','error','message')
-    raise 'Unexpected Response 1648739500' if hsh.dig('avmx','response', 'responseheader','error','message')
+    # raise 'Unexpected Response 1648739500' if hsh.dig('avmx','response', 'responseheader','error','message')
     url = hsh.dig('avmx','response', 'reportdata', 'pdf', 'pdfLink')
     # /download
     project.update(analysis_url: url)

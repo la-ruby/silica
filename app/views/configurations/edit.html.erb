@@ -2,10 +2,10 @@
 
 <%= basic_container do %>
   <div class="accordion" id="confgurations-edit-accordion">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-	  <span class="<%= current_area.style(:basic).classes %>">
+    <div class="accordion-item text-reset">
+      <h2 class="accordion-header silica-weight-reset">
+	<button class="accordion-button text-reset silica-weight-reset" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+	  <span>
 	    Marketplace
 	  </span>
 	  
@@ -14,7 +14,7 @@
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#confgurations-edit-accordion">
 	<div class="accordion-body">
 	  <div class="container">
-            <table class="table <%= current_area.style(:basic).classes %>">
+            <table class="table text-reset">
               <%= render '/configurations/edit/row1' %>
               <%= render '/configurations/edit/row2' %>
               <%= render '/configurations/edit/row3' %>

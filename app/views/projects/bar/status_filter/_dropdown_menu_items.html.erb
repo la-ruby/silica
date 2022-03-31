@@ -1,4 +1,4 @@
-<div id="a1632190783" class="<%= current_area.style(:basic).classes %>">
+<div id="a1632190783">
   <% ["Open", "Completed Closed/Lost", "Completed Won"].each do |status| %>
   <div class="form-check form-control-sm">
     <input class="form-check-input set1647920102" type="checkbox" value="<%= status %>" <%= 'checked' if (params[:statusfilter] || "").split('__').include? status %>>

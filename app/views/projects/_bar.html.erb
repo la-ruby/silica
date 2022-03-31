@@ -5,7 +5,7 @@
     <div>
       <%= form_with(url: "/filters", method: :post, class: 'd-inline-block', id: 'projects-bar-form', data: { controller: 'submits-form-delayed sort-projects'}) do |form| %>
         <%= form.hidden_field :page, value: params[:page] %>
-        <input type="text" class="form-control" placeholder="Search" name="query" data-action="submits-form-delayed#submit_form">
+        <input type="text" class="form-control <%= 'bg-transparent' if Rails.env.development? %>" placeholder="Search" name="query" data-action="submits-form-delayed#submit_form">
         <%= form.hidden_field :statefilter, value: '' %>
         <%= form.hidden_field :cityfilter, value: '' %>
         <%= form.hidden_field :sourcefilter, value: '' %>

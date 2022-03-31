@@ -1,6 +1,6 @@
 <% if page.current? %>
   <li class="page-item zactive shadow-sm">
-    <%= content_tag :a, page, data: { remote: remote }, rel: page.rel, class: 'page-link bg-transparent fw-light backend_basic_style_color' %>
+    <%= content_tag :a, page, data: { remote: remote }, rel: page.rel, class: 'page-link text-reset bg-transparent fw-light' %>
   </li>
 <% else %>
   <li class="page-item">
@@ -15,7 +15,7 @@
       <%= form.hidden_field :offer_sent, value: page.instance_variable_get('@options')[:offer_sent] %>
       <%= form.hidden_field :sort_by, value: page.instance_variable_get('@options')[:sort_by] %>
       <%= form.hidden_field :sort_direction, value: page.instance_variable_get('@options')[:sort_direction] %>
-      <%= form.submit page, class: 'page-link fw-light bg-transparent backend_basic_style_color' %>
+      <%= form.submit page, class: 'page-link fw-light bg-transparent text-reset' %>
     <% end %>
   </li>
 <% end %>
