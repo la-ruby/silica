@@ -7,34 +7,22 @@ class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_project, except: %i[new create index]
+  before_action :authorize_feedback_policy, except: %i[index]
   after_action :verify_authorized
 
   def index
     @projects = Project.search(page: params[:page])
-    @page = params[:page]
-    @query = params[:query]
-    @statefilter = params[:statefilter]
-    @cityfilter = params[:cityfilter]
-    @sourcefilter = params[:sourcefilter]
-    @statusfilter = params[:statusfilter]
-    @req_date = params[:req_date]
-    @offer_sent = params[:offer_sent]
-    @sort_by = params[:sort_by]
-    @sort_direction = params[:sort_direction]
+    index_variables(params)
     authorize @projects
   end
 
   # GET /projects/new
   def new
-    authorize nil, policy_class: ProjectPolicy
-
     @project = Project.new
   end
 
   # POST /projects
   def create
-    authorize nil, policy_class: ProjectPolicy
-
     respond_to do |format|
       format.html do
         if create_project
@@ -47,8 +35,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    authorize nil, policy_class: ProjectPolicy
-
     @project.update(project_params)
     respond_to do |format|
       format.turbo_stream do
@@ -60,73 +46,47 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def overview
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def overview; end
 
-  def offer
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def offer; end
 
-  def inspection
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def inspection; end
 
-  def dispositions_checklist
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def dispositions_checklist; end
 
-  def dispositions_prepare_listing
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def dispositions_prepare_listing; end
 
-  def underwriting_review_offer
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def underwriting_review_offer; end
 
-  def underwriting_prepare_repc
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def underwriting_prepare_repc; end
 
-  def underwriting_property_analysis
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def underwriting_property_analysis; end
 
-  def underwriting_intake_form
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def underwriting_intake_form; end
 
-  def marketplace
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def marketplace; end
 
-  def files
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def files; end
 
-  def activity
-    authorize nil, policy_class: ProjectPolicy
-  end
+  def activity; end
 
   def download_property_analysis
-    authorize nil, policy_class: ProjectPolicy
     AnalysisJob.perform_later(@project)
-    4.times do # TODO: remove me
-      Rails.logger.info "Sleep 1"
-      sleep 1 unless Rails.env.test?
-    end
-
+    msg = 'Requested Report. Check back (refresh this page) after ~2 minutes to see the report'
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: [
-          turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Requested Report. Check back (refresh this page) after ~2 minutes to see the report', permaflash: true })
-        ]
+        render turbo_stream: [turbo_stream.replace('flashes', partial: '/flashes', locals: {
+                                                     message: msg, jpermaflash: true
+                                                   })]
       end
     end
-
   end
 
   private
+
+  def authorize_feedback_policy
+    authorize nil, policy_class: ProjectPolicy
+  end
 
   def create_project
     @project = Project.new({ **project_params, 'status' => 'Open', 'req_date' => Time.now,
@@ -158,5 +118,18 @@ class ProjectsController < ApplicationController
 
   def set_nav
     @menu_mode = 'backend'
+  end
+
+  def index_variables(params)
+    @page = params[:page]
+    @query = params[:query]
+    @statefilter = params[:statefilter]
+    @cityfilter = params[:cityfilter]
+    @sourcefilter = params[:sourcefilter]
+    @statusfilter = params[:statusfilter]
+    @req_date = params[:req_date]
+    @offer_sent = params[:offer_sent]
+    @sort_by = params[:sort_by]
+    @sort_direction = params[:sort_direction]
   end
 end
