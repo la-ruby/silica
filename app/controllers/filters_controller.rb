@@ -13,7 +13,7 @@ class FiltersController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace('projects-index-table-wrapper', partial: '/projects/index/table_wrapper',
-                                                               locals: { projects: project_search(params) })
+                                                               locals: split_up_locals(params))
         ]
       end
     end
@@ -27,5 +27,13 @@ class FiltersController < ApplicationController
                    req_date: params[:req_date], offer_sent: params[:offer_sent],
                    sourcefilter: params[:sourcefilter], statusfilter: params[:statusfilter],
                    sort_by: params[:sort_by], sort_direction: params[:sort_direction], page: params[:page])
+  end
+
+  def split_up_locals(params)
+    { projects: project_search(params),
+      statefilter: params[:statefilter], cityfilter: params[:cityfilter],
+      req_date: params[:req_date], offer_sent: params[:offer_sent],
+      sourcefilter: params[:sourcefilter], statusfilter: params[:statusfilter],
+      sort_by: params[:sort_by], sort_direction: params[:sort_direction], page: params[:page] }
   end
 end
