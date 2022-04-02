@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Listings controller
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show]
   before_action :set_area_market
