@@ -32,3 +32,5 @@
 coverage
 .envrc
 **/.DS_Store
+
+gitignored*

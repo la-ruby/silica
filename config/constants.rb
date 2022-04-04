@@ -88,7 +88,13 @@ DOCU_SIGN_BASE_PATH = 'https://na3.docusign.net/restapi'
   'BUCKET_HOST' => 'https://silica-bucket.s3.amazonaws.com',
   'CHART_SERVICE_HOST' => 'https://example.com/testing_path',
   'CHART_SERVICE_USERNAME' => 'testing',
-  'CHART_SERVICE_PASSWORD' => 'testing'
+  'CHART_SERVICE_PASSWORD' => 'testing',
+  'INSPECTION_SERVICE_URL' => 'https://example.com/testing',
+  'INSPECTION_SERVICE_KEY' => 'testing',
+  'INSPECTION_SERVICE_PASSWORD' => 'testing',
+  'INSPECTION_SERVICE_CLIENT_ID' => 'testing',
+  'INSPECTION_SERVICE_USER_ID' => 'testing',
+  'INSPECTION_SERVICE_REF_NO' => 'testing'
 }.each do |k,v|
   Object.const_set(
     k,

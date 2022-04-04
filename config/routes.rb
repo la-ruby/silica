@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     end
   end
   resource :contact_searches, only: [:create]
+  resource :scouts, only: [:create]
+  resource :tx_scout_links, only: [:create]
 
   resources :themes, only: [:edit, :update]
   resources :projects, only: [:index, :new, :create] do
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
       get 'overview'
       get 'offer'
       get 'inspection'
+      get 'inspection_inspection_report'
       get 'dispositions_checklist'
       get 'dispositions_prepare_listing'
       get 'underwriting_review_offer'

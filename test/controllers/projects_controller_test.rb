@@ -82,6 +82,12 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "200", response.code
   end
 
+  test "get inspection_report" do
+    project = create(:project)
+    get "/projects/#{project.id}/inspection_inspection_report"
+    assert_equal "200", response.code
+  end
+
   test "get underwriting_review_offer" do
     project = create(:project)
     get "/projects/#{project.id}/underwriting_review_offer"

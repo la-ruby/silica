@@ -72,6 +72,10 @@ class ProjectsController < ApplicationController
     authorize nil, policy_class: ProjectPolicy
   end
 
+  def inspection_inspection_report
+    authorize nil, policy_class: ProjectPolicy
+  end
+
   def dispositions_checklist
     authorize nil, policy_class: ProjectPolicy
   end

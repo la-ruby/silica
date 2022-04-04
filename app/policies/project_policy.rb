@@ -29,6 +29,10 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
+  def inspection_inspection_report?
+    true
+  end
+
   def dispositions_checklist?
     true
   end

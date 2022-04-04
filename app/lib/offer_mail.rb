@@ -2,7 +2,7 @@
 
 class OfferMail
   def perform(to:, mop_token:, name:)
-    Rails.logger.info 'D3BUG Sending email'
+    Rails.logger.info 'Sending email'
     to = [ { "email": to } ]
     to = [ { "email": APOLLO_ADMIN_LOGIN } ] if APOLLO_INTERNAL_PRODUCTION
 

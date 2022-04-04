@@ -1,17 +1,12 @@
 <% if UxPolicy.new(current_user, nil).inspection? %>
-
   <%= render '/shared/summary', project: @project %>
 
   <%= render '/shared/tabs', project: @project, active: 'Inspection' %>
 
-  <div class="container pt-3 pb-3">
-    <div class="row">
-      <div class="col text-center">
-        <div class="m-5 p-5 <%= normal_text %>">
-          coming soon (inspection)
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="mt-3"><!-- spacer --></div>
 
+  <%= render '/shared/inspection_inner_tabs', project: @project, active: 'Overview' %>
+
+
+  <%= render '/component/inspection_overview_pane', project_id: @project.id %>
 <% end %>

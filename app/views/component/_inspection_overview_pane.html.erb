@@ -1,0 +1,15 @@
+<% instance = generate_instance_id
+   form_id = "form-of-#{instance}"
+   project = Project.find(project_id)
+%>
+
+
+<div id="apollo-inspection-overview-pane" class="container pt-3 pb-3 <%= normal_text %>">
+
+  <div class="row">
+    <div class="col-12 col-lg-9">
+      <%= render '/component/inspection_overview_pane/body', project_id: project.id %>
+    </div>
+  </div>
+</div>
+
