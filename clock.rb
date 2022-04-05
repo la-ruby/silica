@@ -13,6 +13,7 @@ module Clockwork
   end
 
   every(5.minutes, 'webflow_push_job', :skip_first_run => true) do
+    next if APOLLO_INTERNAL_PRODUCTION
     # WebflowPushJob.perform_later
   end
 
