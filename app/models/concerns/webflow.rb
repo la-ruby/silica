@@ -7,7 +7,7 @@ module Webflow
       remove_from_webflow
 
       Rails.logger.info "Sending project #{id} to webflow"
-      WebflowClient.request(
+      _id = WebflowClient.request(
         "https://api.webflow.com/collections/#{WEBFLOW_COLLECTION}/items",
         :post,
         {
@@ -32,7 +32,8 @@ module Webflow
             'property-excerpt-card-featured' => '-'
           }
         }
-      )
+      )['_id']
+      listing.update(webflow_id: _id)
     end
 
     def remove_from_webflow

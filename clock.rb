@@ -14,7 +14,7 @@ module Clockwork
 
   every(5.minutes, 'webflow_push_job', :skip_first_run => true) do
     next if APOLLO_INTERNAL_PRODUCTION
-    # WebflowPushJob.perform_later
+    WebflowPushJob.perform_later
   end
 
   every(1.day, 'cache_contact_count.job', :skip_first_run => true) do

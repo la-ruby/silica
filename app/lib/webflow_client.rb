@@ -20,7 +20,7 @@ class WebflowClient
       Rails.logger.info ">> #{req.body}"
       response = (APOLLO_INTERNAL_PRODUCTION ? nil : http.request(req))
       Rails.logger.info "<< #{response.class} #{response.body}"
-      JSON.parse(response.body)['_id']
+      JSON.parse(response.body)
     end
   end
 end
