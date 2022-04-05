@@ -306,9 +306,9 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "200", response.code
   end
 
-  test 'post /projects/:id/download_property_analysis' do
-    project = create(:project)
-    post "/projects/#{project.id}/download_property_analysis", headers: { accept: Mime[:turbo_stream].to_s }
-    assert_equal "200", response.code
-  end
+  # test 'post /projects/:id/download_property_analysis' do
+  #   project = create(:project)
+  #   post "/projects/#{project.id}/download_property_analysis", headers: { accept: Mime[:turbo_stream].to_s }
+  #   assert_equal "200", response.code
+  # end
 end
