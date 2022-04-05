@@ -13,7 +13,7 @@ module Clockwork
   end
 
   every(5.minutes, 'webflow_push_job', :skip_first_run => true) do
-    WebflowPushJob.perform_later
+    # WebflowPushJob.perform_later
   end
 
   every(1.day, 'cache_contact_count.job', :skip_first_run => true) do

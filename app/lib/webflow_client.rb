@@ -5,10 +5,14 @@ class WebflowClient
   # :reek:ControlParameter
   # :reek:DuplicateMethodCall
   # :reek:TooManyStatements
-  def self.upload(url, method, body)
+  def self.request(url, method, body)
     uri = URI(url)
     Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
-      req = (method == :post ? Net::HTTP::Post.new(uri) : Net::HTTP::Patch.new(uri))
+      req = if method == :delete
+              Net::HTTP::Delete.new(uri)
+            else
+              Net::HTTP::Post.new(uri)
+            end
       req['Content-Type'] = 'application/json'
       req['accept-version'] = '1.0.0'
       req['Authorization'] = "Bearer #{WEBFLOW_API_KEY}"
