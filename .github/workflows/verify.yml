@@ -55,11 +55,6 @@ jobs:
         PARALLEL_WORKERS: 1
       run: |
         ./bin/rails test
-    - name: Ensure test coverage
-      run: |
-        (grep -Pzo '    <span class="group_name">All Files</span>\n    \(<span class="covered_percent">\n      <span class="green">\n  100.0%' coverage/index.html) || true
-
-
   #
   #
   #  Rubocop
@@ -77,6 +72,7 @@ jobs:
       run: |
         gem install rubocop
         rubocop || true
+        # TODO: remove the || true
 
   #
   #
@@ -99,3 +95,4 @@ jobs:
       - name: Run Reek
         run: |
           reek * || true
+          # TODO: remove the || true
