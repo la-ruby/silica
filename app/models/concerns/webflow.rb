@@ -7,6 +7,7 @@ module Webflow
       remove_from_webflow
 
       Rails.logger.info "Sending project #{id} to webflow"
+      img = listing.project.primary_or_first_kodak ? listing.project.primary_or_first_kodak.variant(:small).url : 'https://dummyimage.com/600x400/000/fff&text=testing'
       _id = WebflowClient.request(
         "https://api.webflow.com/collections/#{WEBFLOW_COLLECTION}/items",
         :post,
@@ -15,7 +16,7 @@ module Webflow
             'name' => listing.title,
             'post-address' => combined_address_with_zip[0..39],
             'property-about' => listing.legacy_description.presence || '-',
-            'property-main-image-page' => 'https://dummyimage.com/600x400/000/fff&text=testing',
+            'property-main-image-page' => img,
             'post-market-url' => "#{APOLLO_MARKETPLACE_FULL_DOMAIN}/listings/#{listing.id}",
             'post-price' => pretty_format_money(listing.suggested_price),
             'post-display-price-2' => 'true',
@@ -27,7 +28,7 @@ module Webflow
             # ...
             '_archived' => false,
             '_draft' => false,
-            'property-main-image-thumbnail-card' => 'https://dummyimage.com/600x400/000/fff&text=testing',
+            'property-main-image-thumbnail-card' => img,
             'property-short-description-page' => (listing.legacy_description.presence || '-')[0..300],
             'property-excerpt-card-featured' => '-'
           }
