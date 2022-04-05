@@ -94,7 +94,8 @@ DOCU_SIGN_BASE_PATH = 'https://na3.docusign.net/restapi'
   'INSPECTION_SERVICE_PASSWORD' => 'testing',
   'INSPECTION_SERVICE_CLIENT_ID' => 'testing',
   'INSPECTION_SERVICE_USER_ID' => 'testing',
-  'INSPECTION_SERVICE_REF_NO' => 'testing'
+  'INSPECTION_SERVICE_REF_NO' => 'testing',
+  'BOOTSTRAP_UPGRADE' => false
 }.each do |k,v|
   Object.const_set(
     k,

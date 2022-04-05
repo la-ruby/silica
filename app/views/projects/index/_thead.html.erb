@@ -1,4 +1,4 @@
-<thead class="bg-white <%= 'bg-transparent' if Rails.env.development? %>">
+<thead class="bg-white <%= 'bg-transparent' if BOOTSTRAP_UPGRADE %>">
   <tr>
     <th onclick='javascript:$(document).trigger("apolloSortBy", ["name"]);' role="button" class="py-0 text-center silica-weight-reset">Name</th>
     <th onclick='javascript:$(document).trigger("apolloSortBy", ["address"]);' role="button" class="py-0 text-center silica-weight-reset">Address</th>

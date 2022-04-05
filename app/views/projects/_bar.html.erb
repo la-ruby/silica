@@ -5,7 +5,7 @@
     <div>
       <%= form_with(url: "/filters", method: :post, class: 'd-inline-block', id: 'projects-bar-form', data: { controller: 'submits-form-delayed sort-projects'}) do |form| %>
         <%= form.hidden_field :page, value: params[:page] %>
-        <input type="text" class="form-control silica-weight-reset <%= 'bg-transparent' if Rails.env.development? %>" placeholder="Search" name="query" autocomplete="off" data-action="submits-form-delayed#submit_form">
+        <input type="text" class="form-control text-reset silica-weight-reset <%= 'bg-transparent' if BOOTSTRAP_UPGRADE %> " placeholder="Search" name="query" autocomplete="off" data-action="submits-form-delayed#submit_form">
         <%= form.hidden_field :statefilter, value: '' %>
         <%= form.hidden_field :cityfilter, value: '' %>
         <%= form.hidden_field :sourcefilter, value: '' %>
@@ -40,10 +40,15 @@
     </div>
   </div>
   <div class="col-auto text-center">
-    <a class="btn btn-outline-brandprimary rounded-half-r-i silica-weight-reset" data-turbo="true" href="/projects/new" role="button">
-      <i class="bi bi-plus"></i>
-      PROJECT
-    </a>
+    <% if BOOTSTRAP_UPGRADE %>
+      <%= render '/shared/buttons/add_project' %>
+    <% else %>
+      <a class="btn btn-outline-brandprimary rounded-half-r-i silica-weight-reset" data-turbo="true" href="/projects/new" role="button">
+        <i class="bi bi-plus"></i>
+        PROJECT
+      </a>
+    <% end %>
+
   </div>
 
   </div>
