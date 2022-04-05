@@ -28,7 +28,7 @@ module Webflow
             '_archived' => false,
             '_draft' => false,
             'property-main-image-thumbnail-card' => 'https://dummyimage.com/600x400/000/fff&text=testing',
-            'property-short-description-page' => listing.legacy_description.presence || '-',
+            'property-short-description-page' => (listing.legacy_description.presence || '-')[0..300],
             'property-excerpt-card-featured' => '-'
           }
         }
