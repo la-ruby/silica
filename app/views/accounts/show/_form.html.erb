@@ -1,42 +1,29 @@
 <%= form_with(url: "/account", method: :patch) do |f| %>
   <%= spacer(7) %>
 
-  <div class="row" style="width: 40rem">
-    <div class="col-5">
-      <label>Email</label>
-    </div>
-    <div class="col-7">
-      <%= text_field_tag 'email', current_user.email, class: "form-control #{inherit_style}", disabled: true %>
-    </div>
-  </div>
+  <%= render '/shared/field', title: 'Email' do %>
+    <%= text_field_tag 'email', current_user.email, class: "form-control #{inherit_style}", disabled: true %>
+  <% end %>
+
   <%= spacer(5) %>
-  <div class="row" style="width: 40rem">
-    <div class="col-5">
-      <label>Password (leave blank<br>if you don't want to change it)</label>
-    </div>
-    <div class="col-7">
-      <%= f.password_field :password, class: 'form-control', autocomplete: "new-password" %>
-    </div>
-  </div>
+
+  <%= render '/shared/field', title: "Password (leave blank<br>if you don't want to change it)" do %>
+    <%= f.password_field :password, class: 'form-control', autocomplete: "new-password" %>
+  <% end %>
+
   <%= spacer(5) %>
-  <div class="row" style="width: 40rem">
-    <div class="col-5">
-      <label>Password Confirmation</label>
-    </div>
-    <div class="col-7">
+
+  <%= render '/shared/field', title: "Password Confirmation" do %>
       <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password" %>
-    </div>
-  </div>
+  <% end %>
+
   <%= spacer(10) %>
-  <div class="row" style="width: 40rem">
-    <div class="col-5">
-      &nbsp;
-    </div>
-    <div class="col-7">
+
+  <%= render '/shared/field', title: "" do %>
       <%= button_tag(type: :submit, class: "btn btn-outline-light px-4 border #{inherit_style}") do %>
         SAVE
       <% end %>
-    </div>
-  </div>
+  <% end %>
+
   <%= spacer(7) %>
 <% end %>
