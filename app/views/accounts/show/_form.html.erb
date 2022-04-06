@@ -2,7 +2,7 @@
   <%= spacer(7) %>
 
   <%= render '/shared/field', title: 'Email' do %>
-    <%= text_field_tag 'email', current_user.email, class: "form-control #{inherit_style}", disabled: true %>
+    <%= text_field_tag 'email', current_user.email, class: ["form-control", *inherit_style], disabled: true %>
   <% end %>
 
   <%= spacer(5) %>
@@ -20,7 +20,7 @@
   <%= spacer(10) %>
 
   <%= render '/shared/field', title: "" do %>
-      <%= button_tag(type: :submit, class: "btn btn-outline-light px-4 border #{inherit_style}") do %>
+      <%= button_tag(type: :submit, class: ['btn', 'btn-outline-light', 'px-4', 'border', *inherit_style]) do %>
         SAVE
       <% end %>
   <% end %>

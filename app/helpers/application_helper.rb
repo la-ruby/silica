@@ -74,6 +74,10 @@ module ApplicationHelper
   end
 
   def inherit_style
+    ['text-reset', 'silica-weight-reset']
+  end
+
+  def inherit_styles
     'text-reset silica-weight-reset'
   end
 end
