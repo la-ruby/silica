@@ -1,4 +1,7 @@
 <%
+  second_seller_mode = @mbo_request.second_seller_mode?
+  repc_id = @record.id
+
   instance = generate_instance_id
   form_id = "form-of-#{instance}"
   repc = Repc.find(repc_id)
@@ -14,14 +17,14 @@
   <% end %>
 
 
-  <%= render '/component/crayon/progress', labels: [ 'Request', 'Offer', 'Site Visit', 'Closing' ], curr: 1, progress: 2 %>
+  <%= render '/repcs/show/progress', labels: [ 'Request', 'Offer', 'Site Visit', 'Closing' ], curr: 1, progress: 2 %>
 
   <div class="container-xxl">
     <div class="row align-items-center justify-content-center" style="height: 70vh">
-      <%= render('/component/crayon/addendum_card', repc_id: repc.id) %>
-      <%= render('/component/crayon/repc_card', repc_id: repc.id) %>
+      <%= render('/repcs/show/addendum_card', repc_id: repc.id) %>
+      <%= render('/repcs/show/repc_card', repc_id: repc.id) %>
 
-      <%= render '/component/crayon/paras_card', project_id: repc.project.id %>
+      <%= render '/repcs/show/paras_card', project_id: repc.project.id %>
 
       <div class="mb-1"><!-- spacer -->&nbsp;</div>
       <div class="mb-1"><!-- spacer -->&nbsp;</div>
@@ -34,9 +37,9 @@
   </div>
  
   <% if repc.my_offer_portal_shows_addendum_card? %>
-  <%= render '/component/crayon/bottom_alternative', repc_id: repc.id, form_id: form_id, second_seller_mode: second_seller_mode, addendum_version_id: repc.project.addendums.last.addendum_versions.last.id %>
+  <%= render '/repcs/show/bottom_alternative', repc_id: repc.id, form_id: form_id, second_seller_mode: second_seller_mode, addendum_version_id: repc.project.addendums.last.addendum_versions.last.id %>
   <% else %>
-  <%= render '/component/crayon/bottom', repc_id: repc.id, form_id: form_id, second_seller_mode: second_seller_mode %>
+  <%= render '/repcs/show/bottom', repc_id: repc.id, form_id: form_id, second_seller_mode: second_seller_mode %>
   <% end %>
 </div>
 

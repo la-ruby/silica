@@ -80,7 +80,7 @@ Rails.application.routes.draw do
   get '/webhook_revert', to: 'webhooks#webhook_revert'
   post '/webhook_sendgrid_event', to: 'webhooks#webhook_sendgrid_event'
 
-  get '/offer/:token', to: 'myoffers#crayon'
+  get '/offer/:token', to: 'repcs#show'
   get '/offer/:token/feedback/new', to: 'feedbacks#new'
   get '/offer/:token/feedback', to: 'feedbacks#show'
 
