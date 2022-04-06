@@ -16,7 +16,6 @@
  *= require sessions
  *= require iconography
  *= require calendar
- *= require marketplace
  *= require crayon
  *= require colors
  *= require_self
@@ -70,6 +69,15 @@ trix-editor {
   font-weight: inherit !important;
 }
 
+.silica-map-label {
+  opacity: 1;
+  background-color: white;
+  color: black;
+  padding: 2px 5px;
+  font-weight: bold;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px 0px;
+}
+
 /* transparency */
 .silica-super-light {
   opacity: 0.1;
@@ -94,3 +102,11 @@ trix-editor {
   background-color: #F5F5F5;
 }
 /* /backgrounds */
+
+/* shadows */
+@media (min-width: 992px) {
+  .silica-shadow-on-lg-up {
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+  }
+}
+/* /shadows */

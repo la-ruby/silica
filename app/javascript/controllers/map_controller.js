@@ -34,7 +34,7 @@ export default class extends Controller {
         map: map,
         labelContent: '<span>'+ $(item).data('label') + '</span>',
         labelAnchor: new google.maps.Point(40,32),
-        labelClass: "map-label", // the CSS class for the label
+        labelClass: "silica-map-label", // the CSS class for the label
         labelStyle: {opacity: 1},
         position: {lat: $(item).data('lat'), lng: $(item).data('lng')},
         data: $(item).data('label2'),
