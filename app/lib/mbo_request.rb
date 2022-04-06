@@ -11,7 +11,10 @@ class MboRequest
 
   def record
     record = Repc.where(mop_token: @token[0..31]).first
+
+    # this is redundant nowadays, safe to delete
     record = AddendumVersion.where(mop_token: @token[0..31]).first unless record
+
     raise 'Unknown token' unless record
     raise 'Attempt to access voided repc' if record.is_a?(Repc) && record.id != record.project.repcs.last.id
     record
