@@ -17,7 +17,6 @@
  *= require iconography
  *= require calendar
  *= require marketplace
- *= require mbo
  *= require crayon
  *= require colors
  *= require_self
@@ -86,3 +85,12 @@ trix-editor {
   border-radius: 0.5rem !important;
 }
 /* /rounding */
+
+/* backgrounds */
+.silica-house-background {
+  background: url(/silica-house-background.png);
+  background-size: cover;
+  zbackground-position:center center;
+  background-color: #F5F5F5;
+}
+/* /backgrounds */

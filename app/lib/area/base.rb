@@ -36,5 +36,9 @@ module Area
     def deprecated_font
       "brand-font"
     end
+
+    def body_style
+      nil
+    end
   end
 end

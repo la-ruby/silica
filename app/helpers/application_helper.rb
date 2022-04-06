@@ -17,10 +17,6 @@ module ApplicationHelper
     project.direction == 'Outbound' ? 'fa-sign-out-alt' : 'fa-sign-in-alt'
   end
 
-  def background_with_image
-    'mbo-background' if current_area.is_a?(Area::Offer)
-  end
-
   # Goals:
   # Hitting reload in dev env should not make external network requests for images
   # Ability to specify rails env specific assets

@@ -26,6 +26,10 @@ module Area
     def nav_bg
       'apollo-bg-white-4'
     end
+
+    def body_style
+      'silica-house-background'
+    end
   end
 end
  
