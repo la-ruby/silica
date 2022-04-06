@@ -19,6 +19,6 @@ module ProjectsHelper
   end
 
   def direction_icon(direction)
-    direction == "Inbound" ? "backend/inbound.svg" : "backend/outbound.svg"
+    direction == "Inbound" ? silica_neutral_bucket("/icons/inbound.svg") : silica_neutral_bucket("/icons/outbound.svg")
   end
 end

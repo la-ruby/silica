@@ -10,11 +10,11 @@
   <!-- layer 2 circle -->
   <% if index == curr %>
   <div style="z-index: 102; outline: 0px solid yellow; position: absolute; zwidth: 110px; top: 15%; left: 0%; ztransform: translate(-50%, -50%);" class="shorter-70px-mobiles">
-    <%= image_tag 'backend/circle-white-o-tick.png', style: "width: 40px" %>
+    <%= image_tag(silica_neutral_bucket('/icons/circle-white-o-tick.png'), style: "width: 40px") %>
   </div>
   <% else %>
   <div style="z-index: 102; outline: 0px solid yellow; position: absolute; zwidth: 110px; top: 15%; left: 0%; ztransform: translate(-50%, -50%);" class="shorter-70px-mobiles">
-    <%= image_tag 'backend/circle-white-o.png', style: "width: 40px" %>
+    <%= image_tag(silica_neutral_bucket('/icons/circle-white-o.png'), style: "width: 40px") %>
   </div>
   <% end %>
   <!-- /layer 2 -->
