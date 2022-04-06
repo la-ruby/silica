@@ -9,11 +9,19 @@ class BlastsController < ApplicationController
   # POST /examples or /examples.json
   def create
     authorize nil, policy_class: BlastPolicy
-    @message = MarketingMail.new.perform(project_id: blast_params[:project]).to_s
-
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream do
+        render turbo_stream: [
+                 turbo_stream.replace('flashes',
+                                      partial: '/flashes',
+                                      locals: {
+                                        message:
+                                          MarketingMail.new.perform(project_id: blast_params[:project]).to_s })
+        ]
+      end
     end
+
+
   end
 
   private
