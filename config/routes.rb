@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :repcs, only: [:update]
   resources :repc_verdicts, only: [:create]
   resources :addendum_verdicts, only: [:create]
-  resources :accounts
+  resource :account
   resources :contacts, only: [:index, :create] do
     collection do
       get 'refresh'

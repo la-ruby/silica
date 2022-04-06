@@ -48,7 +48,7 @@
           <%= current_user.nick %> <i class="bi bi-chevron-down"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-lg-end <%= current_area.high_background_style %> text-reset">
-          <li class=""><a class="btn dropdown-item text-reset silica-weight-reset" href="/accounts/<%= current_user.id %>">Account</a></li>
+          <li class=""><a class="btn dropdown-item text-reset silica-weight-reset" href="/account">Account</a></li>
           <% if current_user.staff? %>
             <li class="">
               <a class="btn dropdown-item text-reset silica-weight-reset" href="<%= edit_configuration_path %>">Edit Configurtion</a>
