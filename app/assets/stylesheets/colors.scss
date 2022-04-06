@@ -1,15 +1,4 @@
-/*
- *= require colors/fg
- *= require colors/fg-i
- *= require colors/bg
- *= require colors/bg-i
- *= require colors/fs
- *= require colors/fs-i
-*/
-
-
 /* https://www.w3schools.com/colors/colors_shades.asp */
-
 .bg-white-level-one { background: white; }
 .bg-white-level-two { background: #F8F8F8; }
 .bg-white-level-three { background: #F5F5F5; }
@@ -33,3 +22,168 @@
 .fg-white-level-three-i { color: #F5F5F5 !important; }
 .fg-white-level-four-i { color: #F0F0F0 !important; }
 .fg-white-level-gainsboro-i { color: #DCDCDC !important; }
+
+
+/* ################################################################################ */
+.apollo-bg-black-1  { background-color: #000000 }
+.apollo-bg-black-2  { background-color: #080808 }
+.apollo-bg-black-3  { background-color: #101010 }
+.apollo-bg-black-4  { background-color: #181818 }
+.apollo-bg-black-5  { background-color: #202020 }
+.apollo-bg-black-6  { background-color: #282828 }
+.apollo-bg-black-7  { background-color: #303030 }
+.apollo-bg-black-8  { background-color: #383838 }
+.apollo-bg-black-9  { background-color: #404040 }
+.apollo-bg-black-10 { background-color: #484848 }
+.apollo-bg-black-11 { background-color: #505050 }
+.apollo-bg-black-12 { background-color: #585858 }
+.apollo-bg-black-13 { background-color: #606060 }
+.apollo-bg-black-14 { background-color: #686868 }
+.apollo-bg-black-15 { background-color: #696969 }
+.apollo-bg-black-16 { background-color: #707070 }
+.apollo-bg-black-17 { background-color: #787878 }
+.apollo-bg-black-18 { background-color: #808080 }
+.apollo-bg-black-19 { background-color: #888888 }
+.apollo-bg-black-20 { background-color: #909090 }
+.apollo-bg-white-1  { background-color: #FFFFFF }
+.apollo-bg-white-2  { background-color: #F8F8F8 }
+.apollo-bg-white-3  { background-color: #F5F5F5 }
+.apollo-bg-white-4  { background-color: #F0F0F0 }
+.apollo-bg-white-5  { background-color: #E8E8E8 }
+.apollo-bg-white-6  { background-color: #E0E0E0 }
+.apollo-bg-white-7  { background-color: #DCDCDC }
+.apollo-bg-white-8  { background-color: #D8D8D8 }
+.apollo-bg-white-9  { background-color: #D3D3D3 }
+.apollo-bg-white-10  { background-color: #D0D0D0 }
+.apollo-bg-white-11  { background-color: #C8C8C8 }
+.apollo-bg-white-12  { background-color: #C0C0C0 }
+.apollo-bg-white-13  { background-color: #BEBEBE }
+.apollo-bg-white-14  { background-color: #B8B8B8 }
+.apollo-bg-white-15  { background-color: #B0B0B0 }
+.apollo-bg-white-16  { background-color: #B8B8B8 }
+.apollo-bg-white-17  { background-color: #B0B0B0 }
+.apollo-bg-white-18  { background-color: #A9A9A9 }
+.apollo-bg-white-19  { background-color: #A8A8A8 }
+.apollo-bg-white-20  { background-color: #A0A0A0 }
+.apollo-fg-black-1  { color: #000000 }
+.apollo-fg-black-2  { color: #080808 }
+.apollo-fg-black-3  { color: #101010 }
+.apollo-fg-black-4  { color: #181818 }
+.apollo-fg-black-5  { color: #202020 }
+.apollo-fg-black-6  { color: #282828 }
+.apollo-fg-black-7  { color: #303030 }
+.apollo-fg-black-8  { color: #383838 }
+.apollo-fg-black-9  { color: #404040 }
+.apollo-fg-black-10 { color: #484848 }
+.apollo-fg-black-11 { color: #505050 }
+.apollo-fg-black-12 { color: #585858 }
+.apollo-fg-black-13 { color: #606060 }
+.apollo-fg-black-14 { color: #686868 }
+.apollo-fg-black-15 { color: #696969 }
+.apollo-fg-black-16 { color: #707070 }
+.apollo-fg-black-17 { color: #787878 }
+.apollo-fg-black-18 { color: #808080 }
+.apollo-fg-black-19 { color: #888888 }
+.apollo-fg-black-20 { color: #909090 }
+.apollo-fg-white-1  { color: #FFFFFF }
+.apollo-fg-white-2  { color: #F8F8F8 }
+.apollo-fg-white-3  { color: #F5F5F5 }
+.apollo-fg-white-4  { color: #F0F0F0 }
+.apollo-fg-white-5  { color: #E8E8E8 }
+.apollo-fg-white-6  { color: #E0E0E0 }
+.apollo-fg-white-7  { color: #DCDCDC }
+.apollo-fg-white-8  { color: #D8D8D8 }
+.apollo-fg-white-9  { color: #D3D3D3 }
+.apollo-fg-white-10  { color: #D0D0D0 }
+.apollo-fg-white-11  { color: #C8C8C8 }
+.apollo-fg-white-12  { color: #C0C0C0 }
+.apollo-fg-white-13  { color: #BEBEBE }
+.apollo-fg-white-14  { color: #B8B8B8 }
+.apollo-fg-white-15  { color: #B0B0B0 }
+.apollo-fg-white-16  { color: #B8B8B8 }
+.apollo-fg-white-17  { color: #B0B0B0 }
+.apollo-fg-white-18  { color: #A9A9A9 }
+.apollo-fg-white-19  { color: #A8A8A8 }
+.apollo-fg-white-20  { color: #A0A0A0 }
+.apollo-bg-black-1-i  { background-color: #000000 !important }
+.apollo-bg-black-2-i  { background-color: #080808 !important }
+.apollo-bg-black-3-i  { background-color: #101010 !important }
+.apollo-bg-black-4-i  { background-color: #181818 !important }
+.apollo-bg-black-5-i  { background-color: #202020 !important }
+.apollo-bg-black-6-i  { background-color: #282828 !important }
+.apollo-bg-black-7-i  { background-color: #303030 !important }
+.apollo-bg-black-8-i  { background-color: #383838 !important }
+.apollo-bg-black-9-i  { background-color: #404040 !important }
+.apollo-bg-black-10-i { background-color: #484848 !important }
+.apollo-bg-black-11-i { background-color: #505050 !important }
+.apollo-bg-black-12-i { background-color: #585858 !important }
+.apollo-bg-black-13-i { background-color: #606060 !important }
+.apollo-bg-black-14-i { background-color: #686868 !important }
+.apollo-bg-black-15-i { background-color: #696969 !important }
+.apollo-bg-black-16-i { background-color: #707070 !important }
+.apollo-bg-black-17-i { background-color: #787878 !important }
+.apollo-bg-black-18-i { background-color: #808080 !important }
+.apollo-bg-black-19-i { background-color: #888888 !important }
+.apollo-bg-black-20-i { background-color: #909090 !important }
+
+.apollo-bg-white-1-i  { background-color: #FFFFFF !important }
+.apollo-bg-white-2-i  { background-color: #F8F8F8 !important }
+.apollo-bg-white-3-i  { background-color: #F5F5F5 !important }
+.apollo-bg-white-4-i  { background-color: #F0F0F0 !important }
+.apollo-bg-white-5-i  { background-color: #E8E8E8 !important }
+.apollo-bg-white-6-i  { background-color: #E0E0E0 !important }
+.apollo-bg-white-7-i  { background-color: #DCDCDC !important }
+.apollo-bg-white-8-i  { background-color: #D8D8D8 !important }
+.apollo-bg-white-9-i  { background-color: #D3D3D3 !important }
+.apollo-bg-white-10-i  { background-color: #D0D0D0 !important }
+.apollo-bg-white-11-i  { background-color: #C8C8C8 !important }
+.apollo-bg-white-12-i  { background-color: #C0C0C0 !important }
+.apollo-bg-white-13-i  { background-color: #BEBEBE !important }
+.apollo-bg-white-14-i  { background-color: #B8B8B8 !important }
+.apollo-bg-white-15-i  { background-color: #B0B0B0 !important }
+.apollo-bg-white-16-i  { background-color: #B8B8B8 !important }
+.apollo-bg-white-17-i  { background-color: #B0B0B0 !important }
+.apollo-bg-white-18-i  { background-color: #A9A9A9 !important }
+.apollo-bg-white-19-i  { background-color: #A8A8A8 !important }
+.apollo-bg-white-20-i  { background-color: #A0A0A0 !important }
+.apollo-fg-black-1-i  { color: #000000 !important }
+.apollo-fg-black-2-i  { color: #080808 !important }
+.apollo-fg-black-3-i  { color: #101010 !important }
+.apollo-fg-black-4-i  { color: #181818 !important }
+.apollo-fg-black-5-i  { color: #202020 !important }
+.apollo-fg-black-6-i  { color: #282828 !important }
+.apollo-fg-black-7-i  { color: #303030 !important }
+.apollo-fg-black-8-i  { color: #383838 !important }
+.apollo-fg-black-9-i  { color: #404040 !important }
+.apollo-fg-black-10-i { color: #484848 !important }
+.apollo-fg-black-11-i { color: #505050 !important }
+.apollo-fg-black-12-i { color: #585858 !important }
+.apollo-fg-black-13-i { color: #606060 !important }
+.apollo-fg-black-14-i { color: #686868 !important }
+.apollo-fg-black-15-i { color: #696969 !important }
+.apollo-fg-black-16-i { color: #707070 !important }
+.apollo-fg-black-17-i { color: #787878 !important }
+.apollo-fg-black-18-i { color: #808080 !important }
+.apollo-fg-black-19-i { color: #888888 !important }
+.apollo-fg-black-20-i { color: #909090 !important }
+
+.apollo-fg-white-1-i  { color: #FFFFFF !important }
+.apollo-fg-white-2-i  { color: #F8F8F8 !important }
+.apollo-fg-white-3-i  { color: #F5F5F5 !important }
+.apollo-fg-white-4-i  { color: #F0F0F0 !important }
+.apollo-fg-white-5-i  { color: #E8E8E8 !important }
+.apollo-fg-white-6-i  { color: #E0E0E0 !important }
+.apollo-fg-white-7-i  { color: #DCDCDC !important }
+.apollo-fg-white-8-i  { color: #D8D8D8 !important }
+.apollo-fg-white-9-i  { color: #D3D3D3 !important }
+.apollo-fg-white-10-i  { color: #D0D0D0 !important }
+.apollo-fg-white-11-i  { color: #C8C8C8 !important }
+.apollo-fg-white-12-i  { color: #C0C0C0 !important }
+.apollo-fg-white-13-i  { color: #BEBEBE !important }
+.apollo-fg-white-14-i  { color: #B8B8B8 !important }
+.apollo-fg-white-15-i  { color: #B0B0B0 !important }
+.apollo-fg-white-16-i  { color: #B8B8B8 !important }
+.apollo-fg-white-17-i  { color: #B0B0B0 !important }
+.apollo-fg-white-18-i  { color: #A9A9A9 !important }
+.apollo-fg-white-19-i  { color: #A8A8A8 !important }
+.apollo-fg-white-20-i  { color: #A0A0A0 !important }
