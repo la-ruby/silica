@@ -19,7 +19,7 @@ class AccountsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes', locals: { message: @message }),
-          turbo_stream.replace('accounts-show-panel', partial: '/accounts/show/main', locals: { user: @account })
+          turbo_stream.replace('accounts-show-panel', template: '/accounts/show', locals: {})
         ]
       end
     end
