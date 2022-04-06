@@ -15,7 +15,6 @@
  *= require brand
  *= require sessions
  *= require rounding
- *= require transparency
  *= require iconography
  *= require calendar
  *= require marketplace
@@ -71,4 +70,8 @@ trix-editor {
 
 .silica-weight-reset {
   font-weight: inherit !important;
+}
+
+.silica-super-light {
+  opacity: 0.1;
 }
