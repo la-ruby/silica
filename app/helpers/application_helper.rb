@@ -80,5 +80,10 @@ module ApplicationHelper
   def inherit_styles
     'text-reset silica-weight-reset'
   end
+
+  # shows dash if present? is falsey
+  def dashify(object)
+    object.presence || '-'
+  end
 end
 

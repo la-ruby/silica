@@ -1,41 +1,27 @@
-<% project = @addendum.project %>
-<% addendum = @addendum %>
+<%= spacer(20) %>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="bg-transparent">
-
-	<div class="container my-3">
-	  <div class="row">
-	    <div class="col">
-
-	      <div class="my-5">
-		Addendum <%= addendum.addendum_number %> version history
-	      </div>
-
-              <% addendum.addendum_versions.order(:version).each do |addendum_version| %>
-                <hr>
-                <div class="my-3">
-                  Draft: <%= addendum_version.version %><br>
-                  Sent to seller at: <%= addendum_version.sent_to_seller_at.presence || '-'  %><br>
-		  Status: <%= addendum_version.derived_status %><br>
-                  Expiration: <%= addendum_version.expiration.presence || '-' %><br>
-                  Deadline: <%= addendum_version.deadline.presence || '-' %><br>
-                  Terms: <%= addendum_version.terms.presence || '-' %><br>
-                  Signed By <%= COMPANY %> At: <%= addendum_version.signed_by_company_at || '-' %><br>
-                  Accepted at: <%= addendum_version.accepted_at || '-' %><br>
-                  Second Seller Accepted at: <%= addendum_version.second_seller_accepted_at || '-' %><br>
-                  Rejected at: <%= addendum_version.rejected_at || '-' %><br>
-                  Second Seller Rejected at: <%= addendum_version.second_seller_rejected_at || '-' %><br>
-                  Rejected feedback: <%= addendum_version.rejected_feedback || '-' %><br>
-                  Second Seller Rejected feedback: <%= addendum_version.second_seller_rejected_feedback || '-' %>
-                </div>		
-	      <% end %>
-           </div>
-	  </div>
-	</div>
-      </div>
-    </div>
+<%= silica_container do %>
+  <div>
+    Addendum <%= @addendum.addendum_number %> version history
   </div>
-</div>
+
+  <% @addendum.addendum_versions.order(:version).each do |addendum_version| %>
+    <hr>
+    <div>
+      Draft: <%= addendum_version.version %><br>
+      Sent to seller at: <%= dashify(addendum_version.sent_to_seller_at) %><br>
+      Status: <%= addendum_version.derived_status %><br>
+      Expiration: <%= dashify(addendum_version.expiration) %><br>
+      Deadline: <%= dashify(addendum_version.deadline) %><br>
+      Terms: <%= dashify(addendum_version.terms) %><br>
+      Signed By <%= COMPANY %> At: <%= dashify(addendum_version.signed_by_company_at) %><br>
+      Accepted at: <%= dashify(addendum_version.accepted_at) %><br>
+      Second Seller Accepted at: <%= dashify(addendum_version.second_seller_accepted_at) %><br>
+      Rejected at: <%= dashify(addendum_version.rejected_at) %><br>
+      Second Seller Rejected at: <%= dashify(addendum_version.second_seller_rejected_at) %><br>
+      Rejected feedback: <%= dashify(addendum_version.rejected_feedback) %><br>
+      Second Seller Rejected feedback: <%= dashify(addendum_version.second_seller_rejected_feedback) %>
+    </div>              
+    <%= spacer(20) %>
+  <% end %>
+<% end %>
