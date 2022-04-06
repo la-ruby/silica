@@ -55,7 +55,7 @@
             </li>
           <% end %>
           <% if policy(:contact).index? %>
-          <li class=""><a class="btn dropdown-item text-reset silica-weight-reset" href="/contacts">Contacts <span class="badge rounded-pill bg-danger">new</span></a></li>
+          <li class=""><a class="btn dropdown-item text-reset silica-weight-reset" href="/contacts">Contacts</a></li>
           <% end %>
     
           <% if UxPolicy.new(current_user, nil).resync? %>
