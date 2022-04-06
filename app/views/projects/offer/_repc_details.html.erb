@@ -6,22 +6,22 @@
     <% p.content_for :heading_right do %>
       <% if project.repc.signed_by_company_at && project.repc.sent_homeowner_at  %>
         <div class="me-3">
-          <a href="<%= "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{project.repc.mop_token}" %>" target="_blank" class="btn btn-sm btn-outline-brandprimary rounded-half-r-i" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Sellers My Offer Portal for testing" data-controller="apollo-tooltip">
+          <a href="<%= "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{project.repc.mop_token}" %>" target="_blank" class="btn btn-sm btn-outline-brandprimary silca-rounded-0.5-i" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Sellers My Offer Portal for testing" data-controller="apollo-tooltip">
 	    View Offer Portal
           </a>
           <% if project.dual? %>
-          <a href="<%= "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{project.repc.second_seller_mop_token}" %>" target="_blank" class="btn btn-sm btn-outline-brandprimary rounded-half-r-i" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Second Sellers My Offer Portal for testing" data-controller="apollo-tooltip">
+          <a href="<%= "#{APOLLO_PORTAL_FULL_DOMAIN}/offer/#{project.repc.second_seller_mop_token}" %>" target="_blank" class="btn btn-sm btn-outline-brandprimary silca-rounded-0.5-i" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Second Sellers My Offer Portal for testing" data-controller="apollo-tooltip">
 	    View Offer Portal (2)
           </a>
           <% end %>
         </div>
       <% else %>
         <div class="me-3">
-          <a target="_blank" class="btn btn-sm btn-link pe-none rounded-half-r-i" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Sellers My Offer Portal (available after REPC signed by <%= COMPANY %> and Offer Sent To Seller)" data-controller="apollo-tooltip">
+          <a target="_blank" class="btn btn-sm btn-link pe-none silca-rounded-0.5-i" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Sellers My Offer Portal (available after REPC signed by <%= COMPANY %> and Offer Sent To Seller)" data-controller="apollo-tooltip">
             myofferportal
           </a>
           <% if project.dual? %>
-          <a target="_blank" class="btn btn-sm btn-link pe-none rounded-half-r-i" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Sellers My Offer Portal (available after REPC signed by <%= COMPANY %> and Offer Sent To Seller)" data-controller="apollo-tooltip">
+          <a target="_blank" class="btn btn-sm btn-link pe-none silca-rounded-0.5-i" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Link to Sellers My Offer Portal (available after REPC signed by <%= COMPANY %> and Offer Sent To Seller)" data-controller="apollo-tooltip">
             myofferportal two
           </a>
           <% end %>

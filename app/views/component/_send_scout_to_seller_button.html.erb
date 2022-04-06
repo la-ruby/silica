@@ -8,7 +8,7 @@
     <%= form.hidden_field 'tx_scout_link[project_id]', value: project.id  %>
   <% end %>
 
-  <button type="submit" class="btn btn-sm btn-brandprimary text-white rounded-half-r-i" form="<%= form_id %>"
+  <button type="submit" class="btn btn-sm btn-brandprimary text-white silca-rounded-0.5-i" form="<%= form_id %>"
     <%= 'disabled' unless project.scout %>
   >
     SEND SCOUT TO SELLER <%= '(AGAIN)' if project.scout_sent_at %>

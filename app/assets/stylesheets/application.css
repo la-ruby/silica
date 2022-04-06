@@ -14,7 +14,6 @@
  *= require actiontext
  *= require brand
  *= require sessions
- *= require rounding
  *= require iconography
  *= require calendar
  *= require marketplace
@@ -68,10 +67,23 @@ trix-editor {
   
 }
 
+
 .silica-weight-reset {
   font-weight: inherit !important;
 }
 
+/* transparency */
 .silica-super-light {
   opacity: 0.1;
 }
+/* /transparency */
+
+/* rounding */
+.silica-rounded-1-i {
+  border-radius: 1rem !important;
+}
+
+.silca-rounded-0.5-i {
+  border-radius: 0.5rem !important;
+}
+/* /rounding */

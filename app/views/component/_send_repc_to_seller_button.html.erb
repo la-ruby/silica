@@ -10,7 +10,7 @@
     <%= form.hidden_field 'repc_delivery[repc_id]', value: repc.id %>
   <% end %>
 
-  <button type="submit" class="btn btn-sm btn-brandprimary text-white rounded-half-r-i" name="submission[what_was_clicked]" value="save" form="<%= form_id %>"
+  <button type="submit" class="btn btn-sm btn-brandprimary text-white silca-rounded-0.5-i" name="submission[what_was_clicked]" value="save" form="<%= form_id %>"
           <%= 'disabled' if !repc.signed_by_company_at.present? %>
           <%= 'disabled' if repc.id != project.repc.id %>
           <%= 'disabled' if repc.rejected? %>
