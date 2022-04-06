@@ -10,7 +10,7 @@
     <div class="d-none d-xl-inline-block"><br></div>
 
     <!-- price -->
-    <div class="text-center blue-summer-sky fs-2 my-1 fw-normal">
+    <div class="text-center silica-blue-summer-sky fs-2 my-1 fw-normal">
       <%= (number_to_currency(repc.company_offer_arv, precision: 0).presence || '-') rescue "-" %>
     </div>	  
     <!-- /price -->
@@ -58,7 +58,7 @@
 
       <div class="row">
         <div class="col-7 fw-bold text-muted">CONTRACT PRICE</div>
-        <div class="col blue-summer-sky fw-bold"><%= number_to_currency(repc.purchase_price).sub(/\.00\z/, '') rescue "-" %></div>
+        <div class="col silica-blue-summer-sky fw-bold"><%= number_to_currency(repc.purchase_price).sub(/\.00\z/, '') rescue "-" %></div>
       </div>
     </div>
     <!-- /tabular info 1 -->
@@ -94,7 +94,7 @@
 
       <div class="row">
         <div class="col-7">Monthly Payment</div>
-        <div class="col blue-summer-sky">$<%= repc.monthly_payment %></div>
+        <div class="col silica-blue-summer-sky">$<%= repc.monthly_payment %></div>
       </div>
 
       <hr class="my-1">
