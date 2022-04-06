@@ -47,6 +47,14 @@ module Area
     def nav_item_style
       "fs-5"
     end
+
+    # def background_style
+    #   'apollo-bg-white-3-i'
+    # end
+
+    def high_background_style
+      'apollo-bg-white-4-i'
+    end
   end
 end
  

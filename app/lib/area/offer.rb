@@ -30,6 +30,18 @@ module Area
     def body_style
       'silica-house-background'
     end
+
+    def low_background_style
+      'apollo-bg-white-2'
+    end
+    
+    def background_style
+      'apollo-bg-white-3-i'
+    end
+
+    # def high_background_style
+    #   'apollo-bg-white-4-i'
+    # end
   end
 end
  

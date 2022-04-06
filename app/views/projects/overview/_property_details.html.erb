@@ -13,82 +13,82 @@
 
   <div class="row <%= normal_text %>">
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Address (Street)</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Address (Street)</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.street %></span>
       <input type="hidden" name="project[street]" form="<%= form_id %>" value="<%= project.street %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Address (Apart. #)</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Address (Apart. #)</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.street2 %></span>
       <input type="hidden" name="project[street2]" form="<%= form_id %>" value="<%= project.street2 %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Address (City)</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Address (City)</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.city %></span>
       <input type="hidden" name="project[city]" form="<%= form_id %>" value="<%= project.city %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Address (State)</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Address (State)</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.state %></span>
       <input type="hidden" name="project[state]" form="<%= form_id %>" value="<%= project.state %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Address (Zip)</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Address (Zip)</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.zip %></span>
       <input type="hidden" name="project[zip]" form="<%= form_id %>" value="<%= project.zip %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Beds</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Beds</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= number_with_precision(project.beds, precision: 2, strip_insignificant_zeros: true) %></span>
       <input type="hidden" name="project[beds]" form="<%= form_id %>" value="<%= project.beds %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Bath</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Bath</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= number_with_precision(project.baths, precision: 2, strip_insignificant_zeros: true) %></span>
       <input type="hidden" name="project[baths]" form="<%= form_id %>" value="<%= project.baths %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Sq. Foot</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Sq. Foot</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= number_with_precision(project.sqft, precision: 2, strip_insignificant_zeros: true) %></span>
       <input type="hidden" name="project[sqft]" form="<%= form_id %>" value="<%= project.sqft %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Lot Size</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Lot Size</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.lot_size %></span>
       <input type="hidden" name="project[lot_size]" form="<%= form_id %>" value="<%= project.lot_size %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Year</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Year</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= number_with_precision(project.year, precision: 2, strip_insignificant_zeros: true) %></span>
       <input type="hidden" name="project[year]" form="<%= form_id %>" value="<%= project.year %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Property Type</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Property Type</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.property_type %></span>
       <input type="hidden" name="project[property_type]" form="<%= form_id %>" value="<%= project.property_type %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Price Per SqFt</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Price Per SqFt</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.price_sqft %></span>
       <input type="hidden" name="project[price_sqft]" form="<%= form_id %>" value="<%= project.price_sqft %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">HOA Fees</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">HOA Fees</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.hoa_fees %></span>
       <input type="hidden" name="project[hoa_fees]" form="<%= form_id %>" value="<%= project.hoa_fees %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Heating</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Heating</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.heating %></span>
       <input type="hidden" name="project[heating]" form="<%= form_id %>" value="<%= project.heating %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Cooling</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Cooling</div>
       <span class="border-bottom-dashed" data-controller="input-inline" data-form="<%= form_id %>"><%= project.cooling %></span>
       <input type="hidden" name="project[cooling]" form="<%= form_id %>" value="<%= project.cooling %>" />
     </div>
     <div class="col-5 mx-3 py-3">
-      <div class="<%= demoted_text %>">Owner Occupied</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Owner Occupied</div>
 
       <span class="border-bottom-dashed" data-form="<%= form_id %>" data-selectdata='{"true":"Yes","false":"No","selected":"<%= project.owner_occupied %>"}' data-controller="select-inline"><%= formatted_owner_occupied(project) %></span>
       <input type="hidden" name="project[owner_occupied]" form="<%= form_id %>" value="<%=project.owner_occupied%>">

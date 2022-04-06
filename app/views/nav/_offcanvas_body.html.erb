@@ -47,7 +47,7 @@
         <button type="button" class="btn zdropdown-toggle ps-0 ps-lg-2 nav-link <%= current_area.nav_item_style %> " data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
           <%= current_user.nick %> <i class="bi bi-chevron-down"></i>
         </button>
-        <ul class="dropdown-menu dropdown-menu-lg-end <%= theme_background_level_1! %> text-reset">
+        <ul class="dropdown-menu dropdown-menu-lg-end <%= current_area.high_background_style %> text-reset">
           <li class=""><a class="btn dropdown-item text-reset silica-weight-reset" href="/accounts/<%= current_user.id %>">Account</a></li>
           <% if current_user.staff? %>
             <li class="">

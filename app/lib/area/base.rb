@@ -40,5 +40,16 @@ module Area
     def body_style
       nil
     end
+
+    def background_color_style
+    end
+
+    # high contrast
+    def high_background_color_style
+    end
+
+    # low contrast
+    def low_background_color_style
+    end
   end
 end

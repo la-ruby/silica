@@ -8,14 +8,14 @@ Utilities
 <div class="row">
   <div class="col mx-3 py-3">
 
-    <div class="<%= demoted_text %>">Does the property need water, power, or other utilities turned on?</div>
+    <div class="apollo-fg-black-20 apollo-fs-14">Does the property need water, power, or other utilities turned on?</div>
     <span class="border-bottom-dashed" data-form="<%= form_id %>" data-selectdata='{"Yes":"Yes","No":"No","selected":"<%=intake_form.does_the_property_need_water_power%>"}' data-controller="select-inline"><%=intake_form.does_the_property_need_water_power%></span>
     <input type="hidden" name="underwriting_intake_form_pane[does_the_property_need_water_power]" form="<%= form_id %>" value="<%=intake_form.does_the_property_need_water_power%>">
 
   </div>
 
   <div class="col mx-3 py-3">
-    <div class="<%= demoted_text %>">Who will pay for water, power or other utilities?</div>
+    <div class="apollo-fg-black-20 apollo-fs-14">Who will pay for water, power or other utilities?</div>
     <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= intake_form.who_will_pay_for_water_power %></span>
     <input type="hidden" name="underwriting_intake_form_pane[who_will_pay_for_water_power]" form="<%= form_id %>"  value="<%= intake_form.who_will_pay_for_water_power %>" />
   </div>

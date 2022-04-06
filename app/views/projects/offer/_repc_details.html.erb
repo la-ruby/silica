@@ -33,31 +33,31 @@
 
   <div class="row <%= normal_text %>">
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Purchase Price</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Purchase Price</div>
       <span><%= project.repc.purchase_price.presence || '-' %></span>
     </div>
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Agreement Date</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Agreement Date</div>
       <div><%= project.repc.agreement_date.presence || '-'  %></div>
     </div>
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Closing Costs Paid By</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Closing Costs Paid By</div>
       <div><%= (project.repc.closing_costs_paid_by.capitalize rescue nil) || '-'  %></div>
     </div>
   </div>
 
   <div class="row <%= normal_text %>">
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Earnest Money</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Earnest Money</div>
       <span><%= project.repc.earnest_money.presence || '-' %></span>
     </div>
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Settlement Date</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Settlement Date</div>
 
         <div><%= project.repc.settlement_date.presence || '-'  %></div>
     </div>
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Real Estate Professional</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Real Estate Professional</div>
       <%= (project.repc.real_estate_professional.capitalize rescue nil) || '-' %>
     </div>
   </div>
@@ -67,30 +67,30 @@
 
   <div class="row <%= normal_text %>">
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Down Payment</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Down Payment</div>
       <span><%= project.repc.down_payment.presence || '-' %></span>
     </div>
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Interest Rate</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Interest Rate</div>
       <span><%= project.repc.interest_rate.presence || '-' %></span>
     </div>
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Est. Remaining Mortg.</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Est. Remaining Mortg.</div>
       <span><%= project.repc.estimated_remaining_mortgage.presence || '-' %></span>
     </div>
   </div>
 
   <div class="row <%= normal_text %>">
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Term Length</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Term Length</div>
       <span><%= project.repc.term_length.presence || '-' %></span>
     </div>
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Monthly Payment</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Monthly Payment</div>
       <span><%= project.repc.monthly_payment.presence || '-' %></span>
     </div>
     <div class="col mx-3 py-3">
-      <div class="<%= demoted_text %>">Balloon Payment</div>
+      <div class="apollo-fg-black-20 apollo-fs-14">Balloon Payment</div>
       <span><%= project.repc.balloon_payment.presence || '-' %></span>
     </div>
   </div>

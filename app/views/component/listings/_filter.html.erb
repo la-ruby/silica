@@ -39,7 +39,7 @@
             Beds
           <% end %>
         </button>
-        <ul class="dropdown-menu <%= theme_background_level_1! %>" aria-labelledby="dropdownMenuButton1">
+        <ul class="dropdown-menu <%= current_area.high_background_style %>" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item fw-light <%= normal_text %>" href="#" data-action="click->listings#bedAny">Any</a></li>
           <li><a class="dropdown-item fw-light <%= normal_text %>" href="#" data-action="click->listings#bed1">1+</a></li>
           <li><a class="dropdown-item fw-light <%= normal_text %>" href="#" data-action="click->listings#bed2">2+</a></li>
@@ -60,7 +60,7 @@
             Baths
           <% end %>
         </button>
-        <ul class="dropdown-menu <%= theme_background_level_1! %>" aria-labelledby="dropdownMenuButton1">
+        <ul class="dropdown-menu <%= current_area.high_background_style %>" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item <%= local_assigns[:baths] == "any" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-filter-target="highest" data-action="click->listings#bathAny">Any</a></li>
           <li><a class="dropdown-item <%= local_assigns[:baths] == "1" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-filter-target="highest" data-action="click->listings#bath1">1+</a></li>
           <li><a class="dropdown-item <%= local_assigns[:baths] == "2" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-filter-target="highest" data-action="click->listings#bath2">2+</a></li>
@@ -83,7 +83,7 @@
             <i class="fa fa-sort-amount-down-alt"></i>
 	  <% end %>
         </button>
-        <ul class="dropdown-menu <%= theme_background_level_1! %>" aria-labelledby="dropdownMenuButton1">
+        <ul class="dropdown-menu <%= current_area.high_background_style %>" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item <%= local_assigns[:sort] == "2" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-action="click->listings#highest">Sort by highest price</a></li>
           <li><a class="dropdown-item <%= local_assigns[:sort] != "2" ? 'fw-bold' : 'fw-light' %> <%= normal_text %>" href="#" data-action="click->listings#lowest">Sort by lowest price</a></li>
         </ul>

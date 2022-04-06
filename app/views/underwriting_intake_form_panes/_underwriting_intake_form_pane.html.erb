@@ -28,17 +28,17 @@
 
           <div class="row">
             <div class="col-5 mx-3 py-3">
-              <div class="<%= demoted_text %>">What type of property is this?</div>
+              <div class="apollo-fg-black-20 apollo-fs-14">What type of property is this?</div>
               <span class="border-bottom-dashed" data-form="<%= form_id %>" data-selectdata='{"Wholesale to <%= COMPANY %>":"Wholesale to <%= COMPANY %>","Wholesale to outside of <%= COMPANY %>":"Wholesale to outside of <%= COMPANY %>","Buy and List":"Buy and List","Fix and Flip":"Fix and Flip","Buy to Hard Money Fund":"Buy to Hard Money Fund","selected":"<%=intake_form.what_type_of_property_is_this%>"}' data-controller="select-inline"><%= intake_form.what_type_of_property_is_this %></span>
               <input type="hidden" name="underwriting_intake_form_pane[what_type_of_property_is_this]" form="<%= form_id %>" value="<%= intake_form.what_type_of_property_is_this %>">
             </div>
             <div class="col-5 mx-3 py-3">
-              <div class="<%= demoted_text %>">Who is the purchaser?</div>
+              <div class="apollo-fg-black-20 apollo-fs-14">Who is the purchaser?</div>
               <span class="border-bottom-dashed" data-form="<%= form_id %>" data-selectdata='{"<%= PURCHASER_ENTITY %>":"<%= PURCHASER_ENTITY %>","<%= PURCHASER_ENTITY_ALT %>":"<%= PURCHASER_ENTITY_ALT %>","Outside buyer":"Outside buyer","selected":"<%=intake_form.who_is_the_purchaser%>"}' data-controller="select-inline"><%= intake_form.who_is_the_purchaser %></span>
               <input type="hidden" name="underwriting_intake_form_pane[who_is_the_purchaser]" form="<%= form_id %>" value="<%= intake_form.who_is_the_purchaser %>">
             </div>
             <div class="col-5 mx-3 py-3">
-              <div class="<%= demoted_text %>">Property Analysis</div>
+              <div class="apollo-fg-black-20 apollo-fs-14">Property Analysis</div>
               <span class="border-bottom-dashed" data-form="<%= form_id %>" data-selectdata='{"Complete":"Complete","Incomplete":"Incomplete","selected":"<%=intake_form.property_analysis%>"}' data-controller="select-inline"><%=intake_form.property_analysis%></span>
               <input type="hidden" name="underwriting_intake_form_pane[property_analysis]" form="<%= form_id %>" value="<%=intake_form.property_analysis%>">
             </div>

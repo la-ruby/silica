@@ -329,23 +329,6 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.index ["var"], name: "index_settings_on_var", unique: true
   end
 
-  create_table "themes", force: :cascade do |t|
-    t.string "text_size"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "text_color"
-    t.string "promoted_text_size"
-    t.string "promoted_text_color"
-    t.string "demoted_text_size"
-    t.string "demoted_text_color"
-    t.string "shadows"
-    t.string "primary_cta_color"
-    t.string "background_level_1"
-    t.string "background_level_2"
-    t.string "background_level_3"
-    t.string "rounding"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
