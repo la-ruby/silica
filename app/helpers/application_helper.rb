@@ -41,15 +41,15 @@ module ApplicationHelper
   end
 
   def spacer(count=1)
-    content_tag(:div, "&nbsp;".html_safe, class: 'mb-1') * count
+    content_tag(:div, "".html_safe, class: '', style: 'height: 0.1rem') * count
   end
 
   def horizontal_spacer(count=1)
     content_tag(:div, "<!-- horizontal spacer -->".html_safe, class: 'd-inline-block me-1') * count
   end
 
-  def basic_container(style: :basic)
-    content_tag(:div, class: "container #{current_area.style(style).classes}") do
+  def silica_container(id=SecureRandom.hex[0..6], style: :basic, inline_css: "")
+    content_tag(:div, id: id, class: "container #{current_area.style(style).classes}", style: inline_css) do
       content_tag(:div, class: 'row') do
         content_tag(:div, class: 'col') do
           if block_given?
@@ -71,6 +71,10 @@ module ApplicationHelper
   def current_area
     raise 'Area Not Specified' unless @area
     @area
+  end
+
+  def inherit_style
+    'text-reset silica-weight-reset'
   end
 end
 

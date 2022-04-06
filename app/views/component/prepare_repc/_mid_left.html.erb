@@ -68,11 +68,11 @@
     <div class="bs-component mb-3 ms-1">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 	<%= radio_button_tag 'repc[closing_costs_paid_by]', 'buyer', (repc.closing_costs_paid_by == 'buyer'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
-        <label class="btn btn-outline-brandprimary silca-rounded-0.5-i" for="repc_closing_costs_paid_by_buyer">Buyer</label>
+        <label class="btn btn-outline-brandprimary silica-rounded-0.5-i" for="repc_closing_costs_paid_by_buyer">Buyer</label>
 	<%= radio_button_tag 'repc[closing_costs_paid_by]', 'seller', (repc.closing_costs_paid_by == 'seller'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
-        <label class="btn btn-outline-brandprimary silca-rounded-0.5-i" for="repc_closing_costs_paid_by_seller">Seller</label>
+        <label class="btn btn-outline-brandprimary silica-rounded-0.5-i" for="repc_closing_costs_paid_by_seller">Seller</label>
 	<%= radio_button_tag 'repc[closing_costs_paid_by]', 'both', (repc.closing_costs_paid_by == 'both'), class: 'btn-check', form: form_id, disabled: repc.mature_ish? %>
-        <label class="btn btn-outline-brandprimary silca-rounded-0.5-i" for="repc_closing_costs_paid_by_both">Both</label>
+        <label class="btn btn-outline-brandprimary silica-rounded-0.5-i" for="repc_closing_costs_paid_by_both">Both</label>
       </div>
     </div>
 

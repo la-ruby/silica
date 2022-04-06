@@ -2,7 +2,7 @@
 
 <%= form_with(url: '/statuses', method: :patch, class: 'd-inline-block') do |form| %>
   <%= form.hidden_field :project_id, value: project.id %>
-  <button class="btn btn-sm btn-brandprimary dropdown-toggle silca-rounded-0.5-i" data-bs-toggle="dropdown" aria-expanded="false">status: <span class="badge bg-<%= status_color(project.status) %>"><%= project.status %></span></button>
+  <button class="btn btn-sm btn-brandprimary dropdown-toggle silica-rounded-0.5-i" data-bs-toggle="dropdown" aria-expanded="false">status: <span class="badge bg-<%= status_color(project.status) %>"><%= project.status %></span></button>
   <ul class="dropdown-menu">
     <li>
       <%= form.button(type: 'submit', value: 'statusOpen', class: 'border-o dropdown-item') do %>

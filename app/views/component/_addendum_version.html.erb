@@ -80,7 +80,7 @@
       <% if editable %>
       <div class="col-auto mx-3 py-3">
         <div class="apollo-fg-black-20 apollo-fs-14">
-          <button name="what_was_clicked" value="discard_addendum_version" type="submit" class="btn btn-sm btn-brandprimary text-white silca-rounded-0.5-i" form="<%= form_id %>"
+          <button name="what_was_clicked" value="discard_addendum_version" type="submit" class="btn btn-sm btn-brandprimary text-white silica-rounded-0.5-i" form="<%= form_id %>"
           <%= 'disabled' unless addendum_version.related_repc.mature? %>
           <%= 'disabled' if addendum_version.is_accepted_or_rejected? %>
           >
@@ -91,7 +91,7 @@
 
       <div class="col-auto mx-3 py-3">
         <div class="apollo-fg-black-20 apollo-fs-14">
-          <button name="what_was_clicked" value="sign_addendum_version" type="submit" class="btn btn-sm btn-brandprimary text-white silca-rounded-0.5-i" form="<%= form_id %>"
+          <button name="what_was_clicked" value="sign_addendum_version" type="submit" class="btn btn-sm btn-brandprimary text-white silica-rounded-0.5-i" form="<%= form_id %>"
           <%= 'disabled' if ["Accepted", "Rejected"].include?(addendum_version.derived_status) %>
           <%= 'disabled' if addendum_version.signed_by_company_at.present? %>
           <%= 'disabled' unless addendum_version.related_repc.mature? %>
@@ -103,7 +103,7 @@
 
       <div class="col-auto mx-3 py-3">
         <div class="apollo-fg-black-20 apollo-fs-14">
-          <button name="what_was_clicked" value="send_addendum_version_to_seller" type="submit" class="btn btn-sm btn-brandprimary text-white silca-rounded-0.5-i" form="<%= form_id %>"
+          <button name="what_was_clicked" value="send_addendum_version_to_seller" type="submit" class="btn btn-sm btn-brandprimary text-white silica-rounded-0.5-i" form="<%= form_id %>"
           <%= 'disabled' if ["Accepted", "Rejected"].include?(addendum_version.derived_status) %>
           <%= 'disabled' if !addendum_version.signed_by_company_at.present? %>
           <%= 'disabled' unless addendum_version.related_repc.mature? %>

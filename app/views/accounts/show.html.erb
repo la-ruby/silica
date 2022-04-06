@@ -1,25 +1,18 @@
-<main id="accounts-show-panel" class="container my-5">
+<%= spacer(3) %>
 
-  <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-	<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+<%= silica_container('accounts-show', inline_css: 'min-height: 74vh') do %>
+  <div class="accordion text-reset" id="accounts-show-accordian">
+    <div class="accordion-item text-reset">
+      <h2 class="accordion-header silica-weight-reset text-reset">
+	<button class="accordion-button text-reset silica-weight-reset" type="button" data-bs-toggle="collapse" data-bs-target="#silica-1649249534">
           Change Password
 	</button>
       </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div id="silica-1649249534" class="accordion-collapse collapse show" data-bs-parent="#accounts-show-accordian">
 	<div class="accordion-body">
-	  <div class="container">
-
-	    <div class="row">
-	      <div class="col-9 zborder p-1">
-                <%= render '/accounts/show/form' %>
-	      </div>
-	    </div>
-
-          </div>
+          <%= render '/accounts/show/form' %>
 	</div>
       </div>
     </div>
   </div>
-</main>
+<% end %>
