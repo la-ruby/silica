@@ -13,8 +13,8 @@
  *= require actiontext
  *= require sessions
  *= require colors
- *= require colors/fs
- *= require colors/fs-i
+ *= require font_size
+ *= require font_size-i
  *= zrequire debug
  *= require_self
  */
