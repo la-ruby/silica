@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-                 turbo_stream.replace('apollo-listings', partial: '/component/listings', locals: {
+                 turbo_stream.replace('apollo-listings', partial: '/listings/index/main', locals: {
                                         q: params[:q],
                                         beds: params[:beds],
                                         baths: params[:baths],

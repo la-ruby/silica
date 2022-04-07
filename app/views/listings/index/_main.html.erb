@@ -8,21 +8,21 @@
     <%= form.hidden_field 'map', value: local_assigns[:map]  %>
   <% end %>
 
-  <%= render '/component/listings/filter', local_assigns %>
+  <%= render '/listings/index/main/filter', local_assigns %>
   
   <div class="row">
     <div id="map-view" class="col d-none d-lg-block col-lg-7">
       <% if local_assigns[:map] == "2" %>
-      <%= render '/component/listings/grid', local_assigns %>
+      <%= render '/listings/index/main/grid', local_assigns %>
       <% else %>
-      <%= render '/component/listings/map', local_assigns %>
+      <%= render '/listings/index/main/map', local_assigns %>
       <% end %>
     </div>
     <div id="list-view" class="col col-lg-5" style="height: 90vh; overflow: scroll">
       <% if local_assigns[:map] == "2" %>
-      <%= render '/component/listings/map', local_assigns %>
+      <%= render '/listings/index/main/map', local_assigns %>
       <% else %>
-      <%= render '/component/listings/grid', local_assigns %>
+      <%= render '/listings/index/main/grid', local_assigns %>
       <% end %>
       <div class="my-5">&nbsp;</div>
       <%= render '/disclosures' %>
@@ -30,5 +30,5 @@
     </div>
   </div>
 
-  <%= render '/component/listings/overlay', local_assigns %>
+  <%= render '/listings/index/main/overlay', local_assigns %>
 </div>
