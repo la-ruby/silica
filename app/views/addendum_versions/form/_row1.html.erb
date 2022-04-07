@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col m-3">
+    <div>Addendum Expiration</div>
+
+    <% if editable && addendum_version.is_editable? %>
+      <input name="addendum_version[expiration]" value="<%= apollo_date5(addendum_version.expiration) %>" form="<%= form_id %>" <%= silica_date_picker_attributes %>>
+    <% else %>
+      <span>
+        <%= apollo_date7(addendum_version.expiration) %>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="col m-3">
+    <div>New Deadline</div>
+
+    <% if editable && addendum_version.is_editable? %>
+      <input name="addendum_version[deadline]" value="<%= apollo_date5(addendum_version.deadline) %>" form="<%= form_id %>" <%= silica_date_picker_attributes %>>
+    <% else %>
+      <span>
+        <%= apollo_date7(addendum_version.deadline) %>
+      </span>
+    <% end %>
+  </div>
+</div>

@@ -44,9 +44,9 @@ module Area
       style(:basic).classes
     end
 
-    def low_background_style
-      'apollo-bg-white-2'
-    end
+    # def low_background_style
+    #   'apollo-bg-white-2'
+    # end
     
     def background_style
       'apollo-bg-white-3-i'

@@ -1,118 +1,39 @@
-<%
-  form_id = "form-of-#{addendum_version.silica_dom_id}"
-%>
+<% form_id = "form-of-#{addendum_version.silica_dom_id}" %>
 
-<div id="<%= addendum_version.silica_dom_id %>" class="apollo-fg-black-6 apollo-fs-16">
-  <%= form_with url: url_for(addendum_version), method: :patch, class: 'd-inline-block', id: form_id  do |form| %>
-  <% end %>
+<div id="<%= addendum_version.silica_dom_id %>">
+  <%= form_with url: url_for(addendum_version), method: :patch, id: form_id do |form| %><% end %>
 
-  <%= render '/card', title: "Addendum #{"%02d" % (addendum_version.addendum.addendum_number)} Details" do |p| %>
+  <%= render '/card', title: addendum_version_card_title(addendum_version) do |p| %>
 
     <% if defined?(:p) && p %>
       <% p.content_for :heading_right do %>
-        <span class='badge fw-light <%= current_area.low_background_style %> text-muted'><%= addendum_version.derived_status %></span>
+      <span class='<%= inherit_styles %> badge bg-light'>
+	<%= addendum_version.derived_status %>
+      </span>
       <% end %>
     <% end %>
 
+    <%= render '/addendum_versions/form/row1', editable: editable, addendum_version: addendum_version, form_id: form_id %>
+
     <div class="row">
-      <div class="col mx-3 py-3">
-        <div class="apollo-fg-black-20 apollo-fs-14">Addendum Expiration</div>
-
-
-        <% if editable && addendum_version.is_editable? %>
-        <input type="datetime-local" id="id1642022677" form="<%= form_id %>" data-controller="submits-form-immediately"
-               name="addendum_version[expiration]" value="<%= apollo_date5(addendum_version.expiration)%>" data-action="change->submits-form-immediately#submit_form">
-        <% else %>
-        <span><%= (DateTime.iso8601(addendum_version.expiration).strftime("%B %d") rescue nil).presence || '-' %></span>
-        <% end %>
-
-      </div>
-
-      <div class="col mx-3 py-3">
-        <div class="apollo-fg-black-20 apollo-fs-14">New Deadline</div>
-
-        <% if editable && addendum_version.is_editable? %>
-        <input type="datetime-local" id="id1642022677" form="<%= form_id %>" data-controller="submits-form-immediately"
-               name="addendum_version[deadline]" value="<%= apollo_date5(addendum_version.deadline)%>" data-action="change->submits-form-immediately#submit_form">
-        <% else %>
-        <span><%= (DateTime.iso8601(addendum_version.deadline).strftime("%B %d") rescue nil).presence || '-' %></span>
-        <% end %>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col mx-3 py-3">
-        <div class="apollo-fg-black-20 apollo-fs-14">Addendum Terms</div>
-
-        <% if editable && addendum_version.is_editable? %>
-          <span class="<%= 'border-bottom-dashed min-sizes-for-child-textareas' %>" data-controller="<%= 'textarea-inline' %>" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= addendum_version.terms %></span>
-          <input type="hidden" name="addendum_version[terms]" form="<%= form_id %>"  value="<%= addendum_version.terms  %>" />
-        <% else %>
-          <%= addendum_version.terms.presence || '-'%>
-        <% end %>
-
+      <div class="col m-3">
+        <div>Addendum Terms</div>
+        <%= render '/shared/editable_textarea',
+	      is_editable: (editable && addendum_version.is_editable?),
+              form_id: form_id,
+              text: addendum_version.terms,
+              name: 'addendum_version[terms]'
+	    %>
       </div>
     </div>
 
     <div class="row">
-      <div class="col mx-3 py-3">
-        <div class="apollo-fg-black-20 apollo-fs-14">Related REPC</div>
-          repc v<%= Repc.find(addendum_version.related_repc_id).version %>
+      <div class="col m-3">
+        <div>Related REPC</div>
+          repc v<%= addendum_version.related_repc.version %>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-3 mx-3 py-3">
-        <div class="apollo-fg-black-20 apollo-fs-14">
-
-          <a href="/addendums/<%=addendum_version.addendum.id%>">
-          <span class="fa-stack zfa-2x">
-            <i class="fas fa-comment fa-stack-1x"></i>
-            <i class="far fa-square fa-stack-2x"></i>
-          </span></a>
-	  Draft <%= addendum_version.version %>
-	</div>
-      </div>
-
-      <% if editable %>
-      <div class="col-auto mx-3 py-3">
-        <div class="apollo-fg-black-20 apollo-fs-14">
-          <button name="what_was_clicked" value="discard_addendum_version" type="submit" class="btn btn-sm btn-brandprimary text-white silica-rounded-0.5-i" form="<%= form_id %>"
-          <%= 'disabled' unless addendum_version.related_repc.mature? %>
-          <%= 'disabled' if addendum_version.is_accepted_or_rejected? %>
-          >
-            Discard
-          </button>          
-	</div>
-      </div>
-
-      <div class="col-auto mx-3 py-3">
-        <div class="apollo-fg-black-20 apollo-fs-14">
-          <button name="what_was_clicked" value="sign_addendum_version" type="submit" class="btn btn-sm btn-brandprimary text-white silica-rounded-0.5-i" form="<%= form_id %>"
-          <%= 'disabled' if ["Accepted", "Rejected"].include?(addendum_version.derived_status) %>
-          <%= 'disabled' if addendum_version.signed_by_company_at.present? %>
-          <%= 'disabled' unless addendum_version.related_repc.mature? %>
-          >
-            Sign
-          </button>          
-	</div>
-      </div>
-
-      <div class="col-auto mx-3 py-3">
-        <div class="apollo-fg-black-20 apollo-fs-14">
-          <button name="what_was_clicked" value="send_addendum_version_to_seller" type="submit" class="btn btn-sm btn-brandprimary text-white silica-rounded-0.5-i" form="<%= form_id %>"
-          <%= 'disabled' if ["Accepted", "Rejected"].include?(addendum_version.derived_status) %>
-          <%= 'disabled' if !addendum_version.signed_by_company_at.present? %>
-          <%= 'disabled' unless addendum_version.related_repc.mature? %>
-          >
-            Send To Seller
-          </button>          
-	</div>
-      </div>
-      <% end %>
-
-    </div>
-  
+    <%= render '/addendum_versions/form/actions', addendum_version: addendum_version, editable: editable, form_id: form_id %>
   <% end %>
-
 </div>

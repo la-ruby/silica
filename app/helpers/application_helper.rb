@@ -86,5 +86,9 @@ module ApplicationHelper
   def dashify(object)
     object.presence || '-'
   end
+
+  def silica_date_picker_attributes
+    "type='datetime-local' data-controller='submits-form-immediately' data-action='change->submits-form-immediately#submit_form'".html_safe
+  end
 end
 

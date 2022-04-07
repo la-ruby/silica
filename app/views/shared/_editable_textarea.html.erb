@@ -1,0 +1,7 @@
+<% if is_editable %>
+  <span class="border-bottom-dashed min-sizes-for-child-textareas" data-controller="textarea-inline" data-textarea-inline-form-value="<%= form_id %>" data-form="<%= form_id %>"><%= text %></span>
+  <input type="hidden" name="addendum_version[terms]" form="<%= form_id %>" value="<%= text %>" />
+<% else %>
+  <%= dashify(text) %>
+<% end %>
+

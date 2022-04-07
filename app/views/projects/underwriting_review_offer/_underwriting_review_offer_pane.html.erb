@@ -4,7 +4,7 @@
 %>
 
 
-<div id="apollo-underwriting-review-offer-pane" class="container pt-3 pb-3 <%= normal_text %>">
+<div id="apollo-underwriting-review-offer-pane" class="container pt-3 pb-3 <%= normal_text %> <%= current_area.style(:basic).classes %>">
 
   <%= render '/projects/underwriting_review_offer/underwriting_review_offer_pane/actions', project_id: project.id %>
 

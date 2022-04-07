@@ -65,4 +65,9 @@ module PrettyDate
   def apollo_date6(obj)
     ((DateTime.iso8601(obj).strftime('%H:%M') rescue nil) || '-')
   end
+
+  # e.g "January 01"
+  def apollo_date7(obj)
+    ((DateTime.iso8601(obj).strftime('%B %d') rescue nil) || '-')
+  end
 end
