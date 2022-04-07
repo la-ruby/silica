@@ -14,7 +14,7 @@ class TxScoutLinksController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes', locals: { message: "Emailed #{project.email}" }),
-          turbo_stream.replace('apollo-inspection-overview-pane', partial: '/component/inspection_overview_pane', locals: { project_id: project.id })
+          turbo_stream.replace('apollo-inspection-overview-pane', partial: '/scouts/inspection_overview_pane', locals: { project_id: project.id })
         ]
       end
     end

@@ -15,7 +15,7 @@ class ScoutsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes', locals: { message: "Created Scout Link" }),
-          turbo_stream.replace('apollo-inspection-overview-pane', partial: '/component/inspection_overview_pane', locals: { project_id: scout_params[:project_id] })
+          turbo_stream.replace('apollo-inspection-overview-pane', partial: '/scouts/inspection_overview_pane', locals: { project_id: scout_params[:project_id] })
         ]
       end
     end
