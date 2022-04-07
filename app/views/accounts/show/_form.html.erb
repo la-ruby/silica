@@ -20,9 +20,9 @@
   <%= spacer(10) %>
 
   <%= render '/shared/field', title: "" do %>
-      <%= button_tag(type: :submit, class: ['btn', 'btn-outline-light', 'px-4', 'border', *inherit_style]) do %>
+    <%= silica_button(size: '', name: 'what_was_clicked', value: 'discard_addendum_version', form: 'form_id', disabled: false) do %>
         SAVE
-      <% end %>
+    <% end %>
   <% end %>
 
   <%= spacer(7) %>

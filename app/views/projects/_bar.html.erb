@@ -41,7 +41,10 @@
   </div>
   <div class="col-auto text-center">
     <% if BOOTSTRAP_UPGRADE %>
-      <%= render '/shared/buttons/add_project' %>
+      <%= silica_anchor(new_project_path) do %>
+        <i class="bi bi-file-earmark"></i>
+        New
+      <% end %>
     <% else %>
       <a class="btn btn-outline-brandprimary silica-rounded-0.5-i silica-weight-reset" data-turbo="true" href="/projects/new" role="button">
         <i class="bi bi-plus"></i>

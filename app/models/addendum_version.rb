@@ -31,6 +31,18 @@ class AddendumVersion < ApplicationRecord
     version != addendum.addendum_versions.order(:version).last.version
   end
 
+  def discard_button_disabled?
+    (is_accepted_or_rejected? || !related_repc.mature?)
+  end
+
+  def sign_button_disabled?
+    ["Accepted", "Rejected"].include?(derived_status) || signed_by_company_at.present? || !related_repc.mature?
+  end
+
+  def send_to_seller_button_disabled?
+    ["Accepted", "Rejected"].include?(derived_status) || !signed_by_company_at.present? || !related_repc.mature?
+  end
+
   def derived_status
     result = 'Draft'
     return 'Discarded' if discarded?
