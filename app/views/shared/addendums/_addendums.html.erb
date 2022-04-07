@@ -1,5 +1,5 @@
 <% project = Project.find(project_id) %>
 
 <% project.addendums.order(:addendum_number).each do |addendum| %>
-  <%= render '/addendum_versions/show', addendum_version_id: addendum.addendum_versions.order(:version).last.id %>
+  <%= render '/addendum_versions/form', addendum_version: addendum.addendum_versions.order(:version).last %>
 <% end %>

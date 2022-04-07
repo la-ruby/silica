@@ -1,12 +1,9 @@
 <%
-  addendum_version = AddendumVersion.find(addendum_version_id)
-  instance = "addendum-#{addendum_version.addendum.id}-addendum-version-#{addendum_version.id}-panel"
-  form_id = "form-of-#{instance}"
+  form_id = "form-of-#{addendum_version.silica_dom_id}"
 %>
 
-
-<div id="<%= instance %>" class="<%= normal_text %>">
-  <%= form_with url: "/addendum_versions/#{addendum_version.id}", method: :patch, class: 'd-inline-block main-form', id: form_id  do |form| %>
+<div id="<%= addendum_version.silica_dom_id %>" class="apollo-fg-black-6 apollo-fs-16">
+  <%= form_with url: url_for(addendum_version), method: :patch, class: 'd-inline-block', id: form_id  do |form| %>
   <% end %>
 
   <%= render '/card', title: "Addendum #{"%02d" % (addendum_version.addendum.addendum_number)} Details" do |p| %>

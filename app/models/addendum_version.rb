@@ -41,4 +41,8 @@ class AddendumVersion < ApplicationRecord
 
     result
   end
+
+  def silica_dom_id
+    "addendum-#{addendum.id}-addendum-version-#{id}-panel"
+  end
 end

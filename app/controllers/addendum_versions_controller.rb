@@ -52,7 +52,7 @@ class AddendumVersionsController < ApplicationController
         @addendum_version.update(deadline: (DateTime.strptime(addendum_version_params[:deadline],'%Y-%m-%dT%R').iso8601 rescue nil))
       end
       [ turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Saved' }),
-        turbo_stream.replace("addendum-#{@addendum_version.addendum.id}-addendum-version-#{@addendum_version.id}-panel", partial: '/addendum_versions/show', locals: { addendum_version_id: @addendum_version.id, editable: true  })
+        turbo_stream.replace(@addendum_version.silica_dom_id, partial: '/addendum_versions/form', locals: { addendum_version: @addendum_version, editable: true  })
       ]
 
     end
@@ -76,7 +76,7 @@ class AddendumVersionsController < ApplicationController
       @addendum_version.update(sent_to_seller_at: Time.now.iso8601)
       [
         turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Sent!' }),
-        turbo_stream.replace("addendum-#{@addendum_version.addendum.id}-addendum-version-#{@addendum_version.id}-panel", partial: '/addendum_versions/show', locals: { addendum_version_id: @addendum_version.id, editable: true  }),
+        turbo_stream.replace(@addendum_version.silica_dom_id, partial: '/addendum_versions/form', locals: { addendum_version: @addendum_version, editable: true  }),
       ]
     end
 
