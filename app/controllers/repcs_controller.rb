@@ -78,7 +78,7 @@ class RepcsController < ApplicationController
     }.to_h
     @repc.update(sanitized_repc_params)
     [
-      turbo_stream.replace('prepare-repc-panel', partial: '/component/prepare_repc', locals: { project_id: @repc.project_id}),
+      turbo_stream.replace('prepare-repc-panel', partial: '/projects/underwriting_prepare_repc/underwriting_prepare_repc', locals: { project_id: @repc.project_id}),
       turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Saved' })
     ]
   end
@@ -109,7 +109,7 @@ class RepcsController < ApplicationController
       sent_homeowner_at: nil
     )
     [
-      turbo_stream.replace('prepare-repc-panel', partial: '/component/prepare_repc', locals: { project_id: @repc.project_id})
+      turbo_stream.replace('prepare-repc-panel', partial: '/projects/underwriting_prepare_repc/underwriting_prepare_repc', locals: { project_id: @repc.project_id})
     ]
   end
 
