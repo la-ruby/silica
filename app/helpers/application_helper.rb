@@ -77,6 +77,7 @@ module ApplicationHelper
     ['text-reset', 'silica-weight-reset']
   end
 
+  # Undo some bootstrap styles
   def inherit_styles
     'text-reset silica-weight-reset'
   end

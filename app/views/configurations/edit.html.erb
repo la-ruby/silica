@@ -2,9 +2,9 @@
 
 <%= silica_container do %>
   <div class="accordion" id="confgurations-edit-accordion">
-    <div class="accordion-item text-reset">
-      <h2 class="accordion-header silica-weight-reset">
-	<button class="accordion-button text-reset silica-weight-reset" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+    <div class="accordion-item <%= inherit_styles %>">
+      <h2 class="accordion-header <%= inherit_styles %>">
+	<button class="accordion-button <%= inherit_styles %>" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
 	  <span>
 	    Marketplace
 	  </span>
@@ -13,17 +13,15 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#confgurations-edit-accordion">
 	<div class="accordion-body">
-	  <div class="container">
-            <table class="table text-reset">
-              <%= render '/configurations/edit/row1' %>
-              <%= render '/configurations/edit/row2' %>
-              <%= render '/configurations/edit/row3' %>
-              <%= render '/configurations/edit/row4' %>
-              <%= render '/configurations/edit/row5' %>
-              <%= render '/configurations/edit/row6' %>
-              <%= render '/configurations/edit/row7' %>
-            </table>
-          </div>
+          <table class="table <%= inherit_styles %>">
+            <%= render '/configurations/edit/row1' %>
+            <%= render '/configurations/edit/row2' %>
+            <%= render '/configurations/edit/row3' %>
+            <%= render '/configurations/edit/row4' %>
+            <%= render '/configurations/edit/row5' %>
+            <%= render '/configurations/edit/row6' %>
+            <%= render '/configurations/edit/row7' %>
+          </table>
 	</div>
       </div>
     </div>
