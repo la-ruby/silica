@@ -52,10 +52,12 @@
 
   <div class="btn-group collapse show" role="group" data-contacts-target="sortdropdown">
     <div class="dropdown">
-      <button class="btn btn-outline-light <%= inherit_styles %> shadow-sm border" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
+      <button class="btn btn-outline-light <%= inherit_styles %> shadow-sm border" type="button" data-bs-toggle="dropdown">
         Sort <i class="bi bi-chevron-down"></i>
       </button>
-      <ul class="dropdown-menu <%= inherit_styles %>" aria-labelledby="dropdownMenuButton1">
+
+      <ul class="dropdown-menu <%= inherit_styles %>">
         <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortFirstName" role="button"><i class="fas fa-check invisible"></i> First name</a></li>
         <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortLastName" role="button"><i class="fas fa-check invisible"></i> Last name</a></li>
         <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortPhoneMobile" role="button"><i class="fas fa-check invisible"></i> Phone</a></li>
@@ -63,7 +65,6 @@
         <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortEmail" role="button"><i class="fas fa-check invisible"></i> Email</a></li>
         <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortInvestingLocation" role="button"><i class="fas fa-check invisible"></i> States</a></li>
         <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortSendgridCreatedAt" role="button"><i class="fas fa-check invisible"></i> Added Date</a></li>
-
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#toggleDirection" role="button"><i class="fas fa-check invisible"></i> Inverse Sort</a></li>
       </ul>
