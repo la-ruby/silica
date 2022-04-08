@@ -53,4 +53,5 @@ class Setting < RailsSettings::Base
   field :marketplace_strongest_style_color, type: :string
 
   field :backend_basic_style_color, type: :string
+  field :backend_strong_style_color, type: :string
 end

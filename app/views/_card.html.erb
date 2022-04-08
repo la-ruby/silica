@@ -8,9 +8,9 @@
   <div class="card-body <%= local_assigns[:card_body_style] %>">
 
     <% if has_header %>
-      <div class="<%= promoted_text %>">
+      <div class="<%= BOOTSTRAP_UPGRADE ? '' : 'apollo-fg-black-6 apollo-fs-20' %>">
       
-        <%= local_assigns[:title] %>
+        <span class="<%= BOOTSTRAP_UPGRADE ? "btn pe-none #{current_area.style(:strong).classes}" : 'apollo-fg-black-6 apollo-fs-20' %>"><%= local_assigns[:title] %></span>
       
         <% if local_assigns[:bubble_text] %>
           <%= apollo_popover(local_assigns[:bubble_text]) %>
@@ -22,7 +22,7 @@
       
       </div>
       
-      <hr>
+      <hr class="<%= BOOTSTRAP_UPGRADE ? 'my-1' : '' %>">
 
     <% end %>
 

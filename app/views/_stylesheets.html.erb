@@ -11,6 +11,10 @@
 %>
 <style>
 .backend_basic_style_color, .backend_basic_style_color ::placeholder, .backend_basic_style_color ::-webkit-datetime-edit {
-  color: <%= Setting.backend_basic_style_color %>; color: red;
+  color: <%= Setting.backend_basic_style_color %>; zcolor: red;
+}
+
+.backend_strong_style_color, .backend_strong_style_color ::placeholder, .backend_strong_style_color ::-webkit-datetime-edit {
+  color: <%= Setting.backend_strong_style_color %>; zcolor: orange;
 }
 </style>

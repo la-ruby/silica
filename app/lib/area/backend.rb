@@ -8,6 +8,8 @@ module Area
       case name
       when :basic
         BackendBasicStyle
+      when :strong
+        BackendStrongStyle
       end
     end
 

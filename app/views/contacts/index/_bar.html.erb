@@ -5,19 +5,17 @@
     <%= form.hidden_field 'contact_search[page]', value: contacts_bar_state.page, data: { 'contacts_target': 'page' } %>
   <% end %>
 
-
   <div class="btn-group collapse show" data-contacts-target="pagination" role="group" aria-label="Third group">
 
     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-      <button type="button" data-action="contacts#previous" class="btn btn-outline-brandprimary"><i class="fas fa-angle-left"></i></button>
-      <button type="button" data-action="contacts#next" class="btn btn-outline-brandprimary"><i class="fas fa-angle-right"></i></button>
+      <button type="button" data-action="contacts#previous" class="btn btn-outline-light <%= inherit_styles %> shadow-sm border"><i class="fas fa-angle-left"></i></button>&nbsp;
+      <button type="button" data-action="contacts#next" class="btn btn-outline-light <%= inherit_styles %> shadow-sm border"><i class="fas fa-angle-right"></i></button>
     </div>
 
   </div>
 
-
   <div class="btn-group ms-3" role="group" aria-label="First group">
-    <button type="button" data-contacts-target="plus" data-action="contacts#plus" class="btn btn-outline-brandprimary collapse show"><i class="fas fa-plus"></i></button>
+    <button type="button" data-contacts-target="plus" data-action="contacts#plus" class="btn btn-outline-light <%= inherit_styles %> shadow-sm border collapse show"><i class="fas fa-plus"></i></button>
   </div>
 
   <%= form_with(url: contacts_url, method: :post, id: 'contacts-entry-form') do |form| %>
@@ -43,8 +41,8 @@
 
 
     <div class="input-group ms-3 me-3">
-      <input class="form-control collapse show" form="contact_searches_form" data-contacts-target="search" type="search" name="contact_search[query]" autocomplete="off" id="a1648242214">
-      <div class="input-group-text text-brandprimary collapse show" data-action="click->contacts#search" data-contacts-target="searchBtn" style="background: transparent" role="button" id="btnGroupAddon">
+      <input class="form-control <%= inherit_styles %> collapse show" form="contact_searches_form" data-contacts-target="search" type="search" name="contact_search[query]" autocomplete="off" id="a1648242214">
+      <div class="<%= inherit_styles %> input-group-text text-brandprimary collapse show" data-action="click->contacts#search" data-contacts-target="searchBtn" style="background: transparent" role="button" id="btnGroupAddon">
 	<i class="fas fa-search"></i>
       </div>
     </div>
@@ -53,20 +51,20 @@
 
   <div class="btn-group collapse show" role="group" data-contacts-target="sortdropdown">
     <div class="dropdown">
-      <button class="btn btn-outline-brandprimary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <button class="btn btn-outline-light <%= inherit_styles %> shadow-sm border dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         Sort
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" data-action="contacts#sortFirstName" role="button"><i class="fas fa-check invisible"></i> First name</a></li>
-        <li><a class="dropdown-item" data-action="contacts#sortLastName" role="button"><i class="fas fa-check invisible"></i> Last name</a></li>
-        <li><a class="dropdown-item" data-action="contacts#sortPhoneMobile" role="button"><i class="fas fa-check invisible"></i> Phone</a></li>
-        <li><a class="dropdown-item" data-action="contacts#sortPhoneWork" role="button"><i class="fas fa-check invisible"></i> Work phone</a></li>
-        <li><a class="dropdown-item" data-action="contacts#sortEmail" role="button"><i class="fas fa-check invisible"></i> Email</a></li>
-        <li><a class="dropdown-item" data-action="contacts#sortInvestingLocation" role="button"><i class="fas fa-check invisible"></i> States</a></li>
-        <li><a class="dropdown-item" data-action="contacts#sortSendgridCreatedAt" role="button"><i class="fas fa-check invisible"></i> Added Date</a></li>
+      <ul class="dropdown-menu <%= inherit_styles %>" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortFirstName" role="button"><i class="fas fa-check invisible"></i> First name</a></li>
+        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortLastName" role="button"><i class="fas fa-check invisible"></i> Last name</a></li>
+        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortPhoneMobile" role="button"><i class="fas fa-check invisible"></i> Phone</a></li>
+        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortPhoneWork" role="button"><i class="fas fa-check invisible"></i> Work phone</a></li>
+        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortEmail" role="button"><i class="fas fa-check invisible"></i> Email</a></li>
+        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortInvestingLocation" role="button"><i class="fas fa-check invisible"></i> States</a></li>
+        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortSendgridCreatedAt" role="button"><i class="fas fa-check invisible"></i> Added Date</a></li>
 
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" data-action="contacts#toggleDirection" role="button"><i class="fas fa-check invisible"></i> Inverse Sort</a></li>
+        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#toggleDirection" role="button"><i class="fas fa-check invisible"></i> Inverse Sort</a></li>
       </ul>
     </div>
   </div>
