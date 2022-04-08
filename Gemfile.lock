@@ -325,6 +325,7 @@ GEM
       ruby-progressbar
     minitest-server (1.0.6)
       minitest (~> 5.0)
+    minitest-stub-const (0.6)
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
@@ -438,6 +439,7 @@ DEPENDENCIES
   kaminari (~> 1.2)!
   minitest-autotest
   minitest-macos-notification
+  minitest-stub-const
   minitest-test_profile (~> 0.2.2)!
   nice_partials (~> 0.1.6)!
   pg (~> 1.1)

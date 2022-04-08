@@ -1,0 +1,20 @@
+<%= form_with(url: contacts_url, method: :post, id: 'contacts-entry-form') do |form| %>
+  <div class="collapse btn-group align-items-center justify-content-center" data-contacts-target="entry" role="group">
+    <input name="contact[first_name]" type="text" class="form-control me-1 <%= inherit_styles %>" placeholder="First name" style="width: 150px">
+    <input name="contact[last_name]" type="text" class="form-control me-1 <%= inherit_styles %>" placeholder="Last name" style="width: 150px">
+    <input name="contact[phone]" type="text" class="form-control me-1 <%= inherit_styles %>" placeholder="Phone" style="width: 150px">
+    <input name="contact[email]" type="text" class="form-control me-3 <%= inherit_styles %>" placeholder="Email" style="width: 150px">
+    <div class="form-check form-switch">
+      <%= form.check_box 'contact[ut]', class: 'form-check-input', checked: true %>
+      <%= label_tag('contact[ut]', "UT") %>
+    </div>
+    &nbsp;
+    <div class="form-check form-switch">
+      <%= form.check_box 'contact[nc]', class: 'form-check-input', checked: false %>
+      <%= label_tag('contact[nc]', "NC") %>
+    </div>
+    <%= silica_button(type: 'button', classes: ['ms-4'], data: { 'action' => 'contacts#save', 'contacts-target' => 'save'}) do %>
+      Save
+    <% end %>
+  </div>
+<% end %>

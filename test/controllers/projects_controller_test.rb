@@ -234,6 +234,14 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "200", response.code
   end
 
+  test "get underwriting_prepare_repc with BOOTSTRAP_UPGRADE truthy" do
+    Object.stub_const(:BOOTSTRAP_UPGRADE, true) do
+      project = create(:project)
+      get "/projects/#{project.id}/underwriting_prepare_repc"
+      assert_equal "200", response.code
+    end
+  end
+
   test "get underwriting_prepare_repc signing_complete" do
     project = create(:project)
     project.repc.update(docusign_envelope_id: 'testing')

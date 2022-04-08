@@ -92,6 +92,7 @@ gem "redis"
 gem "rails-settings-cached", :git => "https://github.com/huacnlee/rails-settings-cached", :branch => "main"
 gem "minitest-autotest"
 gem "minitest-macos-notification"
+gem 'minitest-stub-const'
 
 gem "ransack", "~> 2.6", :github => "activerecord-hackery/ransack"
 gem 'apparition', github: 'twalpole/apparition'

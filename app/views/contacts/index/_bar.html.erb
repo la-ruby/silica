@@ -18,56 +18,19 @@
 
   <div class="btn-group ms-3" role="group">
     <%= silica_button(rounding: nil, type: 'button', classes: ['collapse', 'show'], data: { action: 'contacts#plus', 'contacts-target' => 'plus'}) do %>
-      <%= feather_icon('plus') %>
+     +
     <% end %>
   </div>
 
-  <%= form_with(url: contacts_url, method: :post, id: 'contacts-entry-form') do |form| %>
-    <div class="collapse btn-group align-items-center justify-content-center ms-3" data-contacts-target="entry" role="group" aria-label="First group">
-      <input name="contact[first_name]" type="text" class="form-control me-1" placeholder="First name" aria-label="Input group example" aria-describedby="btnGroupAddon" style="width: 150px">
-      <input name="contact[last_name]" type="text" class="form-control me-1" placeholder="Last name" aria-label="Input group example" aria-describedby="btnGroupAddon" style="width: 150px">
-      <input name="contact[phone]" type="text" class="form-control me-1" placeholder="Phone" aria-label="Input group example" aria-describedby="btnGroupAddon" style="width: 150px">
-      <input name="contact[email]" type="text" class="form-control me-3" placeholder="Email" aria-label="Input group example" aria-describedby="btnGroupAddon" style="width: 150px">
-      <div class="form-check form-switch">
-        <%= form.check_box 'contact[ut]', class: 'form-check-input', checked: true %>
-        <%= label_tag('contact[ut]', "UT") %>
-      </div>
-      &nbsp;
-      <div class="form-check form-switch">
-        <%= form.check_box 'contact[nc]', class: 'form-check-input', checked: false %>
-        <%= label_tag('contact[nc]', "NC") %>
-      </div>
-      <button type="button" class="btn btn-outline-brandprimary ms-4" data-contacts-target="save" data-action="contacts#save">SAVE</button>
-    </div>
-  <% end %>
+  <%= render '/contacts/form' %>
 
   <div class="btn-group" role="group">
     <div class="input-group ms-3 me-3">
       <input class="form-control <%= inherit_styles %> collapse show" form="contact_searches_form" data-contacts-target="search" type="search" name="contact_search[query]" autocomplete="off" id="contacts-index-bar-query">
-      <div class="<%= inherit_styles %> input-group-text text-brandprimary collapse show" data-action="click->contacts#search" data-contacts-target="searchBtn" style="background: transparent" role="button" id="btnGroupAddon">
+      <div class="<%= inherit_styles %> input-group-text collapse show bg-transparent" data-action="click->contacts#search" data-contacts-target="searchBtn" role="button">
 	SEARCH
       </div>
     </div>
   </div>
-
-  <div class="btn-group collapse show" role="group" data-contacts-target="sortdropdown">
-    <div class="dropdown">
-
-      <button class="btn btn-outline-light <%= inherit_styles %> shadow-sm border" type="button" data-bs-toggle="dropdown">
-        Sort <i class="bi bi-chevron-down"></i>
-      </button>
-
-      <ul class="dropdown-menu <%= inherit_styles %>">
-        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortFirstName" role="button"><i class="fas fa-check invisible"></i> First name</a></li>
-        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortLastName" role="button"><i class="fas fa-check invisible"></i> Last name</a></li>
-        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortPhoneMobile" role="button"><i class="fas fa-check invisible"></i> Phone</a></li>
-        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortPhoneWork" role="button"><i class="fas fa-check invisible"></i> Work phone</a></li>
-        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortEmail" role="button"><i class="fas fa-check invisible"></i> Email</a></li>
-        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortInvestingLocation" role="button"><i class="fas fa-check invisible"></i> States</a></li>
-        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortSendgridCreatedAt" role="button"><i class="fas fa-check invisible"></i> Added Date</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#toggleDirection" role="button"><i class="fas fa-check invisible"></i> Inverse Sort</a></li>
-      </ul>
-    </div>
-  </div>
+  <%= render '/contacts/index/bar/sort' %>
 </div>
