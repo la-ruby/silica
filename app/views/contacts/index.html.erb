@@ -1,33 +1,12 @@
-<div class="mb-1"><!-- spacer -->&nbsp;</div>
-<div class="mb-1"><!-- spacer -->&nbsp;</div>
+<%= spacer(20) %>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="bg-transparent apollo-1632849163">
-	<div class="container my-3">
-	  <div class="row">
-
-            <div class="col">
-              <%= render '/card', title: 'Contacts' do |p| %>
-
-                <% if defined?(:p) && p %>
-                  <% p.content_for :heading_right do %>
-                    <%= render '/contacts/index/bar', contacts_bar_state: @contacts_bar_state %>
-                  <% end %>
-                <% end %>
-
-	        <%= render '/contacts/index/table', contacts_table_state: @contacts_table_state %>
-
-              <% end %>
-            </div>
-
-	  </div>
-	</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
+<%= silica_container do %>
+  <%= render '/card', title: 'Contacts' do |p| %>
+    <% if defined?(:p) && p %>
+      <% p.content_for :heading_right do %>
+        <%= render '/contacts/index/bar', contacts_bar_state: @contacts_bar_state %>
+      <% end %>
+    <% end %>
+    <%= render '/contacts/index/table', contacts_table_state: @contacts_table_state %>
+  <% end %>
+<% end %>
