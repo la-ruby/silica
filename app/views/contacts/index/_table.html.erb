@@ -1,70 +1,28 @@
 <div id="contacts-index-table" class="table-responsive position-relative">
-
-  <div id="contacts-index-table-summary" >
-    <div class="position-absolute top-0 end-0 me-3">
-
-      <% if contacts_table_state.records.result.count != Contact.count %>
-      <div class="d-inline-block btn pe-none">
-	showing <%= contacts_table_state.records.result.count %>/<%= Contact.count %>
-      </div>
-      <% end %>
-
-      <% if contacts_table_state.query.present? %>
-      <button type="button" class="btn btn-light pe-none">
-	<%= contacts_table_state.query %>
-      </button>
-      <% end %>
-
-      <% if contacts_table_state.page.present? && contacts_table_state.page != 1 && contacts_table_state.page != "1" %>
-      <button type="button" class="btn btn-light pe-none <%= inherit_styles %>">
-	page <%= contacts_table_state.page %>
-      </button>
-      <% end %>
-
-      <% if contacts_table_state.sort.present? %>
-      <button type="button" class="btn btn-light pe-none <%= inherit_styles %>">
-	sorted by <%= contacts_table_state.sort %>
-      </button>
-      <% end %>
-
-      <% if contacts_table_state.direction.present? %>
-      <button type="button" class="btn btn-light pe-none <%= inherit_styles %>">
-	<%= direction_pretty(contacts_table_state.direction) %>
-      </button>
-      <% end %>
-
-
-    </div>
-  </div>
-
-  <div class="mt-3">&nbsp;<!-- spacer --></div>
+  <%= render '/contacts/index/table/summary', contacts_table_state: contacts_table_state %>
+  <%= spacer(30) %>
   <table class="table table-borderless <%= inherit_styles %>">
     <tbody>
-
       <tr>
 	<td colspan="9" class="text-center">
 	  <i class="fas fa-exclamation-triangle"></i> This view can sometimes be out of date. You can click <%= silica_anchor('/contacts/refresh', size: 'btn-sm') do %>here<% end %> to refresh.
-
 	  <% if contacts_table_state.empty? %>
 	  Click <a href="/contacts/refresh">here</a> to fetch from sendgrid.com.
 	  <% end %>
-
 	</td>
       </tr>
-
       <% contacts_table_state.records.result.page(contacts_table_state.page).per(25).each do |contact| %>
 	<%= render '/contacts/index/table/row', { values: [
-	      contact.first_name.presence || '-',
-	      contact.last_name.presence || '-',
+	      dashify(contact.first_name),
+	      dashify(contact.last_name),
 	      contact.phone_mobile.presence || '-phone-',
 	      contact.phone_work.presence || '-work-phone-',
-	      contact.email.presence || '-',
-	      (investing_locations_pretty(contact.investing_location)).presence || '-',
+	      dashify(contact.email),
+	      dashify(investing_locations_pretty(contact.investing_location)),
 	      [ contact.sendgrid_created_at_searchable, contact.sendgrid_created_at ]
 	    ]
 	  } %>
       <% end %>
-
     </tbody>
   </table>
 </div>
