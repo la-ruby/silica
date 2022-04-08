@@ -2,13 +2,13 @@
   <div class="position-absolute top-0 end-0 me-3">
 
     <% if contacts_table_state.records.result.count != Contact.count %>
-    <div class="d-inline-block btn pe-none">
+    <div class="d-inline-block btn pe-none <%= inherit_styles %>">
 	showing <%= contacts_table_state.records.result.count %>/<%= Contact.count %>
     </div>
     <% end %>
 
     <% if contacts_table_state.query.present? %>
-    <button type="button" class="btn btn-light pe-none">
+    <button type="button" class="btn btn-light pe-none <%= inherit_styles %>">
 	<%= contacts_table_state.query %>
     </button>
     <% end %>
