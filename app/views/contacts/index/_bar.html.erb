@@ -1,21 +1,25 @@
-<div id="contacts-index-bar" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" data-controller="contacts">
+<div id="contacts-index-bar" class="btn-toolbar" role="toolbar" data-controller="contacts">
   <%= form_with(url: '/contact_searches', method: :post, id: 'contact_searches_form') do |form| %>
     <%= form.hidden_field 'contact_search[sort]', value: contacts_bar_state.sort, data: { 'contacts_target': 'sort' } %>
     <%= form.hidden_field 'contact_search[direction]', value: contacts_bar_state.direction, data: { 'contacts_target': 'direction' } %>
     <%= form.hidden_field 'contact_search[page]', value: contacts_bar_state.page, data: { 'contacts_target': 'page' } %>
   <% end %>
 
-  <div class="btn-group collapse show" data-contacts-target="pagination" role="group" aria-label="Third group">
-
-    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-      <button type="button" data-action="contacts#previous" class="btn btn-outline-light <%= inherit_styles %> shadow-sm border"><i class="fas fa-angle-left"></i></button>&nbsp;
-      <button type="button" data-action="contacts#next" class="btn btn-outline-light <%= inherit_styles %> shadow-sm border"><i class="fas fa-angle-right"></i></button>
+  <div class="btn-group collapse show" data-contacts-target="pagination" role="group">
+    <div class="btn-group" role="group">
+     <%= silica_button(rounding: nil, type: 'button', data: { action: 'contacts#previous'}) do %>
+       &lsaquo;
+      <% end %>
+     <%= silica_button(rounding: nil, type: 'button', data: { action: 'contacts#next'}) do %>
+       &rsaquo;
+      <% end %>
     </div>
-
   </div>
 
-  <div class="btn-group ms-3" role="group" aria-label="First group">
-    <button type="button" data-contacts-target="plus" data-action="contacts#plus" class="btn btn-outline-light <%= inherit_styles %> shadow-sm border collapse show"><i class="fas fa-plus"></i></button>
+  <div class="btn-group ms-3" role="group">
+    <button type="button" data-contacts-target="plus" data-action="contacts#plus" class="btn btn-outline-light <%= inherit_styles %> shadow-sm border collapse show">
+      <%= feather_icon('plus') %>
+    </button>
   </div>
 
   <%= form_with(url: contacts_url, method: :post, id: 'contacts-entry-form') do |form| %>
@@ -43,7 +47,7 @@
     <div class="input-group ms-3 me-3">
       <input class="form-control <%= inherit_styles %> collapse show" form="contact_searches_form" data-contacts-target="search" type="search" name="contact_search[query]" autocomplete="off" id="a1648242214">
       <div class="<%= inherit_styles %> input-group-text text-brandprimary collapse show" data-action="click->contacts#search" data-contacts-target="searchBtn" style="background: transparent" role="button" id="btnGroupAddon">
-	<i class="fas fa-search"></i>
+	SEARCH
       </div>
     </div>
 
@@ -51,8 +55,8 @@
 
   <div class="btn-group collapse show" role="group" data-contacts-target="sortdropdown">
     <div class="dropdown">
-      <button class="btn btn-outline-light <%= inherit_styles %> shadow-sm border dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Sort
+      <button class="btn btn-outline-light <%= inherit_styles %> shadow-sm border" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort <i class="bi bi-chevron-down"></i>
       </button>
       <ul class="dropdown-menu <%= inherit_styles %>" aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item <%= inherit_styles %>" data-action="contacts#sortFirstName" role="button"><i class="fas fa-check invisible"></i> First name</a></li>
