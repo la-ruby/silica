@@ -91,8 +91,8 @@ module ApplicationHelper
     "type='datetime-local' data-controller='submits-form-immediately' data-action='change->submits-form-immediately#submit_form'".html_safe
   end
 
-  def button_style(size: '', rounding: '')
-    BOOTSTRAP_UPGRADE ? { class:  [ 'btn', size, rounding, 'border', 'btn-outline-light', 'text-reset', 'silica-weight-reset', 'shadow-sm', current_area.style(:basic).classes ] } : { class: [ 'btn', 'btn-sm', 'btn-brandprimary', 'text-white', 'silica-rounded-0.5-i' ] }
+  def button_style(size: '', rounding: '', classes: [])
+    BOOTSTRAP_UPGRADE ? { class:  [ 'btn', size, rounding, 'border', 'btn-outline-light', 'text-reset', 'silica-weight-reset', 'shadow-sm', current_area.style(:basic).classes, classes ] } : { class: [ 'btn', 'btn-sm', 'btn-brandprimary', 'text-white', 'silica-rounded-0.5-i' ] }
   end
 
   def silica_anchor(url, size: '', rounding: 'rounded-3', data: nil)
@@ -101,8 +101,8 @@ module ApplicationHelper
     end
   end
 
-  def silica_button(type: 'submit', label: 'Testing', size: '', rounding: 'rounded-3', name: '', value: '', form: '', disabled: nil, data: nil)
-    button_tag(type: type, name: name, value: value, form: form, data: data, disabled: disabled, **button_style(size: size, rounding: rounding)) do
+  def silica_button(type: 'submit', label: 'Testing', size: '', classes: [], rounding: 'rounded-3', name: '', value: '', form: '', disabled: nil, data: nil)
+    button_tag(type: type, name: name, value: value, form: form, data: data, disabled: disabled, **button_style(size: size, rounding: rounding, classes: classes)) do
       content_tag(:div) do
         yield
       end

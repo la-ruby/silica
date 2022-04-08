@@ -17,9 +17,9 @@
   </div>
 
   <div class="btn-group ms-3" role="group">
-    <button type="button" data-contacts-target="plus" data-action="contacts#plus" class="btn btn-outline-light <%= inherit_styles %> shadow-sm border collapse show">
+    <%= silica_button(rounding: nil, type: 'button', classes: ['collapse', 'show'], data: { action: 'contacts#plus', 'contacts-target' => 'plus'}) do %>
       <%= feather_icon('plus') %>
-    </button>
+    <% end %>
   </div>
 
   <%= form_with(url: contacts_url, method: :post, id: 'contacts-entry-form') do |form| %>
@@ -41,16 +41,13 @@
     </div>
   <% end %>
 
-  <div class="btn-group" role="group" aria-label="Third group">
-
-
+  <div class="btn-group" role="group">
     <div class="input-group ms-3 me-3">
-      <input class="form-control <%= inherit_styles %> collapse show" form="contact_searches_form" data-contacts-target="search" type="search" name="contact_search[query]" autocomplete="off" id="a1648242214">
+      <input class="form-control <%= inherit_styles %> collapse show" form="contact_searches_form" data-contacts-target="search" type="search" name="contact_search[query]" autocomplete="off" id="contacts-index-bar-query">
       <div class="<%= inherit_styles %> input-group-text text-brandprimary collapse show" data-action="click->contacts#search" data-contacts-target="searchBtn" style="background: transparent" role="button" id="btnGroupAddon">
 	SEARCH
       </div>
     </div>
-
   </div>
 
   <div class="btn-group collapse show" role="group" data-contacts-target="sortdropdown">

@@ -5,11 +5,11 @@ export default class extends Controller {
 
   connect() {
     let that = this
-    $("#a1648242214")[0].addEventListener("search", function(event) {
+    $("#contacts-index-bar-query")[0].addEventListener("search", function(event) {
       that.submit()
     })
 
-    $(document).on("keydown", "#a1648242214", function(event) {
+    $(document).on("keydown", "#contacts-index-bar-query", function(event) {
       if (event.key == "Enter") {
 	that.resetPage()
       }
