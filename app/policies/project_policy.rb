@@ -33,10 +33,6 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
-  def dispositions_prepare_listing?
-    true
-  end
-
   def underwriting_review_offer?
     true
   end

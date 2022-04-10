@@ -1,11 +1,7 @@
-<%
-  project = Project.find(project)
-%>
-
 <%= turbo_stream_from "kodaks" %>
 <div id="kodaks" class="container" style="max-width: 500px">
 
-  <%= render('/projects/shared/kodaks/header', project: project.id, current_area: current_area) if project.kodaks.present? %>
+  <%= render('/projects/shared/kodaks/header', project: project, current_area: current_area) if project.kodaks.present? %>
 
   <% project.kodaks.each_with_index do |kodak, index| %>
     <div class="row text-muted <%= index.even? ? current_area.high_background_style : current_area.background_style %>">

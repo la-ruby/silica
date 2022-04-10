@@ -1,0 +1,92 @@
+<div class="container">
+
+  <div class="row ms-2">
+    <div class="col-3 p-2">
+      <div class="mb-2">
+        <%= silica_label 'Suggested Price ($)' %>
+        <%= number_field_tag 'dispositions_prepare_listing_pane[suggested_price]', project.listing.suggested_price, class: ['form-control', *inherit_style], form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      </div>
+    </div>
+
+    <div class="col-5 p-2">
+      <div class="mb-2">
+        <%= silica_label 'Property Type' %>
+        <%= select_tag "dispositions_prepare_listing_pane[opportunity_type]", options_for_select(OPPORTUNITY_TYPES.map {|x,y| [y,x] }, project.listing.opportunity_type), class: ['form-control', *inherit_style], form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ms-2">
+    <div class="col-8 p-2">
+      <div class="mb-2">
+        <%= silica_label 'Title' %>
+        <%= text_field_tag 'dispositions_prepare_listing_pane[title]', project.listing.title, class: ['form-control', *inherit_style], form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+        <span></span>
+      </div>
+
+      <div class="mb-2">
+        <%= silica_label 'Description (Rich Text)' %>
+        <%= rich_text_area_tag "dispositions_prepare_listing_pane[description]", project.listing.description, form: form_id %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row row-cols-5 ms-2">
+    <div class="col p-2">
+      <div class="mb-2">
+        <%= silica_label 'Walkthrough Date' %>
+        <%= date_field_tag 'dispositions_prepare_listing_pane[walkthrough_date]', project.listing.walkthrough_date, class: ['form-control', *inherit_style], placeholder: 'MM-DD-YYYY', form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <%= silica_label 'Walkthrough Time' %>
+        <input type="time" value="<%= project.listing.walkthrough_time %>" class="form-control <%= inherit_styles %>" name="dispositions_prepare_listing_pane[walkthrough_time]" min="01:00" max="23:00" form="<%=form_id%>" data-action="dispositions-prepare-listing-pane#disableSendMarketingEmailButton">
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <%= silica_label 'Schedule Email' %>
+        <%= date_field_tag 'dispositions_prepare_listing_pane[walkthrough_schedule_email]', project.listing.walkthrough_schedule_email, class: "form-control #{inherit_styles} silica-super-light", placeholder: 'MM-DD-YYYY', form: form_id, disabled: true %>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2 silica-super-light">
+
+        <%= silica_label '&nbsp;'.html_safe %>
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input name="dispositions_prepare_listing_pane[walkthrough_schedule_email_send_now]" type="hidden" value="false" form="<%= form_id %>">
+            <input class="form-check-input mt-0" name="dispositions_prepare_listing_pane[walkthrough_schedule_email_send_now]" type="checkbox" value="true" form="<%= form_id %>" <%= 'checked' if project.listing.walkthrough_schedule_email_send_now == 'true' %>>
+          </div>
+          <input type="text" class="form-control <%= inherit_styles %>" name="unused" value="Send Now" aria-label="Text input with checkbox" style="background: transparent" disabled>
+        </div>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      &nbsp;
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <%= silica_label 'Marketing Email' %>
+        <%= date_field_tag 'dispositions_prepare_listing_pane[marketing_email]', project.listing.marketing_email, class: "form-control #{inherit_styles} silica-super-light", placeholder: 'MM-DD-YYYY', form: form_id, disabled: true %>
+      </div>
+    </div>
+
+    <div class="col p-2">
+      <div class="mb-2">
+        <%= silica_label '&nbsp;'.html_safe %>
+        <%= render '/projects/show/dispositions_prepare_listing/segment_2/send_marketing_email', local_assigns %>
+      </div>
+    </div>
+  </div>
+  <hr>
+</div>

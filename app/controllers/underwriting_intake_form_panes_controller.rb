@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Handles save of pane
+# TODO: Make it restful
 class UnderwritingIntakeFormPanesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_resources

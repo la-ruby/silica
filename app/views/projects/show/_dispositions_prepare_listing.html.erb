@@ -1,0 +1,26 @@
+<% form_id = "form-dispositions-prepare-listing-pane" %>
+
+<%= render '/projects/show/shared/summary', local_assigns %>
+
+<%= render '/projects/show/shared/tabs', **local_assigns, active: 'Dispositions' %>
+
+<%= spacer(4) %>
+
+<%= render '/projects/show/shared/dispositions_inner_tabs', **local_assigns, active: 'Prepare Listing' %>
+
+<div id="dispositions-prepare-listing-pane" data-controller="dispositions-prepare-listing-pane" class="<%= current_area.style(:basic).classes %>">
+  <%= form_with url: "/dispositions_prepare_listing_panes", id: form_id do |form| %>
+    <%= form.hidden_field 'project_id', value: project.id %>
+  <% end %>
+  <div class="container pt-3 pb-3">
+    <%= render '/card', title: 'Prepare Listing' do %>
+      <%= render '/projects/show/dispositions_prepare_listing/segment_1', **local_assigns, form_id: form_id %>
+      <%= render '/projects/show/dispositions_prepare_listing/segment_2', **local_assigns, form_id: form_id %>
+      <%= render '/projects/show/dispositions_prepare_listing/segment_3', **local_assigns, form_id: form_id %>
+      <%= render '/projects/show/dispositions_prepare_listing/segment_4', **local_assigns, form_id: form_id %>
+      <%= render '/projects/show/dispositions_prepare_listing/segment_5', **local_assigns, form_id: form_id %>
+      <%= render '/projects/show/dispositions_prepare_listing/segment_6', **local_assigns, form_id: form_id %>
+    <% end %>
+  </div><!-- /container -->
+</div>
+

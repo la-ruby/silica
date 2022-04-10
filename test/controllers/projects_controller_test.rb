@@ -277,11 +277,11 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   #   assert_equal "200", response.code
   # end
 
-  test "get dispositions_prepare_listing" do
-    project = create(:project)
-    get "/projects/#{project.id}/dispositions_prepare_listing"
-    assert_equal "200", response.code
-  end
+  # test "get dispositions_prepare_listing" do
+  #   project = create(:project)
+  #   get "/projects/#{project.id}/dispositions_prepare_listing"
+  #   assert_equal "200", response.code
+  # end
 
   test "get marketplace" do
     project = create(:project)
@@ -323,6 +323,12 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   test 'get /projects/:id?tab=dispositions_checklist' do
     project = create(:project)
     get "/projects/#{project.id}?tab=dispositions_checklist"
+    assert_equal "200", response.code
+  end
+
+  test 'get /projects/:id?tab=dispositions_prepare_listing' do
+    project = create(:project)
+    get "/projects/#{project.id}?tab=dispositions_prepare_listing"
     assert_equal "200", response.code
   end
 end

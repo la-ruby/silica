@@ -92,20 +92,33 @@ module ApplicationHelper
   end
 
   def button_style(size: '', rounding: '', classes: [], border: nil)
-    BOOTSTRAP_UPGRADE ? { class:  [ 'btn', size, rounding, border, 'btn-outline-light', 'text-reset', 'silica-weight-reset', 'shadow-sm', current_area.style(:basic).classes, classes ] } : { class: [ 'btn', 'btn-sm', 'btn-brandprimary', 'text-white', 'silica-rounded-0.5-i' ] }
+    BOOTSTRAP_UPGRADE ? { class:  [ 'btn', size, rounding, border, 'btn-outline-light', 'text-reset', 'silica-weight-reset', 'shadow-sm', 'text-nowrap', current_area.style(:basic).classes, classes ] } : { class: [ 'btn', 'btn-sm', 'btn-brandprimary', 'text-white', 'silica-rounded-0.5-i' ] }
   end
 
-  def silica_anchor(url, size: '', rounding: 'rounded-3', border: 'border', data: nil, classes: [])
-    content_tag(:a, href: url, data: data, **button_style(size: size, rounding: rounding, border: border, classes: classes)) do
+  def silica_anchor(url, id: nil, size: '', rounding: 'rounded-3', border: 'border', data: nil, classes: [])
+    content_tag(:a, href: url, id: id, data: data, **button_style(size: size, rounding: rounding, border: border, classes: classes)) do
       yield
     end
   end
 
-  def silica_button(type: 'submit', label: 'Testing', size: '', classes: [], rounding: 'rounded-3', border: 'border', name: '', value: '', form: '', disabled: nil, data: nil)
-    button_tag(type: type, name: name, value: value, form: form, data: data, disabled: disabled, **button_style(size: size, rounding: rounding, border: border, classes: classes)) do
+  def silica_button(id: nil, type: 'submit', label: 'Testing', size: '', classes: [], rounding: 'rounded-3', border: 'border', name: '', value: '', form: '', disabled: nil, data: nil)
+    button_tag(id: id, type: type, name: name, value: value, form: form, data: data, disabled: disabled, **button_style(size: size, rounding: rounding, border: border, classes: classes)) do
       content_tag(:div) do
         yield
       end
     end
+  end
+
+  def silica_field(label, value)
+    safe_join(
+      [
+        content_tag(:div, class: ['form-label', 'text-muted', 'silica-smaller', 'mb-0']) { label },
+        content_tag(:span) { value }
+      ]
+    )
+  end
+
+  def silica_label(text, for_: "")
+    content_tag(:label, class: ['form-label', 'mb-0'], for: for_) { text }
   end
 end

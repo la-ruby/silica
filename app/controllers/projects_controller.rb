@@ -87,10 +87,6 @@ class ProjectsController < ApplicationController
     authorize nil, policy_class: ProjectPolicy
   end
 
-  def dispositions_prepare_listing
-    authorize nil, policy_class: ProjectPolicy
-  end
-
   def underwriting_review_offer
     authorize nil, policy_class: ProjectPolicy
   end

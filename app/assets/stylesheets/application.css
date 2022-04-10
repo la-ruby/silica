@@ -217,3 +217,7 @@ trix-editor {
   opacity: 0.5;
 }
 /* /calendar */
+
+.silica-smaller {
+  font-size: smaller;
+}

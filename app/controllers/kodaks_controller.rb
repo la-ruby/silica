@@ -17,7 +17,7 @@ class KodaksController < ApplicationController
       'kodaks',
       target: 'kodaks',
       partial: '/projects/shared/kodaks',
-      locals: { project: project.id, current_area: Area::Backend.new }
+      locals: { project: project, current_area: Area::Backend.new }
     )
   end
 
@@ -42,7 +42,7 @@ class KodaksController < ApplicationController
       'kodaks',
       target: 'kodaks',
       partial: '/projects/shared/kodaks',
-      locals: { project: project.id, current_area: Area::Backend.new }
+      locals: { project: project, current_area: Area::Backend.new }
     )
   end
 

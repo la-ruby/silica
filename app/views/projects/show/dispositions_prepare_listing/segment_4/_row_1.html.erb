@@ -1,0 +1,27 @@
+<div class="row ms-2">
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <%= silica_label 'Beds' %>
+      <%= text_field_tag 'dispositions_prepare_listing_pane[beds]', project.listing.beds.presence || project.beds, class: ['form-control', *inherit_style], form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      <span></span>
+    </div>
+  </div>
+
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <%= silica_label 'Property Type' %>
+      <%= text_field_tag 'dispositions_prepare_listing_pane[property_type]', project.listing.property_type.presence || project.property_type, class: ['form-control', *inherit_style], form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <%= silica_label 'Price Per SqFt' %>
+      <%= text_field_tag 'dispositions_prepare_listing_pane[price_sqft]', project.listing.price_sqft.presence || project.price_sqft, class: ['form-control', *inherit_style], form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+      <span></span>
+    </div>
+  </div>
+</div>

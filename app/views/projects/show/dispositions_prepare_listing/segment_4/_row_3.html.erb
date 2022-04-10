@@ -1,0 +1,30 @@
+<div class="row ms-2">
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <%= silica_label 'Sq. Ft.' %>
+      <%= text_field_tag 'dispositions_prepare_listing_pane[sqft]', project.listing.sqft.presence || project.sqft, class: ['form-control', *inherit_style], form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+    </div>
+  </div>
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <%= silica_label '&nbsp;'.html_safe %>
+      <div class="input-group mb-3">
+        <div class="input-group-text">
+          <input name="dispositions_prepare_listing_pane[owner_occupied]" type="hidden"  value="false" form="<%= form_id %>">
+          <input class="form-check-input mt-0" name="dispositions_prepare_listing_pane[owner_occupied]" type="checkbox" value="true" form="<%= form_id %>" <%= 'checked' if (project.listing.owner_occupied == 'true' || project.owner_occupied == "true") %>>
+        </div>
+        <input type="text" class="form-control <%= inherit_styles %> bg-transparent" name="unused" value="Owner Occupied" disabled>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-2 p-2">
+    <div class="mb-2">
+      <%= silica_label 'Cooling' %>
+      <%= text_field_tag 'dispositions_prepare_listing_pane[cooling]', project.listing.cooling.presence || project.cooling, class: ['form-control', *inherit_style], form: form_id, data: { action: 'dispositions-prepare-listing-pane#disableSendMarketingEmailButton' } %>
+    </div>
+  </div>
+
+</div>

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Handles save of pane
+# TODO: Make it restful
 class DispositionsPrepareListingPanesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_resources
@@ -13,7 +14,7 @@ class DispositionsPrepareListingPanesController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes', locals: { message: resource_updates }),
-          turbo_stream.replace('dispositions_prepare_listing_pane', partial: '/dispositions_prepare_listing_pane/dispositions_prepare_listing_pane', locals: { project: @project.id })
+          turbo_stream.replace('dispositions_prepare_listing_pane', partial: '/projects/show/dispositions_prepare_listing', locals: { project: @project })
         ]
       end
     end

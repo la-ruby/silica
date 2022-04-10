@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row ms-2">
+    <div class="col-7"><!-- spacer --></div>
+    <div class="col-3 p-2">
+      <div class="input-group">
+        <div class="input-group-text">
+          <input name="dispositions_prepare_listing_pane[listed]" type="hidden" value="false" form="<%= form_id %>">
+          <input class="form-check-input mt-0" name="dispositions_prepare_listing_pane[listed]" type="checkbox" value="true" data-action="dispositions-prepare-listing-pane#disableSendMarketingEmailButton" form="<%= form_id %>" <%= 'checked' if project.listing.listed == 'true' %>>
+        </div>
+        <input type="text" class="form-control <%= inherit_styles %> bg-transparent" name="unused" value="Post To Marketplace" data-action="dispositions-prepare-listing-pane#disableSendMarketingEmailButton" disabled>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <div class="row ms-2">
+    <div class="col-11 p-2">
+      <div class="btn-toolbar justify-content-end" role="toolbar">
+	<div class="btn-group me-2" role="group">
+           <%= silica_button(name: 'name1637250309', value: 'save', form: form_id, data: {'what-was-clicked': 'save'}) do %>
+             SAVE
+           <% end %>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
