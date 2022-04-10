@@ -1,0 +1,3 @@
+<% if @tab == 'dispositions_checklist' && UxPolicy.new(current_user, nil).dispositions? %>
+  <%= render '/projects/show/dispositions_checklist', project: @project %>
+<% end %>

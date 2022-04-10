@@ -31,6 +31,17 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def show
+    authorize @project
+    @tab = params[:tab]
+
+    # respond_to do |format|
+    #   format.turbo_stream do
+    #     render
+    #   end
+    # end
+  end
+
   # POST /projects
   def create
     authorize nil, policy_class: ProjectPolicy
@@ -73,10 +84,6 @@ class ProjectsController < ApplicationController
   end
 
   def inspection_inspection_report
-    authorize nil, policy_class: ProjectPolicy
-  end
-
-  def dispositions_checklist
     authorize nil, policy_class: ProjectPolicy
   end
 

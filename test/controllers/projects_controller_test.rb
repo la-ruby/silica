@@ -271,11 +271,11 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "200", response.code
   end
 
-  test "get dispositions_checklist" do
-    project = create(:project)
-    get "/projects/#{project.id}/dispositions_checklist"
-    assert_equal "200", response.code
-  end
+  # test "get dispositions_checklist" do
+  #   project = create(:project)
+  #   get "/projects/#{project.id}/dispositions_checklist"
+  #   assert_equal "200", response.code
+  # end
 
   test "get dispositions_prepare_listing" do
     project = create(:project)
@@ -317,6 +317,12 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   test 'post /projects/:id/download_property_analysis' do
     project = create(:project)
     post "/projects/#{project.id}/download_property_analysis", headers: { accept: Mime[:turbo_stream].to_s }
+    assert_equal "200", response.code
+  end
+
+  test 'get /projects/:id?tab=dispositions_checklist' do
+    project = create(:project)
+    get "/projects/#{project.id}?tab=dispositions_checklist"
     assert_equal "200", response.code
   end
 end

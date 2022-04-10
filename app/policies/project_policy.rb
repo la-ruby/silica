@@ -33,10 +33,6 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
-  def dispositions_checklist?
-    true
-  end
-
   def dispositions_prepare_listing?
     true
   end
@@ -70,6 +66,10 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def download_property_analysis?
+    true
+  end
+
+  def show?
     true
   end
 end

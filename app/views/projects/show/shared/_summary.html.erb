@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-auto">      
+      <div class="d-inline-block" style="height: 90px; width: 120px; background-image: url('<%= url_for(summary_image_for_backend(project)) %>'); background-size: cover; background-position:center center;"></div>
+
+    </div>
+    <div class="col px-3">
+      <div class="align-items-start" style="height: 70%">
+        <span class="apollo-fg-black-6 apollo-fs-20">
+        <%= project.combined_address %>
+        </span>
+        &nbsp;
+        <div><%= status_badge(project.status) %></div>
+        <span class="<%= normal_text %>">
+	  <%= project.name %>
+	</span>
+      </div>
+      <div class="d-flex align-items-end" style="height: 30%">
+        <%= render '/shared/badge', project: project, title: "#{time_ago_in_words(project.req_date)} ago".upcase, subtitle: project.status.upcase, icon: 'fa-lg fas fa-sign' %>
+	<div class="d-inline-block mx-1"><!-- space --></div>
+        <%= render '/shared/badge', project: project, title: project.expectedtimeline, subtitle: 'TIMELINE', icon: 'fa-lg fas fa-calendar' %>
+	<div class="d-inline-block mx-1"><!-- space --></div>
+        <%= render '/shared/badge', project: project, title: project.direction.upcase, subtitle: 'SOURCE', icon: "fa-lg fas #{project_direction_icon(project)}" %>
+	<div class="d-inline-block mx-1"><!-- space --></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>

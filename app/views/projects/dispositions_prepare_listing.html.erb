@@ -1,5 +1,5 @@
 <% if UxPolicy.new(current_user, nil).dispositions? %>
-  <%= render '/shared/summary', project: @project %>
+  <%= render '/projects/show/shared/summary', project: @project %>
 
   <%= render '/shared/tabs', project: @project, active: 'Dispositions' %>
 
