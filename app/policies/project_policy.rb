@@ -45,10 +45,6 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
-  def underwriting_intake_form?
-    true
-  end
-
   def marketplace?
     true
   end

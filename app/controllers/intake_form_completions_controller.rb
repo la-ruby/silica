@@ -15,7 +15,7 @@ class IntakeFormCompletionsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Updated' }),
-          turbo_stream.replace('underwriting-intake-form-pane', partial: '/underwriting_intake_form_panes/underwriting_intake_form_pane', locals: { project_id: @project.id })
+          turbo_stream.replace('underwriting-intake-form-pane', partial: '/projects/show/underwriting_intake_form/pane', locals: { project: @project, form_id: 'form-underwriting-intake-form-pane', active: 'Intake Form' })
         ]
       end
     end
@@ -29,7 +29,8 @@ class IntakeFormCompletionsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Updated' }),
-          turbo_stream.replace('underwriting-intake-form-pane', partial: '/underwriting_intake_form_panes/underwriting_intake_form_pane', locals: { project_id: @project.id })
+          turbo_stream.replace('underwriting-intake-form-pane', partial: '/projects/show/underwriting_intake_form/pane', locals: { project: @project, form_id: 'form-underwriting-intake-form-pane', active: 'Intake Form' })
+
         ]
       end
     end

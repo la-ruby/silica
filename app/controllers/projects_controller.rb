@@ -99,10 +99,6 @@ class ProjectsController < ApplicationController
     authorize nil, policy_class: ProjectPolicy
   end
 
-  def underwriting_intake_form
-    authorize nil, policy_class: ProjectPolicy
-  end
-
   def marketplace
     authorize nil, policy_class: ProjectPolicy
   end

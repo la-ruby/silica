@@ -1,0 +1,53 @@
+<div id="underwriting-intake-form-pane" class="<%= current_area.style(:basic).classes %>">
+  <%= form_with url: "/underwriting_intake_form_panes", class: 'd-inline-block main-form', id: form_id  do |form| %>
+    <%= form.hidden_field 'project_id', value: project.id  %>
+  <% end %>
+  
+  <div class="container pt-3 pb-3" data-controller="feather-icons">
+    <div class="row">
+      <div class="col">
+        <%= render '/card', title: 'Property Intake Questionaire' do |p| %>
+
+          <% if defined?(:p) && p %>
+            <% p.content_for :heading_right do %>
+	      <% if project.intake_form.completed == 'true' %>
+                <i style="color: green" class="fas fa-check-circle"></i>
+              <% else %>
+                <%= feather_icon(project.intake_form.completed == 'true' ? 'check-circle' : nil) %>
+              <% end %>
+              <%= (project.intake_form.completed == 'true' ? 'Completed' : '') %>
+            <% end %>
+          <% end %>
+
+          <div class="row">
+            <div class="col-5 mx-3 py-3">
+              <%= silica_caption 'What type of property is this?' %>
+              <span class="border-bottom-dashed" data-form="<%= form_id %>" data-selectdata='{"Wholesale to <%= COMPANY %>":"Wholesale to <%= COMPANY %>","Wholesale to outside of <%= COMPANY %>":"Wholesale to outside of <%= COMPANY %>","Buy and List":"Buy and List","Fix and Flip":"Fix and Flip","Buy to Hard Money Fund":"Buy to Hard Money Fund","selected":"<%=project.intake_form.what_type_of_property_is_this%>"}' data-controller="select-inline"><%= project.intake_form.what_type_of_property_is_this %></span>
+              <input type="hidden" name="underwriting_intake_form_pane[what_type_of_property_is_this]" form="<%= form_id %>" value="<%= project.intake_form.what_type_of_property_is_this %>">
+            </div>
+            <div class="col-5 mx-3 py-3">
+              <%= silica_caption 'Who is the purchaser?' %>
+              <span class="border-bottom-dashed" data-form="<%= form_id %>" data-selectdata='{"<%= PURCHASER_ENTITY %>":"<%= PURCHASER_ENTITY %>","<%= PURCHASER_ENTITY_ALT %>":"<%= PURCHASER_ENTITY_ALT %>","Outside buyer":"Outside buyer","selected":"<%= project.intake_form.who_is_the_purchaser%>"}' data-controller="select-inline"><%= project.intake_form.who_is_the_purchaser %></span>
+              <input type="hidden" name="underwriting_intake_form_pane[who_is_the_purchaser]" form="<%= form_id %>" value="<%= project.intake_form.who_is_the_purchaser %>">
+            </div>
+            <div class="col-5 mx-3 py-3">
+              <%= silica_caption 'Property Analysis' %>
+              <span class="border-bottom-dashed" data-form="<%= form_id %>" data-selectdata='{"Complete":"Complete","Incomplete":"Incomplete","selected":"<%= project.intake_form.property_analysis%>"}' data-controller="select-inline"><%= project.intake_form.property_analysis %></span>
+              <input type="hidden" name="underwriting_intake_form_pane[property_analysis]" form="<%= form_id %>" value="<%= project.intake_form.property_analysis%>">
+            </div>
+          </div>
+  
+          <%= render '/projects/show/underwriting_intake_form/dispositions', local_assigns %>
+          <%= render '/projects/show/underwriting_intake_form/tenants', local_assigns %>
+          <%= render '/projects/show/underwriting_intake_form/utilities', local_assigns %>
+          <%= render '/projects/show/underwriting_intake_form/maintenance', local_assigns %>
+          <%= render '/projects/show/underwriting_intake_form/repairs', local_assigns %>
+          <%= render '/projects/show/underwriting_intake_form/other_notes', local_assigns %>
+          <br>
+          <%= render '/projects/show/underwriting_intake_form/actions', local_assigns %>  
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -267,7 +267,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "get underwriting_intake_form" do
     project = create(:project)
-    get "/projects/#{project.id}/underwriting_intake_form"
+    get "/projects/#{project.id}?tab=underwriting_intake_form"
     assert_equal "200", response.code
   end
 

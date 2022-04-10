@@ -1,0 +1,12 @@
+<% form_id = "form-underwriting-intake-form-pane" %>
+
+<%= render '/projects/show/shared/summary', local_assigns %>
+
+<%= render '/projects/show/shared/tabs', **local_assigns, active: 'Underwriting' %>
+
+<%= spacer(4) %>
+
+<%= render '/shared/underwriting_inner_tabs', **local_assigns, active: 'Intake Form' %>
+
+<%= render '/projects/show/underwriting_intake_form/pane', **local_assigns, form_id: form_id, active: 'Intake Form' %>
+

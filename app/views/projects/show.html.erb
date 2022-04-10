@@ -2,4 +2,6 @@
   <%= render '/projects/show/dispositions_checklist', project: @project %>
 <% elsif @tab == 'dispositions_prepare_listing' && UxPolicy.new(current_user, nil).dispositions? %>
   <%= render '/projects/show/dispositions_prepare_listing', project: @project %>
+<% elsif @tab == 'underwriting_intake_form' && UxPolicy.new(current_user, nil).underwriting? %>
+  <%= render '/projects/show/underwriting_intake_form', project: @project %>
 <% end %>

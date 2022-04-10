@@ -44,7 +44,6 @@ Rails.application.routes.draw do
       get 'underwriting_review_offer'
       get 'underwriting_prepare_repc'
       get 'underwriting_property_analysis'
-      get 'underwriting_intake_form'
       get 'marketplace'
       get 'files'
       get 'activity'

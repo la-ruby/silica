@@ -109,10 +109,14 @@ module ApplicationHelper
     end
   end
 
+  def silica_caption(caption)
+    content_tag(:div, class: ['form-label', 'text-muted', 'silica-smaller', 'mb-0']) { caption }
+  end
+
   def silica_field(label, value)
     safe_join(
       [
-        content_tag(:div, class: ['form-label', 'text-muted', 'silica-smaller', 'mb-0']) { label },
+        silica_caption(label),
         content_tag(:span) { value }
       ]
     )
