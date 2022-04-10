@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row ms-2">
+    <div class="col-12 p-2">
+
+      <div class="mb-1">Coordinate with Agent to List the Property </div>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Connect with Agent and provide property info for listing.', name: 'property_disposition_checklist[connect_with_agent]', name2: 'property_disposition_checklist[connect_with_agent_dateinput]', checked: (project.property_disposition_checklist.connect_with_agent == 'true'), form: form_id, associated_dateinput: true, associated_dateinput_value: project.property_disposition_checklist.connect_with_agent_dateinput %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Important notes for listing Agent:', name: 'property_disposition_checklist[important_notes_for]', name2: 'property_disposition_checklist[important_notes_for_textarea]', checked: (project.property_disposition_checklist.important_notes_for == 'true'), form: form_id, associated_textarea: 'important_notes_for_textarea', associated_textarea_content: project.property_disposition_checklist.important_notes_for_textarea %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Financial Records', name: 'property_disposition_checklist[financial_records]', checked: (project.property_disposition_checklist.financial_records == 'true'), form: form_id %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Receipts', name: 'property_disposition_checklist[receipts]', checked: (project.property_disposition_checklist.receipts == 'true'), form: form_id %>
+
+
+    </div>
+
+  </div>  
+
+</div>

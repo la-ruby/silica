@@ -18,12 +18,12 @@
         <% end %>
       <% end %>
 
-      <%= render '/property_disposition_checklists/edit/segment_1', project_id: project.id, form_id: form_id %>
+      <%= render '/projects/show/dispositions_checklist/segment_1', project_id: project.id, form_id: form_id %>
       <% if project.intake_form.what_type_of_property_is_this != "Outside buyer" %>
-      <%= render '/property_disposition_checklists/edit/segment_2', project_id: project.id, form_id: form_id %>
-      <%= render '/property_disposition_checklists/edit/segment_3', project_id: project.id, form_id: form_id %>
-      <%= render '/property_disposition_checklists/edit/segment_4', project_id: project.id, form_id: form_id %>
-      <%= render '/property_disposition_checklists/edit/segment_5', project_id: project.id, form_id: form_id %>
+      <%= render '/projects/show/dispositions_checklist/segment_2', project_id: project.id, form_id: form_id %>
+      <%= render '/projects/show/dispositions_checklist/segment_3', project_id: project.id, form_id: form_id %>
+      <%= render '/projects/show/dispositions_checklist/segment_4', project_id: project.id, form_id: form_id %>
+      <%= render '/projects/show/dispositions_checklist/segment_5', project_id: project.id, form_id: form_id %>
       <% end %>
     <% end %>
   </div><!-- /container -->

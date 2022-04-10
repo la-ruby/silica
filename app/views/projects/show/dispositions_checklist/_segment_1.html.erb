@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row ms-2">
+    <div class="col-12 p-2">
+
+      <div class="mb-1">Title company <button id="example" type="button" class="btn <%= inherit_styles %>" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Must send title the following information: (Check when completed)" data-controller="apollo-tooltip">ⓘ</button></div>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Property Address', name: 'property_disposition_checklist[property_address]', checked: (project.property_disposition_checklist.property_address == 'true'), form: form_id %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Owner contact info', name: 'property_disposition_checklist[owner_contact_info]', checked: (project.property_disposition_checklist.owner_contact_info == 'true'), form: form_id %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Summary of deal and terms for title', name: 'property_disposition_checklist[summary_of_deal]', checked: (project.property_disposition_checklist.summary_of_deal == 'true'), form: form_id %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Copy of REPC signed by both parties', name: 'property_disposition_checklist[copy_of_repc]', checked: (project.property_disposition_checklist.copy_of_repc == 'true'), form: form_id %>
+    </div>
+
+  </div>  
+
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row ms-2">
+    <div class="col-12 p-2">
+
+      <div class="mb-1">Property Close Out</div>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Once property is sold transfer all appropriate documents.', name: 'property_disposition_checklist[once_property_is_sold]', checked: project.property_disposition_checklist.once_property_is_sold == 'true', form: form_id %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Stop utility payment if applicable. (check box once completed)', name: 'property_disposition_checklist[stop_utility]', checked: (project.property_disposition_checklist.stop_utility == 'true'), form: form_id %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Date Utilities Stopped', name: 'property_disposition_checklist[date_utilities_stopped]', name2: 'property_disposition_checklist[date_utilities_stopped_dateinput]', checked: (project.property_disposition_checklist.date_utilities_stopped == 'true'), form: form_id, associated_dateinput: true, associated_dateinput_value: project.property_disposition_checklist.date_utilities_stopped_dateinput %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'All insurance canceled once property is sold.  (check when insurance has been cancelled).', name: 'property_disposition_checklist[all_insurance_canceled]', name2: 'property_disposition_checklist[all_insurance_canceled_dateinput]', checked: (project.property_disposition_checklist.all_insurance_canceled == 'true'), form: form_id, associated_dateinput: true, associated_dateinput_value: project.property_disposition_checklist.all_insurance_canceled_dateinput %>
+
+    </div>
+
+  </div>  
+
+</div>

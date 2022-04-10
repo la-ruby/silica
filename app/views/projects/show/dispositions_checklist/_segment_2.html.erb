@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row ms-2">
+    <div class="col-12 p-2">
+
+      <div class="mb-1">Insurance Setup</div>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Acquire Property Insurance', name: 'property_disposition_checklist[acquire_property_insurance]', checked: (project.property_disposition_checklist.acquire_property_insurance == 'true'), form: form_id %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Connect with preferred insurance company to setup property insurance', name: 'property_disposition_checklist[connect_with_preferred]', name2: 'property_disposition_checklist[connect_with_preferred_textarea]', checked: (project.property_disposition_checklist.connect_with_preferred == 'true'), form: form_id, associated_textarea: 'connect_with_preferred_textarea', associated_textarea_content: project.property_disposition_checklist.connect_with_preferred_textarea, associated_textarea_caption: '(list insurance provider info)' %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Upload proof of insurance receipt in the property file section', name: 'property_disposition_checklist[upload_proof_of_insurance]', checked: (project.property_disposition_checklist.upload_proof_of_insurance == 'true'), form: form_id %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Submit all closing docs to financial controller', name: 'property_disposition_checklist[submit_all_closing_docs]', checked: (project.property_disposition_checklist.submit_all_closing_docs == 'true'), form: form_id %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Settlement statement', name: 'property_disposition_checklist[settlement_statement]', checked: (project.property_disposition_checklist.settlement_statement == 'true'), form: form_id, indented: true %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Loan Documents', name: 'property_disposition_checklist[loan_documents]', checked: (project.property_disposition_checklist.loan_documents == 'true'), form: form_id, indented: true %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Financial Records', name: 'property_disposition_checklist[financial_records]', checked: (project.property_disposition_checklist.financial_records == 'true'), form: form_id, indented: true %>
+
+      <%= render '/projects/show/dispositions_checklist/check', label: 'Receipts', name: 'property_disposition_checklist[receipts]', checked: (project.property_disposition_checklist.receipts == 'true'), form: form_id, indented: true %>
+
+    </div>
+
+  </div>  
+
+</div>
