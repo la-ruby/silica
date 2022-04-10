@@ -1,7 +1,7 @@
 <% if UxPolicy.new(current_user, nil).marketplace? %>
   <%= render '/projects/show/shared/summary', project: @project %>
 
-  <%= render '/shared/tabs', project: @project, active: 'Marketplace' %>
+  <%= render '/projects/show/shared/tabs', project: @project, active: 'Marketplace' %>
 
   <div class="container pt-3 pb-3">
     <div class="row">

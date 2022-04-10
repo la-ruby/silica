@@ -1,7 +1,7 @@
 <% if UxPolicy.new(current_user, nil).underwriting? %>
   <%= render '/projects/show/shared/summary', project: @project %>
 
-  <%= render '/shared/tabs', project: @project, active: 'Underwriting' %>
+  <%= render '/projects/show/shared/tabs', project: @project, active: 'Underwriting' %>
 
   <div class="mt-3"><!-- spacer --></div>
 

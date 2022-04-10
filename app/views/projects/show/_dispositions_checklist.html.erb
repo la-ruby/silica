@@ -2,11 +2,11 @@
 
 <%= render '/projects/show/shared/summary', local_assigns %>
 
-<%= render '/shared/tabs', local_assigns.merge(active: 'Dispositions') %>
+<%= render '/projects/show/shared/tabs', **local_assigns, active: 'Dispositions' %>
 
-<div class="mt-3"><!-- spacer --></div>
+<%= spacer(4) %>
 
-<%= render '/shared/dispositions_inner_tabs', local_assigns.merge(active: 'Checklist') %>
+<%= render '/projects/show/shared/dispositions_inner_tabs', local_assigns.merge(active: 'Checklist') %>
 
 <div id="property-disposition-checklist" data-controller="property-disposition-checklist" class="<%= normal_text %>">
   <%= form_with(url: "/property_disposition_checklists/#{project.property_disposition_checklist.id}", method: :patch, class: 'd-inline-block main-form', data: { property_disposition_checklist_target: 'form' }, id: form_id) do |form| %>

@@ -1,7 +1,7 @@
 <% if UxPolicy.new(current_user, nil).files? %>
   <%= render '/projects/show/shared/summary', project: @project %>
 
-  <%= render '/shared/tabs', project: @project, active: 'Files' %>
+  <%= render '/projects/show/shared/tabs', project: @project, active: 'Files' %>
 
   <div class="container pt-3 pb-3">
     <div class="row">
