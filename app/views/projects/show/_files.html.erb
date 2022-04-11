@@ -3,7 +3,7 @@
 
   <%= render '/projects/show/shared/tabs', project: @project, active: 'Files' %>
 
-  <div class="container pt-3 pb-3">
+  <div class="container pt-3 pb-3 <%= current_area.style(:basic).classes %>">
     <div class="row">
       <div class="col text-center">
         <div class="m-5 p-5 <%= normal_text %>">

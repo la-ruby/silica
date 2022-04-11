@@ -285,19 +285,19 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "get marketplace" do
     project = create(:project)
-    get "/projects/#{project.id}/marketplace"
+    get "/projects/#{project.id}?tab=marketplace"
     assert_equal "200", response.code
   end
 
   test "get activity" do
     project = create(:project)
-    get "/projects/#{project.id}/activity"
+    get "/projects/#{project.id}?tab=activity"
     assert_equal "200", response.code
   end
 
   test "get files" do
     project = create(:project)
-    get "/projects/#{project.id}/files"
+    get "/projects/#{project.id}?tab=files"
     assert_equal "200", response.code
   end
 

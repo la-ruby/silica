@@ -103,14 +103,6 @@ class ProjectsController < ApplicationController
     authorize nil, policy_class: ProjectPolicy
   end
 
-  def files
-    authorize nil, policy_class: ProjectPolicy
-  end
-
-  def activity
-    authorize nil, policy_class: ProjectPolicy
-  end
-
   def download_property_analysis
     authorize nil, policy_class: ProjectPolicy
     AnalysisJob.perform_later(@project)

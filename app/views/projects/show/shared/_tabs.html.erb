@@ -34,19 +34,19 @@
 
         <% if UxPolicy.new(current_user, nil).marketplace? %>
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Marketplace' %> bg-transparent" href="<%= "/projects/#{project.id}/marketplace" %>">Marketplace</a>
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Marketplace' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=marketplace" %>">Marketplace</a>
 	</li>
         <% end %>
 
         <% if UxPolicy.new(current_user, nil).activity? %>
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Activity' %> bg-transparent" href="<%= "/projects/#{project.id}/activity" %>">Activity</a>
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Activity' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=activity" %>">Activity</a>
 	</li>
         <% end %>
 
         <% if UxPolicy.new(current_user, nil).files? %>        
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Files' %> bg-transparent" href="<%= "/projects/#{project.id}/files" %>">Files</a>
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Files' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=files" %>">Files</a>
 	</li>
         <% end %>
 

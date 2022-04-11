@@ -4,4 +4,10 @@
   <%= render '/projects/show/dispositions_prepare_listing', project: @project %>
 <% elsif @tab == 'underwriting_intake_form' && UxPolicy.new(current_user, nil).underwriting? %>
   <%= render '/projects/show/underwriting_intake_form', project: @project %>
+<% elsif @tab == 'activity' && UxPolicy.new(current_user, nil).activity? %>
+  <%= render '/projects/show/activity', project: @project %>
+<% elsif @tab == 'files' && UxPolicy.new(current_user, nil).files? %>
+  <%= render '/projects/show/files', project: @project %>
+<% elsif @tab == 'marketplace' && UxPolicy.new(current_user, nil).marketplace? %>
+  <%= render '/projects/show/marketplace', project: @project %>
 <% end %>

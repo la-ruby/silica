@@ -45,8 +45,8 @@ Rails.application.routes.draw do
       get 'underwriting_prepare_repc'
       get 'underwriting_property_analysis'
       get 'marketplace'
-      get 'files'
-      get 'activity'
+      # get 'files'
+      # get 'activity'
 
       post 'download_property_analysis'
     end
