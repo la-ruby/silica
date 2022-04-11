@@ -1,13 +1,7 @@
 <nav id="apollo-nav" class="navbar navbar-light <%= current_area.style(:basic).classes %> <%= current_area.nav_bg %> navbar-expand-lg fixed-top">
   <div class="container-xxl">
-
     <%= render '/nav/brand' %>
-
     <%= render '/nav/toggler' %>
-
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <%= render '/nav/offcanvas_header' %>
-      <%= render '/nav/offcanvas_body' %>
-    </div>
+    <%= render '/nav/core' %>
   </div>
 </nav>

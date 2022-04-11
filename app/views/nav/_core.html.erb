@@ -1,0 +1,83 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><!-- unused atm  --></h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+      <% current_area.menu_items.each do |item| %>
+      <li class="nav-item mx-3">
+        <a class="nav-link <%= 'pe-none' unless item[:allowed] == true %> <%= current_area.nav_item_style %> <%= 'fw-bolder' if item[:bolder] %>" style="display: inline-flex; align-items: center;" aria-current="page" href="<%= item[:link] %>">
+  
+          
+          <%= feather_icon(item[:feather_icon], stroke_width: (item[:label] == 'Project Table' ? 1.5 : 1) ) if item[:feather_icon] %>
+          &nbsp;
+  	<span><%= item[:label] %></span>
+        </a>
+      </li>
+      <% end %>
+  
+      <% if current_area.is_a?(Area::Market) %>
+      <li class="nav-item d-inline-block d-lg-none">
+        <a class="btn <%= Marketplace::StrongStyle.css %> px-3 py-2" style="font-weight: inherit; <%= Marketplace::StrongStyle.inline_css %>" href="/listings" role="button">
+          View Properties
+        </a>
+      </li>
+      <% end %>
+    </ul>
+  
+    <div class="col-auto">
+      <% if !current_user && current_area.devisable? %>
+        <div class="btn-group">
+          <a class="btn <%= Marketplace::StrongStyle.css %>" style="font-weight: inherit; <%= Marketplace::StrongStyle.inline_css %>" href="/users/sign_in" role="button">
+            <span class="d-inline d-lg-none">
+              Log in
+        	</span>
+            <span class="d-none d-lg-inline">
+              <i class="fas fa-sign-in-alt"></i>
+        	</span>
+          </a>
+        </div>
+      <% end %>
+      <% if current_area.is_a?(Area::Market) %>
+      <div class="btn-group d-none d-lg-block">
+        <a class="btn btn-danger rounded-3 <%= Marketplace::StrongStyle.css %> ms-5 px-3 py-2" style="<%= Marketplace::StrongStyle.inline_css %>" href="/listings" role="button">
+          View Properties
+        </a>
+      </div>
+      <% end %>
+    </div>
+  
+    <% if current_user && current_area.devisable? %>
+      <div class="col-auto">
+        <div class="btn-group">
+          <button type="button" class="btn zdropdown-toggle ps-0 ps-lg-2 ms-3 nav-link <%= current_area.nav_item_style %> " data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <%= current_user.nick %> <i class="bi bi-chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-lg-end <%= current_area.high_background_style %> text-reset">
+            <li class=""><a class="btn dropdown-item text-reset silica-weight-reset" href="/account">Account</a></li>
+            <% if current_user.staff? %>
+              <li class="">
+                <a class="btn dropdown-item text-reset silica-weight-reset" href="<%= edit_configuration_path %>">Edit Configurtion</a>
+              </li>
+            <% end %>
+            <% if policy(:contact).index? %>
+            <li class=""><a class="btn dropdown-item text-reset silica-weight-reset" href="/contacts">Contacts</a></li>
+            <% end %>
+      
+            <% if UxPolicy.new(current_user, nil).resync? %>
+            <li class=""><%= button_to "Re-sync with Production DB", reverts_path, class: "dropdown-item btn text-reset silica-weight-reset" %></li>
+            <% end %>
+      
+            <li class=""><a class="btn dropdown-item text-reset silica-weight-reset pe-none" href="https://example.net/">Notifications</a></li>
+            <li>
+              <%= button_to('Logout', destroy_user_session_path, method: :delete, class: "btn dropdown-item text-reset silica-weight-reset") %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
