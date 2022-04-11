@@ -20,4 +20,8 @@
   <%= render '/projects/show/overview', project: @project %>
 <% elsif @tab == 'underwriting_property_analysis' && UxPolicy.new(current_user, nil).underwriting? %>
   <%= render '/projects/show/underwriting_property_analysis', project: @project %>
+<% elsif @tab == 'underwriting_prepare_repc' && UxPolicy.new(current_user, nil).underwriting? %>
+  <%= render '/projects/show/underwriting_prepare_repc', project: @project %>
+<% elsif @tab == 'underwriting_review_offer' && UxPolicy.new(current_user, nil).underwriting? %>
+  <%= render '/projects/show/underwriting_review_offer', project: @project %>
 <% end %>

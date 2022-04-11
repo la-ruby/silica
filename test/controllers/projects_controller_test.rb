@@ -90,7 +90,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "get underwriting_review_offer" do
     project = create(:project)
-    get "/projects/#{project.id}/underwriting_review_offer"
+    get "/projects/#{project.id}?tab=underwriting_review_offer"
     assert_equal "200", response.code
   end
 
@@ -98,7 +98,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     project.update(status: "Completed Closed/Lost")
 
-    get "/projects/#{project.id}/underwriting_review_offer"
+    get "/projects/#{project.id}?tab=underwriting_review_offer"
     assert_equal "200", response.code
   end
 
@@ -106,7 +106,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     project.update(status: "Completed Won")
 
-    get "/projects/#{project.id}/underwriting_review_offer"
+    get "/projects/#{project.id}?tab=underwriting_review_offer"
     assert_equal "200", response.code
   end
 
@@ -114,7 +114,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     Repc.all.update(accepted_at: Time.now.iso8601)
 
-    get "/projects/#{project.id}/underwriting_review_offer"
+    get "/projects/#{project.id}?tab=underwriting_review_offer"
     assert_equal "200", response.code
   end
 
@@ -122,7 +122,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     Repc.all.update(rejected_at: Time.now.iso8601)
 
-    get "/projects/#{project.id}/underwriting_review_offer"
+    get "/projects/#{project.id}?tab=underwriting_review_offer"
     assert_equal "200", response.code
   end
 
@@ -130,7 +130,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     Project.all.update(secondName: 'example', secondEmail: 'example@example.net', secondPhone: '(310) 123-4568')
 
-    get "/projects/#{project.id}/underwriting_review_offer"
+    get "/projects/#{project.id}?tab=underwriting_review_offer"
     assert_equal "200", response.code
   end
 
@@ -139,7 +139,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     Project.all.update(secondName: 'example', secondEmail: 'example@example.net', secondPhone: '(310) 123-4568')
     Repc.all.update(accepted_at: Time.now.iso8601, second_seller_accepted_at: Time.now.iso8601)
 
-    get "/projects/#{project.id}/underwriting_review_offer"
+    get "/projects/#{project.id}?tab=underwriting_review_offer"
     assert_equal "200", response.code
   end
 
@@ -148,7 +148,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     Project.all.update(secondName: 'example', secondEmail: 'example@example.net', secondPhone: '(310) 123-4568')
     Repc.all.update(rejected_at: Time.now.iso8601, second_seller_rejected_at: Time.now.iso8601)
 
-    get "/projects/#{project.id}/underwriting_review_offer"
+    get "/projects/#{project.id}?tab=underwriting_review_offer"
     assert_equal "200", response.code
   end
 
@@ -156,7 +156,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     project.repc.update(docusign_envelope_id: 'testing')
 
-    get "/projects/#{project.id}/underwriting_review_offer?event=signing_complete&envelope_id=testing"
+    get "/projects/#{project.id}?tab=underwriting_review_offer&event=signing_complete&envelope_id=testing"
     assert_equal "200", response.code
   end
 
@@ -164,7 +164,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project, :has_av)
     project.addendums.last.addendum_versions.last.update(docusign_envelope_id: 'testing')
 
-    get "/projects/#{project.id}/underwriting_review_offer?event=signing_complete&envelope_id=testing"
+    get "/projects/#{project.id}?tab=underwriting_review_offer&event=signing_complete&envelope_id=testing"
     assert_equal "200", response.code
   end
 
@@ -172,7 +172,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project, :has_av)
     project.addendums.last.addendum_versions.last.update(docusign_envelope_id: 'testing', rejected_at: Time.now.iso8601)
 
-    get "/projects/#{project.id}/underwriting_review_offer?event=signing_complete&envelope_id=testing"
+    get "/projects/#{project.id}?tab=underwriting_review_offer&event=signing_complete&envelope_id=testing"
     assert_equal "200", response.code
   end
 
@@ -181,7 +181,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project.dual_for_testing!
     project.addendums.last.addendum_versions.last.update(docusign_envelope_id: 'testing', rejected_at: Time.now.iso8601)
 
-    get "/projects/#{project.id}/underwriting_review_offer?event=signing_complete&envelope_id=testing"
+    get "/projects/#{project.id}?tab=underwriting_review_offer&event=signing_complete&envelope_id=testing"
     assert_equal "200", response.code
   end
 
@@ -190,7 +190,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project.dual_for_testing!
     project.addendums.last.addendum_versions.last.update(docusign_envelope_id: 'testing', rejected_at: Time.now.iso8601, second_seller_rejected_at: Time.now.iso8601)
 
-    get "/projects/#{project.id}/underwriting_review_offer?event=signing_complete&envelope_id=testing"
+    get "/projects/#{project.id}?tab=underwriting_review_offer&event=signing_complete&envelope_id=testing"
     assert_equal "200", response.code
   end
 
@@ -199,7 +199,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project.dual_for_testing!
     project.addendums.last.addendum_versions.last.update(docusign_envelope_id: 'testing', accepted_at: Time.now.iso8601)
 
-    get "/projects/#{project.id}/underwriting_review_offer?event=signing_complete&envelope_id=testing"
+    get "/projects/#{project.id}?tab=underwriting_review_offer&event=signing_complete&envelope_id=testing"
     assert_equal "200", response.code
   end
 
@@ -208,7 +208,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project.dual_for_testing!
     project.addendums.last.addendum_versions.last.update(docusign_envelope_id: 'testing', accepted_at: Time.now.iso8601, second_seller_accepted_at: Time.now.iso8601)
 
-    get "/projects/#{project.id}/underwriting_review_offer?event=signing_complete&envelope_id=testing"
+    get "/projects/#{project.id}?tab=underwriting_review_offer&event=signing_complete&envelope_id=testing"
     assert_equal "200", response.code
   end
 
@@ -216,7 +216,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project, :has_av)
     project.addendums.last.addendum_versions.last.update(docusign_envelope_id: 'testing', accepted_at: Time.now.iso8601)
 
-    get "/projects/#{project.id}/underwriting_review_offer?event=signing_complete&envelope_id=testing"
+    get "/projects/#{project.id}?tab=underwriting_review_offer&event=signing_complete&envelope_id=testing"
     assert_equal "200", response.code
   end
 
@@ -224,20 +224,20 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     project.repc.mature_for_testing!
 
-    get "/projects/#{project.id}/underwriting_review_offer"
+    get "/projects/#{project.id}?tab=underwriting_review_offer"
     assert_equal "200", response.code
   end
 
   test "get underwriting_prepare_repc" do
     project = create(:project)
-    get "/projects/#{project.id}/underwriting_prepare_repc"
+    get "/projects/#{project.id}?tab=underwriting_prepare_repc"
     assert_equal "200", response.code
   end
 
   test "get underwriting_prepare_repc with BOOTSTRAP_UPGRADE truthy" do
     Object.stub_const(:BOOTSTRAP_UPGRADE, true) do
       project = create(:project)
-      get "/projects/#{project.id}/underwriting_prepare_repc"
+      get "/projects/#{project.id}?tab=underwriting_prepare_repc"
       assert_equal "200", response.code
     end
   end
@@ -246,7 +246,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     project.repc.update(docusign_envelope_id: 'testing')
 
-    get "/projects/#{project.id}/underwriting_prepare_repc?event=signing_complete&envelope_id=testing"
+    get "/projects/#{project.id}?tab=underwriting_prepare_repc?event=signing_complete&envelope_id=testing"
     assert_equal "200", response.code
   end
 
@@ -254,7 +254,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project, :has_av)
     project.addendums.last.addendum_versions.last.update(docusign_envelope_id: 'testing')
 
-    get "/projects/#{project.id}/underwriting_prepare_repc?event=signing_complete&envelope_id=testing"
+    get "/projects/#{project.id}?tab=underwriting_prepare_repc?event=signing_complete&envelope_id=testing"
     assert_equal "200", response.code
   end
 

@@ -28,7 +28,7 @@ class AddendumVersionsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Added' }),
-          turbo_stream.replace('apollo-underwriting-review-offer-pane', partial: '/projects/underwriting_review_offer/underwriting_review_offer_pane', locals: { project_id: project.id })
+          turbo_stream.replace('apollo-underwriting-review-offer-pane', partial: '/projects/show/underwriting_review_offer/underwriting_review_offer_pane', locals: { project_id: project.id })
         ]
       end
     end
@@ -89,7 +89,7 @@ class AddendumVersionsController < ApplicationController
     def discard_addendum_version
       new_addendum_version = @addendum_version.addendum.add_an_addendum_version
       [
-        turbo_stream.replace('apollo-underwriting-review-offer-pane', partial: '/projects/underwriting_review_offer/underwriting_review_offer_pane', locals: { project_id: @addendum_version.addendum.project.id }),
+        turbo_stream.replace('apollo-underwriting-review-offer-pane', partial: '/projects/show/underwriting_review_offer/underwriting_review_offer_pane', locals: { project_id: @addendum_version.addendum.project.id }),
         turbo_stream.replace('flashes', partial: '/flashes', locals: { message: "Added draft #{new_addendum_version.version}" })
       ]
     end

@@ -22,7 +22,7 @@
 
         <% if UxPolicy.new(current_user, nil).underwriting? %>
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Underwriting' %> bg-transparent" href="<%= "/projects/#{project.id}/underwriting_review_offer" %>">Underwriting</a>
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Underwriting' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=underwriting_review_offer" %>">Underwriting</a>
 	</li>
         <% end %>
 

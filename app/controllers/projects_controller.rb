@@ -71,14 +71,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def underwriting_review_offer
-    authorize nil, policy_class: ProjectPolicy
-  end
-
-  def underwriting_prepare_repc
-    authorize nil, policy_class: ProjectPolicy
-  end
-
   def download_property_analysis
     authorize nil, policy_class: ProjectPolicy
     AnalysisJob.perform_later(@project)

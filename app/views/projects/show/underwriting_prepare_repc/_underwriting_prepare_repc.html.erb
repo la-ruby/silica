@@ -12,14 +12,14 @@
       <div class="col">
         <%= render '/card', title: "#{project.combined_address}" do %>
         
-          <%= render '/projects/underwriting_prepare_repc/upper', project_id: project.id, form_id: form_id %>
+          <%= render '/projects/show/underwriting_prepare_repc/upper', project_id: project.id, form_id: form_id %>
           <hr>
-          <%= render '/projects/underwriting_prepare_repc/prepared', project_id: project.id, form_id: form_id %>
+          <%= render '/projects/show/underwriting_prepare_repc/prepared', project_id: project.id, form_id: form_id %>
 	  <hr>
-          <%= render '/projects/underwriting_prepare_repc/math', project_id: project.id, form_id: form_id %>
+          <%= render '/projects/show/underwriting_prepare_repc/math', project_id: project.id, form_id: form_id %>
 	  <hr>
-          <%= render '/projects/underwriting_prepare_repc/mid', project_id: project.id, form_id: form_id %>
-          <%= render '/projects/underwriting_prepare_repc/lower', project_id: project.id, form_id: form_id %>
+          <%= render '/projects/show/underwriting_prepare_repc/mid', project_id: project.id, form_id: form_id %>
+          <%= render '/projects/show/underwriting_prepare_repc/lower', project_id: project.id, form_id: form_id %>
   
         <% end %>
   

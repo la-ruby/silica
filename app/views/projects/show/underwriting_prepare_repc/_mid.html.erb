@@ -1,0 +1,16 @@
+<% project = Project.find(project_id) %>
+
+<div class="row">
+  <div class="col-4 ms-3 zpy-3">
+    <%= render '/projects/show/underwriting_prepare_repc/mid_left', project_id: project.id, form_id: form_id %>
+  </div>
+
+  <div class="col-1 ms-3 zpy-3">
+    &nbsp;
+  </div>
+
+  <div class="col-4 mx-3 py-3">
+    <%= render '/projects/show/underwriting_prepare_repc/mid_right', project_id: project.id, form_id: form_id %>
+  </div>
+</div>
+

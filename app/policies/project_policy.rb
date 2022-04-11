@@ -17,14 +17,6 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
-  def underwriting_review_offer?
-    true
-  end
-
-  def underwriting_prepare_repc?
-    true
-  end
-
   def download_property_analysis?
     true
   end
