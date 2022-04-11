@@ -26,9 +26,11 @@ class KodaksController < ApplicationController
 
     @kodak.update(kodak_params)
     respond_to do |format|
-      format.turbo_stream
-      # format.html { redirect_to example_url(@example), notice: "Example was successfully updated." }
-      # format.json { render :show, status: :ok, location: @example }
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Saved' })
+        ]
+      end
     end
   end
 
