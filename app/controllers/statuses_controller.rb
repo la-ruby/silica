@@ -20,7 +20,7 @@ class StatusesController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.replace('apollo-reload', partial: '/reload', locals: { example: '1' })
+          turbo_stream.replace('apollo-reload', partial: '/reload', locals: { should: '1' })
         ]
       end
     end

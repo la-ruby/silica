@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace('flashes', partial: '/flashes', locals: { message: 'Saved' }),
-          turbo_stream.replace('lenders', partial: '/lenders', locals: { project_id: @project.id })
+          turbo_stream.replace('lenders', partial: '/projects/show/shared/lenders', locals: { project_id: @project.id })
         ]
       end
     end

@@ -1,10 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static values = { example: String }
+  static values = { should: String }
 
   connect() {
-    if (this.exampleValue.length > 0) {
+    if (this.shouldValue.length > 0) {
       let that = this
       setTimeout(function() {
         window.location.reload()
