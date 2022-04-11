@@ -95,8 +95,8 @@ module ApplicationHelper
     BOOTSTRAP_UPGRADE ? { class:  [ 'btn', size, rounding, border, 'btn-outline-light', 'text-reset', 'silica-weight-reset', 'shadow-sm', 'text-nowrap', current_area.style(:basic).classes, classes ] } : { class: [ 'btn', 'btn-sm', 'btn-brandprimary', 'text-white', 'silica-rounded-0.5-i' ] }
   end
 
-  def silica_anchor(url, id: nil, size: '', rounding: 'rounded-3', border: 'border', data: nil, classes: [])
-    content_tag(:a, href: url, id: id, data: data, **button_style(size: size, rounding: rounding, border: border, classes: classes)) do
+  def silica_anchor(url, id: nil, size: '', rounding: 'rounded-3', border: 'border', data: nil, classes: [], target: nil)
+    content_tag(:a, href: url, id: id, data: data, target: target, **button_style(size: size, rounding: rounding, border: border, classes: classes)) do
       yield
     end
   end

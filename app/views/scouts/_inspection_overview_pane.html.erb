@@ -3,9 +3,7 @@
    project = Project.find(project_id)
 %>
 
-
-<div id="apollo-inspection-overview-pane" class="container pt-3 pb-3 <%= normal_text %>">
-
+<div id="apollo-inspection-overview-pane" class="container pt-3 pb-3 <%= current_area.style(:basic).classes %>">
   <div class="row">
     <div class="col-12 col-lg-9">
       <%= render '/scouts/inspection_overview_pane/body', project_id: project.id %>

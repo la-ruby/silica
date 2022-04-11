@@ -7,11 +7,7 @@
   <%= form_with url: "/scouts", method: :post, class: 'd-inline-block main-form', id: form_id  do |form| %>
     <%= form.hidden_field 'scout[project_id]', value: project.id  %>
   <% end %>
-
-  <button type="submit" class="btn btn-sm btn-brandprimary text-white silica-rounded-0.5-i" form="<%= form_id %>"
-    <%= 'disabled' unless true %>
-  >
+  <%= silica_button(form: form_id) do %>
     CREATE SCOUT LINK <%= '(AGAIN)' if project.scout.present? %>
-  </button>
-
+  <% end %>
 </div>

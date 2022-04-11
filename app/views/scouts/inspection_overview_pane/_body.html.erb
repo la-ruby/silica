@@ -6,13 +6,13 @@
     <% p.content_for :heading_right do %>
       <div class="me-3">
         <% if project.scout.present? %>
-        <a href="<%= project.scout %>" target="_blank" class="btn btn-sm btn-outline-brandprimary silica-rounded-0.5-i">
-          VIEW SCOUT LINK
-        </a>
+          <%= silica_anchor(project.scout, classes: 'btn-sm', target: '_blank') do %>
+            VIEW SCOUT LINK
+          <% end %>
         <% else %>
-        <button disabled href="<%= project.scout %>" target="_blank" class="btn btn-sm btn-outline-brandprimary silica-rounded-0.5-i">
-          VIEW SCOUT LINK
-        </button>
+          <%= silica_button(classes: 'btn-sm', disabled: true) do %>
+            VIEW SCOUT LINK
+          <% end %>
         <% end %>
       </div>
     <% end %>
@@ -53,10 +53,10 @@
       &nbsp;
     </div>
     <div class="col-auto mx-1 py-3">
-      <%= render '/shared/buttons/create_scout_link_button', project_id: project.id %>
+      <%= render '/scouts/create_scout_link_button', project_id: project.id %>
     </div>
     <div class="col-auto mx-1 py-3">
-      <%= render '/shared/buttons/send_scout_to_seller_button', project_id: project.id %>
+      <%= render '/scouts/send_scout_to_seller_button', project_id: project.id %>
     </div>
     <div class="col-1 py-3">
       &nbsp;

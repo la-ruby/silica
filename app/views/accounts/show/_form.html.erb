@@ -1,25 +1,25 @@
 <%= form_with(url: "/account", method: :patch) do |f| %>
   <%= spacer(7) %>
 
-  <%= render '/shared/field', title: 'Email' do %>
+  <%= render '/accounts/show/field', title: 'Email' do %>
     <%= text_field_tag 'email', current_user.email, class: ["form-control", *inherit_style], disabled: true %>
   <% end %>
 
   <%= spacer(5) %>
 
-  <%= render '/shared/field', title: "Password (leave blank<br>if you don't want to change it)" do %>
+  <%= render '/accounts/show/field', title: "Password (leave blank<br>if you don't want to change it)" do %>
     <%= f.password_field :password, class: 'form-control', autocomplete: "new-password" %>
   <% end %>
 
   <%= spacer(5) %>
 
-  <%= render '/shared/field', title: "Password Confirmation" do %>
+  <%= render '/accounts/show/field', title: "Password Confirmation" do %>
       <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password" %>
   <% end %>
 
   <%= spacer(10) %>
 
-  <%= render '/shared/field', title: "" do %>
+  <%= render '/accounts/show/field', title: "" do %>
     <%= silica_button(size: '', name: 'what_was_clicked', value: 'discard_addendum_version', form: 'form_id', disabled: false) do %>
         SAVE
     <% end %>

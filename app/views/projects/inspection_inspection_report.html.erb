@@ -5,7 +5,7 @@
 
   <div class="mt-3"><!-- spacer --></div>
 
-  <%= render '/shared/inspection_inner_tabs', project: @project, active: 'Inspection Report' %>
+  <%= render '/projects/show/shared/inspection_inner_tabs', project: @project, active: 'Inspection Report' %>
 
   <% if @project.scout.present? %>
   <object class="my-3" data='https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf#toolbar=1'

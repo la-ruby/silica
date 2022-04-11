@@ -16,11 +16,11 @@
 	</span>
       </div>
       <div class="d-flex align-items-end" style="height: 30%">
-        <%= render '/shared/badge', project: project, title: "#{time_ago_in_words(project.req_date)} ago".upcase, subtitle: project.status.upcase, icon: 'fa-lg fas fa-sign' %>
+        <%= render '/projects/show/shared/badge', project: project, title: "#{time_ago_in_words(project.req_date)} ago".upcase, subtitle: project.status.upcase, icon: 'fa-lg fas fa-sign' %>
 	<div class="d-inline-block mx-1"><!-- space --></div>
-        <%= render '/shared/badge', project: project, title: project.expectedtimeline, subtitle: 'TIMELINE', icon: 'fa-lg fas fa-calendar' %>
+        <%= render '/projects/show/shared/badge', project: project, title: project.expectedtimeline, subtitle: 'TIMELINE', icon: 'fa-lg fas fa-calendar' %>
 	<div class="d-inline-block mx-1"><!-- space --></div>
-        <%= render '/shared/badge', project: project, title: project.direction.upcase, subtitle: 'SOURCE', icon: "fa-lg fas #{project_direction_icon(project)}" %>
+        <%= render '/projects/show/shared/badge', project: project, title: project.direction.upcase, subtitle: 'SOURCE', icon: "fa-lg fas #{project_direction_icon(project)}" %>
 	<div class="d-inline-block mx-1"><!-- space --></div>
       </div>
     </div>

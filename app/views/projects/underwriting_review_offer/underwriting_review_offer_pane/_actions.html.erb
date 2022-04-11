@@ -2,9 +2,9 @@
 
 <div class="row my-3">
   <div class="col-8 offset-3 d-flex justify-content-end">
-    <%= render '/shared/buttons/send_repc_to_seller_button', project_id: project.id, repc_id: project.repc.id %>
+    <%= render '/projects/show/shared/send_repc_to_seller_button', project_id: project.id, repc_id: project.repc.id %>
     &nbsp;&nbsp;
-    <%= render '/shared/buttons/add_addendum_button', project_id: project.id %>
+    <%= render '/projects/show/shared/add_addendum_button', project_id: project.id %>
     &nbsp;&nbsp;
     <%= render '/projects/status', project_id: project.id %>
   </div>

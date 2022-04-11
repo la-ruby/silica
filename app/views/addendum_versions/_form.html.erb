@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col m-3">
         <div>Addendum Terms</div>
-        <%= render '/shared/editable_textarea',
+        <%= render '/addendum_versions/editable_textarea',
 	      is_editable: (editable && addendum_version.is_editable?),
               form_id: form_id,
               text: addendum_version.terms,
