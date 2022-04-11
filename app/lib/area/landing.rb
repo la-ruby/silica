@@ -4,6 +4,18 @@ module Area
     def nav?
       false
     end
+
+    def deprecated_font
+      nil
+    end
+
+    def style(name)
+      case name
+      when :basic
+        LandingBasicStyle
+      end
+    end
+
   end
 end
  

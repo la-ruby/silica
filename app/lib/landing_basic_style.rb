@@ -1,0 +1,2 @@
+class LandingBasicStyle < BackendBasicStyle
+end
