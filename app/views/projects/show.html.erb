@@ -10,4 +10,14 @@
   <%= render '/projects/show/files', project: @project %>
 <% elsif @tab == 'marketplace' && UxPolicy.new(current_user, nil).marketplace? %>
   <%= render '/projects/show/marketplace', project: @project %>
+<% elsif @tab == 'inspection' && UxPolicy.new(current_user, nil).inspection? %>
+  <%= render '/projects/show/inspection', project: @project %>
+<% elsif @tab == 'inspection_inspection_report' && UxPolicy.new(current_user, nil).inspection? %>
+  <%= render '/projects/show/inspection_inspection_report', project: @project %>
+<% elsif @tab == 'offer' && UxPolicy.new(current_user, nil).offer? %>
+  <%= render '/projects/show/offer', project: @project %>
+<% elsif @tab == 'overview' && UxPolicy.new(current_user, nil).overview? %>
+  <%= render '/projects/show/overview', project: @project %>
+<% elsif @tab == 'underwriting_property_analysis' && UxPolicy.new(current_user, nil).underwriting? %>
+  <%= render '/projects/show/underwriting_property_analysis', project: @project %>
 <% end %>

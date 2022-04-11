@@ -48,7 +48,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     ["Open", "Completed Closed/Lost", "Completed Won", "testing"].each do |item|
       project.update(status: item)
-      get "/projects/#{project.id}/overview"
+      get "/projects/#{project.id}?tab=overview"
       assert_equal "200", response.code
     end
   end
@@ -57,7 +57,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     project.update(owner_occupied: 'true')
 
-    get "/projects/#{project.id}/overview"
+    get "/projects/#{project.id}?tab=overview"
     assert_equal "200", response.code
   end
 
@@ -65,26 +65,26 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
     project.update(owner_occupied: 'false')
 
-    get "/projects/#{project.id}/overview"
+    get "/projects/#{project.id}?tab=overview"
     assert_equal "200", response.code
   end
 
 
   test "get /projects/n/offer" do
     project = create(:project)
-    get "/projects/#{project.id}/offer"
+    get "/projects/#{project.id}?tab=offer"
     assert_equal "200", response.code
   end
 
   test "get inspection" do
     project = create(:project)
-    get "/projects/#{project.id}/inspection"
+    get "/projects/#{project.id}?tab=inspection"
     assert_equal "200", response.code
   end
 
   test "get inspection_report" do
     project = create(:project)
-    get "/projects/#{project.id}/inspection_inspection_report"
+    get "/projects/#{project.id}?tab=inspection_inspection_report"
     assert_equal "200", response.code
   end
 
@@ -261,7 +261,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   test "get underwriting_property_analysis" do
     stub_request(:post, 'https://example.com/testing_path')
     project = create(:project)
-    get "/projects/#{project.id}/underwriting_property_analysis"
+    get "/projects/#{project.id}?tab=underwriting_property_analysis"
     assert_equal "200", response.code
   end
 
@@ -304,13 +304,13 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "get /projects/n/overview variation" do
     project = create(:project)
-    get "/projects/#{project.id}/overview"
+    get "/projects/#{project.id}?tab=overview"
     assert_equal "200", response.code
   end
 
   test "get /projects/n/overview variation 2" do
     project = create(:project)
-    get "/projects/#{project.id}/overview"
+    get "/projects/#{project.id}?tab=overview"
     assert_equal "200", response.code
   end
 

@@ -4,19 +4,19 @@
       <ul class="nav nav-tabs">
         <% if UxPolicy.new(current_user, nil).overview? %>
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Overview' %> bg-transparent" href="<%= "/projects/#{project.id}/overview" %>">Overview</a>
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Overview' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=overview" %>">Overview</a>
 	</li>
         <% end %>
 
         <% if UxPolicy.new(current_user, nil).offer? %>
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Offer' %> bg-transparent" href="<%= "/projects/#{project.id}/offer" %>">Offer</a>
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Offer' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=offer" %>">Offer</a>
 	</li>
         <% end %>
 
         <% if UxPolicy.new(current_user, nil).inspection? %>
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Inspection' %> bg-transparent" href="<%= "/projects/#{project.id}/inspection" %>">Inspection</a>
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Inspection' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=inspection" %>">Inspection</a>
 	</li>
         <% end %>
 

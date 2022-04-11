@@ -3,10 +3,10 @@
     <div class="col">
       <ul class="nav nav-tabs">
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'fw-bold' if active == 'Overview' %> bg-transparent" href="<%= "/projects/#{project.id}/inspection" %>">Overview</a>
+	  <a class="nav-link text-brandprimary <%= 'fw-bold' if active == 'Overview' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=inspection" %>">Overview</a>
 	</li>
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'fw-bold' if active == 'Inspection Report' %> bg-transparent" href="<%= "/projects/#{project.id}/inspection_inspection_report" %>">Inspection Report</a>
+	  <a class="nav-link text-brandprimary <%= 'fw-bold' if active == 'Inspection Report' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=inspection_inspection_report" %>">Inspection Report</a>
 	</li>
       </ul>
     </div>

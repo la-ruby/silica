@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html do
         if create_project
-          redirect_to "/projects/#{@project.id}/overview"
+          redirect_to "/projects/#{@project.id}?tab=overview"
         else
           render :new, status: :unprocessable_entity
         end
@@ -71,35 +71,11 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def overview
-    authorize nil, policy_class: ProjectPolicy
-  end
-
-  def offer
-    authorize nil, policy_class: ProjectPolicy
-  end
-
-  def inspection
-    authorize nil, policy_class: ProjectPolicy
-  end
-
-  def inspection_inspection_report
-    authorize nil, policy_class: ProjectPolicy
-  end
-
   def underwriting_review_offer
     authorize nil, policy_class: ProjectPolicy
   end
 
   def underwriting_prepare_repc
-    authorize nil, policy_class: ProjectPolicy
-  end
-
-  def underwriting_property_analysis
-    authorize nil, policy_class: ProjectPolicy
-  end
-
-  def marketplace
     authorize nil, policy_class: ProjectPolicy
   end
 

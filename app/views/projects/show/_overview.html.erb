@@ -13,8 +13,8 @@
   
   	<div class="container my-3">
   	  <div class="row">
-              <%= render '/projects/overview/property_details', project_id: @project.id %>
-              <%= render '/projects/overview/seller_details', project_id: @project.id %>
+              <%= render '/projects/show/overview/property_details', project_id: @project.id %>
+              <%= render '/projects/show/overview/seller_details', project_id: @project.id %>
   
   	  </div>
   	</div>
@@ -26,7 +26,7 @@
                   <%= render '/projects/shared/kodaks', project: @project %>
                 <% end %>
               </div>
-              <%= render '/projects/overview/calendar' %>
+              <%= render '/projects/show/overview/calendar' %>
   	  </div>
   
   	</div>

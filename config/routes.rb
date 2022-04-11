@@ -35,16 +35,16 @@ Rails.application.routes.draw do
   resources :themes, only: [:edit, :update]
   resources :projects, only: [:index, :new, :create] do
     member do
-      get 'overview'
-      get 'offer'
-      get 'inspection'
-      get 'inspection_inspection_report'
+      # get 'overview'
+      # get 'offer'
+      # get 'inspection'
+      # get 'inspection_inspection_report'
       # get 'dispositions_checklist'
       # get 'dispositions_prepare_listing'
       get 'underwriting_review_offer'
       get 'underwriting_prepare_repc'
-      get 'underwriting_property_analysis'
-      get 'marketplace'
+      # get 'underwriting_property_analysis'
+      # get 'marketplace'
       # get 'files'
       # get 'activity'
 
