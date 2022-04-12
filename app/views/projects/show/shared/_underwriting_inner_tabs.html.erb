@@ -4,7 +4,7 @@
 
       <ul class="nav nav-tabs">
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'fw-bold' if active == 'Review Offer' %> bg-transparent" href="<%= "/projects/#{project.id}/underwriting_review_offer" %>">Review Offer</a>
+	  <a class="nav-link text-brandprimary <%= 'fw-bold' if active == 'Review Offer' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=underwriting_review_offer" %>">Review Offer</a>
 	</li>
 	<li class="nav-item fw-light">
 	  <a class="nav-link text-brandprimary <%= 'fw-bold' if active == 'Prepare Repc' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=underwriting_prepare_repc" %>">Prepare REPC</a>
