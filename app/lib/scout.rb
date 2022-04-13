@@ -4,9 +4,8 @@
 class Scout
   # Generates a scout url by calling remote api
   def self.generate(project)
-    auth_ = "username|#{INSPECTION_SERVICE_PASSWORD}|2/15/2016 10:00:00 PM|#{INSPECTION_SERVICE_REF_NO}|00000"
+    auth_ = "#{INSPECTION_SERVICE_USERNAME}|#{INSPECTION_SERVICE_PASSWORD}|4/14/2022 10:00:00 PM|#{INSPECTION_SERVICE_REF_NO}|00000"
     auth = encrypt_aes(auth_)
-
     uri = URI.parse(INSPECTION_SERVICE_URL)
     req = Net::HTTP.new(uri.hostname, uri.port)
     req.use_ssl = true
@@ -21,18 +20,23 @@ class Scout
         zip: project.zip,
         producttype: 'Scout',
         productid: 'PDAv1',
-        userid: INSPECTION_SERVICE_USER_ID
+        userid: INSPECTION_SERVICE_USER_ID,
+        jsondata: {
+          homeownerEmail: 'testing@example.com', # testing
+          deliveryEmail: 'testing@example.com'   # testing
+        }
       }.to_json,
       {
         'Content-Type' => 'application/json',
         "Accept" => "application/json" })
     Rails.logger.info "<< #{res.inspect} D3BUG"
+    sleep 5
     return 'https://example.com/testing'
   end
 
 
   def self.encrypt_aes(plaintext)
-    secret = "#{INSPECTION_SERVICE_KEY}#{INSPECTION_SERVICE_USER_ID}"
+    secret = "#{INSPECTION_SERVICE_KEY}#{INSPECTION_SERVICE_USERNAME}"
     salt = INSPECTION_SERVICE_CLIENT_ID
     key = OpenSSL::KDF.pbkdf2_hmac(secret, salt: salt, iterations: 1000, length: 32, hash: "sha1")
     # from https://stackoverflow.com/a/68088758
