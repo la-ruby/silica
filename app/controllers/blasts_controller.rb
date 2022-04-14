@@ -16,7 +16,7 @@ class BlastsController < ApplicationController
                                       partial: '/flashes',
                                       locals: {
                                         message:
-                                          MarketingMail.new.perform(project_id: blast_params[:project]).to_s })
+                                          MarketingMail.new.perform(project_id: blast_params[:project], mode: params[:what_was_clicked]).to_s })
         ]
       end
     end

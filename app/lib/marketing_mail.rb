@@ -5,10 +5,9 @@ class MarketingMail
   include PrettyMoney
 
   # This method was done in a rush and needs refactoring
-  def perform(project_id:)
+  def perform(project_id:, mode:)
     project = Project.find(project_id)
     blurb = project.listing.title.presence || '-'
-    segment_id = (project.north_carolina? ? APOLLO_NC_MAILING_LIST : APOLLO_UTAH_MAILING_LIST)
     design = Net::HTTP.get_response(URI("https://api.sendgrid.com/v3/designs/#{SENDGRID_DESIGN}"), { 'Authorization' => "Bearer #{SENDGRID_API_KEY2}" }).body
 
     plain_content = JSON.parse(design).dig('plain_content')
@@ -56,10 +55,11 @@ class MarketingMail
     html_content.gsub! '{{pictureUrl}}', picture_url
     # /TODO: refactor substitutions    
 
+
     sg = SendGrid::API.new(api_key: SENDGRID_API_KEY2)
     data = {
       name: "#{COMPANY}WebAppSendout",
-      send_to: { segment_ids: [ segment_id ] },  # TODO: swap with real ids
+      send_to: { segment_ids: [ segment_id(project, mode) ] },  # TODO: swap with real ids
       email_config: {
         plain_content: plain_content, # TODO: swap with real content
         html_content: html_content,  # TODO: swap with real content
@@ -77,5 +77,21 @@ class MarketingMail
 
     response = sg.client.marketing._("singlesends/#{id}/schedule").put(request_body: {send_at: 'now'}) 
     response.body
+  end
+
+  def segment_id(project, mode)
+    if APOLLO_INTERNAL_PRODUCTION || mode == 'fake_send'
+      if project.north_carolina?
+        APOLLO_NC_DUMMY_MAILING_LIST
+      else
+        APOLLO_UTAH_DUMMY_MAILING_LIST
+      end
+    else
+      if project.north_carolina?
+        APOLLO_NC_LIVE_MAILING_LIST
+      else
+        APOLLO_UTAH_LIVE_MAILING_LIST
+      end
+    end
   end
 end

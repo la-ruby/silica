@@ -1,6 +1,9 @@
 <%= form_with url: "/blasts" do |form| %>
   <%= form.hidden_field 'blast[project]', value: project.id %>
-  <%= silica_button(id: 'send-marketing-email', disabled: !project.detected_state) do %>
+  <%= silica_button(id: 'send-marketing-email', name: 'what_was_clicked', value: 'real_send', disabled: !project.detected_state) do %>
     Send Marketing Email - <%= project.detected_state %> <i class="fa fa-paper-plane"></i>
+  <% end %>
+  <%= silica_button(id: 'send-marketing-email', name: 'what_was_clicked', value: 'fake_send', disabled: !project.detected_state) do %>
+    Send Marketing Email - Test - <%= project.detected_state %> <i class="fa fa-paper-plane"></i>
   <% end %>
 <% end %>
