@@ -102,7 +102,8 @@ module ApplicationHelper
   end
 
   def silica_button(id: nil, type: 'submit', label: 'Testing', size: '', classes: [], rounding: 'rounded-3', border: 'border', name: '', value: '', form: '', disabled: nil, data: nil)
-    button_tag(id: id, type: type, name: name, value: value, form: form, data: data, disabled: disabled, **button_style(size: size, rounding: rounding, border: border, classes: classes)) do
+    form_arg = form.present? ? { form: form } : {}
+    button_tag(id: id, type: type, name: name, value: value, **form_arg, data: data, disabled: disabled, **button_style(size: size, rounding: rounding, border: border, classes: classes)) do
       content_tag(:div) do
         yield
       end
