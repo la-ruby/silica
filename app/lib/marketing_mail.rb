@@ -81,17 +81,9 @@ class MarketingMail
 
   def segment_id(project, mode)
     if APOLLO_INTERNAL_PRODUCTION || mode == 'fake_send'
-      if project.north_carolina?
-        APOLLO_NC_DUMMY_MAILING_LIST
-      else
-        APOLLO_UTAH_DUMMY_MAILING_LIST
-      end
+      project.north_carolina? ? APOLLO_NC_DUMMY_MAILING_LIST : APOLLO_UTAH_DUMMY_MAILING_LIST
     else
-      if project.north_carolina?
-        APOLLO_NC_LIVE_MAILING_LIST
-      else
-        APOLLO_UTAH_LIVE_MAILING_LIST
-      end
+      project.north_carolina? ? APOLLO_NC_LIVE_MAILING_LIST : APOLLO_UTAH_LIVE_MAILING_LIST
     end
   end
 end
