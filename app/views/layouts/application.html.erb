@@ -8,10 +8,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= render '/favicons' %>
-    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= render '/stylesheets' %>
     <%= render '/javascripts' %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
   </head>
 
   <body id="testing1646111336" class="apollo position-relative <%= current_area.body_style %> zbg-white-level-four apollo-bg-white-4 <%= yield :extra_body_classes %> <%= current_area.deprecated_font %>" style="min-height: 1000px; <%= yield :extra_body_inline_css %>">
