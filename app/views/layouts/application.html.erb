@@ -10,6 +10,7 @@
     <%= render '/favicons' %>
     <%= render '/stylesheets' %>
     <%= render '/javascripts' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body id="testing1646111336" class="apollo position-relative <%= current_area.body_style %> zbg-white-level-four apollo-bg-white-4 <%= yield :extra_body_classes %> <%= current_area.deprecated_font %>" style="min-height: 1000px; <%= yield :extra_body_inline_css %>">
