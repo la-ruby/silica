@@ -93,3 +93,6 @@ gem 'rexml', github: 'ruby/rexml'
 
 gem 'cssbundling-rails', github: 'rails/cssbundling-rails'
 gem 'jsbundling-rails', github: 'rails/jsbundling-rails'
+
+# Use Redis for Action Cable
+gem "redis", "~> 4.0"

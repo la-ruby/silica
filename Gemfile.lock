@@ -381,6 +381,7 @@ GEM
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
     rake (13.0.6)
+    redis (4.6.0)
     regexp_parser (2.2.0)
     reline (0.3.0)
       io-console (~> 0.5)
@@ -482,6 +483,7 @@ DEPENDENCIES
   rails!
   rails-settings-cached!
   ransack (~> 2.6)!
+  redis (~> 4.0)
   rexml!
   rollbar (>= 3.3)
   sassc-rails
