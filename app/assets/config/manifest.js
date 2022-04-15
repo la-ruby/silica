@@ -1,4 +1,4 @@
-//= link actiontext.scss
+//= link actiontext.css
 //= link sessions.css
 //= link colors.css
 //= link font_size.css
