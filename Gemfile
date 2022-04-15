@@ -16,7 +16,7 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+# gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails', :github => 'hotwired/turbo-rails', :branch => 'main'
@@ -97,3 +97,5 @@ gem 'minitest-stub-const'
 gem "ransack", "~> 2.6", :github => "activerecord-hackery/ransack"
 gem 'apparition', github: 'twalpole/apparition'
 gem 'rexml', github: 'ruby/rexml'
+
+
