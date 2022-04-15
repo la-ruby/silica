@@ -161,10 +161,17 @@ Rails 7.0.1
 
 ### Upgrading bootstrap
 
-Copy over `bootstrap.css` and `bootstrap.bundle.js` after running `npm run dist` on your fork of twbs/bootstrap
+How I copy over `bootstrap.css` and `bootstrap.bundle.js` after running `npm run dist` on our twbs/bootstrap fork
 
-
-
+```
+$ cd ~/
+$ git clone https://github.com/brick-developer-1/silica-bootstrap
+$ cd ~/silica-bootstrap
+$ npm install
+$ npm run dist
+$ cp dist/css/bootstrap.css ~/silica/public/
+$ cp dist/js/bootstrap.bundle.js ~/silica/public/
+```
 
 ___
 
