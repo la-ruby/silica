@@ -90,6 +90,13 @@ GIT
     kaminari-core (1.2.2)
 
 GIT
+  remote: https://github.com/rails/cssbundling-rails.git
+  revision: b451c6003abf6fcd12a4fb28056e5710b3befc1f
+  specs:
+    cssbundling-rails (1.1.0)
+      railties (>= 6.0.0)
+
+GIT
   remote: https://github.com/rails/rails.git
   revision: 6a0f6c4d70b198ef36c2d512314248dabec6fbbc
   branch: 7-0-stable
@@ -425,6 +432,7 @@ DEPENDENCIES
   aws-sdk-s3
   capybara
   clockwork (~> 3.0)!
+  cssbundling-rails!
   debug
   devise (~> 4.8)!
   docusign_esign
