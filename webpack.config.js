@@ -5,7 +5,8 @@ module.exports = {
   mode: "production",
   devtool: "source-map",
   entry: {
-    application: "./app/javascript/application.js"
+    application: "./app/javascript/application.js",
+    silica_actiontext: "./app/javascript/silica_actiontext.js"
   },
   output: {
     filename: "[name].js",

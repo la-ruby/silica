@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import AutoNumeric from 'autonumeric'
+// import AutoNumeric from 'autonumeric'
 
 export default class extends Controller {
   static targets = [ "sum", "part_a", "part_b", "part_c", "part_d", "label", "percentage" ]
