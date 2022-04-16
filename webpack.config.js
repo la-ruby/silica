@@ -6,7 +6,8 @@ module.exports = {
   devtool: "source-map",
   entry: {
     application: "./app/javascript/application.js",
-    silica_actiontext: "./app/javascript/silica_actiontext.js"
+    silica_actiontext: "./app/javascript/silica_actiontext.js",
+    myhelloworld: "./app/javascript/myhelloworld.js"
   },
   output: {
     filename: "[name].js",
@@ -17,5 +18,14 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx|ts|tsx|)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      }
+    ]
+  }
 }

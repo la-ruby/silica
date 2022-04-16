@@ -1,0 +1,40 @@
+<%= javascript_include_tag "myhelloworld" %>
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<div id="experimentaaa"></div>
+<div id="experimentbbb"></div>
+<div id="experimentccc"></div>
+<div id="experimentddd"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // ReactDOM.render(
+    //   window.hello,
+    //   document.getElementById('experimentaaa'),
+    // )
+    var root = ReactDOM.createRoot(document.getElementById("experimentaaa"));
+    root.render(window.hello);
+
+  })
+</script>
+
+<script type="text/babel">
+  const getMessage = () => "Hello World";
+  document.getElementById("experimentbbb").innerHTML = getMessage();
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    var silicaSwitchRoot = ReactDOM.createRoot(document.getElementById("experimentccc"));
+    silicaSwitchRoot.render(window.silica_switch);
+
+    // var silicaChonkyRoot = ReactDOM.createRoot(document.getElementById("experimentddd"));
+    // silicaChonkyRoot.render(window.silica_chonky);
+
+  })
+
+
+</script>
