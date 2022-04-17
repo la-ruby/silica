@@ -8,7 +8,8 @@ module.exports = {
     application: "./app/javascript/application.js",
     silica_actiontext: "./app/javascript/silica_actiontext.js",
     examplereactcomponent: "./app/javascript/examplereactcomponent.js",
-    examplealternativereactcomponent: "./app/javascript/examplealternativereactcomponent.js"
+    examplealternativereactcomponent: "./app/javascript/examplealternativereactcomponent.js",
+    my_file_browser_entry: "./app/javascript/my_file_browser_entry.js"
   },
   output: {
     filename: "[name].js",
