@@ -31,35 +31,3 @@ class SilicaSwitch extends React.Component {
   }
 }
 window.silica_switch = React.createElement(SilicaSwitch, {name: 'Rails 7'}, null)
-
-// ################################################################################
-
-import {FullFileBrowser} from 'chonky';
-
-export const MyFileBrowser = () => {
-        const files = [
-            {
-                id: '1',
-                name: 'andyc_med.txt',
-            },
-            {
-                id: '2',
-                name: 'brevallf_med.txt',
-            },
-            {
-                id: '3',
-                name: 'mathisg_med.txt',
-            },
-        ];
-        const folderChain = [
-            {id: 'xcv', name: 'Fiches médicales', isDir: true},
-        ];
-        return (
-            <div style={{height: 600}}>
-                <FullFileBrowser files={files} folderChain={folderChain}/>
-            </div>
-        );
-    }
-;
-
-// window.silica_chonky = React.createElement(MyFileBrowser, {name: 'Rails 7'}, null)

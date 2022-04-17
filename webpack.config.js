@@ -7,7 +7,8 @@ module.exports = {
   entry: {
     application: "./app/javascript/application.js",
     silica_actiontext: "./app/javascript/silica_actiontext.js",
-    myhelloworld: "./app/javascript/myhelloworld.js"
+    myhelloworld: "./app/javascript/myhelloworld.js",
+    examplereactcomponent: "./app/javascript/examplereactcomponent.js"
   },
   output: {
     filename: "[name].js",
