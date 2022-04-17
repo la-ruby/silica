@@ -1,23 +1,5 @@
-<%= javascript_include_tag "myhelloworld" %>
-
 <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-<div id="experimentbbb"></div>
-<div id="experimentccc"></div>
-<div id="experimentddd"></div>
-
-<script type="text/babel">
-  const getMessage = () => "Hello World";
-  document.getElementById("experimentbbb").innerHTML = getMessage();
-</script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    var silicaSwitchRoot = ReactDOM.createRoot(document.getElementById("experimentccc"));
-    silicaSwitchRoot.render(window.silica_switch);
-  })
-</script>
 
 <%= render '/experiment/examplereactcomponent' %>
+<%= render '/experiment/examplealternativereactcomponent' %>
