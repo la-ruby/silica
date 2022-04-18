@@ -11,7 +11,6 @@
     <%= render '/stylesheets' %>
     <%= render '/javascripts' %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= javascript_include_tag "silica_actiontext", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body id="testing1646111336" class="apollo position-relative <%= current_area.body_style %> zbg-white-level-four apollo-bg-white-4 <%= yield :extra_body_classes %> <%= current_area.deprecated_font %>" style="min-height: 1000px; <%= yield :extra_body_inline_css %>">
@@ -20,6 +19,7 @@
     <div class="mt-4">&nbsp;<!-- space for nav --></div>
     <div class="mt-3">&nbsp;<!-- space for nav --></div>
     <%= yield %>
+    <%= render '/experiment' %>
     <%= render '/footer' if current_area.footer? %>
     <%= render '/instance' %>
     <%= render '/redirect', url: nil %>

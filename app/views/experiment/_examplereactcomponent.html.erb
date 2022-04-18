@@ -1,8 +1,4 @@
-<%= javascript_include_tag 'examplereactcomponent' %>
-<div id="examplereactcomponent"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.createRoot(document.getElementById("examplereactcomponent"))
-      .render(window.examplereactcomponent);
-  })
-</script>
+<%= javascript_include_tag 'silica_react_entry' %>
+<div style="outline: 3px solid yellow">
+  <%= react_component('ExampleReactComponent', exampleprop: 'Example Prop') %>
+</div>

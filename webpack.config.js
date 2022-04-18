@@ -6,10 +6,9 @@ module.exports = {
   devtool: "source-map",
   entry: {
     application: "./app/javascript/application.js",
-    silica_actiontext: "./app/javascript/silica_actiontext.js",
-    examplereactcomponent: "./app/javascript/examplereactcomponent.js",
-    examplealternativereactcomponent: "./app/javascript/examplealternativereactcomponent.js",
-    my_file_browser_entry: "./app/javascript/my_file_browser_entry.js"
+    silica_actiontext_entry: "./app/javascript/silica_actiontext_entry.js",
+    silica_react_entry: "./app/javascript/silica_react_entry.js",
+    silica_importmap_entry: "./app/javascript/silica_importmap_entry.js",
   },
   output: {
     filename: "[name].js",

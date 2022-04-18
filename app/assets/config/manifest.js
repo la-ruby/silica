@@ -5,8 +5,15 @@
 //= link font_size-i.css
 //= link debug.css
 //= link silica.css
-
 //= link_tree ../images
+//= link_tree ../builds
+//= link silica_importmap_entry.js
+
+// INACTIVE STUFF
 // link_directory ../stylesheets .css
 // link_directory ../javascripts .js
-//= link_tree ../builds
+
+// INACTIVE - added by ./bin/rails importmap:install
+// link_tree ../../javascript .js
+// link_tree ../../../vendor/javascript .js
+
