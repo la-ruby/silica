@@ -8,7 +8,7 @@ import { FullFileBrowser,
     FileList,
     FileNavbar,
     FileToolbar,
-       } from 'chonky';
+    ChonkyActions } from 'chonky';
 
 
 // https://chonky.io/docs/2.x/basics/icons
@@ -21,7 +21,7 @@ class ExampleReactComponent extends React.Component {
 
   render() {
     const files = [
-      { id: 'lht', name: 'older', isDir: true },
+      { id: 'lht', name: 'archived', isDir: true },
       {
         id: 'mcd',
         name: 'chonky-sphere-v2.png',
@@ -31,21 +31,17 @@ class ExampleReactComponent extends React.Component {
     const folderChain = [{ id: 'xcv', name: 'Demo', isDir: true }]
 
     return (
-      <div className="experiment1650288360">
-	<FullFileBrowser
-	  files={files}
-	  folderChain={[]}
-          disableDefaultFileActions={true}
-          fileActions={[]}
-	>
-                <FileNavbar />
-                <FileToolbar />
-                <FileList />
-                <FileContextMenu />
-        </FullFileBrowser>
-
-
-      </div>
+      <FileBrowser
+	files={files}
+	fileActions={[ChonkyActions.UploadFiles]}
+        disableSelection={true}
+        disableDragAndDrop={true}
+        disableDefaultFileActions={[ChonkyActions.SelectAllFiles.id, ChonkyActions.OpenSelection.id, ChonkyActions.ClearSelection.id, ChonkyActions.SelectAllFiles.id]}
+      > 
+            <FileToolbar />
+            <FileList />
+            <FileContextMenu />
+        </FileBrowser>
     );
   }
 }
