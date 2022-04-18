@@ -5,8 +5,8 @@
 
   <div class="container pt-3 pb-3 <%= current_area.style(:basic).classes %>">
     <div class="row">
-      <div class="col text-center">
-        <div class="m-5 p-5 <%= normal_text %>" style="outline: 3px solid yellow">
+      <div class="col">
+        <div class="my-1 py-1">
             <%= javascript_include_tag 'silica_react_entry' %>
             <%= react_component('ExampleReactComponent', exampleprop: 'Example Prop') %>
         </div>

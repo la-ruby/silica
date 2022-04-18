@@ -1,13 +1,27 @@
 import React from 'react';
-import { FullFileBrowser } from 'chonky';
+import { FullFileBrowser,
+    FileArray,
+    FileBrowser,
+    FileContextMenu,
+    FileData,
+    FileHelper,
+    FileList,
+    FileNavbar,
+    FileToolbar,
+       } from 'chonky';
 
+
+// https://chonky.io/docs/2.x/basics/icons
+import { setChonkyDefaults } from 'chonky';
+import { ChonkyIconFA } from 'chonky-icon-fontawesome';
+setChonkyDefaults({ iconComponent: ChonkyIconFA });
 
 class ExampleReactComponent extends React.Component {
 
 
   render() {
     const files = [
-      { id: 'lht', name: 'Projects', isDir: true },
+      { id: 'lht', name: 'older', isDir: true },
       {
         id: 'mcd',
         name: 'chonky-sphere-v2.png',
@@ -18,8 +32,19 @@ class ExampleReactComponent extends React.Component {
 
     return (
       <div className="experiment1650288360">
-	<div>{this.props.exampleprop}</div>
-	<FullFileBrowser files={[]} folderChain={folderChain} />
+	<FullFileBrowser
+	  files={files}
+	  folderChain={[]}
+          disableDefaultFileActions={true}
+          fileActions={[]}
+	>
+                <FileNavbar />
+                <FileToolbar />
+                <FileList />
+                <FileContextMenu />
+        </FullFileBrowser>
+
+
       </div>
     );
   }
