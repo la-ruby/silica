@@ -52,6 +52,8 @@ jobs:
         PGPASSWORD: postgres
         RAILS_ENV: test
       run: |
+        bundle install
+	yarn install
         yarn build:css && yarn build
 
     - name: Execute unit tests
