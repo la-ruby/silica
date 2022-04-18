@@ -14,11 +14,22 @@
 // https://turbo.hotwired.dev/handbook/building mentions this hook
 document.addEventListener("turbo:load", function() {
   console.log("D3BUG turbo:load")
-  setTimeout(function() {
-    if (typeof ReactRailsUJS !== "undefined") {
-      console.log("D3BUG ReactRailsUJS.mountComponents()")
-      ReactRailsUJS.mountComponents() // https://github.com/reactjs/react-rails#ujs
-    }
-  }, 750)
+
+  if (typeof ReactRailsUJS !== "undefined") {
+    ReactRailsUJS.mountComponents() // https://github.com/reactjs/react-rails#ujs
+    console.log("D3BUG ReactRailsUJS.mountComponents() /1")
+  } else {
+
+    // TODO: this execution path still useful? remove if its not
+    setTimeout(function() {
+      if (typeof ReactRailsUJS !== "undefined") {
+        console.log("D3BUG ReactRailsUJS.mountComponents() /2")
+        ReactRailsUJS.mountComponents() // https://github.com/reactjs/react-rails#ujs
+      }
+    }, 2000)
+
+  }
+
+
 })
 </script>

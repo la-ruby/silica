@@ -42,6 +42,9 @@ Rails.application.routes.draw do
 
   resources :addendums, only: [:show]
 
+  resources :project_files, only: [:show]
+
+
   namespace :projects do
     get 'searches/index'
   end

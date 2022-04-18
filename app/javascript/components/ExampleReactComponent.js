@@ -16,22 +16,42 @@ import { setChonkyDefaults } from 'chonky';
 import { ChonkyIconFA } from 'chonky-icon-fontawesome';
 setChonkyDefaults({ iconComponent: ChonkyIconFA });
 
-class ExampleReactComponent extends React.Component {
+function onFileAction(data) {
+  switch (data.id) {
+    case ChonkyActions.OpenFiles.id:
+      if (data.payload.files[0].isDir == undefined) {
+        console.log(data.payload.files[0].name)
+        window.location.href = '/project_files/' + data.payload.files[0].name
+      }
+      break;
+    case ChonkyActions.CreateFolder.id:
+      console.log("here2")
+      break;
+    case ChonkyActions.DeleteFiles.id:
+      console.log("here3")
+      break;
+    default:
+      break;
+  }
+}
 
+
+class ExampleReactComponent extends React.Component {
 
   render() {
     const files = [
       { id: 'lht', name: 'archived', isDir: true },
       {
-        id: 'mcd',
+        id: 'my1650324656',
         name: 'chonky-sphere-v2.png',
-        thumbnailUrl: 'https://chonky.io/chonky-sphere-v2.png',
+        thumbnailUrl: 'https://via.placeholder.com/300x300?text=thumbnail',
       },
     ]
-    const folderChain = [{ id: 'xcv', name: 'Demo', isDir: true }]
 
     return (
       <FileBrowser
+        fillParentContainer={true}
+        onFileAction={onFileAction}
 	files={files}
 	fileActions={[ChonkyActions.UploadFiles]}
         disableSelection={true}
