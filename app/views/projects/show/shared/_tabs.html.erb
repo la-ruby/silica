@@ -46,7 +46,7 @@
 
         <% if UxPolicy.new(current_user, nil).files? %>        
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Files' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=files" %>">Files</a>
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Files' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=files" %>">Files  <span class="badge rounded-pill bg-danger">new</span></a>
 	</li>
         <% end %>
 
