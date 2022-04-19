@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     member do
       post 'download_property_analysis'
     end
+    resources :project_files, only: [:new]
   end
   get '/projects', to: 'projects#index'
 

@@ -9,7 +9,7 @@
         <div class="my-1 py-1">
           <div style="max-width: 700px">
             <%= javascript_include_tag 'silica_react_entry' %>
-            <%= react_component('ExampleReactComponent', files: ProjectFile::TEST_MOCKS.concat(@project.project_files_for_react_component)) %>
+            <%= react_component('ExampleReactComponent', silicaProjectId: @project.id, files: ProjectFile::TEST_MOCKS.concat(@project.project_files_for_react_component)) %>
             <style>
               .chonky-chonkyRoot { background-color: transparent; color: #334155; border-color: transparent; }
               .MuiTypography-body1 { font-weight: inherit; color: #334155 }

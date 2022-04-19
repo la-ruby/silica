@@ -16,7 +16,7 @@ import { setChonkyDefaults } from 'chonky';
 import { ChonkyIconFA } from 'chonky-icon-fontawesome';
 setChonkyDefaults({ iconComponent: ChonkyIconFA });
 
-function onFileAction(data) {
+const onFileAction = (data) => {
   switch (data.id) {
     case ChonkyActions.OpenFiles.id:
       if (data.payload.files[0].isDir == undefined) {
@@ -28,10 +28,12 @@ function onFileAction(data) {
     case ChonkyActions.CreateFolder.id:
       console.log("here2")
       break;
-    case ChonkyActions.DeleteFiles.id:
-      console.log("here3")
+    case ChonkyActions.UploadFiles.id:
+      console.log(data.state.instanceId)
+      window.location.href = '/projects/' + data.state.instanceId + '/project_files/new'
       break;
     default:
+      console.log("here4")
       break;
   }
 }
@@ -42,6 +44,7 @@ class ExampleReactComponent extends React.Component {
   render() {
     return (
       <FileBrowser
+        instanceId={this.props.silicaProjectId}
         fillParentContainer={true}
         onFileAction={onFileAction}
 	files={this.props.files}

@@ -6,6 +6,11 @@ class ProjectFilesController < ApplicationController
   before_action :set_area_backend
   after_action :verify_authorized
 
+  def new
+    authorize nil, policy_class: ProjectFilePolicy
+    render layout: nil
+  end
+
   def show
     authorize @project_file
     redirect_to rails_blob_path(@project_file.silicafile, disposition: "attachment")
