@@ -24,4 +24,12 @@ class ProjectFilesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should create project_file" do
+    project = create(:project)
+
+    assert_difference("ProjectFile.count") do
+      post "/projects/#{project.id}/project_files"
+    end
+  end
+
 end
