@@ -16,4 +16,12 @@ class ProjectFilesControllerTest < ActionDispatch::IntegrationTest
     get "/project_files/#{project_file.id}"
     assert_response :redirect
   end
+
+  test "should get new" do
+    project = create(:project)
+
+    get "/projects/#{project.id}/project_files/new"
+    assert_response :success
+  end
+
 end
