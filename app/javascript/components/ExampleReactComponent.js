@@ -20,8 +20,9 @@ function onFileAction(data) {
   switch (data.id) {
     case ChonkyActions.OpenFiles.id:
       if (data.payload.files[0].isDir == undefined) {
-        console.log(data.payload.files[0].name)
-        window.location.href = '/project_files/' + data.payload.files[0].name
+        window.location.href = '/project_files/' + data.payload.files[0].id
+      } else {
+	alert('(Error - 501: Not Implemented')
       }
       break;
     case ChonkyActions.CreateFolder.id:
@@ -39,20 +40,11 @@ function onFileAction(data) {
 class ExampleReactComponent extends React.Component {
 
   render() {
-    const files = [
-      { id: 'lht', name: 'archived', isDir: true },
-      {
-        id: 'my1650324656',
-        name: 'chonky-sphere-v2.png',
-        thumbnailUrl: 'https://via.placeholder.com/300x300?text=thumbnail',
-      },
-    ]
-
     return (
       <FileBrowser
         fillParentContainer={true}
         onFileAction={onFileAction}
-	files={files}
+	files={this.props.files}
 	fileActions={[ChonkyActions.UploadFiles]}
         disableSelection={true}
         disableDragAndDrop={true}

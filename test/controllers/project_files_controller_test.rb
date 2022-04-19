@@ -6,7 +6,14 @@ class ProjectFilesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show project file" do
-    get "/project_files/testing"
-    assert_response :success
+    project = create(:project)
+    project_file = project.project_files.create
+    project_file.silicafile.attach(
+      io: File.open('test/fixtures/files/apple.jpg'),
+      filename: 'apple.jpg'
+    )
+
+    get "/project_files/#{project_file.id}"
+    assert_response :redirect
   end
 end

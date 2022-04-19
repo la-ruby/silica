@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_003227) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_04_19_015210) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,8 +19,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.text "body"
     t.string "record_type", null: false
     t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
@@ -30,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -43,7 +42,7 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -60,8 +59,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.text "terms"
     t.string "status"
     t.bigint "addendum_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "docusign_envelope_id"
     t.string "signed_by_company_at"
     t.string "sent_to_seller_at"
@@ -79,8 +78,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
   create_table "addendums", force: :cascade do |t|
     t.integer "addendum_number"
     t.bigint "project_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_addendums_on_project_id"
   end
 
@@ -93,23 +92,23 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.string "investing_location"
     t.string "sendgrid_created_at"
     t.string "sendgrid_created_at_searchable"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "examples", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.boolean "seed"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
     t.bigint "listing_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["listing_id"], name: "index_favorites_on_listing_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
@@ -117,8 +116,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
   create_table "intake_forms", force: :cascade do |t|
     t.string "completed"
     t.integer "project_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "what_type_of_property_is_this"
     t.string "who_is_the_purchaser"
     t.string "property_analysis"
@@ -142,16 +141,16 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
   create_table "kodaks", force: :cascade do |t|
     t.string "primary", default: "0"
     t.string "marketplace", default: "0"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "project_id", null: false
     t.index ["project_id"], name: "index_kodaks_on_project_id"
   end
 
   create_table "listings", force: :cascade do |t|
     t.integer "project_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "beds"
     t.integer "baths"
     t.integer "price"
@@ -187,15 +186,22 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.string "opportunity_type", default: "opportunity_investment"
   end
 
+  create_table "project_files", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_files_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "status"
     t.string "direction"
     t.string "source"
-    t.datetime "addendum_sent", precision: 6
-    t.datetime "offer_accepted", precision: 6
-    t.datetime "offer_viewed", precision: 6
-    t.datetime "offer_sent", precision: 6
-    t.datetime "req_date", precision: 6
+    t.datetime "addendum_sent"
+    t.datetime "offer_accepted"
+    t.datetime "offer_viewed"
+    t.datetime "offer_sent"
+    t.datetime "req_date"
     t.string "city"
     t.string "state"
     t.string "street"
@@ -209,8 +215,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.string "secondName"
     t.string "secondPhone"
     t.string "secondEmail"
-    t.datetime "created_at", precision: 6, default: -> { "now()" }, null: false
-    t.datetime "updated_at", precision: 6, default: -> { "now()" }, null: false
+    t.datetime "created_at", default: -> { "now()" }, null: false
+    t.datetime "updated_at", default: -> { "now()" }, null: false
     t.string "token"
     t.string "envelope_id"
     t.float "beds"
@@ -276,8 +282,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.string "all_insurance_canceled"
     t.string "all_insurance_canceled_dateinput"
     t.integer "project_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "repcs", force: :cascade do |t|
@@ -295,8 +301,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.string "balloon_payment"
     t.string "real_estate_professional"
     t.integer "project_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "version"
     t.text "rejected_feedback"
     t.string "rejected_at"
@@ -324,8 +330,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
   create_table "settings", force: :cascade do |t|
     t.string "var", null: false
     t.text "value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["var"], name: "index_settings_on_var", unique: true
   end
 
@@ -333,10 +339,10 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -347,4 +353,5 @@ ActiveRecord::Schema.define(version: 2022_04_05_003227) do
   add_foreign_key "favorites", "listings"
   add_foreign_key "favorites", "users"
   add_foreign_key "kodaks", "projects"
+  add_foreign_key "project_files", "projects"
 end

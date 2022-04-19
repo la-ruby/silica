@@ -297,6 +297,12 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "get files" do
     project = create(:project)
+    project_file = project.project_files.create
+    project_file.silicafile.attach(
+      io: File.open('test/fixtures/files/apple.jpg'),
+      filename: 'apple.jpg'
+    )
+
     get "/projects/#{project.id}?tab=files"
     assert_equal "200", response.code
   end

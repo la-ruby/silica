@@ -9,9 +9,9 @@
         <div class="my-1 py-1">
           <div style="max-width: 700px">
             <%= javascript_include_tag 'silica_react_entry' %>
-            <%= react_component('ExampleReactComponent', exampleprop: 'Example Prop') %>
+            <%= react_component('ExampleReactComponent', files: ProjectFile::TEST_MOCKS.concat(@project.project_files_for_react_component)) %>
             <style>
-              .chonky-chonkyRoot { background-color: transparent; color: #334155 }
+              .chonky-chonkyRoot { background-color: transparent; color: #334155; border-color: transparent; }
               .MuiTypography-body1 { font-weight: inherit; color: #334155 }
 	      .MuiButton-root { font-weight: inherit; color; #334155 }
               .MuiMenuItem-root { font-weight: 300; color: #334155 }

@@ -15,6 +15,7 @@ class Project < ApplicationRecord
   scope :listed, -> { joins(:listing).where("listings.listed = 'true'") }
 
   has_many :kodaks, dependent: :destroy
+  has_many :project_files, dependent: :destroy
   has_one :property_disposition_checklist
   has_one :listing
   has_many :repcs
@@ -81,5 +82,15 @@ class Project < ApplicationRecord
 
   def primary_or_first_kodak
     kodaks.where(primary: "1", marketplace: "1").first&.pic || kodaks.where(marketplace: "1").first&.pic
+  end
+
+  # the react component expects a certain structure for the props passed in
+  def project_files_for_react_component
+    project_files.map do |project_file|
+      {
+        id: project_file.id,
+        name: project_file.silicafile.blob.filename.to_s
+      }
+    end
   end
 end
