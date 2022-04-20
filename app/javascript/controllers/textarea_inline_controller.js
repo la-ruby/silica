@@ -18,7 +18,7 @@ export default class extends Controller {
         cssclass : 'border-bottom-dashed',
         cancelcssclass : 'btn btn-danger',
         submitcssclass : 'btn btn-success',
-        maxlength : 200,
+        maxlength : 1000,
         select : true,
         submit : 'Save',
         submitdata : {},
