@@ -1,4 +1,5 @@
 <form action="/projects/<%= @project.id %>/project_files" method="post" enctype="multipart/form-data">
   <input type="file" name="file" id="my1650341409" />
+  <input type="hidden" name="folder" id="my1651045671" value="<%= j params[:folder] %>"/>
   <input type="submit" name="submit" value="Submit" />
 </form>

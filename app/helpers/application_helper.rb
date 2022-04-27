@@ -135,4 +135,8 @@ module ApplicationHelper
   def silica_label(text, for_: "")
     content_tag(:label, class: ['form-label', 'mb-0'], for: for_) { text }
   end
+
+  def root_folder_link(project)
+    link_to('root', "/projects/#{project.id}?tab=files")
+  end
 end

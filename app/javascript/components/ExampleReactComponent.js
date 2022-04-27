@@ -10,17 +10,22 @@ import { FullFileBrowser,
     FileToolbar,
     ChonkyActions } from 'chonky';
 
-
 // https://chonky.io/docs/2.x/basics/icons
 import { setChonkyDefaults } from 'chonky';
 import { ChonkyIconFA } from 'chonky-icon-fontawesome';
 setChonkyDefaults({ iconComponent: ChonkyIconFA });
+
+// github.com/TimboKZ/Chonky/issues/34#issuecomment-705207987
+ChonkyActions.ToggleShowFoldersFirst.option.defaultValue = false;
 
 const onFileAction = (data) => {
   switch (data.id) {
     case ChonkyActions.OpenFiles.id:
       if (data.payload.files[0].isDir == undefined) {
         window.location.href = '/project_files/' + data.payload.files[0].id
+      } else if (data.payload.files[0].isDir == true) {
+        console.log(data.payload.targetFile.name)
+	window.location.href = '/projects/' + data.state.instanceId + '?tab=files&folder=' + data.payload.targetFile.name
       } else {
 	alert('(Error - 501: Not Implemented')
       }
@@ -29,11 +34,11 @@ const onFileAction = (data) => {
       console.log("here2")
       break;
     case ChonkyActions.UploadFiles.id:
-      console.log(data.state.instanceId)
-      window.location.href = '/projects/' + data.state.instanceId + '/project_files/new'
+      // console.log(data.state.instanceId)
+      window.location.href = '/projects/' + data.state.instanceId + '/project_files/new?folder=' + window.silica_chonky_current_folder
       break;
     default:
-      console.log("here4")
+      console.log("trace1651042288")
       break;
   }
 }
@@ -51,8 +56,8 @@ class ExampleReactComponent extends React.Component {
 	fileActions={[ChonkyActions.UploadFiles]}
         disableSelection={true}
         disableDragAndDrop={true}
-        disableDefaultFileActions={[ChonkyActions.SelectAllFiles.id, ChonkyActions.OpenSelection.id, ChonkyActions.ClearSelection.id, ChonkyActions.SelectAllFiles.id]}
-      > 
+        disableDefaultFileActions={[ChonkyActions.SelectAllFiles.id, ChonkyActions.OpenSelection.id, ChonkyActions.ClearSelection.id]}
+      >
             <FileToolbar />
             <FileList />
             <FileContextMenu />

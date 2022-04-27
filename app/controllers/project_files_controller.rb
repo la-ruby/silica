@@ -21,9 +21,12 @@ class ProjectFilesController < ApplicationController
   def create
     @project = Project.find params[:project_id]
     authorize @project, policy_class: ProjectFilePolicy
-    @project.project_files.create.silicafile.attach(params[:file])
+    @project
+      .project_files
+      .create(folder: params[:folder].presence || 'root')
+      .silicafile.attach(params[:file])
     flash[:notice] = 'Uploaded'
-    redirect_to "/projects/#{@project.id}?tab=files"
+    redirect_to "/projects/#{@project.id}?tab=files&folder=#{params[:folder]}"
   end
 
   private

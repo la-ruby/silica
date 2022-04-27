@@ -85,12 +85,16 @@ class Project < ApplicationRecord
   end
 
   # the react component expects a certain structure for the props passed in
-  def project_files_for_react_component
-    project_files.map do |project_file|
+  def project_files_for_react_component(folder)
+    arr = project_files.select do |project_file|
+      project_file.folder == folder
+    end.map do |project_file|
       {
         id: project_file.id,
         name: project_file.silicafile.blob.filename.to_s
       }
     end
+    arr.concat(ProjectFile::STANDARD_FOLDERS) if folder == 'root'
+    arr
   end
 end
