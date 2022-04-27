@@ -19,4 +19,12 @@ class User < ApplicationRecord
   def limited?
     LIMITED_USERS.include?(email)
   end
+
+  def has_trait?(trait)
+    !limited?
+  end
+
+  def initials
+    email[0]
+  end
 end

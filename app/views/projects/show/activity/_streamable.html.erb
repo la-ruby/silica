@@ -1,0 +1,5 @@
+<div id="activity_<%=project.id%>">
+  <% project.events_for_activity_tab.each do |event| %>
+    <%= render partial: '/events/activity', locals: { event: event } %>
+  <% end %>
+</div>

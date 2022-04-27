@@ -1,13 +1,21 @@
 <% if UxPolicy.new(current_user, nil).activity? %>
+  <%= javascript_include_tag "silica_actiontext_entry", "data-turbo-track": "reload", defer: true %>
+
   <%= render '/projects/show/shared/summary', project: @project %>
 
   <%= render '/projects/show/shared/tabs', project: @project, active: 'Activity' %>
 
   <div class="container pt-3 pb-3 <%= current_area.style(:basic).classes %>">
     <div class="row">
-      <div class="col text-center">
-        <div class="m-5 p-5 <%= normal_text %>">
-          coming soon (activity)
+      <div class="col">
+        <div class="m-5 p-5">
+
+          <%= render '/comments/shared/new', project: @project %>
+
+          <% if TurboStreamFromPolicy.new(current_user, nil).backend_regular_user_activity_n_stream? %>
+            <%= turbo_stream_from "backend_regular_user_activity_#{@project.id}_stream" %>
+            <%= render '/projects/show/activity/streamable', project: @project %>
+          <% end %>
         </div>
       </div>
     </div>

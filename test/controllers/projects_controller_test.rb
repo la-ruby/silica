@@ -291,6 +291,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "get activity" do
     project = create(:project)
+    create(:event, :project_creation)
+
     get "/projects/#{project.id}?tab=activity"
     assert_equal "200", response.code
   end

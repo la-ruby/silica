@@ -9,6 +9,7 @@
 <script src="<%= silica_neutral_bucket('/packages/jquery.jeditable.2.0.19.min.js') %>" defer></script>
 <script src="<%= silica_neutral_bucket('/packages/jquery.jeditable.datepicker.2.0.19.min.js') %>" defer></script>
 <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js" defer></script>
 
 <script>
 // https://turbo.hotwired.dev/handbook/building mentions this hook
@@ -27,9 +28,6 @@ document.addEventListener("turbo:load", function() {
         ReactRailsUJS.mountComponents() // https://github.com/reactjs/react-rails#ujs
       }
     }, 2000)
-
   }
-
-
 })
 </script>

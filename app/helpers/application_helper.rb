@@ -137,6 +137,10 @@ module ApplicationHelper
   end
 
   def root_folder_link(project)
-    link_to('root', "/projects/#{project.id}?tab=files")
+    link_to('root', "/projects/#{project.id}?tab=files", class: "text-decoration-none")
+  end
+
+  def svg_box
+    '<svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"></rect></svg>'.html_safe
   end
 end

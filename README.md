@@ -165,7 +165,7 @@ How I copy over `bootstrap.css` and `bootstrap.bundle.js` after running `npm run
 
 ```
 $ cd ~/
-$ git clone https://github.com/brick-developer-1/silica-bootstrap
+$ git clone https://github.com/la-ruby/silica-bootstrap
 $ cd ~/silica-bootstrap
 $ npm install
 $ npm run dist

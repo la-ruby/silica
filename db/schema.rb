@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_27_064826) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_28_215105) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +83,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_27_064826) do
     t.index ["project_id"], name: "index_addendums_on_project_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "record_id"
+    t.string "record_type"
+    t.integer "inventor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -94,6 +102,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_27_064826) do
     t.string "sendgrid_created_at_searchable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "category"
+    t.jsonb "data"
+    t.datetime "timestamp"
+    t.integer "record_id"
+    t.string "record_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "inventor_id"
+    t.integer "secondary_record_id"
+    t.string "secondary_record_type"
   end
 
   create_table "examples", force: :cascade do |t|
@@ -326,6 +347,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_27_064826) do
     t.string "title_company"
     t.string "service_fee_is_percentage"
     t.string "mutable", default: "1"
+    t.integer "signed_by_company_at_whodunnit"
   end
 
   create_table "settings", force: :cascade do |t|

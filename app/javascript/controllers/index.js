@@ -55,8 +55,17 @@ application.register("listings", ListingsController)
 import MapController from "./map_controller.js"
 application.register("map", MapController)
 
+import MomentifyController from "./momentify_controller.js"
+application.register("momentify", MomentifyController)
+
 import MoneyController from "./money_controller.js"
 application.register("money", MoneyController)
+
+import NewCommentFormController from "./new_comment_form_controller.js"
+application.register("new-comment-form", NewCommentFormController)
+
+import NotImplementedController from "./not_implemented_controller.js"
+application.register("not-implemented", NotImplementedController)
 
 import OpensDialoggController from "./opens_dialogg_controller.js"
 application.register("opens-dialogg", OpensDialoggController)
@@ -102,3 +111,6 @@ application.register("submits-form-immediately", SubmitsFormImmediatelyControlle
 
 import TextareaInlineController from "./textarea_inline_controller.js"
 application.register("textarea-inline", TextareaInlineController)
+
+import ToastController from "./toast_controller.js"
+application.register("toast", ToastController)

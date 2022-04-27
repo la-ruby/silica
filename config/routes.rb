@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get 'refresh'
     end
   end
+  resources :comments, only: [:create]
   resource :contact_searches, only: [:create]
   resource :scouts, only: [:create]
   resource :tx_scout_links, only: [:create]

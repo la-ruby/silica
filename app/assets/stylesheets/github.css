@@ -1,0 +1,19 @@
+.github-timeline-comment--caret {
+	position: relative;
+}
+
+.github-timeline-comment--caret::before {
+  display: block;
+  background-color: #F7F8FA;
+
+  position: absolute;
+  top: 11px;
+  right: 100%;
+  left: -8px;
+  width: 8px;
+  height: 16px;
+  pointer-events: none;
+  content: " ";
+  -webkit-clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}

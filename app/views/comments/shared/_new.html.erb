@@ -1,0 +1,39 @@
+<div class="row align-items-center">
+  <div class="col-auto pe-0 align-self-start">
+
+    <div class="ps-3 py-2 my-2">
+      <div class="row">
+        <div class="col">
+          <span class="avatar avatar-48 zbg-secondary text-white rounded-circle" style="background: rgba(0,0,0,0.07)"><%= current_user.initials %></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col pt-3">
+    <div class="rounded px-3 py-2 my-2 github-timeline-comment--caret" style="background: #F7F8FA; position:relative;">
+      <div class="row mb-3">
+        <div class="col">
+          <%= form_with(url: "/comments", method: :post, id: 'silica-new-comment-form', data: { controller: 'new-comment-form', 'new-comment-form-targer': 'form' }) do %>
+          <%= hidden_field_tag 'comment[record_id]', project.id, form: 'silica-new-comment-form'  %>
+          <%= hidden_field_tag 'comment[record_type]', 'Project', form: 'silica-new-comment-form'  %>
+          <div class="mb-2">&nbsp;</div>
+	  <%= rich_text_area_tag "comment[content]", '', form: 'silica-new-comment-form', placeholder: 'Comment ...', data: { 'new-comment-form-target' => 'input' } %>
+          <div class="text-end my-1">
+            <%= silica_button(form: 'silica-new-comment-form', type: 'button', data: { 'action' => 'new-comment-form#submission', 'new-comment-form-target' => 'button' }) do %>
+              Comment
+            <% end %>
+	  </div>
+          <% end %>
+        </div>
+        <div class="col-auto zinvisible" style="opacity: 0.05">
+          <i class="bi bi-hand-thumbs-up mx-2" data-controller="not-implemented" data-action="click->not-implemented#message"></i>
+          <i class="bi bi-three-dots" data-controller="not-implemented" data-action="click->not-implemented#message"></i>
+        </div>        
+      </div>      
+
+    </div>
+  </div>
+</div>
+

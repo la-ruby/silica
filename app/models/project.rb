@@ -97,4 +97,8 @@ class Project < ApplicationRecord
     arr.concat(ProjectFile::STANDARD_FOLDERS) if folder == 'root'
     arr
   end
+
+  def events_for_activity_tab
+    Event.where(record_type: 'Project', record_id: id).order('timestamp DESC')
+  end
 end

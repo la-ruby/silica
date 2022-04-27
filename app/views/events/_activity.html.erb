@@ -1,0 +1,33 @@
+
+<div class="row align-items-center">
+  <div class="col-auto pe-0">
+
+    <div class="ps-3 py-2 my-2">
+      <div class="row">
+        <div class="col">
+          <span class="avatar avatar-48 zbg-secondary text-white rounded-circle" style="background: rgba(0,0,0,0.07)"><%= event.inventor.initials %></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col">
+    <div class="rounded px-3 py-2 my-2 github-timeline-comment--caret" style="background: #F7F8FA; position:relative;">
+      <div class="row">
+        <div class="col trix-content-is-inline">
+          <% if event.category == 'project_creation' %>
+            Project created <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
+          <% elsif event.category == 'addition_repc_signed_by_company_at' %>
+            Repc signed by <%= COMPANY %> <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
+          <% elsif event.category == 'project_comment' %>
+            <%= Comment.find(event.secondary_record_id).content %> <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
+          <% end %>
+        </div>
+        <div class="col-auto">
+          <i class="bi bi-hand-thumbs-up mx-2" role="button" data-controller="not-implemented" data-action="click->not-implemented#message"></i>
+          <i class="bi bi-three-dots" role="button" data-controller="not-implemented" data-action="click->not-implemented#message"></i>
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>

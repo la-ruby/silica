@@ -1,0 +1,7 @@
+#silica-new-comment-form .trix-content {
+  border-color: transparent;
+}
+
+.trix-content-is-inline .trix-content {
+  display: inline-block;
+}
