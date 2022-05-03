@@ -2,6 +2,6 @@
 
 class ContactSearchPolicy < ApplicationPolicy
   def create?
-    user && !user.limited?
+    user && user.permission?('reader') || user.permission?('contactsReader')
   end
 end

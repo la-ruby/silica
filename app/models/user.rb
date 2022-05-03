@@ -15,17 +15,8 @@ class User < ApplicationRecord
     email.split('@').first.gsub(/\W/,'_').titleize
   end
 
-  # some restrictions apply to these users
-  def limited?
-    LIMITED_USERS.include?(email)
-  end
-
   def permission?(string)
     permissions.include?(string)
-  end
-    
-  def has_trait?(trait)
-    !limited?
   end
 
   def initials

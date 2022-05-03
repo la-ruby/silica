@@ -1,4 +1,4 @@
-<% if UxPolicy.new(current_user, nil).underwriting? %>
+<% if (current_user&.permission?('reader') || current_user&.permission?('underwrtitingReader')) %>
   <%= render '/projects/show/shared/summary', project: @project %>
 
   <%= render '/projects/show/shared/tabs', project: @project, active: 'Underwriting' %>

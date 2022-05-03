@@ -2,6 +2,6 @@
 
 class TxScoutLinkPolicy < ApplicationPolicy
   def create?
-    user && !user.limited?
+    user && user.permission?('writer') || user.permission?('inspectionWriter')
   end
 end

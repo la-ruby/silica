@@ -1,4 +1,4 @@
-<% if UxPolicy.new(current_user, nil).overview? %>
+<% if (current_user&.permission?('reader') || current_user&.permission?('overviewReader')) %>
 
   <%= render '/projects/show/shared/summary', project: @project %>
 

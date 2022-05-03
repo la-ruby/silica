@@ -58,7 +58,7 @@
           <li class=""><a class="btn dropdown-item text-reset silica-weight-reset" href="/contacts">Contacts</a></li>
           <% end %>
     
-          <% if UxPolicy.new(current_user, nil).resync? %>
+          <% if current_user&.permission?('writer') && APOLLO_INTERNAL_PRODUCTION %>
           <li class=""><%= button_to "Re-sync with Production DB", reverts_path, class: "dropdown-item btn text-reset silica-weight-reset" %></li>
           <% end %>
     

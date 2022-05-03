@@ -2,10 +2,10 @@
 
 class TurboStreamFromPolicy < ApplicationPolicy
   def backend_regular_user_toast_stream?
-    user && user.has_trait?(:backend_regular_user)
+    user && (user.permission?('reader') || user.permission?('activityReader'))
   end
 
   def backend_regular_user_activity_n_stream?
-    user && user.has_trait?(:backend_regular_user)
+    user && (user.permission?('reader') || user.permission?('activityReader'))
   end
 end

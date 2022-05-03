@@ -1,27 +1,27 @@
-<% if @tab == 'dispositions_checklist' && UxPolicy.new(current_user, nil).dispositions? %>
+<% if @tab == 'dispositions_checklist' && (current_user&.permission?('reader') || current_user&.permission?('dispositionsReader')) %>
   <%= render '/projects/show/dispositions_checklist', project: @project %>
-<% elsif @tab == 'dispositions_prepare_listing' && UxPolicy.new(current_user, nil).dispositions? %>
+<% elsif @tab == 'dispositions_prepare_listing' && (current_user&.permission?('reader') || current_user&.permission?('dispositionsReader')) %>
   <%= render '/projects/show/dispositions_prepare_listing', project: @project %>
-<% elsif @tab == 'underwriting_intake_form' && UxPolicy.new(current_user, nil).underwriting? %>
+<% elsif @tab == 'underwriting_intake_form' && (current_user&.permission?('reader') || current_user&.permission?('underwritingReader')) %>
   <%= render '/projects/show/underwriting_intake_form', project: @project %>
-<% elsif @tab == 'activity' && UxPolicy.new(current_user, nil).activity? %>
+<% elsif @tab == 'activity' && (current_user&.permission?('reader') || current_user&.permission?('activityReader')) %>
   <%= render '/projects/show/activity', project: @project %>
-<% elsif @tab == 'files' && UxPolicy.new(current_user, nil).files? %>
+<% elsif @tab == 'files' && (current_user&.permission?('reader') || current_user&.permission?('filesReader')) %>
   <%= render '/projects/show/files', project: @project %>
-<% elsif @tab == 'marketplace' && UxPolicy.new(current_user, nil).marketplace? %>
+<% elsif @tab == 'marketplace' && (current_user&.permission?('reader') || current_user&.permission?('marketplaceReader')) %>
   <%= render '/projects/show/marketplace', project: @project %>
-<% elsif @tab == 'inspection' && UxPolicy.new(current_user, nil).inspection? %>
+<% elsif @tab == 'inspection' && (current_user&.permission?('reader') || current_user&.permission?('inspectionReader')) %>
   <%= render '/projects/show/inspection', project: @project %>
-<% elsif @tab == 'inspection_inspection_report' && UxPolicy.new(current_user, nil).inspection? %>
+<% elsif @tab == 'inspection_inspection_report' && (current_user&.permission?('reader') || current_user&.permission?('inspectionReader')) %>
   <%= render '/projects/show/inspection_inspection_report', project: @project %>
-<% elsif @tab == 'offer' && UxPolicy.new(current_user, nil).offer? %>
+<% elsif @tab == 'offer' && (current_user&.permission?('reader') || current_user&.permission?('offerReader')) %>
   <%= render '/projects/show/offer', project: @project %>
-<% elsif @tab == 'overview' && UxPolicy.new(current_user, nil).overview? %>
+<% elsif @tab == 'overview' && (current_user&.permission?('reader') || current_user&.permission?('overviewReader')) %>
   <%= render '/projects/show/overview', project: @project %>
-<% elsif @tab == 'underwriting_property_analysis' && UxPolicy.new(current_user, nil).underwriting? %>
+<% elsif @tab == 'underwriting_property_analysis' && (current_user&.permission?('reader') || current_user&.permission?('underwritingReader')) %>
   <%= render '/projects/show/underwriting_property_analysis', project: @project %>
-<% elsif @tab == 'underwriting_prepare_repc' && UxPolicy.new(current_user, nil).underwriting? %>
+<% elsif @tab == 'underwriting_prepare_repc' && (current_user&.permission?('reader') || current_user&.permission?('underwritingReader')) %>
   <%= render '/projects/show/underwriting_prepare_repc', project: @project %>
-<% elsif @tab == 'underwriting_review_offer' && UxPolicy.new(current_user, nil).underwriting? %>
+<% elsif @tab == 'underwriting_review_offer' && (current_user&.permission?('reader') || current_user&.permission?('underwritingReader')) %>
   <%= render '/projects/show/underwriting_review_offer', project: @project %>
 <% end %>
