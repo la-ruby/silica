@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class UxPolicy < ApplicationPolicy
+  #
+  # older
+  #
   # these are tabs in main navigation
   def overview?; true end
   def offer?; true end
@@ -15,4 +18,7 @@ class UxPolicy < ApplicationPolicy
   def resync?
     user&.staff? && APOLLO_INTERNAL_PRODUCTION
   end
+  #
+  # /older
+  #
 end

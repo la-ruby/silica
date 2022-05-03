@@ -1,0 +1,34 @@
+<%= spacer(3) %>
+
+<%= silica_container do %>
+  <div class="accordion" id="permissions-show-accordion">
+    <div class="accordion-item <%= inherit_styles %>">
+      <h2 class="accordion-header <%= inherit_styles %>">
+	<button class="accordion-button <%= inherit_styles %>" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+	  <span>
+	    Users (and Roles)
+	  </span>
+	</button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#permissions-show-accordion">
+	<div class="accordion-body">
+
+          <% User.all.order(:id).each do |user| %>
+	  <div class="row my-2">
+	    <div class="col-3 overflow-scroll">
+	      <%= user.email %>
+	    </div>
+	    <div class="col">
+              <%= form_with(url: "/permissions", method: :patch, id: "permissions-form-#{user.id}") do |form| %>
+                <%= form.hidden_field :user_id, value: user.id %>
+                <%= form.select "permissions", options_for_select(Permission::ALL, user.permissions), {}, multiple: true, id: "permissions_#{user.id}", class: 'form-select', size: 15, data: { controller: 'submits-form-immediately', action: 'change->submits-form-immediately#submit_form' }, form: "permissions-form-#{user.id}", disabled: user.email == APOLLO_ADMIN_LOGIN %>
+              <% end %>
+	    </div>
+	  </div>
+          <% end %>
+
+	</div>
+      </div>
+    </div>
+  </div>
+<% end %>

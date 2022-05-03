@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   resource :contact_searches, only: [:create]
   resource :scouts, only: [:create]
   resource :tx_scout_links, only: [:create]
+  get '/permissions', to: 'permissions#show'
+  patch '/permissions', to: 'permissions#update'
 
   resources :themes, only: [:edit, :update]
   resources :projects, only: [:index, :new, :create] do

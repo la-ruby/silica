@@ -2,49 +2,49 @@
   <div class="row">
     <div class="col">
       <ul class="nav nav-tabs">
-        <% if UxPolicy.new(current_user, nil).overview? %>
+        <% if current_user&.permission?('reader') || current_user&.permission?('overviewReader')  %>
 	<li class="nav-item fw-light">
 	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Overview' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=overview" %>">Overview</a>
 	</li>
         <% end %>
 
-        <% if UxPolicy.new(current_user, nil).offer? %>
+        <% if current_user&.permission?('reader') || current_user&.permission?('offerReader')  %>
 	<li class="nav-item fw-light">
 	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Offer' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=offer" %>">Offer</a>
 	</li>
         <% end %>
 
-        <% if UxPolicy.new(current_user, nil).inspection? %>
+        <% if current_user&.permission?('reader') || current_user&.permission?('inspectionReader')  %>
 	<li class="nav-item fw-light">
 	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Inspection' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=inspection" %>">Inspection</a>
 	</li>
         <% end %>
 
-        <% if UxPolicy.new(current_user, nil).underwriting? %>
+        <% if current_user&.permission?('reader') || current_user&.permission?('underwritingReader')  %>
 	<li class="nav-item fw-light">
 	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Underwriting' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=underwriting_review_offer" %>">Underwriting</a>
 	</li>
         <% end %>
 
-        <% if UxPolicy.new(current_user, nil).dispositions? %>
+        <% if current_user&.permission?('reader') || current_user&.permission?('dispositionsReader')  %>
 	<li class="nav-item fw-light">
 	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Dispositions' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=dispositions_checklist" %>">Dispositions</a>
 	</li>
         <% end %>
 
-        <% if UxPolicy.new(current_user, nil).marketplace? %>
+        <% if current_user&.permission?('reader') || current_user&.permission?('marketplaceReader')  %>
 	<li class="nav-item fw-light">
 	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Marketplace' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=marketplace" %>">Marketplace</a>
 	</li>
         <% end %>
 
-        <% if UxPolicy.new(current_user, nil).activity? %>
+        <% if current_user&.permission?('reader') || current_user&.permission?('activityReader')  %>
 	<li class="nav-item fw-light">
 	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Activity' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=activity" %>">Activity <span class="badge rounded-pill bg-danger">new</span></a>
 	</li>
         <% end %>
 
-        <% if UxPolicy.new(current_user, nil).files? %>        
+        <% if current_user&.permission?('reader') || current_user&.permission?('filesReader')  %>
 	<li class="nav-item fw-light">
 	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Files' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=files" %>">Files</a>
 	</li>

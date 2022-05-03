@@ -57,6 +57,11 @@
           </button>
           <ul class="dropdown-menu dropdown-menu-lg-end <%= current_area.high_background_style %> text-reset">
             <li class=""><a class="btn dropdown-item text-reset silica-weight-reset" href="/account">Account</a></li>
+
+            <% if current_user&.permission?('reader') %>
+            <li class=""><a class="btn dropdown-item text-reset silica-weight-reset" href="/permissions">Permissions</a></li>
+            <% end %>
+
             <% if current_user.staff? %>
               <li class="">
                 <a class="btn dropdown-item text-reset silica-weight-reset" href="<%= edit_configuration_path %>">Edit Configurtion</a>

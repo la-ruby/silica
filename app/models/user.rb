@@ -20,6 +20,10 @@ class User < ApplicationRecord
     LIMITED_USERS.include?(email)
   end
 
+  def permission?(string)
+    permissions.include?(string)
+  end
+    
   def has_trait?(trait)
     !limited?
   end
