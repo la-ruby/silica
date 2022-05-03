@@ -1,4 +1,4 @@
-<% if (current_user&.permission?('reader') || current_user&.permission?('underwrtitingReader')) %>
+<% if (current_user&.permission?('reader') || current_user&.permission?('underwritingReader')) %>
   <%= render '/projects/show/shared/summary', project: @project %>
 
   <%= render '/projects/show/shared/tabs', project: @project, active: 'Underwriting' %>
