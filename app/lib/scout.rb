@@ -4,8 +4,6 @@
 class Scout
   # Generates a scout url by calling remote api
   def self.generate(project)
-    auth_ = "#{INSPECTION_SERVICE_USERNAME}|#{INSPECTION_SERVICE_PASSWORD}|4/14/2022 10:00:00 PM|#{INSPECTION_SERVICE_REF_NO}|00000"
-    auth = encrypt_aes(auth_)
     uri = URI.parse(INSPECTION_SERVICE_URL)
     req = Net::HTTP.new(uri.hostname, uri.port)
     req.use_ssl = true
@@ -17,37 +15,47 @@ class Scout
         clientid: INSPECTION_SERVICE_CLIENT_ID,
         reportaction: 'create',
         address: project.street,
+        city: project.city,
+        state: project.two_letter_state,
         zip: project.zip,
         producttype: 'Scout',
         productid: 'PDAv1',
         userid: INSPECTION_SERVICE_USER_ID,
         jsondata: {
-          homeownerEmail: 'testing@example.com', # testing
-          deliveryEmail: 'testing@example.com'   # testing
+          homeownerEmail: project.email,
+          deliveryEmail: SILICA_SUPPORT
         }
       }.to_json,
       {
         'Content-Type' => 'application/json',
         "Accept" => "application/json" })
     Rails.logger.info "<< #{res.inspect} D3BUG"
-    sleep 5
-    return 'https://example.com/testing'
+    Rails.logger.info "<< #{res.body} D3BUG"
+    raise 'Error 1651786261' if res.body.strip.size != 36 # sanity check
+    return "https://#{INSPECTION_SERVICE_URL2}/sso/#{INSPECTION_SERVICE_CLIENT_ID}/#{INSPECTION_SERVICE_USER_ID}/#{res.body.strip}/#{CGI.escape(auth)}"
   end
 
+  def self.auth
+    encrypt_aes("#{INSPECTION_SERVICE_USERNAME}|#{INSPECTION_SERVICE_PASSWORD}|#{Time.now.utc.strftime("%FT%T %z")}|ref#{SecureRandom.hex[0..6]}|loanno").gsub("\n",'')
+  end
 
-  def self.encrypt_aes(plaintext)
-    secret = "#{INSPECTION_SERVICE_KEY}#{INSPECTION_SERVICE_USERNAME}"
-    salt = INSPECTION_SERVICE_CLIENT_ID
-    key = OpenSSL::KDF.pbkdf2_hmac(secret, salt: salt, iterations: 1000, length: 32, hash: "sha1")
-    # from https://stackoverflow.com/a/68088758
-    cipher = OpenSSL::Cipher.new('AES-256-CBC')
+  # copied from elsewhere
+  def self.encrypt_aes(plain)
+    inputkey = INSPECTION_SERVICE_KEY + INSPECTION_SERVICE_USER_ID
+    inputiv = INSPECTION_SERVICE_CLIENT_ID
+
+    # Encryption
+    cipher = OpenSSL::Cipher::AES.new(256, :CBC)
     cipher.encrypt
+
+    key_iv = OpenSSL::PKCS5.pbkdf2_hmac_sha1(inputkey, inputiv, 1000, cipher.key_len+cipher.iv_len)
+    key = key_iv[0, cipher.key_len]
+    iv  = key_iv[cipher.key_len, cipher.iv_len]
+
     cipher.key = key
-    nonce = cipher.random_iv
-    cipher.iv = nonce
-    ciphertext = cipher.update(plaintext) + cipher.final
-    sizeIvCiphertext = ['10000000'].pack('H*').concat(nonce.concat(ciphertext))
-    return Base64.encode64(sizeIvCiphertext)
-    # /from https://stackoverflow.com/a/68088758
+    cipher.iv = iv
+
+    encrypted = cipher.update(plain) + cipher.final
+    Base64.encode64(encrypted)
   end
 end
