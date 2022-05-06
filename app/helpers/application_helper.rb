@@ -137,7 +137,21 @@ module ApplicationHelper
   end
 
   def root_folder_link(project)
-    link_to('root', "/projects/#{project.id}?tab=files", class: "text-decoration-none")
+    link_to('root', "/projects/#{project.id}?tab=files&folder=/", class: "text-decoration-none")
+  end
+
+  def folder_chain_hyperlinks(project, folder)
+    if folder == "/"
+      return (root_folder_link(project) + ' /')
+    end
+
+    crumbs = []
+    folder.split("/").each do |item|
+      link_text = (item == "" ? 'root' : item)
+      folder_path = /\A(.*?#{item}\/)/.match(folder)[1]
+      crumbs << link_to(link_text, "/projects/#{project.id}?tab=files&folder=#{folder_path}", class: "text-decoration-none")
+    end
+    (crumbs.join(' / ') + ' /').html_safe
   end
 
   def svg_box

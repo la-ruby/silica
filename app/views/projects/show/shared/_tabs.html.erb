@@ -46,7 +46,7 @@
 
         <% if current_user&.permission?('reader') || current_user&.permission?('filesReader')  %>
 	<li class="nav-item fw-light">
-	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Files' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=files" %>">Files</a>
+	  <a class="nav-link text-brandprimary <%= 'zactive fw-bold' if active == 'Files' %> bg-transparent" href="<%= "/projects/#{project.id}?tab=files&folder=/" %>">Files</a>
 	</li>
         <% end %>
 

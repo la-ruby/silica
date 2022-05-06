@@ -88,13 +88,10 @@ class Project < ApplicationRecord
   def project_files_for_react_component(folder)
     arr = project_files.select do |project_file|
       project_file.folder == folder
-    end.map do |project_file|
-      {
-        id: project_file.id,
-        name: project_file.silicafile.blob.filename.to_s
-      }
-    end
-    arr.concat(ProjectFile::STANDARD_FOLDERS) if folder == 'root'
+    end.map do |project_file| { id: project_file.id, name: project_file.silicafile.blob.filename.to_s } end
+    arr.concat(ProjectFile::STANDARD_FOLDERS) if folder == '/'
+
+    arr.concat(ProjectFile::STANDARD_CONSTRUCTION_SUBFOLDERS) if folder == '/Construction_Remodel/'
     arr
   end
 

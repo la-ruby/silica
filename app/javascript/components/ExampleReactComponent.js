@@ -19,19 +19,20 @@ setChonkyDefaults({ iconComponent: ChonkyIconFA });
 ChonkyActions.ToggleShowFoldersFirst.option.defaultValue = false;
 
 const onFileAction = (data) => {
+
   switch (data.id) {
     case ChonkyActions.OpenFiles.id:
       if (data.payload.files[0].isDir == undefined) {
         window.location.href = '/project_files/' + data.payload.files[0].id
       } else if (data.payload.files[0].isDir == true) {
         console.log(data.payload.targetFile.name)
-	window.location.href = '/projects/' + data.state.instanceId + '?tab=files&folder=' + data.payload.targetFile.name
+	window.location.href = '/projects/' + data.state.instanceId + '?tab=files&folder=' + window.silica_chonky_current_folder + data.payload.targetFile.name + '/'
       } else {
 	alert('(Error - 501: Not Implemented')
       }
       break;
     case ChonkyActions.CreateFolder.id:
-      console.log("here2")
+      console.log("tracing 1651877138")
       break;
     case ChonkyActions.UploadFiles.id:
       // console.log(data.state.instanceId)
@@ -53,6 +54,7 @@ class ExampleReactComponent extends React.Component {
         fillParentContainer={true}
         onFileAction={onFileAction}
 	files={this.props.files}
+        folderChain={[{ id: 'foo', name: 'baa', isDir: true }]}
 	fileActions={[ChonkyActions.UploadFiles]}
         disableSelection={true}
         disableDragAndDrop={true}

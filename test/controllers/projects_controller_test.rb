@@ -305,10 +305,22 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
       filename: 'apple.jpg'
     )
 
-    get "/projects/#{project.id}?tab=files"
+    get "/projects/#{project.id}?tab=files&folder=/"
     assert_equal "200", response.code
   end
 
+  test "get files /2" do
+    project = create(:project)
+    project_file = project.project_files.create
+    project_file.silicafile.attach(
+      io: File.open('test/fixtures/files/apple.jpg'),
+      filename: 'apple.jpg'
+    )
+    ProjectFile.last.update(folder: '/example/')
+
+    get "/projects/#{project.id}?tab=files&folder=/example/"
+    assert_equal "200", response.code
+  end
 
   test "get /projects/n/overview variation" do
     project = create(:project)
