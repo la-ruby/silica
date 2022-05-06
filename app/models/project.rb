@@ -101,4 +101,14 @@ class Project < ApplicationRecord
   def events_for_activity_tab
     Event.where(record_type: 'Project', record_id: id).order('timestamp DESC')
   end
+
+  def trigger_project_creation_notification(inventor_id = -2)
+    Event.create(
+      category: 'project_creation',
+      timestamp: Time.now,
+      record_id: id,
+      record_type: 'Project',
+      inventor_id: inventor_id
+    )
+  end
 end

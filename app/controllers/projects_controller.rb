@@ -95,13 +95,7 @@ class ProjectsController < ApplicationController
     @project = Project.new({ **project_params, 'status' => 'Open', 'req_date' => Time.now,
                                                'direction' => 'Outbound' })
     result = @project.save
-    Event.create(
-      category: 'project_creation',
-      timestamp: Time.now,
-      record_id: @project.id,
-      record_type: 'Project',
-      inventor_id: current_user.id
-    ) if result
+    @project.trigger_project_creation_notification(current_user.id) if result
     flash[:notice] = (result ? 'Created.' : @project.errors.full_messages.join(', '))
     result
   end

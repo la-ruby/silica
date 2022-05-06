@@ -10,7 +10,7 @@
 <script src="<%= silica_neutral_bucket('/packages/jquery.jeditable.datepicker.2.0.19.min.js') %>" defer></script>
 <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js" defer></script>
-
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script>
 // https://turbo.hotwired.dev/handbook/building mentions this hook
 document.addEventListener("turbo:load", function() {
@@ -30,4 +30,9 @@ document.addEventListener("turbo:load", function() {
     }, 2000)
   }
 })
+
+// from https://www.kirilv.com/canvas-confetti/
+window.randomInRange = function(min, max) {
+  return Math.random() * (max - min) + min;
+}
 </script>

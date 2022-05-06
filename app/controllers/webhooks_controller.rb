@@ -16,7 +16,10 @@ class WebhooksController < ApplicationController
       expectedtimeline: expected_timeline, direction: 'Inbound', req_date: Time.now.iso8601,
       status: 'Open', **par
     )
-    record.save
+    result = record.save
+    if result
+      record.trigger_project_creation_notification
+    end
     render json: { message: 'ok' }, status: :ok
   end
 
