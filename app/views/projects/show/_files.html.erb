@@ -8,7 +8,6 @@
       <div class="col">
         <div class="my-1 py-1">
           <div style="max-width: 999px; height: 75vh; background-color: rgba(0,0,0,0.01)">
-            <div style="padding: 8px">Folder: <%= params[:folder].presence || '/' %></div>
             <div style="padding: 8px">Folder: <%= folder_chain_hyperlinks(@project, params[:folder])  %></div>
 
             <%= javascript_include_tag 'silica_react_entry' %>
