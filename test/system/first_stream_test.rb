@@ -8,6 +8,7 @@ class FirstStreamTest < ApplicationSystemTestCase
   end
 
   test "project creation notification" do
+    skip
     new_window = open_new_window
     within_window new_window do
       visit "/projects"

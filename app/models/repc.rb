@@ -7,27 +7,6 @@ class Repc < ApplicationRecord
 
   belongs_to :project
 
-  after_update :activity_tab_updates
-
-  def activity_tab_updates
-    if silica_attribute_added?('signed_by_company_at', previous_changes)
-      Event.create(
-        category: 'addition_repc_signed_by_company_at',
-        timestamp: Time.parse(signed_by_company_at),
-        record_id: project.id,
-        record_type: 'Project',
-        inventor_id: -2)
-    end
-  end
-
-  def silica_attribute_added?(the_attribute, the_previous_changes)
-    if the_previous_changes.has_key?(the_attribute) &&
-       (!(the_previous_changes[the_attribute][0].blank? && the_previous_changes[the_attribute][1].blank?)) && # change from nil to "" doesnt count
-       the_previous_changes[the_attribute][0].blank? && the_previous_changes[the_attribute][1].present?
-      true
-    end
-  end
-
   def second_seller_mop_token
     "#{mop_token}f"
   end
