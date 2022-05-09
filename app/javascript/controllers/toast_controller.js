@@ -40,7 +40,7 @@ export default class extends Controller {
 
     let accent = undefined
 
-    let prefixes = [
+    let all_accents = [
       "en_US_Alice",
       "sv_SE_Alva",
       "fr_CA_Amelie",
@@ -62,8 +62,11 @@ export default class extends Controller {
     
     let accents = $(this.element).data('accent').split(",")
     if (accents[0] == 'random') {
-    	accent = prefixes[Math.floor(Math.random()*prefixes.length)]
+      accent = all_accents[Math.floor(Math.random()*all_accents.length)]
+    } else {
+      accent = accents[Math.floor(Math.random()*accents.length)]
     }
+    console.log(accent)
     let str = $(this.element).data('bucket') + '/audios/' + accent + '_' + $(this.element).data('voice').replace(/ /g,"_") + '.mp3'
     // github.com/search?q=DOMException+play&type=commits
     let promise = new Audio(str).play();

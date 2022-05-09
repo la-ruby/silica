@@ -12,6 +12,15 @@ class CommentsController < ApplicationController
       )
     )
     result = @comment.save
+    Event.create(
+      category: 'comment_added',
+      timestamp: @comment.created_at,
+      record_id: project.id,
+      record_type: 'Project',
+      secondary_record_id: @comment.id,
+      secondary_record_type: 'Comment',
+      inventor_id: @comment.inventor_id
+    ) if result
 
     head :no_content
   end

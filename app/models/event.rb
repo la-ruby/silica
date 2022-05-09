@@ -1,7 +1,9 @@
 class Event < ApplicationRecord
   # Definitions, activity here stands refers to the activity feed tab
   DEFINITIONS = [
-    { 'category' => 'project_creation',                   'color' => 'primary', 'toast' => '1', 'toast_stength' => '100', 'activity' => '1', 'confetti' => '1', 'confetti_strength' => '100', 'confetti_phase_in_timesan' => nil, 'confetti_phase_in_start' => nil, 'voice' => 'Project created', 'accent' => 'random', 'voice_strength' => '100', 'voice_phase_in_timespan' => nil, 'voice_phase_in_start' => nil },
+    { 'category' => 'project_creation', 'color' => 'primary',   'toast' => '1', 'toast_stength' => '100', 'activity' => '1', 'confetti' => '1', 'confetti_strength' => '100', 'confetti_phase_in_timesan' => nil, 'confetti_phase_in_start' => nil, 'voice' => 'Project created', 'voice_strength' => '100', 'voice_phase_in_timespan' => nil, 'voice_phase_in_start' => nil, 'accent' => 'random' },
+    { 'category' => 'comment_added',    'color' => 'secondary', 'toast' => '1', 'toast_stength' => '100', 'activity' => '1', 'confetti' => '0', 'confetti_strength' => nil,   'confetti_phase_in_timesan' => nil, 'confetti_phase_in_start' => nil, 'voice' => 'Comment added',   'voice_strength' => '100', 'voice_phase_in_timespan' => nil, 'voice_phase_in_start' => nil, 'accent' => 'it_IT_Alice,sv_SE_Alva,de_DE_Anna,en_GB_Daniel,nl_BE_Ellen,en-scotland_Fiona,pt_PT_Joana,en_AU_Karen,ja_JP_Kyoko,it_IT_Luca,ru_RU_Milena,en_IE_Moira,en_US_Samantha,fi_FI_Satu,en_US_Victoria' },
+    { 'category' => 'repc_signed',      'color' => 'success',   'toast' => '1', 'toast_stength' => '100', 'activity' => '1', 'confetti' => '0', 'confetti_strength' => nil,   'confetti_phase_in_timesan' => nil, 'confetti_phase_in_start' => nil, 'voice' => 'Repcee signed',   'voice_strength' => '100', 'voice_phase_in_timespan' => nil, 'voice_phase_in_start' => nil, 'accent' => 'en-scotland_Fiona,en_US_Victoria' },
   ]
 
   # blog.corsego.com/turbo-hotwire-broadcasts

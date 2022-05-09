@@ -10,8 +10,10 @@
       Project <%= event.record.id %> created
     <% elsif event.category == 'addition_repc_signed_by_company_at' %>
       Repc signed by <%= COMPANY %>
-    <% elsif event.category == 'project_comment' %>
+    <% elsif event.category == 'comment_added' %>
       <%= event.inventor.initials.upcase %>. commented: <%= Comment.find(event.secondary_record_id).content %>
+    <% elsif event.category == 'repc_signed' %>
+      Repc signed for project <%= event.record.id %>
     <% end %>
   </div>
 </div>

@@ -17,9 +17,9 @@
         <div class="col trix-content-is-inline">
           <% if event.category == 'project_creation' %>
             Project created <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
-          <% elsif event.category == 'addition_repc_signed_by_company_at' %>
+          <% elsif event.category == 'repc_signed' %>
             Repc signed by <%= COMPANY %> <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
-          <% elsif event.category == 'project_comment' %>
+          <% elsif event.category == 'comment_added' %>
             <%= Comment.find(event.secondary_record_id).content %> <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% end %>
         </div>
