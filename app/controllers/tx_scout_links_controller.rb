@@ -8,6 +8,7 @@ class TxScoutLinksController < ApplicationController
     authorize nil, policy_class: TxScoutLinkPolicy
     project = Project.find(tx_scout_link_params[:project_id])
     NotificationsMailer.tx_scout_link(project).deliver_now
+    ScoutMail.new.perform(project)
     project.update(scout_sent_at: Time.now.iso8601)
 
     respond_to do |format|
