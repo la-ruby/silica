@@ -7,6 +7,7 @@ class TxScoutLinksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "#create" do
+    stub_sendgrid_mail
     post tx_scout_links_path, params: { tx_scout_link: { project_id: @project.id }}, headers: { accept: Mime[:turbo_stream].to_s }
     assert_equal "200", response.code
   end
