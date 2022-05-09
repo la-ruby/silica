@@ -31,7 +31,7 @@ do
     echo say -v "$person" "${myArray[$i]}" -o "./public/audios/${arr2[$i2]}_$s2.aiff"
     say -v "$person" "${myArray[$i]}" -o "/tmp/audios/${arr2[$i2]}_$s2.aiff"
     echo file $s2
-    ffmpeg -i "/tmp/audios/${arr2[$i]}_$s2.aiff" -f mp3 -acodec libmp3lame -ab 192000 -ar 44100 "/tmp/audios/${arr2[$i]}_$s2.mp3"
+    ffmpeg -i "/tmp/audios/${arr2[$i2]}_$s2.aiff" -f mp3 -acodec libmp3lame -ab 192000 -ar 44100 "/tmp/audios/${arr2[$i2]}_$s2.mp3"
   done
 done
 

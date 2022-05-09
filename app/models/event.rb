@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   # Definitions, activity here stands refers to the activity feed tab
   DEFINITIONS = [
-    { 'category' => 'project_creation',                   'color' => 'primary', 'toast' => '1', 'toast_stength' => '100', 'activity' => '1', 'confetti' => '1', 'confetti_strength' => '100', 'confetti_phase_in_timesan' => nil, 'confetti_phase_in_start' => nil, 'voice' => 'Project created', 'accent' => 'en_US', 'voice_strength' => '100', 'voice_phase_in_timespan' => nil, 'voice_phase_in_start' => nil },
+    { 'category' => 'project_creation',                   'color' => 'primary', 'toast' => '1', 'toast_stength' => '100', 'activity' => '1', 'confetti' => '1', 'confetti_strength' => '100', 'confetti_phase_in_timesan' => nil, 'confetti_phase_in_start' => nil, 'voice' => 'Project created', 'accent' => 'random', 'voice_strength' => '100', 'voice_phase_in_timespan' => nil, 'voice_phase_in_start' => nil },
   ]
 
   # blog.corsego.com/turbo-hotwire-broadcasts
