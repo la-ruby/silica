@@ -1,4 +1,9 @@
 class Event < ApplicationRecord
+  # Definitions
+  DEFINITIONS = [
+    { 'name' => 'project_creation', 'toast' => '1', 'toast_stength': '100', 'animation': '1', 'animation_strength': '100', 'animation_phase_in_timesan': nil, 'animation_phase_in_start': nil, 'voice': 'en_US', 'voice_strength': '100', 'voice_phase_in_timesan': nil, 'voice_phase_in_start': nil }
+  ]
+
   TOASTABLE_CATEGORIES = [
     'project_creation',
     'addition_repc_signed_by_company_at',
