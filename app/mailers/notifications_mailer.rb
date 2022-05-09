@@ -14,12 +14,4 @@ class NotificationsMailer < ApplicationMailer
       bcc: [ APOLLO_ADMIN_LOGIN ],
       subject: "#{ip_prefix} Someone clicked the \"Request Info\" button")
   end
-
-  def tx_scout_link(project)
-    @project = project
-    mail(
-      to: project.email,
-      bcc: [ APOLLO_ADMIN_LOGIN ],
-      subject: "Here's your Mobile Property Inspection Link")
-  end
 end
