@@ -7,7 +7,9 @@ class PermissionsController < ApplicationController
 
   def show
     # used for testing notifications
-    # Project.last.listing.update(listed: 't')
+    Project.last.update(marketing_mail_sent: nil)
+    sleep 1
+    Project.last.update(marketing_mail_sent: Time.now.iso8601)
 
     authorize nil, policy_class: PermissionPolicy
   end

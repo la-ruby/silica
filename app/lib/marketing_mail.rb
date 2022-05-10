@@ -76,6 +76,7 @@ class MarketingMail
     raise 'Step1OfSingleSendFailed' unless id
 
     response = sg.client.marketing._("singlesends/#{id}/schedule").put(request_body: {send_at: 'now'}) 
+    project.update(marketing_mail_sent: Time.now.iso8601)
     response.body
   end
 

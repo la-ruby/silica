@@ -9,7 +9,8 @@ arr1=(
   "Repcee signed by seller"
   "Offer viewed by seller"
   "Listing added"
-  "Listing removed")
+  "Listing removed"
+  "Marketing mail sent")
 
 arr2=(
   "it_IT_Alice"

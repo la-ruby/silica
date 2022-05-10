@@ -34,6 +34,14 @@ class Project < ApplicationRecord
         record_type: 'Project',
         inventor_id: -3)
     end
+    if silica_attribute_added?('marketing_mail_sent', previous_changes)
+      Event.create(
+        category: 'marketing_mail_sent',
+        timestamp: Time.now,
+        record_id: id,
+        record_type: 'Project',
+        inventor_id: -2)
+    end
   end
 
   def silica_attribute_added?(the_attribute, the_previous_changes)

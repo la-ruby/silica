@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_10_023930) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_10_040056) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -267,6 +267,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_023930) do
     t.string "analysis_at"
     t.text "scout"
     t.string "scout_sent_at"
+    t.string "marketing_mail_sent"
   end
 
   create_table "property_disposition_checklists", force: :cascade do |t|
