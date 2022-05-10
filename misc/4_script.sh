@@ -14,7 +14,9 @@ arr1=(
   "File added"
   "Addendum sent"
   "Offer sent"
-  "Property analysis started")
+  "Property analysis started"
+  "Repcee received feedback"
+  "Addendum received feedback")
 
 arr2=(
   "it_IT_Alice"
