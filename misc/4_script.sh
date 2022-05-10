@@ -10,7 +10,8 @@ arr1=(
   "Offer viewed by seller"
   "Listing added"
   "Listing removed"
-  "Marketing mail sent")
+  "Marketing mail sent"
+  "File added")
 
 arr2=(
   "it_IT_Alice"

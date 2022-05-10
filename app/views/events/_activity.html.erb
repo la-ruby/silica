@@ -25,6 +25,8 @@
             Repc signed by seller <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% elsif event.category == 'offer_viewed' %>
             Offer viewed by seller <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
+          <% elsif event.category == 'file_added' %>
+            File added: <%= ProjectFile.find(event.secondary_record_id).silicafile.blob.filename.to_s %>  <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% elsif event.category == 'marketing_mail_sent' %>
             Marketing mail sent  <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% elsif event.category == 'listing_added' %>
