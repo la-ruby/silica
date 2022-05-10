@@ -6,6 +6,11 @@ class PermissionsController < ApplicationController
   after_action :verify_authorized
 
   def show
+    # used for testing notifications
+    # Repc.last.update(accepted_at: nil)
+    # sleep 1
+    # Repc.last.update(accepted_at: Time.now.iso8601)
+
     authorize nil, policy_class: PermissionPolicy
   end
 

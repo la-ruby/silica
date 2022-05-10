@@ -5,7 +5,8 @@ rm /tmp/audios/*
 arr1=(
   "Project created"
   "Comment added"
-  "Repcee signed")
+  "Repcee signed"
+  "Repcee signed by seller")
 
 arr2=(
   "it_IT_Alice"
@@ -41,3 +42,4 @@ do
 done
 
 rm /tmp/audios/*.aiff
+cp /tmp/audios/*.mp3 ~/silica-bucket/neutral/neutral/audios/

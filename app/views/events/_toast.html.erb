@@ -14,6 +14,8 @@
       <%= event.inventor.initials.upcase %>. commented: <%= Comment.find(event.secondary_record_id).content %>
     <% elsif event.category == 'repc_signed' %>
       Repc signed for project <%= event.record.id %>
+    <% elsif event.category == 'repc_signed_by_seller' %>
+      Repc signed by seller for project <%= event.record.id %>
     <% end %>
   </div>
 </div>

@@ -18,6 +18,24 @@ class Repc < ApplicationRecord
         record_type: 'Project',
         inventor_id: -2)
     end
+
+    if silica_attribute_added?('accepted_at', previous_changes)
+      Event.create(
+        category: 'repc_signed_by_seller',
+        timestamp: Time.parse(accepted_at),
+        record_id: project.id,
+        record_type: 'Project',
+        inventor_id: -3)
+    end
+
+    if silica_attribute_added?('second_seller_accepted_at', previous_changes)
+      Event.create(
+        category: 'repc_signed_by_seller',
+        timestamp: Time.parse(second_seller_accepted_at),
+        record_id: project.id,
+        record_type: 'Project',
+        inventor_id: -4)
+    end
   end
 
   def silica_attribute_added?(the_attribute, the_previous_changes)

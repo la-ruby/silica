@@ -21,6 +21,8 @@
             Repc signed by <%= COMPANY %> <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% elsif event.category == 'comment_added' %>
             <%= Comment.find(event.secondary_record_id).content %> <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
+          <% elsif event.category == 'repc_signed_by_seller' %>
+            Repc signed by seller <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% end %>
         </div>
         <div class="col-auto">
