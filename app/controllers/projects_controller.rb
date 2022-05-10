@@ -74,6 +74,13 @@ class ProjectsController < ApplicationController
   def download_property_analysis
     authorize nil, policy_class: ProjectPolicy
     AnalysisJob.perform_later(@project)
+    Event.create(
+      category: 'property_analysis_started',
+      timestamp: Time.now,
+      record_id: @project.id,
+      record_type: 'Project',
+      inventor_id: current_user.id
+    )
     4.times do # TODO: remove me
       Rails.logger.info "Sleep 1"
       sleep 1 unless Rails.env.test?

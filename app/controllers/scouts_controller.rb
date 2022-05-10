@@ -10,7 +10,6 @@ class ScoutsController < ApplicationController
     authorize nil, policy_class: ScoutPolicy
     project = Project.find(scout_params[:project_id])
     project.update(scout: Scout.generate(project))
-
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [

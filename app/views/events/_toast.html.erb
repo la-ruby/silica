@@ -18,6 +18,8 @@
       Repc signed by seller for project <%= event.record.id %>
     <% elsif event.category == 'offer_viewed' %>
       Offer viewed by seller for project <%= event.record.id %>
+    <% elsif event.category == 'property_analysis_started' %>
+      Property Analysis Started for project <%= event.record.id %>
     <% elsif event.category == 'offer_sent' %>
       Offer sent
     <% elsif event.category == 'addendum_sent' %>

@@ -13,7 +13,8 @@ arr1=(
   "Marketing mail sent"
   "File added"
   "Addendum sent"
-  "Offer sent")
+  "Offer sent"
+  "Property analysis started")
 
 arr2=(
   "it_IT_Alice"
