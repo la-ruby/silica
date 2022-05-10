@@ -23,6 +23,26 @@ class Project < ApplicationRecord
   has_many :addendums
 
   after_create :update_searchable_columns
+  after_update :activity_tab_updates
+
+  def activity_tab_updates  
+    if silica_attribute_added?('offer_viewed', previous_changes)
+      Event.create(
+        category: 'offer_viewed',
+        timestamp: offer_viewed,
+        record_id: id,
+        record_type: 'Project',
+        inventor_id: -3)
+    end
+  end
+
+  def silica_attribute_added?(the_attribute, the_previous_changes)
+    if the_previous_changes.has_key?(the_attribute) &&
+       (!(the_previous_changes[the_attribute][0].blank? && the_previous_changes[the_attribute][1].blank?)) && # change from nil to "" doesnt count
+       the_previous_changes[the_attribute][0].blank? && the_previous_changes[the_attribute][1].present?
+      true
+    end
+  end
 
   def update_searchable_columns
     str = "#{name} " \

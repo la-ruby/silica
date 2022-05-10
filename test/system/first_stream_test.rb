@@ -15,8 +15,7 @@ class FirstStreamTest < ApplicationSystemTestCase
 
     create_project_flow
     switch_to_window new_window
-    # assert_selector ".toast", visible: nil
-    # assert first(".toast", visible: nil)['innerHTML'] =~ /Project (\d+) created/
-    puts "assertion skipped"
+    assert_selector ".toast", visible: nil
+    assert first(".toast", visible: nil)['innerHTML'] =~ /Project (\d+) created/
   end
 end

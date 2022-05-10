@@ -7,9 +7,9 @@ class PermissionsController < ApplicationController
 
   def show
     # used for testing notifications
-    # Repc.last.update(accepted_at: nil)
-    # sleep 1
-    # Repc.last.update(accepted_at: Time.now.iso8601)
+    Project.last.update(offer_viewed: nil)
+    sleep 1
+    Project.last.update(offer_viewed: Time.now)
 
     authorize nil, policy_class: PermissionPolicy
   end

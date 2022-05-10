@@ -6,7 +6,8 @@ arr1=(
   "Project created"
   "Comment added"
   "Repcee signed"
-  "Repcee signed by seller")
+  "Repcee signed by seller"
+  "Offer viewed by seller")
 
 arr2=(
   "it_IT_Alice"

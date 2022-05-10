@@ -41,7 +41,7 @@ export default class extends Controller {
     let accent = undefined
 
     let all_accents = [
-      "en_US_Alice",
+      "it_IT_Alice",
       "sv_SE_Alva",
       "fr_CA_Amelie",
       "de_DE_Anna",
