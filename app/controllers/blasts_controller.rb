@@ -9,6 +9,13 @@ class BlastsController < ApplicationController
   # POST /examples or /examples.json
   def create
     authorize nil, policy_class: BlastPolicy
+    Event.create(
+      category: 'marketing_mail_sent',
+      timestamp: Time.now,
+      record_id: blast_params[:project],
+      record_type: 'Project',
+      inventor_id: current_user.id
+    )
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [

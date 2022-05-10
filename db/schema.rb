@@ -267,7 +267,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_040056) do
     t.string "analysis_at"
     t.text "scout"
     t.string "scout_sent_at"
-    t.string "marketing_mail_sent"
   end
 
   create_table "property_disposition_checklists", force: :cascade do |t|
