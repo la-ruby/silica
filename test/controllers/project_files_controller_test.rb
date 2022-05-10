@@ -28,7 +28,7 @@ class ProjectFilesControllerTest < ActionDispatch::IntegrationTest
     project = create(:project)
 
     assert_difference("ProjectFile.count") do
-      post "/projects/#{project.id}/project_files"
+      post "/projects/#{project.id}/project_files", params: {"file"=> Rack::Test::UploadedFile.new("./test/fixtures/files/apple.jpg", "image/jpeg"), "folder"=>"/", "submit"=>"Submit", "project_id"=> project.id}
     end
   end
 

@@ -18,6 +18,8 @@
       Repc signed by seller for project <%= event.record.id %>
     <% elsif event.category == 'offer_viewed' %>
       Offer viewed by seller for project <%= event.record.id %>
+    <% elsif event.category == 'addendum_sent' %>
+      Addendum sent
     <% elsif event.category == 'file_added' %>
       File added: <%= ProjectFile.find(event.secondary_record_id).silicafile.blob.filename.to_s %>
     <% elsif event.category == 'marketing_mail_sent' %>

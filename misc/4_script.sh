@@ -11,7 +11,8 @@ arr1=(
   "Listing added"
   "Listing removed"
   "Marketing mail sent"
-  "File added")
+  "File added"
+  "Addendum sent")
 
 arr2=(
   "it_IT_Alice"

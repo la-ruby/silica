@@ -58,6 +58,7 @@ class AddendumVersionsController < ApplicationController
     end
 
     def send_addendum_version_to_seller
+
       sendgrid_message_id = AddendumMail.new.perform(
         to: @addendum_version.addendum.project.email,
         mop_token: @addendum_version.addendum.project.repc.mop_token,
@@ -72,6 +73,14 @@ class AddendumVersionsController < ApplicationController
           street: @addendum_version.addendum.project.street
         )
       end
+      Event.create(
+        category: 'addendum_sent',
+        timestamp: Time.now,
+        record_id: @addendum_version.addendum.project.id,
+        record_type: 'Project',
+        inventor_id: current_user.id
+      )
+
       @addendum_version.addendum.project.update(sendgrid_message_id: sendgrid_message_id)
       @addendum_version.update(sent_to_seller_at: Time.now.iso8601)
       [

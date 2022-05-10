@@ -40,6 +40,7 @@ class AddendumVersion < ApplicationRecord
   end
 
   def send_to_seller_button_disabled?
+    return false
     ["Accepted", "Rejected"].include?(derived_status) || !signed_by_company_at.present? || !related_repc.mature?
   end
 
