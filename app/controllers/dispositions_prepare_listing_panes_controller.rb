@@ -29,6 +29,9 @@ class DispositionsPrepareListingPanesController < ApplicationController
 
   def resource_updates
     listing = @project.listing
+    if params[:dispositions_prepare_listing_pane][:listed] != nil && listing.listed != params[:dispositions_prepare_listing_pane][:listed]
+      params[:dispositions_prepare_listing_pane][:listed_whodunnit] = current_user.id
+    end
     listing.update(dispositions_prepare_listing_pane_params)
     listing.errors.full_messages.join(', ').presence || 'Updated'
   end
@@ -64,7 +67,8 @@ class DispositionsPrepareListingPanesController < ApplicationController
       :interest_rate,
       :balloon_payment,
       :suggested_price,
-      :listed
+      :listed,
+      :listed_whodunnit
     )
   end
 end

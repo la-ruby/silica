@@ -1,6 +1,10 @@
 require "test_helper"
 
 class WebflowPushJobTest < ActiveJob::TestCase
+  setup do
+    sign_in create(:user)
+  end
+
   # does post
   test "#perform" do
     create(:project, :has_listed)

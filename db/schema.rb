@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_03_051443) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_10_023930) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -205,6 +205,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_03_051443) do
     t.integer "suggested_price"
     t.string "webflow_id"
     t.string "opportunity_type", default: "opportunity_investment"
+    t.integer "listed_whodunnit"
   end
 
   create_table "project_files", force: :cascade do |t|

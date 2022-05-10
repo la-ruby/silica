@@ -7,7 +7,9 @@ arr1=(
   "Comment added"
   "Repcee signed"
   "Repcee signed by seller"
-  "Offer viewed by seller")
+  "Offer viewed by seller"
+  "Listing added"
+  "Listing removed")
 
 arr2=(
   "it_IT_Alice"

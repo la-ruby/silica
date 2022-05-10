@@ -2,8 +2,8 @@ require "test_helper"
 
 class ListingsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @project = create(:project, :has_listed)
     sign_in(create(:user))
+    @project = create(:project, :has_listed)
   end
 
   test "get listings" do

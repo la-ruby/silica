@@ -36,7 +36,7 @@ FactoryBot.define do
 
     trait :has_listed do
       after(:create) do |project, evaluator|
-        project.listing.update(listed: 'true')
+        project.listing.update(listed: 'true', listed_whodunnit: User.first.id)
       end
     end
 

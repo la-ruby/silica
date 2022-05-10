@@ -8,6 +8,27 @@ class Listing < ApplicationRecord
   has_many :bids
   has_many :users, through: :bids
 
+  after_update :activity_tab_updates
+
+  def activity_tab_updates
+    if silica_attribute_toggled?('listed', previous_changes)
+      Event.create(
+        category: ((previous_changes["listed"][1] == true || previous_changes["listed"][1] == 'true') ? 'listing_added' : 'listing_removed'),
+        timestamp: Time.now,
+        record_id: project.id,
+        record_type: 'Project',
+        inventor_id: listed_whodunnit)
+    end
+  end
+
+  def silica_attribute_toggled?(the_attribute, the_previous_changes)
+    if the_previous_changes.has_key?(the_attribute) && 
+      (the_previous_changes[the_attribute][1] != nil) && # setting to nil doesnt cout, its used during testing
+      the_previous_changes[the_attribute][0] != the_previous_changes[the_attribute][1]
+      true
+    end
+  end
+
   def self.search(options = {})
     relation = Listing.showables
 
