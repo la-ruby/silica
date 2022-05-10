@@ -16,7 +16,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test 'patch /projects/:id' do
     project = create(:project)
-    patch project_path(project), params: {"authenticity_token"=>"[FILTERED]", "project"=>{"lender_1"=>"testing", "lender_2"=>"aaa"}, "id"=>"147"} , headers: { accept: Mime[:turbo_stream].to_s }
+    patch project_path(project), params: {"authenticity_token"=>"[FILTERED]", "project"=>{"lender_1"=>"testing", "lender_2"=>"aaa", "underwriting_notes_for_sales"=>"testing", "sales_notes_for_underwriting"=>"testing"}, "id"=>"147"} , headers: { accept: Mime[:turbo_stream].to_s }
     assert_equal "200", response.code
   end
 
