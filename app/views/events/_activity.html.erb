@@ -25,6 +25,8 @@
             Repc signed by seller <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% elsif event.category == 'offer_viewed' %>
             Offer viewed by seller <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
+          <% elsif event.category == 'offer_sent' %>
+            Offer Sent <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% elsif event.category == 'addendum_sent' %>
             Addendum Sent <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% elsif event.category == 'file_added' %>

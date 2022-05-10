@@ -18,6 +18,13 @@ class RepcDeliveriesController < ApplicationController
         OfferMail.new.perform(to: repc.project.secondEmail, mop_token: repc.second_seller_mop_token, name: repc.project.secondName)
       )
     end
+    Event.create(
+      category: 'offer_sent',
+      timestamp: Time.now,
+      record_id: repc.project.id,
+      record_type: 'Project',
+      inventor_id: current_user.id
+    )
 
     respond_to do |format|
       format.turbo_stream do
