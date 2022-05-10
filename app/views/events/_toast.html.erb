@@ -18,6 +18,10 @@
       Repc signed by seller for project <%= event.record.id %>
     <% elsif event.category == 'offer_viewed' %>
       Offer viewed by seller for project <%= event.record.id %>
+    <% elsif event.category == 'sales_notes_added' %>
+      Sales notes added for project <%= event.record.id %>
+    <% elsif event.category == 'underwriting_notes_added' %>
+      Underwriting notes added for project <%= event.record.id %>
     <% elsif event.category == 'repc_feedback' %>
       Repc received feedback - project <%= event.record.id %>
     <% elsif event.category == 'addendum_feedback' %>

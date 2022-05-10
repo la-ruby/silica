@@ -42,6 +42,22 @@ class Project < ApplicationRecord
         record_type: 'Project',
         inventor_id: -2)
     end
+    if silica_attribute_added?('sales_notes_for_underwriting', previous_changes)
+      Event.create(
+        category: 'sales_notes_added',
+        timestamp: Time.now,
+        record_id: id,
+        record_type: 'Project',
+        inventor_id: -2)
+    end
+    if silica_attribute_added?('underwriting_notes_for_sales', previous_changes)
+      Event.create(
+        category: 'underwriting_notes_added',
+        timestamp: Time.now,
+        record_id: id,
+        record_type: 'Project',
+        inventor_id: -2)
+    end
   end
 
   def silica_attribute_added?(the_attribute, the_previous_changes)

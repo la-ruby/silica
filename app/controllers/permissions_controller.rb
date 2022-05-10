@@ -6,10 +6,10 @@ class PermissionsController < ApplicationController
   after_action :verify_authorized
 
   def show
-    # used for testing notifications
-    # Project.last.update(marketing_mail_sent: nil)
+    # TODO: remove me, used for testing notifications
+    # Project.find(9).update(underwriting_notes_for_sales: nil)
     # sleep 1
-    # Project.last.update(marketing_mail_sent: Time.now.iso8601)
+    # Project.find(9).update(underwriting_notes_for_sales: "testing")
 
     authorize nil, policy_class: PermissionPolicy
   end

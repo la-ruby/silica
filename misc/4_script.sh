@@ -16,7 +16,9 @@ arr1=(
   "Offer sent"
   "Property analysis started"
   "Repcee received feedback"
-  "Addendum received feedback")
+  "Addendum received feedback"
+  "Sales notes added"
+  "Underwriting notes added")
 
 arr2=(
   "it_IT_Alice"

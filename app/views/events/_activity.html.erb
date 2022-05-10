@@ -25,6 +25,10 @@
             Repc signed by seller <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% elsif event.category == 'offer_viewed' %>
             Offer viewed by seller <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
+          <% elsif event.category == 'sales_notes_added' %>
+            Sales notes added <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
+          <% elsif event.category == 'underwriting_notes_added' %>
+            Underwriting notes added <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% elsif event.category == 'repc_feedback' %>
             Feedback received for repc <span class="ms-4" data-controller="momentify" data-iso8601="<%= event.timestamp.iso8601 %>"></span>
           <% elsif event.category == 'addendum_feedback' %>
